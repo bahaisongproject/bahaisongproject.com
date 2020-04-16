@@ -5,13 +5,24 @@ const fullConfig = resolveConfig(tailwindConfig);
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Tailwind`,
-    description: `Gatsby starter styled with Tailwind`,
-    author: `@taylorbryant`,
+    title: `bahá'í song project`,
+    description: `100+ Bahá'í songs with lyrics, chords and videos`,
+    author: `Dayyan Smith`,
   },
   plugins: [
     `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "BahaiSongProject",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "bsp",
+        // Url to query from
+        url: "https://bsp-graphql-server.herokuapp.com/",
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -19,7 +30,7 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         background_color: fullConfig.theme.colors.white,
-        theme_color: fullConfig.theme.colors.teal["400"],
+        theme_color: fullConfig.theme.colors.teal,
         display: `minimal-ui`,
         icon: `src/images/tailwind-icon.png`,
       },

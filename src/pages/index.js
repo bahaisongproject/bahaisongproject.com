@@ -1,43 +1,73 @@
 import React from "react";
-
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import catAndHumanIllustration from "../images/cat-and-human-illustration.svg";
+import PropTypes from 'prop-types';
 
-function IndexPage() {
+
+function IndexPage({ data }) {
   return (
     <Layout>
       <SEO
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
         title="Home"
       />
-
-      <section className="text-center">
-        <img
-          alt="Cat and human sitting on a couch"
-          className="block w-1/2 mx-auto mb-8"
-          src={catAndHumanIllustration}
-        />
-
-        <h2 className="inline-block p-3 mb-4 text-2xl font-bold bg-yellow-400">
-          Hey there! Welcome to your first Gatsby site.
-        </h2>
-
-        <p className="leading-loose">
-          This is a barebones starter for Gatsby styled using{` `}
-          <a
-            className="font-bold text-gray-900 no-underline"
-            href="https://tailwindcss.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Tailwind CSS
-          </a>
-          , a utility-first CSS framework.
-        </p>
+      <section>
+      <h2 className="font-semibold text-xs uppercase text-gray-800">By Language</h2>
+      <div className="flex flex-wrap">
+        {data.bsp.languages.map((language) => (
+            <button className="bg-blue-400 tracking-wide text-xs text-gray-100 uppercase py-1 px-2 mr-1 mt-2 rounded-full hover:bg-blue-300 focus:outline-none focus:shadow-outline" key={language.language_code}>
+                {language.language_name_en}
+            </button>
+        ))}
+      </div>
+      <ul>
+      </ul>
+      </section>
+      <section className="mt-6">
+      <h2 className="font-semibold text-xs uppercase text-gray-800">By Tag</h2>
+      <div className="flex flex-wrap">
+        {data.bsp.tags.map((tag) => (
+            <button className="bg-red-400 tracking-wide text-xs text-gray-100  py-1 px-3 mr-1 mt-2 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline" key={tag.tag_name}>
+                {tag.tag_name}
+            </button>
+        ))}
+      </div>
+      </section>
+      <section>
+      <h2 className="mt-6 font-semibold text-xs uppercase text-gray-800">Songs</h2>
+      <div className="flex flex-wrap">
+        {data.bsp.songs.map((song) => (
+            <div className="bg-red-400 tracking-wide text-xs text-gray-100  py-1 px-3 mr-1 mt-2 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline" key={song.slug}>
+                <Link to={song.slug}>{song.title}</Link>
+            </div>
+        ))}
+      </div>
       </section>
     </Layout>
   );
 }
 
+IndexPage.propTypes = {
+  data: PropTypes.object,
+};
+
 export default IndexPage;
+
+export const query = graphql`
+  query {
+    bsp {
+      songs {
+        title
+        slug
+      }
+      languages {
+        language_name_en
+        language_code
+      }
+      tags {
+        tag_name
+      }
+    }
+  }
+`

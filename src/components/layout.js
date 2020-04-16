@@ -12,24 +12,16 @@ function Layout({ children }) {
         {children}
       </main>
 
-      <footer className="bg-blue-700">
+      <footer className="bg-teal-400">
         <nav className="flex justify-between max-w-4xl p-4 mx-auto text-sm md:p-8">
           <p className="text-white">
-            Created by{` `}
-            <a
-              className="font-bold no-underline"
-              href="https://bryant.io"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Taylor Bryant
-            </a>
+            &copy; bahá&apos;í song project
           </p>
 
           <p>
             <a
               className="font-bold text-white no-underline"
-              href="https://github.com/taylorbryant/gatsby-starter-tailwind"
+              href="https://github.com/bahaisongproject"
               target="_blank"
               rel="noopener noreferrer"
             >
