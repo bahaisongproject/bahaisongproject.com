@@ -12,8 +12,8 @@
   },
   "settings": {
     "react": {
-       "version": "detect"
-     }
+      "version": "detect"
+    }
   },
   "extends": [
     // https://eslint.org/docs/rules/

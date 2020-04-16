@@ -14,9 +14,7 @@ function Layout({ children }) {
 
       <footer className="bg-teal-400">
         <nav className="flex justify-between max-w-4xl p-4 mx-auto text-sm md:p-8">
-          <p className="text-white">
-            &copy; bahá&apos;í song project
-          </p>
+          <p className="text-white">&copy; bahá&apos;í song project</p>
 
           <p>
             <a
