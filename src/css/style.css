@@ -2,4 +2,10 @@
 @tailwind base;
 @tailwind components;
 /*! purgecss end ignore */
+
+/* custom styles start */
+
+
+/* custom styles end */
+
 @tailwind utilities;

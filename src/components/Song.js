@@ -18,7 +18,7 @@ function Song({ data }) {
       <div className="flex flex-wrap">
         {song.contributors.map((contributor) => (
           <div
-            className="bg-red-400 tracking-wide text-xs text-gray-100  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none"
+            className="bg-yellow-400 tracking-wide text-xs text-gray-800  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none"
             key="0"
           >
             {contributor.contributor_name}
@@ -27,7 +27,7 @@ function Song({ data }) {
       </div>
       <div>
         {song.performances.map((performance) => (
-          <div key="0">
+          <div className="mt-8" key="0">
             {(() => {
               if (performance.youtube_id)
                 return (
@@ -58,15 +58,17 @@ function Song({ data }) {
           </div>
         ))}
       </div>
-      <div className="no-bullet-list">
-        <div className="flex flex-wrap">
+      <div>
+        <div>
           {song.excerpts.map((excerpt) => (
-            <div key="0">
+            <div className="border-l-4 border-blue-800 px-4 p-4 my-4 bg-pink-200 text-gray-900" key="0">
               <blockquote>
-                {excerpt.excerpt_text}
-                <br />— {excerpt.source.source_author} (
-                {excerpt.source.source_description})
+                <div>{excerpt.excerpt_text}</div>
               </blockquote>
+              <div className="text-sm mt-2 flex flex-wrap justify-between">
+                <div className=" uppercase">{excerpt.source.source_author}</div>
+                <div>{excerpt.source.source_description}</div>
+              </div>
             </div>
           ))}
         </div>
