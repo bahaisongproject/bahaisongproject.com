@@ -52,7 +52,7 @@ function IndexPage({ data }) {
               className="bg-yellow-400 tracking-wide text-xs text-gray-900 font-light py-1 px-3 mr-1 mt-2 rounded-full hover:bg-yellow-300 focus:outline-none focus:shadow-outline"
               key={song.slug}
             >
-              <Link to={song.slug} className="absolute w-full h-full bg-black">{song.title}</Link>
+              <Link to={song.slug} className="">{song.title}</Link>
             </button>
           ))}
         </div>

@@ -21,12 +21,12 @@ function Song({ data }) {
             </div>
           ))}
       {song.tags.map((tag) => (
-            <div className="bg-orange-400 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
+            <div className="bg-orange-400 tracking-wide text-xs text-gray-900 py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
                 <div>{tag.tag_name}</div>
             </div>
           ))}
       </div>
-      <h1 className="text-3xl font-semibold">{song.title}</h1>
+      <h1 className="text-3xl font-semibold font-black">{song.title}</h1>
       <div className="flex flex-wrap">
         {song.contributors.map((contributor, i) => (
             <div

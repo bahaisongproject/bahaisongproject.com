@@ -11,21 +11,21 @@ function AboutPage() {
         title="About"
       />
 
-      <section className="flex flex-col items-center md:flex-row">
-        <div className="md:w-2/3 md:mr-8 max-w-md">
-          <blockquote className="pl-4 font-serif ">
+      <section className="max-w-sm">
+        <div className="">
+          <blockquote className="font-serif ">
             Intone, O My servant, the verses of God that have been received by
             thee, as intoned by them who have drawn nigh unto Him, that the
             sweetness of thy melody may kindle thine own soul, and attract the
             hearts of all men...
           </blockquote>
 
-          <div className="block mt-1 mb-8 text-xs font-serif text-right uppercase">
+          <div className="block mt-1 text-xs font-serif text-right uppercase">
             – Bahá’u’lláh
           </div>
         </div>
       </section>
-      <section className="max-w-sm">
+      <section className="max-w-sm mt-8">
         <p>
           bahá’í song project was launched in 2011 by a group of friends who
           wanted to encourage others to sing and play Bahá’í songs in their

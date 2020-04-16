@@ -22,7 +22,7 @@ module.exports = {
         // Url to query from
         url: "http://localhost:4000/",
         // Refetch interval in seconds
-        refetchInterval: 10,
+        refetchInterval: 60,
       },
     },
     {
