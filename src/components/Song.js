@@ -14,15 +14,27 @@ function Song({ data }) {
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
         title={song.title}
       />
-      <h1 className="text-lg font-semibold">{song.title}</h1>
       <div className="flex flex-wrap">
-        {song.contributors.map((contributor) => (
-          <div
-            className="bg-yellow-400 tracking-wide text-xs text-gray-800  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none"
-            key="0"
-          >
-            {contributor.contributor_name}
-          </div>
+      {song.languages.map((language) => (
+            <div className="bg-green-300 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
+                <div>{language.language_name_en}</div>
+            </div>
+          ))}
+      {song.tags.map((tag) => (
+            <div className="bg-orange-400 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
+                <div>{tag.tag_name}</div>
+            </div>
+          ))}
+      </div>
+      <h1 className="text-3xl font-semibold">{song.title}</h1>
+      <div className="flex flex-wrap">
+        {song.contributors.map((contributor, i) => (
+            <div
+                className="font-thin"
+                key="0"
+            >
+                <span>{i < 1 || ", "}</span>{contributor.contributor_name}
+            </div>
         ))}
       </div>
       <div>
@@ -99,6 +111,12 @@ export const query = graphql`
             source_author
             source_description
           }
+        }
+        languages {
+            language_name_en
+        }
+        tags {
+            tag_name
         }
       }
     }

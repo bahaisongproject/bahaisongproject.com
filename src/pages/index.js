@@ -18,7 +18,7 @@ function IndexPage({ data }) {
         <div className="flex flex-wrap">
           {data.bsp.languages.map((language) => (
             <button
-              className="bg-blue-400 tracking-wide text-xs text-gray-100 uppercase py-1 px-2 mr-1 mt-2 rounded-full hover:bg-blue-300 focus:outline-none focus:shadow-outline"
+              className="bg-blue-400 tracking-wide text-xs text-gray-100 font-light py-1 px-2 mr-1 mt-2 rounded-full hover:bg-blue-300 focus:outline-none focus:shadow-outline"
               key={language.language_code}
             >
               {language.language_name_en}
@@ -34,7 +34,7 @@ function IndexPage({ data }) {
         <div className="flex flex-wrap">
           {data.bsp.tags.map((tag) => (
             <button
-              className="bg-red-400 tracking-wide text-xs text-gray-100  py-1 px-3 mr-1 mt-2 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
+              className="bg-red-400 tracking-wide text-xs text-gray-100 font-light py-1 px-3 mr-1 mt-2 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
               key={tag.tag_name}
             >
               {tag.tag_name}
@@ -48,12 +48,12 @@ function IndexPage({ data }) {
         </h2>
         <div className="flex flex-wrap">
           {data.bsp.songs.map((song) => (
-            <div
-              className="bg-red-400 tracking-wide text-xs text-gray-100  py-1 px-3 mr-1 mt-2 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
+            <button
+              className="bg-yellow-400 tracking-wide text-xs text-gray-900 font-light py-1 px-3 mr-1 mt-2 rounded-full hover:bg-yellow-300 focus:outline-none focus:shadow-outline"
               key={song.slug}
             >
-              <Link to={song.slug}>{song.title}</Link>
-            </div>
+              <Link to={song.slug} className="absolute w-full h-full bg-black">{song.title}</Link>
+            </button>
           ))}
         </div>
       </section>

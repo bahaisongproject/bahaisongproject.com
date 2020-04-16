@@ -20,7 +20,9 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "bsp",
         // Url to query from
-        url: "https://bsp-graphql-server.herokuapp.com/",
+        url: "http://localhost:4000/",
+        // Refetch interval in seconds
+        refetchInterval: 10,
       },
     },
     {
