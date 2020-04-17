@@ -80,12 +80,17 @@ export const query = graphql`
         slug
         languages {
           language_name_en
+          language_code
         }
         tags {
           tag_name
         }
         contributors {
           contributor_name
+        }
+        performances {
+          youtube_id
+          soundcloud_id
         }
       }
       languages {
