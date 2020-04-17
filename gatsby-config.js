@@ -4,8 +4,6 @@ const fullConfig = resolveConfig(tailwindConfig);
 const queries = require("./src/utils/algolia")
 require("dotenv").config()
 
-console.log(process.env)
-
 module.exports = {
   siteMetadata: {
     title: `bahá'í song project`,
