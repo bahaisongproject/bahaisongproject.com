@@ -2,6 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import SongCard from "../components/SongCard"
 import PropTypes from "prop-types";
 
 function IndexPage({ data }) {
@@ -48,12 +49,13 @@ function IndexPage({ data }) {
         </h2>
         <div className="flex flex-wrap">
           {data.bsp.songs.map((song) => (
-            <button
-              className="bg-yellow-400 tracking-wide text-xs text-gray-900 font-light py-1 px-3 mr-1 mt-2 rounded-full hover:bg-yellow-300 focus:outline-none focus:shadow-outline"
-              key={song.slug}
-            >
-              <Link to={song.slug} className="">{song.title}</Link>
-            </button>
+            // <button
+            //   className="bg-yellow-400 tracking-wide text-xs text-gray-900 font-light py-1 px-3 mr-1 mt-2 rounded-full hover:bg-yellow-300 focus:outline-none focus:shadow-outline"
+            //   key={song.slug}
+            // >
+            //   <Link to={song.slug} className="">{song.title}</Link>
+            // </button>
+            <SongCard song={song} key="0"/>
           ))}
         </div>
       </section>
@@ -73,6 +75,15 @@ export const query = graphql`
       songs {
         title
         slug
+        languages {
+          language_name_en
+        }
+        tags {
+          tag_name
+        }
+        contributors {
+          contributor_name
+        }
       }
       languages {
         language_name_en
