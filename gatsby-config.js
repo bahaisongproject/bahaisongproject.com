@@ -4,6 +4,8 @@ const fullConfig = resolveConfig(tailwindConfig);
 const queries = require("./src/utils/algolia")
 require("dotenv").config()
 
+console.log(process.env)
+
 module.exports = {
   siteMetadata: {
     title: `bahá'í song project`,
@@ -21,7 +23,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "bsp",
         // Url to query from
-        url: "http://localhost:4000/",
+        url: process.env.BSP_API_URL,
         // Refetch interval in seconds
         refetchInterval: 60,
       },

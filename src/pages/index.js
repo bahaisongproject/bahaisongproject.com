@@ -18,12 +18,13 @@ function IndexPage({ data }) {
         </h2>
         <div className="flex flex-wrap">
           {data.bsp.languages.map((language) => (
+            <Link to="#" key="0">
             <button
               className="bg-blue-400 tracking-wide text-xs text-gray-100 font-light py-1 px-2 mr-1 mt-2 rounded-full hover:bg-blue-300 focus:outline-none focus:shadow-outline"
-              key={language.language_code}
             >
               {language.language_name_en}
             </button>
+            </Link>
           ))}
         </div>
         <ul></ul>
@@ -34,12 +35,14 @@ function IndexPage({ data }) {
         </h2>
         <div className="flex flex-wrap">
           {data.bsp.tags.map((tag) => (
+            <Link to="#" key="0">
             <button
               className="bg-red-400 tracking-wide text-xs text-gray-100 font-light py-1 px-3 mr-1 mt-2 rounded-full hover:bg-red-300 focus:outline-none focus:shadow-outline"
               key={tag.tag_name}
             >
               {tag.tag_name}
             </button>
+            </Link>
           ))}
         </div>
       </section>
