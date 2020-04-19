@@ -20,7 +20,8 @@ const SongCard = ({song}) => (
     </div> */}
         {(() => {
             if (song.performances.length > 0 && song.performances.filter(p => p.youtube_id !== null).length > 0) {
-                const thumbnail_url = "https://img.youtube.com/vi/" + song.performances[0].youtube_id + "/sddefault.jpg"
+                const yt_performance = song.performances.filter(p => p.youtube_id !== null)[0]
+                const thumbnail_url = "https://img.youtube.com/vi/" + yt_performance.youtube_id + "/sddefault.jpg"
                 return (
                     <div>
                         <img className="rounded h-16 w-full object-cover" src={thumbnail_url}/>
