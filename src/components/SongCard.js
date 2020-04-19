@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 const SongCard = ({song}) => (
 <Link to={song.slug}>
-<div className="bg-orange-300 ml-0 mt-2 mb-2 mr-4 p-2 w-56 h-40 rounded-lg shadow-md">
+<div className="bg-orange-300 ml-0 mt-2 mb-2 mr-4 p-2 w-32 h-40 rounded-lg shadow-md">
     {/* <div className="flex">
     {song.performances.length > 0 && song.performances.filter(p => p.youtube_id !== null).length > 0 ?
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="h-4 w-4 fill-current mr-1">
@@ -24,7 +24,7 @@ const SongCard = ({song}) => (
                 const thumbnail_url = "https://img.youtube.com/vi/" + yt_performance.youtube_id + "/sddefault.jpg"
                 return (
                     <div>
-                        <img className="rounded h-16 w-full object-cover" src={thumbnail_url}/>
+                        <img className="rounded h-12 w-full object-cover" src={thumbnail_url}/>
                     </div>
                     );
             }
