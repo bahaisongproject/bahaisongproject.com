@@ -37,6 +37,11 @@ function Song({ data }) {
             </div>
         ))}
       </div>
+      <a href={"https://pdf.bsp.app/" + song.slug + ".pdf"} target="_blank" rel="noopener noreferrer">
+        <button className="bg-blue-800 text-white py-2 px-4 mt-4 rounded-full inline-block focus:outline-none">
+          Download PDF
+        </button>
+      </a>
       <div>
         {song.performances.map((performance) => (
           <div className="mt-8" key="0">
@@ -98,6 +103,7 @@ export const query = graphql`
     bsp {
       song(where: { slug: $songSlug }) {
         title
+        slug
         contributors {
           contributor_name
         }
