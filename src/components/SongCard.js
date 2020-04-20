@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 const SongCard = ({song}) => (
 <Link to={song.slug}>
-<div className="bg-orange-300 ml-0 mt-2 mb-2 mr-4 p-2 w-32 h-40 rounded-lg shadow-md">
+<div className="bg-orange-300 ml-0 mt-2 mb-2 mr-4 overflow-hidden w-32 h-40 rounded-lg shadow-md">
     {/* <div className="flex">
     {song.performances.length > 0 && song.performances.filter(p => p.youtube_id !== null).length > 0 ?
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="h-4 w-4 fill-current mr-1">
@@ -18,37 +18,39 @@ const SongCard = ({song}) => (
     : null
     }
     </div> */}
-        {(() => {
-            if (song.performances.length > 0 && song.performances.filter(p => p.youtube_id !== null).length > 0) {
-                const yt_performance = song.performances.filter(p => p.youtube_id !== null)[0]
-                const thumbnail_url = "https://img.youtube.com/vi/" + yt_performance.youtube_id + "/sddefault.jpg"
-                return (
-                    <div>
-                        <img className="rounded h-12 w-full object-cover" src={thumbnail_url}/>
-                    </div>
-                    );
-            }
-            else return null;
-        })()}
-    <div className="flex items-center font-semibold">
-        <span className="truncate">{song.title}</span>
-    </div>
-    <div className="flex text-xs truncate">
-    {song.contributors.map((contributor, i) => (
-        <div key="0"><span>{i < 1 || ", "}</span><span>{contributor.contributor_name}</span></div>
-    ))}
-    </div>
-    <div className="flex truncate">
-      {song.languages.map((language) => (
-            <div className="bg-green-300 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
-                <div>{language.language_code}</div>
-            </div>
-          ))}
-    {song.tags.map((tag) => (
-            <div className="bg-orange-400 tracking-wide text-xs text-gray-900 py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
-                <div>{tag.tag_name}</div>
-            </div>
-          ))}
+    {(() => {
+        if (song.performances.length > 0 && song.performances.filter(p => p.youtube_id !== null).length > 0) {
+            const yt_performance = song.performances.filter(p => p.youtube_id !== null)[0]
+            const thumbnail_url = "https://img.youtube.com/vi/" + yt_performance.youtube_id + "/sddefault.jpg"
+            return (
+                <div>
+                    <img className="h-12 w-full object-cover" src={thumbnail_url}/>
+                </div>
+                );
+        }
+        else return null;
+    })()}
+    <div className="px-2 py-1">
+        <div className="flex items-center font-semibold">
+            <span className="truncate">{song.title}</span>
+        </div>
+        <div className="flex text-xs truncate">
+        {song.contributors.map((contributor, i) => (
+            <div key="0"><span>{i < 1 || ", "}</span><span>{contributor.contributor_name}</span></div>
+        ))}
+        </div>
+        <div className="flex truncate">
+        {song.languages.map((language) => (
+                <div className="bg-green-300 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
+                    <div>{language.language_code}</div>
+                </div>
+            ))}
+        {song.tags.map((tag) => (
+                <div className="bg-orange-400 tracking-wide text-xs text-gray-900 py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
+                    <div>{tag.tag_name}</div>
+                </div>
+            ))}
+        </div>
     </div>
 </div>
 </Link>
