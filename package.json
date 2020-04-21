@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-tailwind",
-  "description": "Gatsby starter styled with Tailwind",
-  "version": "4.0.0",
-  "author": "Taylor Bryant <taylor@bryant.io>",
+  "name": "bahai-song-project-website",
+  "description": "bahá'í song project website",
+  "version": "0.1.0",
+  "author": "Dayyan Smith <dayyan.smith@gmail.com>",
   "dependencies": {
     "algoliasearch": "^4.1.0",
     "dotenv": "^8.2.0",
@@ -27,10 +27,11 @@
     "styled-components": "^5.1.0"
   },
   "keywords": [
-    "gatsby",
-    "tailwind",
-    "tailwindcss",
-    "purgecss"
+    "bahai",
+    "music",
+    "songs",
+    "videos",
+    "chords"
   ],
   "license": "MIT",
   "scripts": {
@@ -63,9 +64,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind"
+    "url": "https://github.com/bahaisongproject/bsp-website/"
   },
   "bugs": {
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind/issues"
+    "url": "https://github.com/bahaisongproject/bsp-website/issues"
   }
 }
