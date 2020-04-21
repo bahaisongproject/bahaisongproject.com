@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 import React from "react";
-import Layout from "../components/layout";
+import LayoutSong from "../components/layout_song";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
 import ResponsiveEmbed from "react-responsive-embed";
@@ -9,7 +9,7 @@ function Song({ data }) {
   const song = data.bsp.song;
   //   const embedUrl = `https://www.youtube.com/embed/${song.mainPerformance.youtubeId}`
   return (
-    <Layout>
+    <LayoutSong>
       <SEO
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
         title={song.title}
@@ -90,7 +90,7 @@ function Song({ data }) {
           ))}
         </div>
       </div>
-    </Layout>
+    </LayoutSong>
   );
 }
 
