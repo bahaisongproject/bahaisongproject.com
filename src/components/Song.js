@@ -37,7 +37,7 @@ function Song({ data }) {
             </div>
         ))}
       </div>
-      <a href={"https://pdf.bsp.app/" + song.slug + ".pdf"} target="_blank" rel="noopener noreferrer">
+      <a href={"https://pdf.bahaisongproject.com/" + song.slug + ".pdf"} target="_blank" rel="noopener noreferrer">
         <button className="bg-blue-800 text-white py-2 px-4 mt-4 rounded-full inline-block focus:outline-none">
           Download PDF
         </button>
