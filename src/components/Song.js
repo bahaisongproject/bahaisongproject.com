@@ -11,7 +11,7 @@ function Song({ data }) {
   return (
     <LayoutSong>
       <SEO
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
+        keywords={[`bahai`, `song`, `music`, `chords`]}
         title={song.title}
       />
       <div className="flex flex-wrap">

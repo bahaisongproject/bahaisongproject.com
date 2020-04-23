@@ -7,7 +7,7 @@ function AboutPage() {
   return (
     <Layout>
       <SEO
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
+        keywords={[`bahai`, `song`, `music`, `chords`]}
         title="About"
       />
 

@@ -13,19 +13,8 @@ function LayoutSong({ children,  }) {
       </main>
 
       <footer className="bg-teal-400">
-        <nav className="flex justify-between max-w-4xl p-4 mx-auto text-sm md:p-8">
+        <nav className="flex justify-center max-w-4xl p-4 mx-auto text-sm md:p-8">
           <p className="text-white">&copy; bahá&apos;í song project</p>
-
-          <p>
-            <a
-              className="font-bold text-white no-underline"
-              href="https://github.com/bahaisongproject"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-          </p>
         </nav>
       </footer>
     </div>
