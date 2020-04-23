@@ -39,15 +39,15 @@ const SongCard = ({song}) => (
             <div key="0"><span>{i < 1 || ", "}</span><span>{contributor.contributor_name}</span></div>
         ))}
         </div>
-        <div className="flex truncate">
+        <div className="flex flex-wrap">
         {song.languages.map((language) => (
-                <div className="bg-green-300 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
-                    <div>{language.language_code}</div>
+                <div className="tracking-wide text-xs text-blue-500 my-1 mx-1 rounded-full focus:outline-none" key="0">
+                    <div>[{language.language_name_en}]</div>
                 </div>
             ))}
         {song.tags.map((tag) => (
-                <div className="bg-orange-400 tracking-wide text-xs text-gray-900 py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
-                    <div>{tag.tag_name}</div>
+                <div className="tracking-wide text-xs text-green-700 my-1 mx-1 rounded-full focus:outline-none" key="0">
+                    <div>[{tag.tag_name}]</div>
                 </div>
             ))}
         </div>
