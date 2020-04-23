@@ -16,5 +16,3 @@ What you can do now
 - Start Gatsby development server with `yarn run dev`. You can access the development version of the website at `http://localhost:8000/`.
 - Build the production website with `yarn run build`. This will generate all necessary files and place them in the `public` directory.
 - Serve the production website with `yarn run serve`. You can access the production version of the website at `http://localhost:9000/`
-
-Changing the database schema
