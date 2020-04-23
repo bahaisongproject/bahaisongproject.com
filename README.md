@@ -2,7 +2,7 @@
 
 A static website generated using Gatsby
 
-Access the the preview here https://new.bsp.app
+Access the the preview here https://www.bahaisongproject.com
 
 ## Getting started
 
