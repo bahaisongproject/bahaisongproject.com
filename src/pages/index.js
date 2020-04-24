@@ -2,20 +2,17 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import SongCard from "../components/SongCard"
+import SongCard from "../components/SongCard";
 import PropTypes from "prop-types";
 
 function IndexPage({ data }) {
   return (
     <Layout>
-      <SEO
-        keywords={[`bahai`, `song`, `music`, `chords`]}
-        title="Home"
-      />
+      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
       <section>
         <div className="flex flex-wrap">
           {data.bsp.songs.map((song) => (
-            <SongCard song={song} key="0"/>
+            <SongCard song={song} key="0" />
           ))}
         </div>
       </section>

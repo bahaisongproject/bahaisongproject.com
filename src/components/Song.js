@@ -10,34 +10,39 @@ function Song({ data }) {
   //   const embedUrl = `https://www.youtube.com/embed/${song.mainPerformance.youtubeId}`
   return (
     <LayoutSong>
-      <SEO
-        keywords={[`bahai`, `song`, `music`, `chords`]}
-        title={song.title}
-      />
+      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={song.title} />
       <div className="flex flex-wrap">
-      {song.languages.map((language) => (
-            <div className="bg-green-300 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
-                <div>{language.language_name_en}</div>
-            </div>
-          ))}
-      {song.tags.map((tag) => (
-            <div className="bg-orange-400 tracking-wide text-xs text-gray-900 py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none" key="0">
-                <div>{tag.tag_name}</div>
-            </div>
-          ))}
+        {song.languages.map((language) => (
+          <div
+            className="bg-green-300 tracking-wide text-xs text-gray-900  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none"
+            key="0"
+          >
+            <div>{language.language_name_en}</div>
+          </div>
+        ))}
+        {song.tags.map((tag) => (
+          <div
+            className="bg-orange-400 tracking-wide text-xs text-gray-900 py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none"
+            key="0"
+          >
+            <div>{tag.tag_name}</div>
+          </div>
+        ))}
       </div>
       <h1 className="text-3xl font-semibold font-black">{song.title}</h1>
       <div className="flex flex-wrap">
         {song.contributors.map((contributor, i) => (
-            <div
-                className="font-thin"
-                key="0"
-            >
-                <span>{i < 1 || ", "}</span>{contributor.contributor_name}
-            </div>
+          <div className="font-thin" key="0">
+            <span>{i < 1 || ", "}</span>
+            {contributor.contributor_name}
+          </div>
         ))}
       </div>
-      <a href={"https://pdf.bahaisongproject.com/" + song.slug + ".pdf"} target="_blank" rel="noopener noreferrer">
+      <a
+        href={"https://pdf.bahaisongproject.com/" + song.slug + ".pdf"}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <button className="bg-blue-800 text-white py-2 px-4 mt-4 rounded-full inline-block focus:outline-none">
           Download PDF
         </button>
@@ -78,10 +83,20 @@ function Song({ data }) {
       <div>
         <div>
           {song.excerpts.map((excerpt) => (
-            <div className="border-l-4 border-blue-800 px-4 p-4 my-4 bg-pink-200 text-gray-900" key="0">
-              <blockquote>
-                <div>{excerpt.excerpt_text}</div>
-              </blockquote>
+            <div
+              className="border-l-4 border-blue-800 px-4 p-4 my-4 bg-pink-200 text-gray-900"
+              key="0"
+            >
+              {(() => {
+                let excerpt_text = excerpt.excerpt_text.split("  ").map((paragraph, i) => {
+                  return <p key={i}>{paragraph}</p>;
+                });
+                return (
+                  <blockquote>
+                    <div>{excerpt_text}</div>
+                  </blockquote>
+                );
+              })()}
               <div className="text-sm mt-2 flex flex-wrap justify-between">
                 <div className=" uppercase">{excerpt.source.source_author}</div>
                 <div>{excerpt.source.source_description}</div>
@@ -119,10 +134,10 @@ export const query = graphql`
           }
         }
         languages {
-            language_name_en
+          language_name_en
         }
         tags {
-            tag_name
+          tag_name
         }
       }
     }

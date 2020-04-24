@@ -23,12 +23,14 @@ const songQuery = `{
           }
         }
       }
-  }`
+  }`;
 
-const queries = [{
+const queries = [
+  {
     query: songQuery,
     transformer: ({ data }) => data.bsp.songs,
     indexName: `bsp-songs`,
-}]
+  },
+];
 
-module.exports = queries
+module.exports = queries;

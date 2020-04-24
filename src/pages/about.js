@@ -6,10 +6,7 @@ import SEO from "../components/seo";
 function AboutPage() {
   return (
     <Layout>
-      <SEO
-        keywords={[`bahai`, `song`, `music`, `chords`]}
-        title="About"
-      />
+      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
 
       <section className="max-w-sm">
         <div className="">

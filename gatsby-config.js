@@ -1,8 +1,8 @@
 const resolveConfig = require("tailwindcss/resolveConfig");
 const tailwindConfig = require("./tailwind.config.js");
 const fullConfig = resolveConfig(tailwindConfig);
-const queries = require("./src/utils/algolia")
-require("dotenv").config()
+const queries = require("./src/utils/algolia");
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
