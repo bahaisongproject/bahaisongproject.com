@@ -50,7 +50,7 @@ const SongCard = ({ song }) => (
         <div className="flex flex-wrap">
           {song.languages.map((language) => (
             <div
-              className="tracking-wide text-xs text-blue-500 my-1 rounded-full focus:outline-none"
+              className="tracking-wide text-xs text-blue-700 my-1 mr-1 rounded-full focus:outline-none"
               key="0"
             >
               <div>[{language.language_name_en}]</div>
@@ -58,7 +58,7 @@ const SongCard = ({ song }) => (
           ))}
           {song.tags.map((tag) => (
             <div
-              className="tracking-wide text-xs text-green-700 my-1 mx-1 rounded-full focus:outline-none"
+              className="tracking-wide text-xs text-gray-600 my-1 mr-1 rounded-full focus:outline-none"
               key="0"
             >
               <div>[{tag.tag_name}]</div>
