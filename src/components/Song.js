@@ -88,9 +88,11 @@ function Song({ data }) {
               key="0"
             >
               {(() => {
-                let excerpt_text = excerpt.excerpt_text.split("  ").map((paragraph, i) => {
-                  return <p key={i}>{paragraph}</p>;
-                });
+                let excerpt_text = excerpt.excerpt_text
+                  .split("  ")
+                  .map((paragraph, i) => {
+                    return <p key={i}>{paragraph}</p>;
+                  });
                 return (
                   <blockquote>
                     <div>{excerpt_text}</div>

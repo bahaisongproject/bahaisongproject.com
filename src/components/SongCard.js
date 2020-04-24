@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 const SongCard = ({ song }) => (
   <Link to={song.slug}>
     <div className="bg-white ml-0 mt-2 mb-2 mr-4 overflow-hidden w-56 h-48 ">
+      <div className="w-56 h-28 bg-gray-300">
       {(() => {
         if (
           song.performances.length > 0 &&
@@ -16,13 +17,24 @@ const SongCard = ({ song }) => (
             "https://img.youtube.com/vi/" +
             yt_performance.youtube_id +
             "/sddefault.jpg";
-          return (
+          if (thumbnail_url) {
+            return (
+                <img
+                  className="h-28 w-full object-cover rounded-sm"
+                  src={thumbnail_url}
+                />
+            );
+          } else {
             <div>
-              <img className="h-28 w-full object-cover rounded-sm" src={thumbnail_url} />
-            </div>
-          );
+              <img
+                className="h-28 w-full object-cover rounded-sm"
+                src={"https://img.youtube.com/vi/j-9jGPOno5w/sddefault.jpg"}
+              />
+            </div>;
+          }
         } else return null;
       })()}
+      </div>
       <div className="py-1">
         <div className="flex items-center font-semibold">
           <span className="truncate">{song.title}</span>
