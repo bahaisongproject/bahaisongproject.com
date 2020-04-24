@@ -10,7 +10,7 @@ function IndexPage({ data }) {
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
       <section>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-around">
           {data.bsp.songs.map((song) => (
             <SongCard song={song} key="0" />
           ))}
