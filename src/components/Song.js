@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 import React from "react";
-import LayoutSong from "../components/layout_song";
+import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
 import ResponsiveEmbed from "react-responsive-embed";
@@ -9,7 +9,7 @@ function Song({ data }) {
   const song = data.bsp.song;
   //   const embedUrl = `https://www.youtube.com/embed/${song.mainPerformance.youtubeId}`
   return (
-    <LayoutSong>
+    <Layout className="max-w-4xl">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={song.title} />
       <div className="flex flex-wrap">
         {song.languages.map((language) => (
@@ -107,7 +107,7 @@ function Song({ data }) {
           ))}
         </div>
       </div>
-    </LayoutSong>
+    </Layout>
   );
 }
 
