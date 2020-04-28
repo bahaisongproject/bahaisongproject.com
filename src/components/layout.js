@@ -8,7 +8,11 @@ function Layout({ children, className }) {
     <div className="flex flex-col min-h-screen font-sans text-gray-900">
       <Header />
 
-      <main className={"flex-1 w-full px-4 py-4 mx-auto md:px-8 md:py-8 " + className}>
+      <main
+        className={
+          "flex-1 w-full px-4 py-4 mx-auto md:px-8 md:py-8 " + className
+        }
+      >
         {children}
       </main>
 

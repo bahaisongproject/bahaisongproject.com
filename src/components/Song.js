@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
-import ResponsiveEmbed from "react-responsive-embed";
+import ContentEmbedder from "../components/ContentEmbedder";
 
 function Song({ data }) {
   const song = data.bsp.song;
@@ -49,35 +49,7 @@ function Song({ data }) {
       </a>
       <div>
         {song.performances.map((performance) => (
-          <div className="mt-8" key="0">
-            {(() => {
-              if (performance.youtube_id)
-                return (
-                  <ResponsiveEmbed
-                    src={
-                      "https://www.youtube.com/embed/" + performance.youtube_id
-                    }
-                    allowFullScreen
-                  />
-                );
-              if (performance.soundcloud_id) {
-                const url =
-                  "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" +
-                  performance.soundcloud_id +
-                  "&color=%238bb6af";
-                return (
-                  <iframe
-                    width="100%"
-                    height="166"
-                    scrolling="no"
-                    frameBorder="no"
-                    allow="autoplay"
-                    src={url}
-                  ></iframe>
-                );
-              } else return null;
-            })()}
-          </div>
+          <ContentEmbedder performance={performance} key="0" />
         ))}
       </div>
       <div>

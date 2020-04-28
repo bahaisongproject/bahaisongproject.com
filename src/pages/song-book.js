@@ -1,11 +1,11 @@
 import React from "react";
 
-import LayoutSong from "../components/layout_song";
+import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 function SongBookPage() {
   return (
-    <LayoutSong>
+    <Layout className="max-w-4xl">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
       <div>
         Download a PDF with all songs{" "}
@@ -19,7 +19,7 @@ function SongBookPage() {
         </a>
         .
       </div>
-    </LayoutSong>
+    </Layout>
   );
 }
 
