@@ -55,7 +55,7 @@ function Song({ data }) {
         <div>
           {song.excerpts.map((excerpt) => (
             <div
-              className="border-l-4 border-blue-800 px-4 p-4 my-4 bg-green-200 text-gray-900"
+              className="border-l-4 max-w-xl border-blue-800 px-4 p-4 my-4 bg-blue-100 transparent text-gray-900"
               key="0"
             >
               {(() => {

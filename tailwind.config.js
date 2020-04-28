@@ -4,6 +4,9 @@ module.exports = {
       spacing: {
         "28": "7rem",
       },
+      fontFamily: {
+        'serif': ['EB Garamond', 'Arial']
+      }
     },
   },
   variants: {},
