@@ -11,4 +11,4 @@ const SoundCloudEmbedder = ({ performance }) => (
     />
 );
 
-export default SoundCloud;
+export default SoundCloudEmbedder;
