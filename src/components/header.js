@@ -18,7 +18,7 @@ function Header() {
       <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:p-8">
         <Link to="/">
           <h1 className="flex items-center text-white no-underline">
-            <span className="text-xl font-serif font-bold tracking-tight">
+            <span className="text-xl font-serif tracking-normal font-bold tracking-tight">
               {site.siteMetadata.title}
             </span>
           </h1>

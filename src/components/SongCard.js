@@ -21,18 +21,18 @@ const SongCard = ({ song }) => (
         <div className="flex flex-wrap">
           {song.languages.map((language) => (
             <div
-              className="tracking-wide text-xs text-blue-700 my-1 mr-1 rounded-full focus:outline-none"
+              className="tracking-wide text-xs border text-blue-700 bg-gray-100 my-1 mr-1 px-1 rounded-sm focus:outline-none"
               key="0"
             >
-              <div>[{language.language_name_en}]</div>
+              <div>{language.language_name_en}</div>
             </div>
           ))}
           {song.tags.map((tag) => (
             <div
-              className="tracking-wide text-xs text-gray-600 my-1 mr-1 rounded-full focus:outline-none"
+              className="tracking-wide text-xs border text-gray-600 bg-gray-100 my-1 mr-1 px-1 rounded-sm focus:outline-none"
               key="0"
             >
-              <div>[{tag.tag_name}]</div>
+              <div>{tag.tag_name}</div>
             </div>
           ))}
         </div>

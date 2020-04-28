@@ -13,7 +13,7 @@ function Song({ data }) {
       <div className="flex flex-wrap">
         {song.languages.map((language) => (
           <div
-            className="border-2 border-blue-700 tracking-wide text-xs text-blue-800  py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none"
+            className="border bg-gray-100 tracking-wide text-xs text-blue-700 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
             key="0"
           >
             <div>{language.language_name_en}</div>
@@ -21,14 +21,14 @@ function Song({ data }) {
         ))}
         {song.tags.map((tag) => (
           <div
-            className="border-2 border-gray-600 tracking-wide text-xs text-gray-800 py-1 px-3 mr-1 mt-2 rounded-full focus:outline-none"
+            className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
             key="0"
           >
             <div>{tag.tag_name}</div>
           </div>
         ))}
       </div>
-      <h1 className="text-3xl font-semibold font-black">{song.title}</h1>
+      <h1 className="text-3xl font-semibold font-black font-serif">{song.title}</h1>
       <div className="flex flex-wrap">
         {song.contributors.map((contributor, i) => (
           <div className="font-thin" key="0">

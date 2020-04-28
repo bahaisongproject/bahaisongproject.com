@@ -21,13 +21,6 @@ const YouTubeThumbnail = ({ song }) => (
               src={thumbnail_url}
             />
           );
-        } else {
-          <div>
-            <img
-              className="h-28 w-full object-cover rounded-sm"
-              src={"https://img.youtube.com/vi/j-9jGPOno5w/sddefault.jpg"}
-            />
-          </div>;
         }
       } else return null;
     })()}

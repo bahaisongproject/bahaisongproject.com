@@ -5,8 +5,15 @@ module.exports = {
         "28": "7rem",
       },
       fontFamily: {
-        'serif': ['EB Garamond', 'Arial']
-      }
+        serif: [
+          "EB Garamond",
+          "Georgia",
+          "Cambria",
+          '"Times New Roman"',
+          "Times",
+          "serif",
+        ],
+      },
     },
   },
   variants: {},
