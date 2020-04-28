@@ -7,7 +7,6 @@ import ContentEmbedder from "../components/ContentEmbedder";
 
 function Song({ data }) {
   const song = data.bsp.song;
-  //   const embedUrl = `https://www.youtube.com/embed/${song.mainPerformance.youtubeId}`
   return (
     <Layout className="max-w-4xl">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={song.title} />
@@ -99,6 +98,8 @@ export const query = graphql`
         performances {
           youtube_id
           soundcloud_id
+          content_url
+          performance_prio
         }
         excerpts {
           excerpt_text

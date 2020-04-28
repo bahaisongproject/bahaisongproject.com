@@ -1,31 +1,43 @@
 import React from "react";
 import { Link } from "gatsby";
 import ResponsiveEmbed from "react-responsive-embed"
+import YouTubeEmbedder from "./YouTubeEmbedder";
+import SoundCloudEmbedder from "./SoundCloudEmbedder"
+
+function is_youtube(url) {    
+    if (url != undefined || url != '') {        
+        var regExp = /youtube.com/;
+        var match = url.match(regExp);
+        if (match) {
+            return true  
+        }
+    } else {
+        return false
+    }
+}
+
+function is_soundcloud(url) {    
+    if (url != undefined || url != '') {        
+        var regExp = /soundcloud.com/;
+        var match = url.match(regExp);
+        if (match) {
+            return true  
+        }
+    } else {
+        return false
+    }
+}
 
 const ContentEmbedder = ({ performance }) => (
   <div className="mt-8" key="0">
     {(() => {
-      if (performance.youtube_id)
+      if (is_youtube(performance.content_url))
         return (
-          <ResponsiveEmbed
-            src={"https://www.youtube.com/embed/" + performance.youtube_id}
-            allowFullScreen
-          />
+            <YouTubeEmbedder performance={performance}/>
         );
-      if (performance.soundcloud_id) {
-        const url =
-          "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" +
-          performance.soundcloud_id +
-          "&color=%238bb6af";
+      if (is_soundcloud(performance.content_url)) {
         return (
-          <iframe
-            width="100%"
-            height="166"
-            scrolling="no"
-            frameBorder="no"
-            allow="autoplay"
-            src={url}
-          ></iframe>
+            <SoundCloudEmbedder performance={performance}/>
         );
       } else return null;
     })()}
