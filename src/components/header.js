@@ -1,5 +1,10 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
+import SearchField from "./search/SearchField";
+
+const searchIndices = [
+  { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
+]
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
@@ -34,7 +39,7 @@ function Header() {
             </span>
           </h1>
         </Link>
-
+        <SearchField />
         <button
           className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden"
           onClick={() => toggleExpansion(!isExpanded)}
