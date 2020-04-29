@@ -25,8 +25,7 @@
     "react-hook-form": "^5.5.3",
     "react-instantsearch-dom": "^6.4.0",
     "react-responsive-embed": "^2.1.0",
-    "react-soundcloud": "^0.1.1",
-    "styled-components": "^5.1.0"
+    "react-soundcloud": "^0.1.1"
   },
   "keywords": [
     "bahai",
