@@ -14,7 +14,7 @@ function ContactPage() {
       <h1 className="text-3xl">Contact</h1>
       <div className="w-full max-w-md">
       <form onSubmit={handleSubmit(onSubmit)} id="contact" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-      <input type="hidden" name="contact" value="contact" />
+      <input type="hidden" name="form-name" value="contact" />
       <label className="block text-gray-700 text-sm font-bold mt-4 mb-2" htmlFor="name">
         Name
       </label>
