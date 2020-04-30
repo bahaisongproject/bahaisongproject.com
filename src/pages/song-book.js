@@ -6,7 +6,7 @@ import SEO from "../components/seo";
 function SongBookPage() {
   return (
     <Layout className="max-w-4xl">
-      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
+      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Song Book" />
       <div>
         Download a PDF with all songs{" "}
         <a
