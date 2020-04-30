@@ -29,13 +29,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-tailwind`,
-        short_name: `starter`,
+        name: `bahá'í song project`,
+        short_name: `bsp`,
         start_url: `/`,
         background_color: fullConfig.theme.colors.white,
-        theme_color: fullConfig.theme.colors.teal,
-        display: `minimal-ui`,
-        icon: `src/images/tailwind-icon.png`,
+        theme_color: fullConfig.theme.colors.blue,
+        display: `standalone`,
+        icon: `src/images/bahaisongproject-icon.png`,
       },
     },
     {
