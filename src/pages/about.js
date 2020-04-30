@@ -7,7 +7,7 @@ function AboutPage() {
   return (
     <Layout className="max-w-4xl">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
-
+      <h1 className="text-3xl">About</h1>
       <section className="max-w-sm">
         <div className="">
           <blockquote>
@@ -38,8 +38,9 @@ function AboutPage() {
         <h2 className="text-lg font-bold">
           Acknowledgements
         </h2>
+        <p>This project could not be possible withouth the contributions of so many people</p>
         <ul className="list-disc">
-        <li>All the contributors who shared songs with us</li>
+        <li>All the people who shared songs with us</li>
         <li>Chad Smith</li>
         <li>Armin Naimi</li>
         </ul>

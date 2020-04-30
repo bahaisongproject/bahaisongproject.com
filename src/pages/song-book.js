@@ -7,6 +7,7 @@ function SongBookPage() {
   return (
     <Layout className="max-w-4xl">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Song Book" />
+      <h1 className="text-3xl">Song Book</h1>
       <div>
         Download a PDF with all songs{" "}
         <a
