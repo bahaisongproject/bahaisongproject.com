@@ -28,7 +28,9 @@ function Song({ data }) {
           </div>
         ))}
       </div>
-      <h1 className="text-3xl font-semibold font-black font-serif">{song.title}</h1>
+      <h1 className="text-3xl font-semibold font-black font-serif">
+        {song.title}
+      </h1>
       <div className="flex flex-wrap">
         {song.contributors.map((contributor, i) => (
           <div className="font-thin" key="0">

@@ -35,14 +35,15 @@ function AboutPage() {
         </p>
       </section>
       <section className="max-w-sm mt-8">
-        <h2 className="text-lg font-bold">
-          Acknowledgements
-        </h2>
-        <p>This project could not be possible withouth the contributions of so many people</p>
+        <h2 className="text-lg font-bold">Acknowledgements</h2>
+        <p>
+          This project could not be possible withouth the contributions of so
+          many people
+        </p>
         <ul className="list-disc">
-        <li>All the people who shared songs with us</li>
-        <li>Chad Smith</li>
-        <li>Armin Naimi</li>
+          <li>All the people who shared songs with us</li>
+          <li>Chad Smith</li>
+          <li>Armin Naimi</li>
         </ul>
       </section>
     </Layout>
