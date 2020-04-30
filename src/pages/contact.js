@@ -22,12 +22,8 @@ function ContactPage() {
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
+          <input type="hidden" name="bot-field" />
           <input type="hidden" name="form-name" value="contact" />
-          <p hidden>
-            <label>
-              Don’t fill this out: <input name="bot-field" ref={register()} />
-            </label>
-          </p>
           <label
             className="block text-gray-700 text-sm font-bold mt-4 mb-2"
             htmlFor="name"
@@ -71,6 +67,7 @@ function ContactPage() {
 
           <button
             type="submit"
+
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Send
