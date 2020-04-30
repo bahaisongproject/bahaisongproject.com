@@ -5,24 +5,24 @@ import SEO from "../components/seo";
 
 function AboutPage() {
   return (
-    <Layout>
+    <Layout className="max-w-4xl">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
 
       <section className="max-w-sm">
         <div className="">
-          <blockquote className="font-serif ">
+          <blockquote>
             Intone, O My servant, the verses of God that have been received by
             thee, as intoned by them who have drawn nigh unto Him, that the
             sweetness of thy melody may kindle thine own soul, and attract the
             hearts of all men...
           </blockquote>
 
-          <div className="block mt-1 text-xs font-serif text-right uppercase">
+          <div className="block mt-1 text-xs text-right uppercase">
             – Bahá’u’lláh
           </div>
         </div>
       </section>
-      <section className="max-w-sm mt-8">
+      <section className="mt-8">
         <p>
           bahá’í song project was launched in 2011 by a group of friends who
           wanted to encourage others to sing and play Bahá’í songs in their
@@ -33,6 +33,16 @@ function AboutPage() {
           accessible. We hope this website can serve as a tool to create a
           joyous and uplifting atmosphere in your communities.
         </p>
+      </section>
+      <section className="max-w-sm mt-8">
+        <h2 className="text-lg font-bold">
+          Acknowledgements
+        </h2>
+        <ul className="list-disc">
+        <li>All the contributors who shared songs with us</li>
+        <li>Chad Smith</li>
+        <li>Armin Naimi</li>
+        </ul>
       </section>
     </Layout>
   );
