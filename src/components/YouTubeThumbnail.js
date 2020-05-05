@@ -10,7 +10,7 @@ const YouTubeThumbnail = ({ song }) => (
       ) {
         const yt_performance = song.performances.filter(
           (p) => is_youtube(p.content_url)
-        )[0];
+        ).sort((a, b) => (a.performance_prio > b.performance_prio) ? 1 : -1)[0];
         const thumbnail_url =
           "https://img.youtube.com/vi/" +
           get_youtube_id(yt_performance.content_url) +

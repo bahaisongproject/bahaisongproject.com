@@ -49,7 +49,7 @@ function Song({ data }) {
         </button>
       </a>
       <div>
-        {song.performances.map((performance) => (
+        {song.performances.sort((a, b) => (a.performance_prio > b.performance_prio) ? 1 : -1).map((performance) => (
           <ContentEmbedder performance={performance} key="0" />
         ))}
       </div>
