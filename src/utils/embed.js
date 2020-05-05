@@ -23,4 +23,12 @@ function is_soundcloud(content_url) {
   return false;
 }
 
-export { is_youtube, is_soundcloud };
+function get_youtube_id(content_url) {
+  if (is_youtube(content_url)) {
+     return content_url.substring(content_url.length - 11)
+  } else {
+    return false;
+  }
+}
+
+export { is_youtube, is_soundcloud, get_youtube_id };

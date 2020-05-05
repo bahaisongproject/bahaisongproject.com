@@ -1,18 +1,19 @@
 import React from "react";
+import { is_youtube, get_youtube_id } from "../utils/embed"
 
 const YouTubeThumbnail = ({ song }) => (
   <div className="w-56 h-28 bg-gray-300">
     {(() => {
       if (
         song.performances.length > 0 &&
-        song.performances.filter((p) => p.youtube_id !== null).length > 0
+        song.performances.filter((p) => is_youtube(p.content_url)).length > 0
       ) {
         const yt_performance = song.performances.filter(
-          (p) => p.youtube_id !== null
+          (p) => is_youtube(p.content_url)
         )[0];
         const thumbnail_url =
           "https://img.youtube.com/vi/" +
-          yt_performance.youtube_id +
+          get_youtube_id(yt_performance.content_url) +
           "/sddefault.jpg";
         if (thumbnail_url) {
           return (

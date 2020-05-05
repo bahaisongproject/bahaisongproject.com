@@ -43,8 +43,7 @@ export const query = graphql`
           contributor_name
         }
         performances {
-          youtube_id
-          soundcloud_id
+          content_url
         }
       }
       languages {
