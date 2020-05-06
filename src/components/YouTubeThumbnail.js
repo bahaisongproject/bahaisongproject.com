@@ -14,7 +14,7 @@ const YouTubeThumbnail = ({ song }) => (
         const thumbnail_url =
           "https://img.youtube.com/vi/" +
           get_youtube_id(yt_performance.content_url) +
-          "/sddefault.jpg";
+          "/hqdefault.jpg";
         if (thumbnail_url) {
           return (
             <img
