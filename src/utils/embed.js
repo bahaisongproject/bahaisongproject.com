@@ -25,7 +25,7 @@ function is_soundcloud(content_url) {
 
 function get_youtube_id(content_url) {
   if (is_youtube(content_url)) {
-     return content_url.substring(content_url.length - 11)
+    return content_url.substring(content_url.length - 11);
   } else {
     return false;
   }
