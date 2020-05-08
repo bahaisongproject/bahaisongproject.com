@@ -45,13 +45,18 @@ function ContactPage() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       method="post"
-      id="contact"
       name="contact"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
-      <input type="hidden" name="bot-field" />
       <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>
+          Don’t fill this out:{" "}
+          <input name="bot-field" ref={register()}/>
+        </label>
+      </p>
+
       <label htmlFor="name">
         <h5>Name</h5>
         <input
