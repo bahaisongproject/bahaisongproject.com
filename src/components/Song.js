@@ -13,7 +13,7 @@ function Song({ data }) {
       <div className="flex flex-wrap">
         {song.languages.map((language) => (
           <div
-            className="border bg-gray-100 tracking-wide text-xs text-blue-700 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
+            className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
             key="0"
           >
             <div>{language.language_name_en}</div>
@@ -44,7 +44,7 @@ function Song({ data }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <button className="text-gray-100 bg-blue-700 py-2 px-4 mt-4 rounded-full inline-block focus:outline-none">
+        <button className="text-gray-100 bg-gray-900 py-2 px-4 mt-4 rounded-full inline-block focus:outline-none">
           Download PDF
         </button>
       </a>
@@ -59,7 +59,7 @@ function Song({ data }) {
         <div>
           {song.excerpts.map((excerpt) => (
             <div
-              className="border-l-4 max-w-xl border-blue-800 px-4 p-4 my-4 bg-blue-100 transparent text-gray-900"
+              className="border-l-4 max-w-xl border-gray-800 px-4 p-4 my-4 bg-gray-300 transparent text-gray-900"
               key="0"
             >
               {(() => {

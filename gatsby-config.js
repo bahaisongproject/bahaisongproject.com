@@ -33,7 +33,7 @@ module.exports = {
         short_name: `bsp`,
         start_url: `/`,
         background_color: fullConfig.theme.colors.white,
-        theme_color: fullConfig.theme.colors.blue,
+        theme_color: fullConfig.theme.colors.gray,
         display: `standalone`,
         icon: `src/images/bahaisongproject-icon.png`,
       },
