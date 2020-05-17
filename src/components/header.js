@@ -39,7 +39,6 @@ function Header() {
             </span>
           </h1>
         </Link>
-        <SearchField />
         <button
           className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden"
           onClick={() => toggleExpansion(!isExpanded)}
@@ -79,6 +78,7 @@ function Header() {
           ))}
         </nav>
       </div>
+      <SearchField />
     </header>
   );
 }
