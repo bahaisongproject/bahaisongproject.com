@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
-import SearchField from "./search/SearchField";
 import algoliasearch from "algoliasearch";
 import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
 
