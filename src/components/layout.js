@@ -1,7 +1,16 @@
 import PropTypes from "prop-types";
 import React from "react";
-
+import { Link } from "gatsby";
+import algoliasearch from "algoliasearch";
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
 import Header from "./header";
+
+const searchClient = algoliasearch(
+  "KBJLQ93WI4",
+  "2c640df937f8f88f2c89e59a730941b4"
+);
+
+const Hit = ({ hit }) => <p><Link to={"/" + hit.slug}>{hit.title}</Link></p>;
 
 function Layout({ children, className }) {
   return (
@@ -13,6 +22,12 @@ function Layout({ children, className }) {
           "flex-1 w-full px-4 py-4 mx-auto md:px-8 md:py-8 " + className
         }
       >
+        <InstantSearch searchClient={searchClient} indexName="bsp-songs">
+          <div className="flex justify-center mb-6">
+            <SearchBox />
+          </div>
+          <Hits hitComponent={Hit} />
+        </InstantSearch>
         {children}
       </main>
 

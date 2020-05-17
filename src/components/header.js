@@ -1,10 +1,17 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
 import SearchField from "./search/SearchField";
+import algoliasearch from "algoliasearch";
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+
+const searchClient = algoliasearch(
+  "KBJLQ93WI4",
+  "2c640df937f8f88f2c89e59a730941b4"
+);
 
 const searchIndices = [
   { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
-]
+];
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
@@ -78,7 +85,6 @@ function Header() {
           ))}
         </nav>
       </div>
-      <SearchField />
     </header>
   );
 }
