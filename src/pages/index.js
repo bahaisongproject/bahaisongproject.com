@@ -22,7 +22,7 @@ function IndexPage({ data }) {
           <div className="flex justify-center mb-6">
             <SearchBox />
           </div>
-          <Hits hitComponent={Hit} />
+          <Hits hitComponent={Hit} className="flex flex-wrap justify-around"/>
         </InstantSearch>
       {/* <section>
         <div className="flex flex-wrap justify-around">
