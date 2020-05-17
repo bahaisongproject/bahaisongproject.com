@@ -14,6 +14,10 @@ const songQuery = `{
             tag_name
             tag_description
           }
+          performances {
+            content_url
+            performance_prio
+          }
           excerpts {
             source {
               source_description
