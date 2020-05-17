@@ -2,7 +2,6 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import SongCard from "../components/SongCard";
 import PropTypes from "prop-types";
 import Hit from "../components/Hit"
 import algoliasearch from "algoliasearch";

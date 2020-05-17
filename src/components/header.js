@@ -66,6 +66,10 @@ function Header() {
         >
           {[
             {
+              route: `/all-songs`,
+              title: `All Songs`,
+            },
+            {
               route: `/song-book`,
               title: `Song Book`,
             },
