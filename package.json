@@ -15,7 +15,6 @@
     "gatsby-plugin-purgecss": "5.0.0",
     "gatsby-plugin-react-helmet": "3.2.2",
     "gatsby-plugin-sharp": "2.5.4",
-    "gatsby-plugin-styled-components": "^3.2.2",
     "gatsby-source-graphql": "^2.4.0",
     "netlify-plugin-gatsby-cache": "^0.2.1",
     "prop-types": "^15.7.2",
