@@ -1,0 +1,11 @@
+.ais-Hits-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ais-SearchBox-form input {
+    outline: 0;
+    width: 20rem;
+    border-bottom: 0.05rem solid red;
+}
