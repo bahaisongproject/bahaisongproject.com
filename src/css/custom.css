@@ -7,5 +7,5 @@
 .ais-SearchBox-form input {
     outline: 0;
     width: 20rem;
-    border-bottom: 0.05rem solid red;
+    border-bottom: 0.05rem solid darkslategray;
 }
