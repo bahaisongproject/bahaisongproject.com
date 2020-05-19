@@ -23,13 +23,6 @@ function IndexPage({ data }) {
           </div>
           <Hits hitComponent={Hit} className="flex flex-wrap justify-around"/>
         </InstantSearch>
-      {/* <section>
-        <div className="flex flex-wrap justify-around">
-          {data.bsp.songs.map((song) => (
-            <SongCard song={song} key="0" />
-          ))}
-        </div>
-      </section> */}
     </Layout>
   );
 }
