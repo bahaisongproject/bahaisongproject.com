@@ -23,7 +23,7 @@ module.exports = {
         // Url to query from
         url: process.env.BSP_API_URL,
         // Refetch interval in seconds
-        refetchInterval: 60,
+        refetchInterval: 20,
       },
     },
     {
