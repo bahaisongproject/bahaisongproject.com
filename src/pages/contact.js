@@ -50,11 +50,7 @@ function ContactPage() {
       data-netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="contact" />
-      <p hidden>
-        <label>
-          Don’t fill this out: <input name="bot-field" ref={register()} />
-        </label>
-      </p>
+      <input name="bot-field" ref={register()} />
 
       <label htmlFor="name">
         <h5>Name</h5>
@@ -88,8 +84,8 @@ function ContactPage() {
         <h5>Message</h5>
         <textarea
           ref={register({ required })}
-          name="question"
-          id="question"
+          name="message"
+          id="message"
           rows="3"
           placeholder="Your message"
           disabled={isSubmitting}
