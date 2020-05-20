@@ -1,11 +1,11 @@
 import React from "react";
-import { connectHits } from 'react-instantsearch-dom';
+import { connectHits } from "react-instantsearch-dom";
 import Hit from "./Hit";
 
 const Hits = ({ hits }) => (
   <div className="flex flex-wrap">
-    {hits.map(hit => (
-        <Hit hit={hit} key={hit.objectID}/>
+    {hits.map((hit) => (
+      <Hit hit={hit} key={hit.objectID} />
     ))}
   </div>
 );
