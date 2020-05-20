@@ -5,7 +5,9 @@ import SEO from "../components/seo";
 import PropTypes from "prop-types";
 import Hit from "../components/Hit"
 import algoliasearch from "algoliasearch";
-import { InstantSearch, SearchBox, Hits, RefinementList } from "react-instantsearch-dom";
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+import CustomSearchBox from "../components/SearchBox"
+import CustomHits from "../components/HitList"
 
 
 const searchClient = algoliasearch(
@@ -19,9 +21,10 @@ function IndexPage({ data }) {
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
       <InstantSearch searchClient={searchClient} indexName="bsp-songs">
           <div className="flex justify-center mb-6">
-            <SearchBox />
+            <CustomSearchBox />
           </div>
-          <Hits hitComponent={Hit}/>
+          {/* <Hits hitComponent={Hit}/> */}
+          <CustomHits />
         </InstantSearch>
     </Layout>
   );
