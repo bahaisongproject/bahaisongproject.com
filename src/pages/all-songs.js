@@ -7,7 +7,7 @@ import SongCard from "../components/SongCard";
 function AllSongs({ data }) {
   return (
     <Layout>
-      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
+      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="All Songs" />
       <section>
         <div className="flex flex-wrap">
           {data.bsp.songs.map((song) => (
