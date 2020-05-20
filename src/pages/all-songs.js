@@ -10,7 +10,7 @@ function AllSongs({ data }) {
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
             <section>
-        <div className="flex flex-wrap justify-around">
+        <div className="flex flex-wrap">
           {data.bsp.songs.map((song) => (
             <SongCard song={song} key="0" />
           ))}
