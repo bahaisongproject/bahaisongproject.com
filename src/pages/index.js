@@ -5,7 +5,7 @@ import SEO from "../components/seo";
 import PropTypes from "prop-types";
 import Hit from "../components/Hit"
 import algoliasearch from "algoliasearch";
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+import { InstantSearch, SearchBox, Hits, RefinementList } from "react-instantsearch-dom";
 
 
 const searchClient = algoliasearch(
@@ -21,7 +21,7 @@ function IndexPage({ data }) {
           <div className="flex justify-center mb-6">
             <SearchBox />
           </div>
-          <Hits hitComponent={Hit} className="flex flex-wrap justify-around"/>
+          <Hits hitComponent={Hit}/>
         </InstantSearch>
     </Layout>
   );
