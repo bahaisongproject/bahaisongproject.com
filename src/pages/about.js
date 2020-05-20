@@ -34,11 +34,11 @@ function AboutPage() {
           joyous and uplifting atmosphere in your communities.
         </p>
       </section>
-      <section className="max-w-sm mt-8">
+      <section className="mt-8">
         <h2 className="text-lg font-bold">Acknowledgements</h2>
         <p>
           This project could not be possible withouth the contributions of so
-          many people
+          many people:
         </p>
         <ul className="list-disc ml-4">
           <li className="">All the friends who shared songs with us</li>
