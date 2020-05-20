@@ -40,8 +40,8 @@ function AboutPage() {
           This project could not be possible withouth the contributions of so
           many people
         </p>
-        <ul className="list-disc">
-          <li>All the people who shared songs with us</li>
+        <ul className="list-disc ml-4">
+          <li className="">All the friends who shared songs with us</li>
           <li>Chad Smith</li>
           <li>Armin Naimi</li>
         </ul>
