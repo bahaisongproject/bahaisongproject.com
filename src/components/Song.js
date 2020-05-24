@@ -74,7 +74,7 @@ function Song({ data }) {
               );
             })()}
             <div className="text-sm mt-2 flex flex-wrap justify-between">
-              <div className=" uppercase">{excerpt.source.source_author}</div>
+              <div className="">{excerpt.source.source_author}</div>
               <div>{excerpt.source.source_description}</div>
             </div>
           </div>

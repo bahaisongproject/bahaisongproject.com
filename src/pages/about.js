@@ -9,7 +9,7 @@ function AboutPage() {
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
       <h1 className="text-3xl">About</h1>
       <section className="max-w-sm">
-        <div className="">
+        <div className="font-serif">
           <blockquote>
             Intone, O My servant, the verses of God that have been received by
             thee, as intoned by them who have drawn nigh unto Him, that the
@@ -17,7 +17,7 @@ function AboutPage() {
             hearts of all men...
           </blockquote>
 
-          <div className="block mt-1 text-xs text-right uppercase">
+          <div className="block mt-1 text-xs text-right">
             – Bahá’u’lláh
           </div>
         </div>
