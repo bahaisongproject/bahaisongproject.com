@@ -37,13 +37,13 @@ function AboutPage() {
       <section className="mt-8">
         <h2 className="text-lg font-bold">Acknowledgements</h2>
         <p>
-          This project could not be possible withouth the contributions of so
-          many people:
+          This project would not be possible withouth the contributions of so
+          many people. Thank you to
         </p>
         <ul className="list-disc ml-4">
           <li className="">All the friends who shared songs with us</li>
-          <li>Chad Smith</li>
-          <li>Armin Naimi</li>
+          <li>Chad for many brainstorming sessions</li>
+          <li>Armin for the introduction to static site generators</li>
         </ul>
       </section>
     </Layout>
