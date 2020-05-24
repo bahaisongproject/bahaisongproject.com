@@ -1,11 +1,10 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
-import Hit from "../components/Hit";
 import algoliasearch from "algoliasearch";
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+import { InstantSearch } from "react-instantsearch-dom";
 import CustomSearchBox from "../components/SearchBox";
 import CustomHits from "../components/HitList";
 

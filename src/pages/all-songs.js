@@ -2,19 +2,13 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import SongCard from "../components/SongCard";
+import SongList from "../components/SongList";
 
 function AllSongs({ data }) {
   return (
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="All Songs" />
-      <section>
-        <div className="flex flex-wrap">
-          {data.bsp.songs.map((song) => (
-            <SongCard song={song} key="0" />
-          ))}
-        </div>
-      </section>
+      <SongList songList={data.bsp.songs}/>
     </Layout>
   );
 }
