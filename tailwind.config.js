@@ -29,6 +29,7 @@ module.exports = {
         "9/12": "75%",
         "10/12": "83.333333%",
         "11/12": "91.666667%",
+        "14/25": "56%",
       },
       fontFamily: {
         serif: [
@@ -57,6 +58,14 @@ module.exports = {
         ],
       },
     },
+    screens: {
+      'xs': '480px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+    }
+
   },
   variants: {},
   plugins: [],

@@ -3,8 +3,8 @@ import { Link } from "gatsby";
 import YouTubeThumbnail from "./YouTubeThumbnail";
 
 const SongCard = ({ song }) => (
-  <Link to={song.slug}>
-    <div className="w-56 h-48 ml-0 mt-2 mb-2 mr-4 overflow-hidden">
+  <Link to={song.slug} className="flex-grow w-full xs:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6">
+    <div className="ml-0 mt-2 mb-2 mr-4 overflow-hidden">
       <YouTubeThumbnail song={song} />
       <div className="py-1">
         <div className="flex items-center font-semibold">
