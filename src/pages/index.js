@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import algoliasearch from "algoliasearch";
 import { InstantSearch } from "react-instantsearch-dom";
 import CustomSearchBox from "../components/SearchBox";
-import CustomHits from "../components/HitList";
+import HitList from "../components/HitList";
 
 const searchClient = algoliasearch(
   "KBJLQ93WI4",
@@ -43,7 +43,7 @@ function IndexPage({ data }) {
             </svg>
           </a>
         </div>
-        <CustomHits />
+        <HitList />
       </InstantSearch>
     </Layout>
   );

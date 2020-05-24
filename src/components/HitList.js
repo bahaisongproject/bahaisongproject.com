@@ -2,10 +2,10 @@ import React from "react";
 import { connectHits } from "react-instantsearch-dom";
 import SongList from "./SongList";
 
-const Hits = ({ hits }) => (
+const HitListTmp = ({ hits }) => (
   <SongList songList={hits} />
 );
 
-const CustomHits = connectHits(Hits);
+const HitList = connectHits(HitListTmp);
 
-export default CustomHits;
+export default HitList;
