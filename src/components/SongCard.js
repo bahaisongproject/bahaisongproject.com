@@ -4,7 +4,7 @@ import YouTubeThumbnail from "./YouTubeThumbnail";
 
 const SongCard = ({ song }) => (
   <Link to={song.slug}>
-    <div className="bg-white w-56 h-48 ml-0 mt-2 mb-2 mr-4 overflow-hidden">
+    <div className="w-56 h-48 ml-0 mt-2 mb-2 mr-4 overflow-hidden">
       <YouTubeThumbnail song={song} />
       <div className="py-1">
         <div className="flex items-center font-semibold">
