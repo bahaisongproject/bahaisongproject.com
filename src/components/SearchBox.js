@@ -3,7 +3,6 @@ import { connectSearchBox } from "react-instantsearch-dom";
 
 const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
     <input
-      autoFocus
       type="search"
       value={currentRefinement}
       placeholder="Search..."
