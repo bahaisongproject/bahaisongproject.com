@@ -1,9 +1,9 @@
 import React from "react";
 import { connectHits } from "react-instantsearch-dom";
-import SongList from "./SongList";
+import SongGrid from "./SongGrid";
 
 const HitListTmp = ({ hits }) => (
-  <SongList songList={hits} />
+  <SongGrid songList={hits} />
 );
 
 const HitList = connectHits(HitListTmp);

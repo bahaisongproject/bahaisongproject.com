@@ -2,13 +2,13 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import SongList from "../components/SongList";
+import SongGrid from "../components/SongGrid";
 
 function AllSongs({ data }) {
   return (
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="All Songs" />
-      <SongList songList={data.bsp.songs}/>
+      <SongGrid songList={data.bsp.songs}/>
     </Layout>
   );
 }
