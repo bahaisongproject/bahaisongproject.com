@@ -8,7 +8,7 @@ const SongCard = ({ song }) => (
       <YouTubeThumbnail song={song} />
       <div className="p-2">
         <div className="flex items-center font-semibold">
-          <span className="truncate">{song.title}</span>
+          <span className="text-xl">{song.title}</span>
         </div>
         <div className="flex text-xs truncate">
           {song.contributors.map((contributor, i) => (
