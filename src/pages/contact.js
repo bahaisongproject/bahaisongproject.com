@@ -104,7 +104,7 @@ function ContactPage() {
   );
 
   return (
-    <Layout className="max-w-4xl">
+    <Layout className="max-w-4xl mx-auto px-4 mt-6">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Contact" />
       <h1 className="text-3xl">Contact</h1>
       <div className="w-full max-w-md">

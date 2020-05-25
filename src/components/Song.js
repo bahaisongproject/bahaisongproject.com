@@ -8,7 +8,7 @@ import ContentEmbedder from "../components/ContentEmbedder";
 function Song({ data }) {
   const song = data.bsp.song;
   return (
-    <Layout className="max-w-4xl">
+    <Layout className="max-w-4xl mx-auto px-4 mt-6">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={song.title} />
       <div className="flex flex-wrap">
         {song.languages.map((language) => (

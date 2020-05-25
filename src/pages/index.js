@@ -18,7 +18,7 @@ function IndexPage({ data }) {
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
       <InstantSearch searchClient={searchClient} indexName="bsp-songs">
-        <div className="flex justify-center items-center mb-6">
+        <div className="flex justify-center items-center mt-6 mx-4">
           <CustomSearchBox />
           <a href="https://www.algolia.com/">
             <svg

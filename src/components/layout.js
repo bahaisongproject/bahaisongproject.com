@@ -9,7 +9,7 @@ function Layout({ children, className }) {
 
       <main
         className={
-          "flex-1 w-full px-4 py-4 mx-auto md:px-8 md:py-8 " + className
+          "flex-1 w-full " + className
         }
       >
         {children}
