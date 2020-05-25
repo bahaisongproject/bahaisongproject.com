@@ -15,7 +15,7 @@ const SongCard = ({ song }) => (
             {song.title}
           </div>
         </div>
-        <div className="flex flex-wrap text-s truncate py-1">
+        <div className="flex flex-wrap text-base truncate py-1">
           {song.contributors.map((contributor, i) => (
               <div className="contributor-name" key="0">{contributor.contributor_name}</div>
           ))}

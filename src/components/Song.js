@@ -33,7 +33,7 @@ function Song({ data }) {
       </h1>
       <div className="flex flex-wrap">
         {song.contributors.map((contributor, i) => (
-          <div className="contributor-name font-thin" key="0">
+          <div className="contributor-name text-base" key="0">
             {contributor.contributor_name}
           </div>
         ))}
