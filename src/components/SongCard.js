@@ -11,14 +11,13 @@ const SongCard = ({ song }) => (
       <Thumbnail song={song} />
       <div className="pl-3 pr-1 py-2">
         <div className="flex items-center font-semibold">
-          <span className="text-xl">{song.title}</span>
+          <div className="text-xl leading-snug">
+            {song.title}
+          </div>
         </div>
-        <div className="flex text-xs truncate">
+        <div className="flex flex-wrap text-s truncate py-1">
           {song.contributors.map((contributor, i) => (
-            <div key="0">
-              <span>{i < 1 || ", "}</span>
-              <span>{contributor.contributor_name}</span>
-            </div>
+              <div className="contributor-name" key="0">{contributor.contributor_name}</div>
           ))}
         </div>
         <div className="flex flex-wrap">
