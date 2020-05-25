@@ -55,7 +55,7 @@ function Song({ data }) {
             <ContentEmbedder performance={performance} key="0" />
           ))}
       </div>
-      <div className='font-serif'>
+      <div className="font-serif">
         {song.excerpts.map((excerpt) => (
           <div
             className="border-l-4 max-w-xl border-gray-800 px-4 p-4 my-4 bg-gray-300 transparent text-gray-900"
@@ -67,11 +67,7 @@ function Song({ data }) {
                 .map((paragraph, i) => {
                   return <p key={i}>{paragraph}</p>;
                 });
-              return (
-                <blockquote>
-                  {excerpt_text}
-                </blockquote>
-              );
+              return <blockquote>{excerpt_text}</blockquote>;
             })()}
             <div className="text-sm mt-2 flex flex-wrap justify-between">
               <div className="">{excerpt.source.source_author}</div>

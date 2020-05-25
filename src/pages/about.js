@@ -17,9 +17,7 @@ function AboutPage() {
             hearts of all men...
           </blockquote>
 
-          <div className="block mt-1 text-xs text-right">
-            – Bahá’u’lláh
-          </div>
+          <div className="block mt-1 text-xs text-right">– Bahá’u’lláh</div>
         </div>
       </section>
       <section className="mt-8">

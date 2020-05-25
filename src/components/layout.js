@@ -7,13 +7,7 @@ function Layout({ children, className }) {
     <div className="flex flex-col min-h-screen font-sans text-gray-900">
       <Header />
 
-      <main
-        className={
-          "flex-1 w-full " + className
-        }
-      >
-        {children}
-      </main>
+      <main className={"flex-1 w-full " + className}>{children}</main>
 
       <footer className="bg-gray-600">
         <nav className="flex justify-center items-center max-w-4xl p-4 mx-auto text-sm md:p-8">
