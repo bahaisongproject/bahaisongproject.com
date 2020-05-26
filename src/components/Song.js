@@ -23,7 +23,7 @@ function Song({ data }) {
         {song.title}
       </h1>
       <ContributorList song={song} />
-      <DownloadButton song={DownloadButton} />
+      <DownloadButton song={song} />
       <PerformanceList song={song} />
       <ExcerptList song={song} />
     </Layout>
