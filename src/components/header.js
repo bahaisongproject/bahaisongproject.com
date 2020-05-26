@@ -74,6 +74,10 @@ function Header() {
               title: `Song Book`,
             },
             {
+              route: `/contact`,
+              title: `Contact`,
+            },
+            {
               route: `/about`,
               title: `About`,
             },

@@ -6,14 +6,14 @@ const ExcerptCard = ({ excerpt }) => (
     key="0"
   >
     <div className="p-6">
-    {(() => {
-      let excerpt_text = excerpt.excerpt_text
-        .split("  ")
-        .map((paragraph, i) => {
-          return <p key={i}>{paragraph}</p>;
-        });
-      return <blockquote>{excerpt_text}</blockquote>;
-    })()}
+      {(() => {
+        let excerpt_text = excerpt.excerpt_text
+          .split("  ")
+          .map((paragraph, i) => {
+            return <p key={i}>{paragraph}</p>;
+          });
+        return <blockquote>{excerpt_text}</blockquote>;
+      })()}
     </div>
     <div className="text-sm mt-12 flex flex-wrap justify-between">
       <div className="">{excerpt.source.source_author}</div>

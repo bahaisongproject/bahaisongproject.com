@@ -44,12 +44,8 @@ function Contact() {
   }
 
   return (
-    <Layout>
-      <div>
-        <p>
-          Contact
-        </p>
-      </div>
+    <Layout className="max-w-xl mx-auto px-4 mt-6">
+      <h1 className="text-3xl">Contact</h1>
       <div role="form">
         <form
           name="contact"
@@ -82,7 +78,7 @@ function Contact() {
             <span>
               <input
                 type="email"
-                name="E-Mail"
+                name="Email"
                 size="40"
                 className=""
                 aria-required="true"
@@ -129,7 +125,7 @@ function Contact() {
                   ? "..."
                   : state.submitted
                   ? "Sent"
-                  : "Sent"
+                  : "Send"
               }
               disabled={state["DSVGO-Check"] ? false : true}
             />
