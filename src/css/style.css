@@ -2,10 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
 
 .contributor-name:not(:last-of-type):after {
-    content: ", ";
-    white-space: pre;
-  }
-
+  content: ", ";
+  white-space: pre;
+}
 
 /*! purgecss start ignore */
 @tailwind base;
