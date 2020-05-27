@@ -8,7 +8,7 @@ function AllSongs({ data }) {
   return (
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="All Songs" />
-      <SongGrid songList={data.bsp.songs} />
+      <SongGrid songList={data.bsp.songs.sort((a, b) => (a.title > b.title) ? 1 : -1)} />
     </Layout>
   );
 }
