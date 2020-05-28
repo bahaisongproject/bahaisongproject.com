@@ -107,7 +107,7 @@ function Contact() {
             required
           />
           <div className="pl-2">
-            I have read and agree to the <Link to="/privacy">privacy policy</Link>
+            I have read and agree to the <Link className="underline" to="/privacy">privacy policy</Link>
           </div>
         </div>
         <input
