@@ -1,5 +1,6 @@
 # Default Netlify subdomain to primary domain
 https://bsp-website.netlify.app/* https://www.bahaisongproject.com/:splat 301!
+/pdf/*  https://pdf.bahaisongproject.com/:splat  200
 
 # PDF redirects for old bsp.app
 https://bsp.app/static/agapa-me-c209d8fde0f221e9a2b8b31da5945b2b.pdf	https://pdf.bahaisongproject.com/agapa-me.pdf	301!
