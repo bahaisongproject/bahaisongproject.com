@@ -34,13 +34,6 @@ function Layout({ children, className }) {
           <p>
             &copy; 2011 – {new Date().getFullYear()} bahá&apos;í song project
           </p>
-          <a href="https://www.netlify.com">
-            <img
-              className="h-8 m-4"
-              src="https://www.netlify.com/img/global/badges/netlify-light.svg"
-              alt="Deploys by Netlify"
-            />
-          </a>
         </div>
       </footer>
     </div>
