@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "gatsby";
 import Layout from "../components/layout";
 
 function encode(data) {
@@ -106,11 +107,11 @@ function Contact() {
             required
           />
           <div className="pl-2">
-            I have read and agree to the privacy policy
+            I have read and agree to the <Link to="/privacy">privacy policy</Link>
           </div>
         </div>
         <input
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-topaz hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           type="submit"
           value={state.isLoading ? "..." : state.submitted ? "Sent" : "Send"}
           disabled={state["DSVGO-Check"] ? false : true}

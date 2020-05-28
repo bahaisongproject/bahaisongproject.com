@@ -6,11 +6,11 @@ import SEO from "../components/seo";
 
 function AboutPage() {
   return (
-    <Layout className="max-w-4xl mx-auto px-4 mt-6">
+    <Layout className="max-w-4xl mx-auto px-4 mt-6 text-lg">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="About" />
       <h1 className="text-3xl">About</h1>
-      <section className="max-w-sm">
-        <div className="font-serif">
+      <section className="flex justify-left text-base">
+        <div className="font-serif max-w-sm">
           <blockquote>
             Intone, O My servant, the verses of God that have been received by
             thee, as intoned by them who have drawn nigh unto Him, that the
@@ -18,7 +18,7 @@ function AboutPage() {
             hearts of all men...
           </blockquote>
 
-          <div className="block mt-1 text-xs text-right">– Bahá’u’lláh</div>
+          <div className="block mt-1 text-right">– Bahá’u’lláh</div>
         </div>
       </section>
       <section className="mt-8">
