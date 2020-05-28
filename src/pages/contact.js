@@ -46,82 +46,76 @@ function Contact() {
   return (
     <Layout className="max-w-xl mx-auto px-4 mt-6">
       <h1 className="text-3xl">Contact</h1>
-        <form
-          className="pt-8"
-          name="contact"
-          method="post"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-        >
-          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-          <input type="hidden" name="form-name" value="contact" />
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="bot-field" onChange={handleChange} />
-            </label>
-          </p>
-            <div>
-              <input
-                className="w-full xs:max-w-xs pl-3 pr-2 py-2 appearance-none bg-gray-200 outline-none rounded-md"
-                type="text"
-                name="name"
-                aria-required="true"
-                required
-                placeholder="Name"
-                onChange={handleChange}
-              />
-            </div>
-            <br />
-            <div>
-              <input
-                className="w-full xs:max-w-xs pl-3 pr-2 py-2 appearance-none bg-gray-200 outline-none rounded-md"
-                type="email"
-                name="Email"
-                aria-required="true"
-                required
-                placeholder="E-Mail"
-                onChange={handleChange}
-              />
-            </div>
-            <br />
-            <div>
-              <textarea
-                className="w-full xs:max-w-xs h-48 pl-3 pr-2 py-2 appearance-none resize-none bg-gray-200 outline-none rounded-md"
-                name="message"
-                aria-required="true"
-                required
-                placeholder="Message"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="gdpr-check flex items-baseline py-4">
-              <input
-                type="checkbox"
-                name="DSVGO-Check"
-                checked={state["DSVGO-Check"]}
-                onChange={handleChange}
-                aria-required="true"
-                required
-              />
-              <div className="pl-2">
-                I have read and agree to the privacy policy
-              </div>
-            </div>
-            <input
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              type="submit"
-              value={
-                state.isLoading
-                  ? "..."
-                  : state.submitted
-                  ? "Sent"
-                  : "Send"
-              }
-              disabled={state["DSVGO-Check"] ? false : true}
-            />
-        </form>
+      <form
+        className="pt-8"
+        name="contact"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+      >
+        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden>
+          <label>
+            Don’t fill this out:{" "}
+            <input name="bot-field" onChange={handleChange} />
+          </label>
+        </p>
+        <div>
+          <input
+            className="w-full xs:max-w-xs pl-3 pr-2 py-2 appearance-none bg-gray-200 outline-none rounded-md"
+            type="text"
+            name="name"
+            aria-required="true"
+            required
+            placeholder="Name"
+            onChange={handleChange}
+          />
+        </div>
+        <br />
+        <div>
+          <input
+            className="w-full xs:max-w-xs pl-3 pr-2 py-2 appearance-none bg-gray-200 outline-none rounded-md"
+            type="email"
+            name="Email"
+            aria-required="true"
+            required
+            placeholder="E-Mail"
+            onChange={handleChange}
+          />
+        </div>
+        <br />
+        <div>
+          <textarea
+            className="w-full xs:max-w-xs h-48 pl-3 pr-2 py-2 appearance-none resize-none bg-gray-200 outline-none rounded-md"
+            name="message"
+            aria-required="true"
+            required
+            placeholder="Message"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="gdpr-check flex items-baseline py-4">
+          <input
+            type="checkbox"
+            name="DSVGO-Check"
+            checked={state["DSVGO-Check"]}
+            onChange={handleChange}
+            aria-required="true"
+            required
+          />
+          <div className="pl-2">
+            I have read and agree to the privacy policy
+          </div>
+        </div>
+        <input
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          type="submit"
+          value={state.isLoading ? "..." : state.submitted ? "Sent" : "Send"}
+          disabled={state["DSVGO-Check"] ? false : true}
+        />
+      </form>
     </Layout>
   );
 }
