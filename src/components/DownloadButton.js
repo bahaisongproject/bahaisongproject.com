@@ -2,7 +2,7 @@ import React from "react";
 
 const DownloadButton = ({ song }) => (
   <a
-    href={"https://bahaisongproject.com/pdf/" + song.slug + ".pdf"}
+    href={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
     target="_blank"
     rel="noopener noreferrer"
   >
