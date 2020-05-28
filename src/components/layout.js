@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { Link } from "gatsby";
 import Header from "./header";
 
 function Layout({ children, className }) {
@@ -9,19 +10,26 @@ function Layout({ children, className }) {
 
       <main className={"flex-1 w-full " + className}>{children}</main>
 
-      <footer className="bg-gray-600">
-        <nav className="flex justify-center items-center max-w-4xl p-4 mx-auto text-sm md:p-8">
-          <p className="text-white">
+      <footer className="bg-gray-600 text-white flex justify-center flex-wrap items-baseline text-sm">
+        <nav className="flex p-4">
+          <ul className="flex">
+            <li><Link className="p-2" to="legal">Legal</Link></li>
+            <li><Link className="p-2" to="/privacy">Privacy</Link></li>
+            <li><Link className="p-2" to="/contact">Contact</Link></li>
+          </ul>
+        </nav>
+        <div className="flex justify-center flex-wrap items-center p-4 text-sm">
+          <p>
             &copy; 2011 – {new Date().getFullYear()} bahá&apos;í song project
           </p>
           <a href="https://www.netlify.com">
             <img
-              className="h-8 ml-4"
+              className="h-8 m-4"
               src="https://www.netlify.com/img/global/badges/netlify-light.svg"
               alt="Deploys by Netlify"
             />
           </a>
-        </nav>
+        </div>
       </footer>
     </div>
   );
