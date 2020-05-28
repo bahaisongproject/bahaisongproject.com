@@ -17,7 +17,7 @@ const SongCard = ({ song }) => (
             <div className="text-xl leading-snug">{song.title}</div>
           </div>
         </Link>
-        <ContributorList className="text-gray-700" song={song} />
+        <ContributorList className="text-gray-700 leading-tight" song={song} />
         <div className="flex flex-wrap">
           <LanguageList song={song} />
           <TagList song={song} />
