@@ -46,8 +46,8 @@ function Contact() {
   return (
     <Layout className="max-w-xl mx-auto px-4 mt-6">
       <h1 className="text-3xl">Contact</h1>
-      <div role="form">
         <form
+          className="pt-8"
           name="contact"
           method="post"
           data-netlify="true"
@@ -62,47 +62,41 @@ function Contact() {
               <input name="bot-field" onChange={handleChange} />
             </label>
           </p>
-          <p>
-            <span>
+            <div>
               <input
+                className="w-full xs:max-w-xs pl-3 pr-2 py-2 appearance-none bg-gray-200 outline-none rounded-md"
                 type="text"
                 name="name"
-                size="40"
                 aria-required="true"
                 required
                 placeholder="Name"
                 onChange={handleChange}
               />
-            </span>
+            </div>
             <br />
-            <span>
+            <div>
               <input
+                className="w-full xs:max-w-xs pl-3 pr-2 py-2 appearance-none bg-gray-200 outline-none rounded-md"
                 type="email"
                 name="Email"
-                size="40"
-                className=""
                 aria-required="true"
                 required
                 placeholder="E-Mail"
                 onChange={handleChange}
               />
-            </span>
+            </div>
             <br />
-            <span>
+            <div>
               <textarea
+                className="w-full xs:max-w-xs h-48 pl-3 pr-2 py-2 appearance-none resize-none bg-gray-200 outline-none rounded-md"
                 name="message"
-                cols="40"
-                rows="10"
-                className=""
                 aria-required="true"
                 required
                 placeholder="Message"
                 onChange={handleChange}
               />
-            </span>
-            <br />
-            <br />
-            <span className="gdpr-check">
+            </div>
+            <div className="gdpr-check flex items-baseline py-4">
               <input
                 type="checkbox"
                 name="DSVGO-Check"
@@ -111,14 +105,12 @@ function Contact() {
                 aria-required="true"
                 required
               />
-              <span className="">
-                GDPR
-              </span>
-            </span>
-          </p>
-          <p>
+              <div className="pl-2">
+                I have read and agree to the privacy policy
+              </div>
+            </div>
             <input
-              className={state.submitted ? "submitted" : ""}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               type="submit"
               value={
                 state.isLoading
@@ -129,9 +121,7 @@ function Contact() {
               }
               disabled={state["DSVGO-Check"] ? false : true}
             />
-          </p>
         </form>
-      </div>
     </Layout>
   );
 }
