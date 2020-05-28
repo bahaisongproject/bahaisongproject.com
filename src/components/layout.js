@@ -19,7 +19,7 @@ function Layout({ children, className }) {
               </Link>
             </li>
             <li>
-              <Link className="p-2" to="/legal#privacy">
+              <Link className="p-2" to="/privacy">
                 Privacy
               </Link>
             </li>
