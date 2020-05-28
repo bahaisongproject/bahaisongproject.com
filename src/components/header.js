@@ -70,7 +70,7 @@ function Header() {
               title: `All Songs`,
             },
             {
-              route: `/song-book`,
+              route: `/songbook`,
               title: `Song Book`,
             },
             {
