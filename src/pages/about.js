@@ -35,14 +35,30 @@ function AboutPage() {
       </section>
       <section className="mt-8">
         <h2 className="text-lg font-bold">Contribute</h2>
-        <p>
-          There are many ways in which you can contribute.
-        </p>
+        <p>There are many ways in which you can contribute.</p>
         <ul className="list-disc ml-4">
           <li className="">Share this website with your friends</li>
-          <li>Report errors (you can use the <Link className="underline" to="/contact">contact form</Link>)</li>
-          <li>Submit songs for publication  (you can use the <Link className="underline" to="/contact">contact form</Link>) </li>
-          <li>Help out with the development  (the code is on <a className="underline" href="https://github.com/bahaisongproject">GitHub</a>) </li>
+          <li>
+            Report errors (you can use the{" "}
+            <Link className="underline" to="/contact">
+              contact form
+            </Link>
+            )
+          </li>
+          <li>
+            Submit songs for publication (you can use the{" "}
+            <Link className="underline" to="/contact">
+              contact form
+            </Link>
+            ){" "}
+          </li>
+          <li>
+            Help out with the development (the code is on{" "}
+            <a className="underline" href="https://github.com/bahaisongproject">
+              GitHub
+            </a>
+            ){" "}
+          </li>
         </ul>
       </section>
       <section className="mt-8">

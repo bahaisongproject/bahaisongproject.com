@@ -10,12 +10,24 @@ function Layout({ children, className }) {
 
       <main className={"flex-1 w-full " + className}>{children}</main>
 
-      <footer className="bg-gray-600 text-white flex justify-center flex-wrap items-baseline text-sm">
+      <footer className="bg-topaz text-white flex justify-center flex-wrap items-baseline text-sm">
         <nav className="flex p-4">
           <ul className="flex">
-            <li><Link className="p-2" to="legal">Legal</Link></li>
-            <li><Link className="p-2" to="/privacy">Privacy</Link></li>
-            <li><Link className="p-2" to="/contact">Contact</Link></li>
+            <li>
+              <Link className="p-2" to="/legal">
+                Legal
+              </Link>
+            </li>
+            <li>
+              <Link className="p-2" to="/legal#privacy">
+                Privacy
+              </Link>
+            </li>
+            <li>
+              <Link className="p-2" to="/contact">
+                Contact
+              </Link>
+            </li>
           </ul>
         </nav>
         <div className="flex justify-center flex-wrap items-center p-4 text-sm">

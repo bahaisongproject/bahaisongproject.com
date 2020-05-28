@@ -12230,6 +12230,13 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
+tailwindcss-plugins@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-plugins/-/tailwindcss-plugins-0.3.0.tgz#20ec0192a0681c4e2efbb6e5654b767bea388e94"
+  integrity sha512-B3zEQWBpD6WqY97gw7nIXYgYp6E/Z48M2dQDx8RHdaSqVNzzAMOkjvbqDjyckqYJu1xGqsMQuiVXxjoodqvKfQ==
+  dependencies:
+    lodash "^4.17.11"
+
 tailwindcss@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.2.0.tgz#5df317cebac4f3131f275d258a39da1ba3a0f291"
