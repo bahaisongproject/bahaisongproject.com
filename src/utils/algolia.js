@@ -3,6 +3,7 @@ const songQuery = `{
         songs {
           title
           slug
+          song_description
           languages {
             language_name_en
             language_name_native

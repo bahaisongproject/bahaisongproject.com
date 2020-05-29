@@ -4,6 +4,7 @@ import Thumbnail from "./Thumbnail";
 import LanguageList from "./LanguageList";
 import TagList from "./TagList";
 import ContributorList from "./ContributorList";
+import SongDescription from "./SongDescription"
 
 const SongCard = ({ song }) => (
   <div className="flex-grow my-4 xs:mx-4 w-full xs:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6">
@@ -18,6 +19,10 @@ const SongCard = ({ song }) => (
           </div>
         </Link>
         <ContributorList className="text-gray-700 leading-tight" song={song} />
+        {(() => {
+          if (song.contributors.length === 0)
+            return <SongDescription className="leading-tight" song={song} />;
+        })()}
         <div className="flex flex-wrap">
           <LanguageList song={song} />
           <TagList song={song} />

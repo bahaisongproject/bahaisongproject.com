@@ -9,6 +9,7 @@ import ContributorList from "./ContributorList";
 import DownloadButton from "./DownloadButton";
 import PerformanceList from "./PerformanceList";
 import ExcerptList from "./ExcerptList";
+import SongDescription from "./SongDescription"
 
 function Song({ data }) {
   const song = data.bsp.song;
@@ -23,6 +24,7 @@ function Song({ data }) {
         {song.title}
       </h1>
       <ContributorList song={song} />
+      <SongDescription song={song} />
       <DownloadButton song={song} />
       <PerformanceList song={song} />
       <ExcerptList song={song} />
@@ -40,6 +42,7 @@ export const query = graphql`
       song(where: { slug: $songSlug }) {
         title
         slug
+        song_description
         contributors {
           contributor_name
         }
