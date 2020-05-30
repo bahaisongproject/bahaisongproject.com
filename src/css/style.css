@@ -10,6 +10,10 @@
   font-size: 1.25rem;
 }
 
+.md-page a {
+  text-decoration: underline;
+}
+
 .md-page h2 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -22,6 +26,11 @@
 
 .md-page li {
   margin-left: 1.5rem;
+}
+
+.md-page blockquote {
+  margin: 2rem;
+  font-size: 1rem;
 }
 
 /*! purgecss start ignore */
