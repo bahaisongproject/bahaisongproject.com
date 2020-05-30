@@ -57,14 +57,22 @@ module.exports = {
         purgeOnly: [`src/css/style.css`],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-algolia`,
-    //   options: {
-    //     appId: process.env.GATSBY_ALGOLIA_APP_ID,
-    //     apiKey: process.env.ALGOLIA_ADMIN_KEY,
-    //     queries,
-    //     chunkSize: 10000, // default: 1000
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/pages-md`,
+      },
+    },
+    `gatsby-transformer-remark`,
   ],
 };

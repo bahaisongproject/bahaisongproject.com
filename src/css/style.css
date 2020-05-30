@@ -6,6 +6,24 @@
   white-space: pre;
 }
 
+.md-page {
+  font-size: 1.25rem;
+}
+
+.md-page h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+.md-page ul {
+  list-style-type: disc;
+}
+
+.md-page li {
+  margin-left: 1.5rem;
+}
+
 /*! purgecss start ignore */
 @tailwind base;
 @tailwind components;
