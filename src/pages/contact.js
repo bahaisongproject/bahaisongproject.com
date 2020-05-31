@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 function encode(data) {
   return Object.keys(data)
@@ -46,6 +47,7 @@ function Contact() {
 
   return (
     <Layout className="max-w-4xl mx-auto px-4 mt-6">
+      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Contact" />
       <h1 className="text-6xl font-extrabold">Contact</h1>
       <form
         className="pt-8"
