@@ -23,7 +23,7 @@ function Song({ data }) {
       <h1 className="text-3xl font-semibold font-black font-serif">
         {song.title}
       </h1>
-      <ContributorList song={song} />
+      <ContributorList className="text-gray-700 leading-tight" song={song} />
       <SongDescription song={song} />
       <DownloadButton song={song} />
       <PerformanceList song={song} />
