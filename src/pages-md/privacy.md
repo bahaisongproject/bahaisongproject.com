@@ -1,21 +1,20 @@
 ---
 slug: "/privacy"
-date: "2019-05-04"
 title: "Privacy Policy"
 ---
 
-<div classname="text-lg">bahá'í song project is a private initiative. This privacy policy will explain how we use the personal data we collect from you when you use our website.
+bahá'í song project is a private initiative. This privacy policy will explain how we use the personal data we collect from you when you use our website.
 
 ## bahá'í song project collects the following data
 
 *   Personal identification information (name, email address)
+*   Anonymized, aggregate usage data
 
 ## How do we collect your data?
 
 You directly provide bahá'í song project with most of the data we collect. We collect data and process data when you:
 
-*   Contact us
-*   Voluntarily complete a survey or provide feedback via contact form or via email
+*   Contact us via contact form or via email
 *   Use or view our website (via your browser’s cookies)
 
 ## How will we use your data?
@@ -24,10 +23,7 @@ bahá'í song project collects your data so that we can:
 
 *   Reply to messages
 *   Send email updates
-
-## How do we store your data?
-
-bahá'í song project securely stores your data.
+*   Understand how the website is used
 
 ## What are your data protection rights?
 
@@ -40,7 +36,7 @@ bahá'í song project would like to make sure you are fully aware of all of your
 *   The right to object to processing – You have the right to object to bahá'í song project’s processing of your personal data, under certain conditions.
 *   The right to data portability – You have the right to request that bahá'í song project transfer the data that we have collected to another organization, or directly to you, under certain conditions.
 
-If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, email us at bahaisongproject@gmail.com or use our contact form.
+If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, email us at bahaisongproject@gmail.com or use our [contact form](https://www.bahaisongproject.com/contact-form).
 
 ## Cookies
 
@@ -56,7 +52,7 @@ bahá'í song project uses cookies in a range of ways to improve your experience
 
 There are a number of different types of cookies, however, our website uses:
 
-*   Functionality – bahá'í song project uses these cookies so that we recognize you on our website and remember your previously selected preferences. These could include what language you prefer and location you are in. A mix of first-party and third-party cookies are used.
+*   Analytics – bahá'í song project uses cookies to understand how you use our website. We only collect anonymized, aggregate usage data.
 
 ## How to manage cookies
 
@@ -68,11 +64,11 @@ The bahá'í song project website contains links to other websites. Our privacy 
 
 ## Changes to our privacy policy
 
-bahá'í song project keeps its privacy policy under regular review and places any updates on this web page. This privacy policy was last updated on 28 May 2020.
+bahá'í song project keeps its privacy policy under regular review and places any updates on this web page. This privacy policy was last updated on 31 May 2020.
 
 ## How to contact us
 
-If you have any questions about bahá'í song project’s privacy policy, the data we hold on you, or you would like to exercise one of your data protection rights, please do not hesitate to contact us. Email us at bahaisongproject@gmail.com or use our contact form.
+If you have any questions about bahá'í song project’s privacy policy, the data we hold on you, or you would like to exercise one of your data protection rights, please do not hesitate to contact us. Email us at bahaisongproject@gmail.com or use our [contact form](https://www.bahaisongproject.com/contact-form).
 
 ## How to contact the appropriate authority
 
@@ -81,5 +77,3 @@ Should you wish to report a complaint or if you feel that bahá'í song project 
 *   Email: poststelle@bfdi.bund.de
 *   Phone: +49 (0)228-997799-0
 *   Address: Der Bundesbeauftragte für den Datenschutz und die Informationsfreiheit - Graurheindorfer Str. 153 - 53117 Bonn
-
-</div>
