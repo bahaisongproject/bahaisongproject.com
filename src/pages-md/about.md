@@ -21,7 +21,7 @@ There are many ways in which you can contribute.
 
 ## Acknowledgements
 
-This project would not be possible withouth the contributions of so many people. Thank you to
+This project would not be possible without the contributions of so many people. Thank you to
 
 *   All the friends who shared songs with us
 *   Chad for many brainstorming sessions
