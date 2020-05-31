@@ -45,7 +45,7 @@ function Contact() {
   }
 
   return (
-    <Layout className="max-w-xl mx-auto px-4 mt-6">
+    <Layout className="max-w-4xl mx-auto px-4 mt-6">
       <h1 className="text-6xl font-extrabold">Contact</h1>
       <form
         className="pt-8"

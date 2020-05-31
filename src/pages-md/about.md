@@ -1,6 +1,5 @@
 ---
-slug: "/about-2"
-date: "2019-05-04"
+slug: "/about"
 title: "About"
 ---
 
