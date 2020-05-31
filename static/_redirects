@@ -2,7 +2,7 @@
 https://bsp-website.netlify.app/* https://www.bahaisongproject.com/:splat 301!
 
 # Proxy PDFs
-/all-songs.pdf https://pdf.bahaisongproject.com/songbook.pdf 200
+/all-songs.pdf /songbook.pdf 302!
 /:slug.pdf  https://pdf.bahaisongproject.com/:slug.pdf  200
 
 # PDF redirects for old bsp.app
