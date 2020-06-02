@@ -46,7 +46,7 @@ function Header() {
           </h1>
         </Link>
         <button
-          className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden"
+          className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden text-"
           onClick={() => toggleExpansion(!isExpanded)}
         >
           <svg
@@ -68,22 +68,26 @@ function Header() {
             {
               route: `/all-songs`,
               title: `All Songs`,
+              className: `${isExpanded ? `inline-flex` : ``} bg-emerald px-3 py-1 text-bold shadow-md rounded-full focus:outline-none text-white`,
             },
             {
               route: `/songbook`,
               title: `Song Book`,
+              className: ``,
             },
             {
               route: `/contact`,
               title: `Contact`,
+              className: ``,
             },
             {
               route: `/about`,
               title: `About`,
+              className: ``,
             },
           ].map((link) => (
             <Link
-              className="block mt-4 text-lg  text-white no-underline md:inline-block md:mt-0 md:ml-6"
+              className={"block mt-4 text-lg  text-white no-underline md:inline-block md:mt-0 md:ml-6" + " " + link.className}
               key={link.title}
               to={link.route}
             >

@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
@@ -44,6 +44,11 @@ function IndexPage({ data }) {
           </a>
         </div>
         <HitList />
+        <div className="flex justify-center mt-4">
+        <Link className="border bg-emerald tracking-wide text-white px-4 py-2 rounded-full focus:outline-none" to="/all-songs">
+            Find a list of all songs here
+        </Link>
+        </div>
       </InstantSearch>
     </Layout>
   );
