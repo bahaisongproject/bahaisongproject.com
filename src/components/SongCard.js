@@ -21,7 +21,7 @@ const SongCard = ({ song }) => (
         <ContributorList className="text-gray-700 leading-tight" song={song} />
         {(() => {
           if (song.contributors.length === 0)
-            return <SongDescription className="leading-tight" song={song} />;
+            return <SongDescription className="text-gray-700 leading-tight" song={song} />;
         })()}
         <div className="flex flex-wrap">
           <LanguageList song={song} />
