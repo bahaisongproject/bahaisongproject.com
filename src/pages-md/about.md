@@ -17,7 +17,8 @@ There are many ways in which you can contribute.
 *   Share this website with your friends
 *   Report errors (you can use the [contact form](https://www.bahaisongproject.com/contact)
 *   Submit songs for publication (you can use the [contact form](https://www.bahaisongproject.com/contact))
-*   Help out with the development (the code is on [GitHub](https://github.com/bahaisongproject))
+*   Help out with development (the code is on [GitHub](https://github.com/bahaisongproject))
+*   Donate to support further development and new recordings with [PayPal](https://www.paypal.me/bahaisongproject)
 
 ## Acknowledgements
 
