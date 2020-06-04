@@ -20,7 +20,7 @@ function Header( { siteName } ) {
 
   return (
     <header className="bg-green-blue">
-      <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:p-8">
+      <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:px-8 xs:py-4 md:py-4">
         <Link to="/">
           <h1 className="flex items-center text-white no-underline">
             <svg
@@ -39,7 +39,7 @@ function Header( { siteName } ) {
             </span>
           </h1>
         </Link>
-        <div className={`flex-grow ml-16 mr-8 hidden xl:block`}>
+        <div className={`flex-grow ml-16 mr-8 hidden lg:block`}>
           <CustomSearchBox />
         </div>
         <button
@@ -55,7 +55,6 @@ function Header( { siteName } ) {
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
         </button>
-
         <nav
           className={`${
             isExpanded ? `block` : `hidden`
@@ -93,7 +92,7 @@ function Header( { siteName } ) {
           ))}
         </nav>
       </div>
-      <div className={`flex justify-center mb-8 mx-4 xl:hidden`}>
+      <div className={`flex justify-center mb-4 mx-4 lg:hidden`}>
           <CustomSearchBox />
       </div>
     </header>
