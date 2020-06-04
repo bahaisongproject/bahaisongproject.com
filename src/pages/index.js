@@ -10,7 +10,7 @@ import Results from "../components/Results"
 
 function IndexPage({ data }) {
   return (
-    <Layout>
+    <Layout siteName="index">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
         <div className="flex justify-center items-center mt-6 my-2 mx-4 lg:hidden">
           <CustomSearchBox />

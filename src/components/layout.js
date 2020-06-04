@@ -10,11 +10,11 @@ const searchClient = algoliasearch(
   "2c640df937f8f88f2c89e59a730941b4"
 );
 
-function Layout({ children, className }) {
+function Layout({ children, className, siteName }) {
   return (
     <div className="flex flex-col min-h-screen font-sans text-gray-900">
       <InstantSearch searchClient={searchClient} indexName="bsp-songs">
-        <Header />
+        <Header siteName={siteName} />
 
         <main className={"flex-1 w-full mb-12 " + className}>
             {children}

@@ -6,7 +6,7 @@ const searchIndices = [
   { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
 ];
 
-function Header() {
+function Header( { siteName } ) {
   const [isExpanded, toggleExpansion] = useState(false);
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -39,7 +39,7 @@ function Header() {
             </span>
           </h1>
         </Link>
-        <div className="flex-grow ml-16 mr-8 hidden lg:block">
+        <div className={`flex-grow ml-16 mr-8 hidden ${siteName === "index" ? `lg:block` : ``}`}>
           <CustomSearchBox />
         </div>
         <button
