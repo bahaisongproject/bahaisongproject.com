@@ -62,13 +62,13 @@ function Header() {
         <nav
           className={`${
             isExpanded ? `block` : `hidden`
-          } md:block md:flex md:items-center w-full md:w-auto`}
+          } md:block md:flex md:items-baseline w-full md:w-auto`}
         >
           {[
             {
               route: `/all-songs`,
               title: `All Songs`,
-              className: `${isExpanded ? `inline-flex` : ``} bg-emerald px-3 py-1 text-bold shadow-md rounded-full focus:outline-none text-white`,
+              className: `${isExpanded ? `` : `text-3xl`}`,
             },
             {
               route: `/songbook`,
