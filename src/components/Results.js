@@ -2,7 +2,7 @@ import React from "react";
 import { connectStateResults } from "react-instantsearch-dom";
 
 const Results = connectStateResults(
-    ({ searchState, searchResults, children }) =>
+    ({ searchState, searchResults, children }) => 
       searchResults && searchResults.nbHits !== 0 ? (
         children
       ) : (
