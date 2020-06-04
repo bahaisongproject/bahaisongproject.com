@@ -3,20 +3,20 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import SongGrid from "../components/SongGrid";
-import PageResults from "../components/PageResults"
+import Results from "../components/Results"
 
 function AllSongs({ data }) {
   return (
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="All Songs" />
-      <PageResults>
+      <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
           <h1 className="text-6xl font-extrabold">All Songs</h1>
         </div>
         <SongGrid
           songList={data.bsp.songs.sort((a, b) => (a.title > b.title ? 1 : -1))}
         />
-      </PageResults>
+      </Results>
 
     </Layout>
   );

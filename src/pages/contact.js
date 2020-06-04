@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import PageResults from "../components/PageResults"
+import Results from "../components/Results"
 
 
 function encode(data) {
@@ -50,7 +50,7 @@ function Contact() {
   return (
     <Layout >
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Contact" />
-      <PageResults>
+      <Results>
       <div className="max-w-4xl mx-auto px-4 mt-6">
         <h1 className="text-6xl font-extrabold">Contact</h1>
         <form
@@ -124,7 +124,7 @@ function Contact() {
           />
         </form>
       </div>
-      </PageResults>
+      </Results>
     </Layout>
   );
 }

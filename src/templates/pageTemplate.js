@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import PageResults from "../components/PageResults"
+import Results from "../components/Results"
 
 
 export default function Template({
@@ -13,7 +13,7 @@ export default function Template({
   return (
     <Layout>
     <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={frontmatter.title} />
-      <PageResults>
+      <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
           <h1 className="mb-8 text-6xl font-extrabold leading-tight">{frontmatter.title}</h1>
           <div
@@ -21,7 +21,7 @@ export default function Template({
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>
-      </PageResults>
+      </Results>
     </Layout>
   )
 }

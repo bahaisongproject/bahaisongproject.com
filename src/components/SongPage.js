@@ -10,14 +10,14 @@ import DownloadButton from "./DownloadButton";
 import PerformanceList from "./PerformanceList";
 import ExcerptList from "./ExcerptList";
 import SongDescription from "./SongDescription"
-import PageResults from "./PageResults"
+import Results from "./Results"
 
 function Song({ data }) {
   const song = data.bsp.song;
   return (
     <Layout >
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={song.title} />
-      <PageResults>
+      <Results>
       <div className="max-w-4xl mx-auto px-4 mt-6">
         <div className="flex flex-wrap">
           <LanguageList song={song} />
@@ -32,7 +32,7 @@ function Song({ data }) {
         <PerformanceList song={song} />
         <ExcerptList song={song} />
       </div>
-    </PageResults>
+    </Results>
     </Layout>
   );
 }
