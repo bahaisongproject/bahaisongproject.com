@@ -4,9 +4,9 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
 import { PoweredBy } from "react-instantsearch-dom";
-import CustomSearchBox from "../components/SearchBox";
 import HitList from "../components/HitList";
 import HomepageResults from "../components/HomepageResults"
+import PageResults from "../components/PageResults"
 
 function IndexPage({ data }) {
   return (
@@ -15,9 +15,12 @@ function IndexPage({ data }) {
         {/* <div className="flex justify-center items-center mt-6 my-2 mx-4 lg:hidden">
           <CustomSearchBox />
         </div> */}
-        <HomepageResults>
+        <PageResults>
+          <div className="max-w-4xl mx-auto px-4 mt-6">
+          <h1 className="text-6xl font-extrabold">Recent Additions</h1>
+          </div>
           <HitList />
-        </HomepageResults>
+        </PageResults>
         <div className="flex justify-center mt-4">
           <Link className="border bg-emerald tracking-wide text-white px-4 py-2 rounded-full focus:outline-none" to="/all-songs">
               Find a list of all songs here
