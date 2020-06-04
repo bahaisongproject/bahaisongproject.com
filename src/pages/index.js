@@ -3,22 +3,15 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
-import algoliasearch from "algoliasearch";
 import { InstantSearch, PoweredBy } from "react-instantsearch-dom";
 import CustomSearchBox from "../components/SearchBox";
 import HitList from "../components/HitList";
 import Results from "../components/Results"
 
-const searchClient = algoliasearch(
-  "KBJLQ93WI4",
-  "2c640df937f8f88f2c89e59a730941b4"
-);
-
 function IndexPage({ data }) {
   return (
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
-      <InstantSearch searchClient={searchClient} indexName="bsp-songs">
         <div className="flex justify-center items-center mt-6 my-2 mx-4">
           <CustomSearchBox />
         </div>
@@ -33,7 +26,6 @@ function IndexPage({ data }) {
         <div className="flex justify-center mt-8">
           <PoweredBy />
         </div>
-      </InstantSearch>
     </Layout>
   );
 }
