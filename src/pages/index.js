@@ -12,9 +12,9 @@ function IndexPage({ data }) {
   return (
     <Layout siteName="index">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
-        <div className="flex justify-center items-center mt-6 my-2 mx-4 lg:hidden">
+        {/* <div className="flex justify-center items-center mt-6 my-2 mx-4 lg:hidden">
           <CustomSearchBox />
-        </div>
+        </div> */}
         <HomepageResults>
           <HitList />
         </HomepageResults>

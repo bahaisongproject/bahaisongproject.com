@@ -39,7 +39,7 @@ function Header( { siteName } ) {
             </span>
           </h1>
         </Link>
-        <div className={`flex-grow ml-16 mr-8 `}>
+        <div className={`flex-grow ml-16 mr-8 hidden xl:block`}>
           <CustomSearchBox />
         </div>
         <button
@@ -92,6 +92,9 @@ function Header( { siteName } ) {
             </Link>
           ))}
         </nav>
+      </div>
+      <div className={`flex justify-center mb-8 mx-4 xl:hidden`}>
+          <CustomSearchBox />
       </div>
     </header>
   );
