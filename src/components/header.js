@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
+import CustomSearchBox from "./SearchBox";
 
 const searchIndices = [
   { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
@@ -38,6 +39,9 @@ function Header() {
             </span>
           </h1>
         </Link>
+        <div className="flex-grow ml-16 mr-8 hidden lg:block">
+          <CustomSearchBox />
+        </div>
         <button
           className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden text-"
           onClick={() => toggleExpansion(!isExpanded)}

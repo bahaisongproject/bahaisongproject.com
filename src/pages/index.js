@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
-import { InstantSearch, PoweredBy } from "react-instantsearch-dom";
+import { PoweredBy } from "react-instantsearch-dom";
 import CustomSearchBox from "../components/SearchBox";
 import HitList from "../components/HitList";
 import Results from "../components/Results"
@@ -12,7 +12,7 @@ function IndexPage({ data }) {
   return (
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
-        <div className="flex justify-center items-center mt-6 my-2 mx-4">
+        <div className="flex justify-center items-center mt-6 my-2 mx-4 lg:hidden">
           <CustomSearchBox />
         </div>
         <Results>
