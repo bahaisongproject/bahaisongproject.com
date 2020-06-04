@@ -2,7 +2,7 @@ import React from "react";
 import YouTubeEmbedder from "./YouTubeEmbedder";
 import SoundCloudEmbedder from "./SoundCloudEmbedder";
 import BandcampEmbedder from "./BandcampEmbedder"
-import { is_youtube, is_soundcloud, is_bandcamp } from "../utils/embed";
+import { is_youtube, is_soundcloud, is_bandcamp } from "../../utils/embed";
 
 const ContentEmbedder = ({ performance }) => (
   <div className="mt-8" key="0">

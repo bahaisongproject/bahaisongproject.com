@@ -17,7 +17,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   result.data.bsp.songs.forEach((song) => {
     actions.createPage({
       path: `/${song.slug}`,
-      component: path.resolve(`./src/components/Song.js`),
+      component: path.resolve(`./src/components/SongPage.js`),
       context: {
         songSlug: song.slug,
       },

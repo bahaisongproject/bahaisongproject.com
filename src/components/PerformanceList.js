@@ -1,5 +1,5 @@
 import React from "react";
-import ContentEmbedder from "./ContentEmbedder";
+import ContentEmbedder from "./embedding/ContentEmbedder";
 
 const PerformanceList = ({ song }) =>
   song.performances

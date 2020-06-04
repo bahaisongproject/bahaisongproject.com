@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import React from "react";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from "./layout";
+import SEO from "./seo";
 import PropTypes from "prop-types";
 import LanguageList from "./LanguageList";
 import TagList from "./TagList";
