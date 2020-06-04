@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { PoweredBy } from "react-instantsearch-dom";
 import CustomSearchBox from "../components/SearchBox";
 import HitList from "../components/HitList";
-import Results from "../components/Results"
+import HomepageResults from "../components/HomepageResults"
 
 function IndexPage({ data }) {
   return (
@@ -15,9 +15,9 @@ function IndexPage({ data }) {
         <div className="flex justify-center items-center mt-6 my-2 mx-4 lg:hidden">
           <CustomSearchBox />
         </div>
-        <Results>
+        <HomepageResults>
           <HitList />
-        </Results>
+        </HomepageResults>
         <div className="flex justify-center mt-4">
           <Link className="border bg-emerald tracking-wide text-white px-4 py-2 rounded-full focus:outline-none" to="/all-songs">
               Find a list of all songs here

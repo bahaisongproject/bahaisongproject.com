@@ -39,7 +39,7 @@ function Header( { siteName } ) {
             </span>
           </h1>
         </Link>
-        <div className={`flex-grow ml-16 mr-8 hidden ${siteName === "index" ? `lg:block` : ``}`}>
+        <div className={`flex-grow ml-16 mr-8 `}>
           <CustomSearchBox />
         </div>
         <button
