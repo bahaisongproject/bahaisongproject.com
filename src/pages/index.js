@@ -16,7 +16,7 @@ function IndexPage({ data }) {
         </div> */}
         <Results>
           <div className="max-w-4xl mx-auto px-4 mt-6 mb-2">
-            <h1 className="text-6xl leading-none font-extrabold">Recent Additions</h1>
+            <h1 className="text-6xl text-gray-900 leading-none font-extrabold">Recent Additions</h1>
           </div>
           <HitList />
         </Results>
