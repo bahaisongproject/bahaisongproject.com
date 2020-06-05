@@ -15,7 +15,7 @@ export default function Template({
     <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={frontmatter.title} />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
-          <h1 className="mb-8 text-6xl font-extrabold leading-tight">{frontmatter.title}</h1>
+          <h1 className="mb-8 text-6xl font-extrabold leading-none">{frontmatter.title}</h1>
           <div
             className="md-page"
             dangerouslySetInnerHTML={{ __html: html }}
