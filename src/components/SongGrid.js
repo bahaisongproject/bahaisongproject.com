@@ -2,7 +2,7 @@ import React from "react";
 import SongCard from "./SongCard";
 
 const SongGrid = ({ songList }) => (
-  <div className="grid mt-4 xs:mx-3 gap-3 md:gap-4 md:mx-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+  <div className="grid mt-4 xs:mx-3 col-gap-3 row-gap-6 md:col-gap-4 md:mx-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
     {songList.map((hit) => (
       <div key={hit.objectID} className="">
         <SongCard song={hit} />
