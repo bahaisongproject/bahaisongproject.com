@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
 import CustomSearchBox from "./SearchBox";
+import Banner from "./Banner"
 
 const searchIndices = [
   { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
@@ -8,7 +9,6 @@ const searchIndices = [
 
 function Header( { siteName } ) {
   const [isExpanded, toggleExpansion] = useState(false);
-  const [bannerExpanded, toggleBannerExpansion] = useState(false);
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -21,26 +21,11 @@ function Header( { siteName } ) {
 
   return (
     <header className="bg-green-blue">
-      <div className="bg-blue-900 text-gray-200 p-2 cursor-pointer">
-        <button
-          className="block min-w-full flex flex-col items-center justify-center focus:outline-none"
-          onClick={() => toggleBannerExpansion(!bannerExpanded)}
-        >
-          <div className="flex">
-            <div>
-              This is a preview release.
-            </div>
-            <svg className={`${bannerExpanded ? `hidden` : ``} w-6`} fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-            <svg className={`${bannerExpanded ? `` : `hidden`} w-6`} fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd"></path></svg>
-          </div>
-
-          <div className={`${bannerExpanded ? `` : `hidden`} flex justify-center`}>
-            <p>
-              <Link to="/contact" className="underline">Message us</Link> with problems, mistakes, typos or any other feedback!
-            </p>
-          </div>
-        </button>
-      </div>
+      <Banner title="This is a preview release." >
+        <p>
+          <Link to="/contact" className="underline">Message us</Link> with problems, mistakes, typos or any other feedback!
+        </p>
+      </Banner>
       <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:px-8 xs:py-4 md:py-4">
         <Link to="/">
           <h1 className="flex items-center text-white no-underline">
