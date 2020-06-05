@@ -20,7 +20,7 @@ function IndexPage({ data }) {
           </div>
           <HitList />
         </Results>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-12">
           <Link className="border bg-emerald tracking-wide text-white px-4 py-2 rounded-full focus:outline-none" to="/all-songs">
               Find a list of all songs here
           </Link>
