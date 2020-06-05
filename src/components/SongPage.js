@@ -9,30 +9,33 @@ import ContributorList from "./ContributorList";
 import DownloadButton from "./DownloadButton";
 import PerformanceList from "./PerformanceList";
 import ExcerptList from "./ExcerptList";
-import SongDescription from "./SongDescription"
-import Results from "./Results"
+import SongDescription from "./SongDescription";
+import Results from "./Results";
 
 function Song({ data }) {
   const song = data.bsp.song;
   return (
-    <Layout >
+    <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={song.title} />
       <Results>
-      <div className="max-w-4xl mx-auto px-4 mt-6">
-        <div className="flex flex-wrap">
-          <LanguageList song={song} />
-          <TagList song={song} />
+        <div className="max-w-4xl mx-auto px-4 mt-6">
+          <div className="flex flex-wrap">
+            <LanguageList song={song} />
+            <TagList song={song} />
+          </div>
+          <h1 className="text-3xl font-semibold font-black font-serif">
+            {song.title}
+          </h1>
+          <ContributorList
+            className="text-gray-700 leading-tight"
+            song={song}
+          />
+          <SongDescription className="text-gray-700" song={song} />
+          <DownloadButton song={song} />
+          <PerformanceList song={song} />
+          <ExcerptList song={song} />
         </div>
-        <h1 className="text-3xl font-semibold font-black font-serif">
-          {song.title}
-        </h1>
-        <ContributorList className="text-gray-700 leading-tight" song={song} />
-        <SongDescription className="text-gray-700" song={song} />
-        <DownloadButton song={song} />
-        <PerformanceList song={song} />
-        <ExcerptList song={song} />
-      </div>
-    </Results>
+      </Results>
     </Layout>
   );
 }

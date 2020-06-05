@@ -2,6 +2,7 @@
 slug: "/legal"
 title: "Legal Information"
 ---
+
 bahá'í song project is not an official Bahá'í site but an individual initiative. You can visit the official website of the worldwide Bahá'í community at [www.bahai.org](https://www.bahai.org).
 
 ## Information in accordance with §5 TMG
@@ -12,13 +13,12 @@ Dayyan Smith
 
 ## Contact
 
-*   E-Mail: bahaisongproject@gmail.com
-*   Contact form: [www.bahaisongproject.com/contact](www.bahaisongproject.com/contact)
+- E-Mail: bahaisongproject@gmail.com
+- Contact form: [www.bahaisongproject.com/contact](www.bahaisongproject.com/contact)
 
 ## Person responsible for content in accordance with §55 section 2 RStV
 
 Dayyan Smith
-
 
 ## Accountability for content
 

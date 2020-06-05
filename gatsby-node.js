@@ -24,13 +24,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-  const pageTemplate = require.resolve(`./src/templates/pageTemplate.js`)
+  const pageTemplate = require.resolve(`./src/templates/pageTemplate.js`);
 
   const mardownPages = await graphql(`
     {
-      allMarkdownRemark(
-        limit: 1000
-      ) {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
             frontmatter {
@@ -40,12 +38,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
     }
-  `)
+  `);
 
   // Handle errors
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
   }
   mardownPages.data.allMarkdownRemark.edges.forEach(({ node }) => {
     actions.createPage({
@@ -55,9 +53,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         // additional data can be passed via context
         slug: node.frontmatter.slug,
       },
-    })
-  })
-
-
-
+    });
+  });
 };

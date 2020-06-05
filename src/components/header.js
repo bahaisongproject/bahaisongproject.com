@@ -1,13 +1,13 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
 import CustomSearchBox from "./SearchBox";
-import Banner from "./Banner"
+import Banner from "./Banner";
 
 const searchIndices = [
   { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
 ];
 
-function Header( { siteName } ) {
+function Header({ siteName }) {
   const [isExpanded, toggleExpansion] = useState(false);
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -21,9 +21,12 @@ function Header( { siteName } ) {
 
   return (
     <header className="bg-green-blue">
-      <Banner title="This is a preview release." >
+      <Banner title="This is a preview release.">
         <p>
-          <Link to="/contact" className="underline">Message us</Link> with problems, mistakes, typos or any other feedback!
+          <Link to="/contact" className="underline">
+            Message us
+          </Link>{" "}
+          with problems, mistakes, typos or any other feedback!
         </p>
       </Banner>
       <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:px-8 xs:py-4 md:py-4">
@@ -89,7 +92,11 @@ function Header( { siteName } ) {
             },
           ].map((link) => (
             <Link
-              className={"block mt-4 text-lg  text-white no-underline md:inline-block md:mt-0 md:ml-6" + " " + link.className}
+              className={
+                "block mt-4 text-lg  text-white no-underline md:inline-block md:mt-0 md:ml-6" +
+                " " +
+                link.className
+              }
               key={link.title}
               to={link.route}
             >
@@ -99,7 +106,7 @@ function Header( { siteName } ) {
         </nav>
       </div>
       <div className={`flex justify-center mb-4 mx-4 lg:hidden`}>
-          <CustomSearchBox />
+        <CustomSearchBox />
       </div>
     </header>
   );

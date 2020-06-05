@@ -4,7 +4,7 @@ import Thumbnail from "./Thumbnail";
 import LanguageList from "./LanguageList";
 import TagList from "./TagList";
 import ContributorList from "./ContributorList";
-import SongDescription from "./SongDescription"
+import SongDescription from "./SongDescription";
 
 const SongCard = ({ song }) => (
   <div className="overflow-hidden">
@@ -20,7 +20,12 @@ const SongCard = ({ song }) => (
       <ContributorList className="text-gray-700 leading-tight" song={song} />
       {(() => {
         if (song.contributors.length === 0)
-          return <SongDescription className="text-gray-700 leading-tight" song={song} />;
+          return (
+            <SongDescription
+              className="text-gray-700 leading-tight"
+              song={song}
+            />
+          );
       })()}
       <div className="flex flex-wrap">
         <LanguageList song={song} />

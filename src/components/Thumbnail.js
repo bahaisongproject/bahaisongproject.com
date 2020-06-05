@@ -2,9 +2,7 @@ import React from "react";
 import { is_youtube, get_youtube_id } from "../utils/embed";
 
 const Thumbnail = ({ song }) => (
-  <div
-    className="bg-green-blue relative pt-14/25 bg-gray-200 xs:rounded-sm"
-  >
+  <div className="bg-green-blue relative pt-14/25 bg-gray-200 xs:rounded-sm">
     {(() => {
       if (
         song.performances.length > 0 &&

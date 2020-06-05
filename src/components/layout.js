@@ -16,9 +16,7 @@ function Layout({ children, className, siteName }) {
       <InstantSearch searchClient={searchClient} indexName="bsp-songs">
         <Header siteName={siteName} />
 
-        <main className={"flex-1 w-full mb-12 " + className}>
-            {children}
-        </main>
+        <main className={"flex-1 w-full mb-12 " + className}>{children}</main>
 
         <footer className="bg-topaz text-white flex justify-center flex-wrap items-baseline text-sm">
           <nav className="flex p-4">
@@ -46,7 +44,7 @@ function Layout({ children, className, siteName }) {
             </p>
           </div>
         </footer>
-        </InstantSearch>
+      </InstantSearch>
     </div>
   );
 }

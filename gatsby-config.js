@@ -9,7 +9,7 @@ module.exports = {
     title: `bahá'í song project`,
     description: `100+ Bahá'í songs with lyrics, chords and videos`,
     author: `Dayyan Smith`,
-    siteUrl: `https://www.bahaisongproject.com`
+    siteUrl: `https://www.bahaisongproject.com`,
   },
   plugins: [
     `gatsby-plugin-eslint`,
