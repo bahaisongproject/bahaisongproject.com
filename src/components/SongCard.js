@@ -14,8 +14,8 @@ const SongCard = ({ song }) => (
       </Link>
       <div className="pl-3 pr-1 py-2">
         <Link to={song.slug}>
-          <div className="flex items-center font-semibold">
-            <div className="text-xl leading-snug">{song.title}</div>
+          <div className="flex items-center">
+            <div className="text-xl font-medium leading-snug">{song.title}</div>
           </div>
         </Link>
         <ContributorList className="text-gray-700 leading-tight" song={song} />

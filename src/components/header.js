@@ -64,7 +64,7 @@ function Header( { siteName } ) {
             {
               route: `/all-songs`,
               title: `All Songs`,
-              className: `${isExpanded ? `` : `text-3xl`}`,
+              className: `${isExpanded ? `` : `text-3xl font-bold`}`,
             },
             {
               route: `/songbook`,
