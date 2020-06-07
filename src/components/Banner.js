@@ -5,10 +5,12 @@ function Banner({ children, title }) {
   const [bannerExpanded, toggleBannerExpansion] = useState(false);
 
   return (
-    <div className="bg-blue-900 text-gray-200 p-2">
-      <button
-        className="block min-w-full flex flex-col items-center justify-center focus:outline-none"
-        onClick={() => toggleBannerExpansion(!bannerExpanded)}
+    <button
+      className="block min-w-full bg-blue-900 text-gray-200 p-2 focus:outline-none"
+      onClick={() => toggleBannerExpansion(!bannerExpanded)}
+    >
+      <div
+        className="flex flex-col items-center justify-center"
       >
         <div className="flex flex-col items-center">
           <div>{title}</div>
@@ -37,8 +39,8 @@ function Banner({ children, title }) {
               d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
             ></path>
         </svg>
-      </button>
-    </div>
+      </div>
+    </button>
   );
 }
 
