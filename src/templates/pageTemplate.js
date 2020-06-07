@@ -17,7 +17,7 @@ export default function Template({
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
-          <h1 className="mb-8 text-6xl text-gray-900 font-extrabold leading-none">
+          <h1 className="mb-8 text-5xl text-gray-900 font-extrabold leading-tight">
             {frontmatter.title}
           </h1>
           <div className="md-page" dangerouslySetInnerHTML={{ __html: html }} />

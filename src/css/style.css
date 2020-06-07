@@ -26,13 +26,17 @@
 
 .md-page li {
   @apply ml-6;
+  @apply leading-snug;
+  @apply mb-1;
 }
 
 .md-page blockquote {
-  @apply m-8;
+  @apply mb-8;
+  @apply pl-4;
+  @apply border-l-2;
+  @apply border-black;
   @apply text-base;
-  margin: 2rem;
-  font-size: 1rem;
+  @apply font-serif;
 }
 
 /*! purgecss start ignore */
