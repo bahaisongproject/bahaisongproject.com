@@ -30,9 +30,6 @@ function IndexPage({ data }) {
           Find a list of all songs here
         </Link>
       </div>
-      <div className="flex justify-center mt-8">
-        <PoweredBy />
-      </div>
     </Layout>
   );
 }

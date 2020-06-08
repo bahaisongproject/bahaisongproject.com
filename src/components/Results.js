@@ -1,5 +1,5 @@
 import React from "react";
-import { connectStateResults } from "react-instantsearch-dom";
+import { connectStateResults, PoweredBy } from "react-instantsearch-dom";
 import HitList from "./HitList";
 
 const Results = connectStateResults(({ children, searchState }) =>
@@ -11,6 +11,9 @@ const Results = connectStateResults(({ children, searchState }) =>
         </h1>
       </div>
       <HitList />
+      <div className="flex justify-center mt-8">
+        <PoweredBy />
+      </div>
     </>
   ) : (
     children
