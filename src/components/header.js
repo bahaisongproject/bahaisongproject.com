@@ -52,17 +52,11 @@ function Header({ siteName }) {
           <CustomSearchBox />
         </div>
         <button
-          className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden focus:outline-none"
+          className="flex items-center block px-3 py-2 text-white md:hidden focus:outline-none"
           onClick={() => toggleExpansion(!isExpanded)}
         >
-          <svg
-            className="w-3 h-3 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
+          <svg className={isExpanded ? `hidden` : `w-6 fill-current`} viewBox="0 0 20 20"><title>Menu</title><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
+          <svg className={isExpanded ? `w-6 fill-current` : `hidden`} viewBox="0 0 20 20"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
         </button>
         <nav
           className={`${
