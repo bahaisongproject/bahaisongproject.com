@@ -51,7 +51,8 @@ function Subscribe() {
           Subscribe
           </h1>
           <div className="text-xl">
-            <p>Sign up for email updates here.</p>
+            <p className="text-3xl font-bold">New songs in your inbox</p>
+            <p>We will only send occasional emails and you can unsubscribe at any time.</p>
           </div>
           <MailchimpSubscribe
           url={url}
