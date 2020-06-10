@@ -77,7 +77,7 @@ function Contact() {
                 name="name"
                 aria-required="true"
                 required
-                placeholder="Name"
+                placeholder="Your name"
                 onChange={handleChange}
               />
             </div>
@@ -89,7 +89,7 @@ function Contact() {
                 name="Email"
                 aria-required="true"
                 required
-                placeholder="E-Mail"
+                placeholder="Your email"
                 onChange={handleChange}
               />
             </div>
@@ -100,7 +100,7 @@ function Contact() {
                 name="message"
                 aria-required="true"
                 required
-                placeholder="Message"
+                placeholder="Your message"
                 onChange={handleChange}
               />
             </div>
