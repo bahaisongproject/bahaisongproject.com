@@ -36,7 +36,7 @@ bahá'í song project would like to make sure you are fully aware of all of your
 - The right to object to processing – You have the right to object to bahá'í song project’s processing of your personal data, under certain conditions.
 - The right to data portability – You have the right to request that bahá'í song project transfer the data that we have collected to another organization, or directly to you, under certain conditions.
 
-If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, email us at bahaisongproject@gmail.com or use our [contact form](https://www.bahaisongproject.com/contact-form).
+If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, email us at privacy@bahaisongproject.com or use our [contact form](https://www.bahaisongproject.com/contact).
 
 ## Cookies
 
@@ -68,7 +68,7 @@ bahá'í song project keeps its privacy policy under regular review and places a
 
 ## How to contact us
 
-If you have any questions about bahá'í song project’s privacy policy, the data we hold on you, or you would like to exercise one of your data protection rights, please do not hesitate to contact us. Email us at bahaisongproject@gmail.com or use our [contact form](https://www.bahaisongproject.com/contact-form).
+If you have any questions about bahá'í song project’s privacy policy, the data we hold on you, or you would like to exercise one of your data protection rights, please do not hesitate to contact us. Email us at privacy@bahaisongproject.com or use our [contact form](https://www.bahaisongproject.com/contact).
 
 ## How to contact the appropriate authority
 
