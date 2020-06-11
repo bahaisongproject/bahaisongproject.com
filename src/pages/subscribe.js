@@ -17,17 +17,6 @@ const CustomForm = ({ status, message, onValidated }) => {
   
     return (
       <div className="mt-6">
-        {status === "sending" && <div>sending...</div>}
-        {status === "error" && (
-          <div
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
-        )}
-        {status === "success" && (
-          <div
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
-        )}
         <input
           className="w-full xs:max-w-xs pl-3 pr-2 py-2 appearance-none bg-gray-200 outline-none rounded-md"
           ref={node => (email = node)}
@@ -37,6 +26,19 @@ const CustomForm = ({ status, message, onValidated }) => {
         <button className="block mt-6 xs:inline xs:ml-3 bg-topaz hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={submit}>
           Sign up
         </button>
+        <div className="mt-6">
+            {status === "sending" && <div>sending...</div>}
+            {status === "error" && (
+            <div
+                dangerouslySetInnerHTML={{ __html: message }}
+            />
+            )}
+            {status === "success" && (
+            <div
+                dangerouslySetInnerHTML={{ __html: message }}
+            />
+            )}
+        </div>
       </div>
     );
   };

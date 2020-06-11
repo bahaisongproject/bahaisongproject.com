@@ -13,7 +13,7 @@ function Banner({ children, title }) {
         className="flex flex-col items-center justify-center"
       >
         <div className="flex flex-col items-center">
-          <div>{title}</div>
+          <div className="">{title}</div>
           <svg
             className={`${bannerExpanded ? `hidden` : `w-6 inline`}`}
             fill="currentColor"
