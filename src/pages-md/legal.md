@@ -14,7 +14,7 @@ Dayyan Smith
 ## Contact
 
 - Email: contact@bahaisongproject.com
-- Contact form: [www.bahaisongproject.com/contact](www.bahaisongproject.com/contact)
+- Contact form: [www.bahaisongproject.com/contact](https://www.bahaisongproject.com/contact)
 
 ## Person responsible for content in accordance with §55 section 2 RStV
 

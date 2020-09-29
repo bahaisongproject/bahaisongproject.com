@@ -18,7 +18,7 @@ function Layout({ children, className, siteName }) {
 
         <main className={"flex-1 w-full mb-12 " + className}>{children}</main>
 
-        <footer className="bg-topaz text-white flex justify-center flex-wrap items-baseline text-sm">
+        <footer className="bg-green-blue text-white flex justify-center flex-wrap items-baseline text-sm">
           <nav className="flex p-4">
             <ul className="flex">
               <li>
