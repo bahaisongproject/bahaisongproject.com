@@ -44,9 +44,11 @@ query($contributorId: Int!) {
               contributor_name
           }
           languages {
+              language_code
               language_name_en
           }
           tags {
+              tag_id
               tag_name
           }
           performances {
