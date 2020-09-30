@@ -14,7 +14,7 @@ function LanguagePage({ data }) {
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
           <h1 className="text-3xl font-semibold font-serif">
-            {language.language_name_en}
+            {"Language: " + language.language_name_en}
           </h1>
           <SongGrid
           className="grid mt-4 col-gap-3 row-gap-6 md:col-gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3"

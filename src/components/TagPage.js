@@ -14,7 +14,7 @@ function TagPage({ data }) {
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
           <h1 className="text-3xl font-semibold font-serif">
-            {tag.tag_name}
+            {"Tag: " + tag.tag_name}
           </h1>
           <div>{tag.tag_description}</div>
           <SongGrid

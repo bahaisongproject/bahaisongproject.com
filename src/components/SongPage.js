@@ -68,6 +68,7 @@ export const query = graphql`
           }
         }
         languages {
+          language_code
           language_name_en
         }
         tags {
