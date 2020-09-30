@@ -71,6 +71,7 @@ export const query = graphql`
           language_name_en
         }
         tags {
+          tag_id
           tag_name
         }
       }

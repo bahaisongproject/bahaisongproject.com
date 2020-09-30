@@ -5,6 +5,7 @@ const songQuery = `{
           slug
           song_description
           languages {
+            language_code
             language_name_en
             language_name_native
           }

@@ -13,6 +13,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         contributors {
           contributor_id
         }
+        languages {
+          language_id
+          language_code
+        }
+        tags {
+          tag_id
+        }
       }
     }
   `);
@@ -33,6 +40,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: path.resolve(`./src/components/ContributorPage.js`),
       context: {
         contributorId: contributor.contributor_id,
+      },
+    });
+  });
+
+  result.data.bsp.languages.forEach((language) => {
+    actions.createPage({
+      path: `/language/${language.language_code}`,
+      component: path.resolve(`./src/components/LanguagePage.js`),
+      context: {
+        languageId: language.language_id,
+      },
+    });
+  });
+
+  result.data.bsp.tags.forEach((tag) => {
+    actions.createPage({
+      path: `/tag/${tag.tag_id}`,
+      component: path.resolve(`./src/components/TagPage.js`),
+      context: {
+        tagId: tag.tag_id,
       },
     });
   });

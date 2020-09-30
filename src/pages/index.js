@@ -51,6 +51,7 @@ export const query = graphql`
           language_code
         }
         tags {
+          tag_id
           tag_name
         }
         contributors {
