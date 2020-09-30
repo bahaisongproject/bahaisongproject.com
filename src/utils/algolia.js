@@ -9,9 +9,11 @@ const songQuery = `{
             language_name_native
           }
           contributors {
+            contributor_id
             contributor_name
           }
           tags {
+            tag_id
             tag_name
             tag_description
           }

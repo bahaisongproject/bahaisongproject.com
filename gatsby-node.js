@@ -10,6 +10,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           title
           slug
         }
+        contributors {
+          contributor_id
+        }
       }
     }
   `);
@@ -20,6 +23,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: path.resolve(`./src/components/SongPage.js`),
       context: {
         songSlug: song.slug,
+      },
+    });
+  });
+
+  result.data.bsp.contributors.forEach((contributor) => {
+    actions.createPage({
+      path: `/contributor/${contributor.contributor_id}`,
+      component: path.resolve(`./src/components/ContributorPage.js`),
+      context: {
+        contributorId: contributor.contributor_id,
       },
     });
   });
