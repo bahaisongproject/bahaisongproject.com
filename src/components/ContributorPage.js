@@ -16,6 +16,7 @@ function ContributorPage({ data }) {
           <h1 className="text-3xl font-semibold font-serif">
             {contributor.contributor_name}
           </h1>
+  <a href={contributor.contributor_url}>{contributor.contributor_url}</a>
           <SongGrid
           className="grid mt-4 col-gap-3 row-gap-6 md:col-gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3"
           songList={contributor.songs.sort((a, b) => (a.title > b.title ? 1 : -1))}
@@ -43,6 +44,7 @@ query($contributorId: Int!) {
               contributor_id
               contributor_slug
               contributor_name
+              contributor_url
           }
           languages {
               language_code
