@@ -55,6 +55,7 @@ export const query = graphql`
         song_description
         contributors {
           contributor_name
+          contributor_slug
         }
         performances {
           content_url
