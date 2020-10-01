@@ -74,6 +74,7 @@ export const query = graphql`
         tags {
           tag_id
           tag_name
+          tag_slug
         }
       }
     }

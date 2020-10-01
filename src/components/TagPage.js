@@ -42,6 +42,7 @@ query($tagId: Int!) {
           slug
           contributors {
               contributor_id
+              contributor_slug
               contributor_name
           }
           languages {
@@ -51,6 +52,7 @@ query($tagId: Int!) {
           tags {
               tag_id
               tag_name
+              tag_slug
           }
           performances {
               performance_prio

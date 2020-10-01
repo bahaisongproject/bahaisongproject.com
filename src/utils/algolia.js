@@ -12,11 +12,13 @@ const songQuery = `{
           contributors {
             contributor_id
             contributor_name
+            contributor_slug
           }
           tags {
             tag_id
             tag_name
             tag_description
+            tag_slug
           }
           performances {
             content_url

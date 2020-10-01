@@ -53,9 +53,11 @@ export const query = graphql`
         tags {
           tag_id
           tag_name
+          tag_slug
         }
         contributors {
           contributor_id
+          contributor_slug
           contributor_name
         }
         performances {
