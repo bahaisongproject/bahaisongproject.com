@@ -14,7 +14,7 @@ function Contact() {
   const [state, setState] = useState({
     isLoading: false,
     submitted: false,
-    "DSVGO-Check": false,
+    "gdpr-check": false,
   });
 
   function handleChange(e) {
@@ -107,8 +107,8 @@ function Contact() {
             <div className="gdpr-check flex items-baseline py-4">
               <input
                 type="checkbox"
-                name="DSVGO-Check"
-                checked={state["DSVGO-Check"]}
+                name="gdpr-check"
+                checked={state["gdpr-check"]}
                 onChange={handleChange}
                 aria-required="true"
                 required
@@ -121,12 +121,12 @@ function Contact() {
               </div>
             </div>
             <input
-              className="bg-topaz hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-emerald hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               type="submit"
               value={
-                state.isLoading ? "..." : state.submitted ? "Sent" : "Send"
+                state.isLoading ? "..." : state.submitted ? "Sent ✓" : "Send"
               }
-              disabled={state["DSVGO-Check"] ? false : true}
+              disabled={state["gdpr-check"] ? false : true}
             />
           </form>
         </div>

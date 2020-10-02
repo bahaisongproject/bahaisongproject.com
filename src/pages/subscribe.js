@@ -23,7 +23,7 @@ const CustomForm = ({ status, message, onValidated }) => {
           type="email"
           placeholder="Your email"
         />
-        <button className="block mt-6 xs:inline xs:ml-3 bg-topaz hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={submit}>
+        <button className="block mt-6 xs:inline xs:ml-3 bg-emerald hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={submit}>
           Sign up
         </button>
         <div className="mt-6">
