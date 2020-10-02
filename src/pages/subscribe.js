@@ -27,10 +27,10 @@ const CustomForm = ({ status, message, onValidated }) => {
           Sign up
         </button>
         <div className="mt-6">
-            {status === "sending" && <div>sending...</div>}
+            {status === "sending" && <div>Subscribing...</div>}
             {status === "error" && (
             <div
-                dangerouslySetInnerHTML={{ __html: message }}
+                dangerouslySetInnerHTML={{ __html: message.substring(4) }} // substring to remove "0 - " at beginning of every message
             />
             )}
             {status === "success" && (
