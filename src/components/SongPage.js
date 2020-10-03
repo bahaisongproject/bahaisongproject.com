@@ -31,7 +31,9 @@ function Song({ data }) {
             song={song}
           />
           <SongDescription className="text-gray-700" song={song} />
-          <DownloadButton url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}>
+          <DownloadButton
+            url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
+          >
             Chord Sheet
           </DownloadButton>
           <PerformanceList song={song} />

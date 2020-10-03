@@ -92,5 +92,5 @@ module.exports = {
   variants: {
     gradients: ["responsive", "hover"],
   },
-  plugins: [require("tailwindcss-plugins/gradients")],
+  plugins: [require('@tailwindcss/typography'), require("tailwindcss-plugins/gradients")],
 };
