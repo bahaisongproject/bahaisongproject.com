@@ -6,37 +6,8 @@
   white-space: pre;
 }
 
-.md-page {
-  @apply text-xl;
-}
-
-.md-page a {
-  @apply underline;
-}
-
-.md-page h2 {
-  @apply text-2xl;
-  @apply font-bold;
-  @apply mt-6;
-}
-
-.md-page ul {
-  @apply list-disc;
-}
-
-.md-page li {
-  @apply ml-6;
-  @apply leading-snug;
-  @apply mb-1;
-}
-
-.md-page blockquote {
-  @apply mb-8;
-  @apply pl-4;
-  @apply border-l-2;
-  @apply border-black;
-  @apply text-base;
-  @apply font-serif;
+[data-reach-tab-list] {
+  @apply bg-transparent tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm !important;
 }
 
 /*! purgecss start ignore */

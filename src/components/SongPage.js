@@ -65,9 +65,22 @@ export const query = graphql`
         }
         excerpts {
           excerpt_text
+          language {
+            language_name_en
+          }
           source {
             source_author
             source_description
+            excerpts {
+              excerpt_text
+          		language {
+            		language_name_en
+          		}
+              source {
+              	source_author
+              	source_description
+              }
+            }
           }
         }
         languages {
