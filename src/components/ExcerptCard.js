@@ -1,12 +1,12 @@
 import React from "react";
-import "@reach/tabs/styles.css";
+// import "@reach/tabs/styles.css";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
 
-
+// Tabs styled in main.css
 const ExcerptCard = ({ excerpt }) => (
   <Tabs className="max-w-xl my-4" defaultIndex={excerpt.source.excerpts.map(excerpt => excerpt.language.language_name_en).findIndex(language_name_en => language_name_en === excerpt.language.language_name_en)}>
-    <TabList className="flex flex-wrap">
-        {excerpt.source.excerpts.map((excerpt) => <Tab className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm" key="0">{excerpt.language.language_name_en}</Tab>)}
+    <TabList className="ml-1">
+        {excerpt.source.excerpts.map((excerpt) => <Tab key="0">{excerpt.language.language_name_en}</Tab>)}
     </TabList>
     <TabPanels>
       {excerpt.source.excerpts.map((excerpt) => 
