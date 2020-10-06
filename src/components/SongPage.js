@@ -23,14 +23,14 @@ function Song({ data }) {
             <LanguageList song={song} />
             <TagList song={song} />
           </div>
-          <h1 className="text-3xl font-semibold font-serif">
+          <h1 className="text-3xl font-semibold font-serif leading-tight">
             {song.title}
           </h1>
           <ContributorList
-            className="text-gray-700 leading-tight text-lg"
+            className="text-gray-700 leading-tight text-lg mt-1"
             song={song}
           />
-          <SongDescription className="text-gray-700" song={song} />
+          <SongDescription className="text-gray-700 mt-1" song={song} />
           <DownloadButton
             url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
           >
