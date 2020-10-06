@@ -4,8 +4,8 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
 import { PoweredBy } from "react-instantsearch-dom";
-import HitList from "../components/HitList";
 import Results from "../components/Results";
+import SongGrid from "../components/SongGrid"
 
 function IndexPage({ data }) {
   return (
@@ -20,7 +20,10 @@ function IndexPage({ data }) {
             Recent Additions
           </h1>
         </div>
-        <HitList />
+        {/* <HitList /> */}
+        <SongGrid
+          songList={data.bsp.songs.reverse().slice(0, 10)}
+        />
       </Results>
       <div className="flex justify-center mt-12">
         <Link
