@@ -22,8 +22,8 @@ export default function Template({
           <h1 className="mb-8 text-5xl text-gray-900 font-extrabold leading-tight">
             {frontmatter.title}
           </h1>
-          <div className="prose">
-            <MDXWrapper>
+          <div className="prose prose-lg">
+            <MDXWrapper> {/* for short codes */}
               <MDXRenderer>{body}</MDXRenderer>
             </MDXWrapper>
           </div>
