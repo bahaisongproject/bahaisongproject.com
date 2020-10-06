@@ -32,7 +32,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             }
         }
     }
-    pages: allFile(filter: { sourceInstanceName: { eq: "markdown-pages" } }) {
+    pages: allFile(filter: { sourceInstanceName: { eq: "pages" } }) {
         nodes {
             childMdx {
                 frontmatter {
