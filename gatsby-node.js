@@ -5,7 +5,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
   const result = await graphql(`
     query {
-      bsp {
+      bsp: bsp {
         songs {
           title
           slug
@@ -23,8 +23,32 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           tag_slug
         }
       }
+      collections: allFile(filter: { sourceInstanceName: { eq: "collections" } }) {
+        nodes {
+            childMdx {
+                frontmatter {
+                    slug
+                }
+            }
+        }
+    }
+    pages: allFile(filter: { sourceInstanceName: { eq: "markdown-pages" } }) {
+        nodes {
+            childMdx {
+                frontmatter {
+                    slug
+                }
+            }
+        }
+    }
     }
   `);
+
+ // Handle errors
+ if (result.errors) {
+  reporter.panicOnBuild(`Error while running GraphQL query.`);
+  return;
+}
 
   result.data.bsp.songs.forEach((song) => {
     actions.createPage({
@@ -67,33 +91,28 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   const pageTemplate = require.resolve(`./src/templates/pageTemplate.js`);
+  const collectionTemplate = require.resolve(`./src/templates/collectionTemplate.js`);
+  
+  const pageNodes = result.data.pages.nodes;
+  const collectionNodes = result.data.collections.nodes;
 
-  const mardownPages = await graphql(`
-    {
-      allMdx(limit: 1000) {
-        edges {
-          node {
-            frontmatter {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  // Handle errors
-  if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
-    return;
-  }
-  mardownPages.data.allMdx.edges.forEach(({ node }) => {
+  pageNodes.forEach((node) => {
     actions.createPage({
-      path: node.frontmatter.slug,
+      path: node.childMdx.frontmatter.slug,
       component: pageTemplate,
       context: {
         // additional data can be passed via context
-        slug: node.frontmatter.slug,
+        slug: node.childMdx.frontmatter.slug,
+      },
+    });
+  });
+  collectionNodes.forEach((node) => {
+    actions.createPage({
+      path: node.childMdx.frontmatter.slug,
+      component: collectionTemplate,
+      context: {
+        // additional data can be passed via context
+        slug: node.childMdx.frontmatter.slug,
       },
     });
   });

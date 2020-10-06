@@ -75,6 +75,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `collections`,
+        path: `${__dirname}/src/collections`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],

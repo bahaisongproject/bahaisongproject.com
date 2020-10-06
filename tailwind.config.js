@@ -1,4 +1,5 @@
 module.exports = {
+  important: "html",
   theme: {
     extend: {
       spacing: {
@@ -88,9 +89,17 @@ module.exports = {
         colors: ["circle", "#CCC", "#000"],
       },
     }),
+    typography: {
+      default: {
+        css: {
+          'noprose': false,
+        }
+      }
+    }
   },
   variants: {
     gradients: ["responsive", "hover"],
   },
   plugins: [require('@tailwindcss/typography'), require("tailwindcss-plugins/gradients")],
+  
 };

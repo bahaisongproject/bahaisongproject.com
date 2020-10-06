@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Jost:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap");
 
+
+/* @reach/tabs styling */
 :root {
   --reach-tabs: 1;
 }
@@ -11,25 +13,21 @@
 }
 
 [data-reach-tabs][data-orientation="vertical"] {
-  display: flex;
+  @apply flex;
 }
 
 [data-reach-tab-list] {
-  display: flex;
+  @apply flex;
 }
 
 [data-reach-tab-list][aria-orientation="vertical"] {
-  flex-direction: column;
+  @apply flex-col;
 }
 
 [data-reach-tab] {
   @apply inline-block tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm border border-transparent bg-none cursor-pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
-}
-
-[data-reach-tab]:focus {
-  @apply outline-none;
 }
 
 [data-reach-tab]:active {
@@ -44,6 +42,13 @@
 [data-reach-tab][data-selected] {
   @apply border-current;
 }
+
+/* Markdown */
+/* @layer base {
+  .markdown {
+    @apply prose;
+  }
+} */
 
 /*! purgecss start ignore */
 @tailwind base;
