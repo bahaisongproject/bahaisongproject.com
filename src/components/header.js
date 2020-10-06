@@ -89,6 +89,11 @@ function Header({ siteName }) {
               className: `${isExpanded ? `` : `text-3xl font-bold`}`,
             },
             {
+              route: `/collections`,
+              title: `Collections`,
+              className: `${isExpanded ? `` : ``}`,
+            },
+            {
               route: `/songbook`,
               title: `Song Book`,
               className: ``,

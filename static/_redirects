@@ -2,17 +2,20 @@
 https://bsp-website.netlify.app/* https://www.bahaisongproject.com/:splat 301!
 
 # bsp.app
-https://bsp.app/* https://www.bahaisongproject.com/:splat 302!
-https://www.bsp.app/* https://www.bahaisongproject.com/:splat 302!
+https://bsp.app/* https://www.bahaisongproject.com/:splat 301!
+https://www.bsp.app/* https://www.bahaisongproject.com/:splat 301!
 
 # Slug changes
 
 /boundless-love /may-this-boundless-love 301!
 
-# Proxy PDFs
+# Proxy PDFs and ChordPro files
 /all-songs.pdf /songbook.pdf 302!
 /:slug.pdf  https://pdf.bahaisongproject.com/:slug.pdf  200
 /:slug.pro  https://pdf.bahaisongproject.com/:slug.pro  200
+
+# 
+/collection /collections 301!
 
 # PDF redirects for old bsp.app
 https://bsp.app/static/agapa-me-c209d8fde0f221e9a2b8b31da5945b2b.pdf	https://bahaisongproject.com/agapa-me.pdf	301!

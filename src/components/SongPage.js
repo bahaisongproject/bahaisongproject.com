@@ -73,12 +73,12 @@ export const query = graphql`
             source_description
             excerpts {
               excerpt_text
-          		language {
-            		language_name_en
-          		}
+              language {
+                language_name_en
+              }
               source {
-              	source_author
-              	source_description
+                source_author
+                source_description
               }
             }
           }

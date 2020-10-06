@@ -23,32 +23,34 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           tag_slug
         }
       }
-      collections: allFile(filter: { sourceInstanceName: { eq: "collections" } }) {
+      collections: allFile(
+        filter: { sourceInstanceName: { eq: "collections" } }
+      ) {
         nodes {
-            childMdx {
-                frontmatter {
-                    slug
-                }
+          childMdx {
+            frontmatter {
+              slug
             }
+          }
         }
-    }
-    pages: allFile(filter: { sourceInstanceName: { eq: "pages" } }) {
+      }
+      pages: allFile(filter: { sourceInstanceName: { eq: "pages" } }) {
         nodes {
-            childMdx {
-                frontmatter {
-                    slug
-                }
+          childMdx {
+            frontmatter {
+              slug
             }
+          }
         }
-    }
+      }
     }
   `);
 
- // Handle errors
- if (result.errors) {
-  reporter.panicOnBuild(`Error while running GraphQL query.`);
-  return;
-}
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
 
   result.data.bsp.songs.forEach((song) => {
     actions.createPage({
@@ -91,8 +93,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   const pageTemplate = require.resolve(`./src/templates/pageTemplate.js`);
-  const collectionTemplate = require.resolve(`./src/templates/collectionTemplate.js`);
-  
+  const collectionTemplate = require.resolve(
+    `./src/templates/collectionTemplate.js`
+  );
+
   const pageNodes = result.data.pages.nodes;
   const collectionNodes = result.data.collections.nodes;
 

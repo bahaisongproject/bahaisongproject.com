@@ -92,14 +92,16 @@ module.exports = {
     typography: {
       default: {
         css: {
-          'noprose': false,
-        }
-      }
-    }
+          noprose: false,
+        },
+      },
+    },
   },
   variants: {
     gradients: ["responsive", "hover"],
   },
-  plugins: [require('@tailwindcss/typography'), require("tailwindcss-plugins/gradients")],
-  
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tailwindcss-plugins/gradients"),
+  ],
 };
