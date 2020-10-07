@@ -22,7 +22,7 @@ function IndexPage({ data }) {
         </div>
         {/* <HitList /> */}
         <SongGrid
-          songList={data.bsp.songs.reverse().slice(0, 10)}
+          songList={[...data.bsp.songs].reverse().slice(0, 10)}
         />
       </Results>
       <div className="flex justify-center mt-12">
