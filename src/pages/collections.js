@@ -14,7 +14,7 @@ function Collections({ data }) {
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6 mb-2 prose prose-2xl">
-          <h1 className="text-5xl text-gray-900 leading-tight font-extrabold">
+          <h1 className="text-3xl text-gray-900 leading-tight font-extrabold">
             Collections
           </h1>
           <ul>
@@ -23,6 +23,9 @@ function Collections({ data }) {
               <Link to={node.childMdx.frontmatter.slug} >
                 {node.childMdx.frontmatter.title}
               </Link>
+              <div className="">
+              {node.childMdx.frontmatter.description}
+              </div>
               </li>
             ))}
           </ul>
@@ -44,6 +47,7 @@ export const query = graphql`
           frontmatter {
             slug
             title
+            description
           }
         }
       }
