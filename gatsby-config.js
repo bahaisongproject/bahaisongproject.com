@@ -104,25 +104,37 @@ module.exports = {
         ],
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     // The property ID; the tracking code won't be generated without it
+    //     trackingId: "UA-27019014-2",
+    //     // Defines where to place the tracking script - `true` in the head and `false` in the body
+    //     head: false,
+    //     // Setting this parameter is optional
+    //     anonymize: true,
+    //     // Setting this parameter is also optional
+    //     respectDNT: true,
+    //     // Delays sending pageview hits on route update (in milliseconds)
+    //     pageTransitionDelay: 0,
+    //     // Defers execution of google analytics script after page load
+    //     defer: false,
+    //     // Any additional optional fields
+    //     sampleRate: 100,
+    //     siteSpeedSampleRate: 10,
+    //     cookieDomain: "bahaisongproject.com",
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: "UA-27019014-2",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0,
-        // Defers execution of google analytics script after page load
-        defer: false,
-        // Any additional optional fields
-        sampleRate: 100,
-        siteSpeedSampleRate: 10,
-        cookieDomain: "bahaisongproject.com",
+        googleAnalytics: {
+          trackingId: 'UA-27019014-2',
+          // Setting this parameter is optional
+          anonymize: true
+        },
+        // Defines the environments where the tracking should be available  - default is ["production"]
+        environments: ['production']
       },
     },
     `gatsby-plugin-sitemap`,

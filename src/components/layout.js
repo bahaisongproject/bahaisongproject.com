@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "gatsby";
 import algoliasearch from "algoliasearch";
 import { InstantSearch } from "react-instantsearch-dom";
+import CookieConsent from 'react-cookie-consent';
 import Header from "./header";
 
 const searchClient = algoliasearch(
@@ -48,6 +49,13 @@ function Layout({ children, className, siteName }) {
           </div>
         </footer>
       </div>
+      <CookieConsent
+          // disableStyles={true}
+          location="bottom"
+          buttonText="Accept"
+          cookieName="gatsby-gdpr-google-analytics">
+      This site uses cookies. You can read about why in our <Link className="underline" to="/privacy">privacy policy</Link>.
+      </CookieConsent>
     </InstantSearch>
   );
 }
