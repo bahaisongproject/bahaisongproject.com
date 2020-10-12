@@ -16,6 +16,7 @@ https://www.bsp.app/* https://www.bahaisongproject.com/:splat 301!
 
 # 
 /collection /collections 301!
+/impressum /legal 301!
 
 # PDF redirects for old bsp.app
 https://bsp.app/static/agapa-me-c209d8fde0f221e9a2b8b31da5945b2b.pdf	https://bahaisongproject.com/agapa-me.pdf	301!
