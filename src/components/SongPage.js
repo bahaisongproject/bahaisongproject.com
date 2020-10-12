@@ -23,7 +23,7 @@ function Song({ data }) {
             <LanguageList song={song} />
             <TagList song={song} />
           </div>
-          <h1 className="text-3xl font-semibold font-serif leading-tight">
+          <h1 className="text-3xl font-semibold font-sans leading-tight">
             {song.title}
           </h1>
           <ContributorList
