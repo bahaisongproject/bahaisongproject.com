@@ -23,22 +23,22 @@ function Song({ data }) {
             <LanguageList song={song} />
             <TagList song={song} />
           </div>
-          <div className="flex flex-col mt-6 xs:items-center xs:flex-row xs:place-content-between">
-          <div> 
-          <h1 className="text-3xl font-semibold font-sans leading-tight">
-            {song.title}
-          </h1>
-          <ContributorList
-            className="text-gray-700 leading-tight text-lg mt-1"
-            song={song}
-          />
-          <SongDescription className="text-gray-700 mt-1" song={song} />
-          </div>
-          <DownloadButton
-            url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
-          >
-            Chord Sheet
-          </DownloadButton>
+          <div className="flex flex-col mt-6 xs:items-end xs:flex-row xs:place-content-between">
+            <div> 
+              <h1 className="text-3xl font-semibold font-sans leading-tight">
+                {song.title}
+              </h1>
+              <ContributorList
+                className="text-gray-700 leading-tight text-lg mt-1"
+                song={song}
+              />
+              <SongDescription className="text-gray-700 mt-1" song={song} />
+            </div>
+            <DownloadButton
+              url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
+            >
+              Chord Sheet
+            </DownloadButton>
           </div>
           <PerformanceList song={song} />
           <ExcerptList song={song} />
@@ -83,6 +83,19 @@ export const query = graphql`
               source {
                 source_author
                 source_description
+              }
+              songs {
+                title
+                slug
+                song_description
+                contributors {
+                  contributor_name
+                  contributor_slug
+                }
+                performances {
+                  content_url
+                  performance_prio
+                }
               }
             }
           }
