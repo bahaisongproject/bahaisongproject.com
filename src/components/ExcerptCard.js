@@ -1,5 +1,5 @@
 import React from "react";
-// import "@reach/tabs/styles.css";
+
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
 
 // Tabs styled in main.css
