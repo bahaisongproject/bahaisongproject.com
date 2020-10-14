@@ -39,9 +39,7 @@ export default Collections;
 
 export const query = graphql`
   query {
-    collections: allFile(
-      filter: { sourceInstanceName: { eq: "collections" } }
-    ) {
+    collections: allFile(filter: { sourceInstanceName: { eq: "collections" }, extension: {in: ["md", "mdx"]}}) {
       nodes {
         childMdx {
           frontmatter {
