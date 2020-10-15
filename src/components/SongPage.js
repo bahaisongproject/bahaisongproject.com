@@ -32,7 +32,7 @@ function Song({ data }) {
                 className="text-gray-700 leading-tight text-lg mt-1"
                 song={song}
               />
-              <SongDescription className="text-gray-700 mt-1" song={song} />
+              <SongDescription className="text-gray-700 leading-tight text-lg mt-1" song={song} />
             </div>
             <DownloadButton
               url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
