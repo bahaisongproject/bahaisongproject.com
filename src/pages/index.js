@@ -49,6 +49,7 @@ export const query = graphql`
       songs {
         title
         slug
+        song_description
         languages {
           language_name_en
           language_code
