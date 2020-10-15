@@ -19,10 +19,13 @@ export default function Template({
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
-          <h2 className="text-lg text-gray-700">Collection</h2>
-          <h1 className="mb-8 text-5xl text-gray-900 font-extrabold leading-tight">
-            {frontmatter.title}
-          </h1>
+          <h2 className="text-lg text-gray-700 uppercase font-bold">Collection</h2>
+          <div className="mb-8">
+            <h1 className="text-3xl text-gray-900 font-extrabold leading-tight">
+              {frontmatter.title}
+            </h1>
+          <h2 className="text-lg text-gray-700">{frontmatter.description}</h2>
+          </div>
           <MDXWrapper>
             {/* for short codes */}
             <MDXRenderer>{body}</MDXRenderer>
@@ -39,6 +42,7 @@ export const pageQuery = graphql`
       frontmatter {
         slug
         title
+        description
       }
     }
   }

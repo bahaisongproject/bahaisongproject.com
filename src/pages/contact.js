@@ -51,7 +51,7 @@ function Contact() {
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Contact" />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6 mb-2">
-          <h1 className="text-5xl text-gray-900 leading-tight font-extrabold">
+          <h1 className="text-3xl text-gray-900 leading-tight font-extrabold">
             Contact
           </h1>
           <form

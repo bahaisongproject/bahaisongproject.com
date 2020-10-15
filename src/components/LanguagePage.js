@@ -16,7 +16,7 @@ function LanguagePage({ data }) {
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
-          <h2 className="text-lg text-gray-700">Language</h2>
+        <h2 className="text-lg text-gray-700 uppercase font-bold">Language</h2>
           <h1 className="text-3xl font-semibold">
             {language.language_name_en}
           </h1>

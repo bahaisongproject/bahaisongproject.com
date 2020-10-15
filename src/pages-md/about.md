@@ -8,7 +8,7 @@ title: "About"
 
 bahá’í song project was launched in 2011 by a group of friends who wanted to encourage others to sing and play Bahá’í songs in their communities. Over the years it has become a resource for people from all around the world who share the understanding that singing prayers and sacred verses can bring much joy and vibrancy to a community, and resources for learning to sing and play songs should be easily accessible. We hope this website can serve as a tool to create a joyous and uplifting atmosphere in your communities.
 
-## Contribute
+#### How to contribute
 
 There are many ways in which you can contribute.
 
@@ -23,7 +23,7 @@ There are many ways in which you can contribute.
 
 <div class="g-ytsubscribe" data-channelid="UCDKTrq0MLmvnxzA9urX2n7Q" data-layout="default" data-count="default"></div>
 
-## Acknowledgements
+#### Acknowledgements
 
 This project would not be possible without the contributions of so many people. Thank you to
 
