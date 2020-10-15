@@ -18,7 +18,7 @@ function Collections({ data }) {
             Collections
           </h1>
           <ul>
-            {data.collections.nodes.map((node) => (
+            {data.collections.nodes.sort((a, b) => a.childMdx.frontmatter.title > b.childMdx.frontmatter.title ? 1 : -1).map((node) => (
             <li key="0">
               <Link to={node.childMdx.frontmatter.slug} >
                 {node.childMdx.frontmatter.title}
