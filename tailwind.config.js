@@ -60,6 +60,10 @@ module.exports = {
           '"Noto Color Emoji"',
         ],
       },
+      colors: {
+        bspblue: '#416788',
+        bspgreen: '#89B4AD',
+      }
     },
     screens: {
       xs: "480px",

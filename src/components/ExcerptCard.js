@@ -1,11 +1,12 @@
 import React from "react";
 
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
+import SongCard from "./SongCard";
 
 // Tabs styled in main.css
-const ExcerptCard = ({ excerpt }) => (
+const ExcerptCard = ({ excerpt, song }) => (
   <Tabs
-    className="max-w-xl my-4"
+    className=" mt-8 mb-4"
     defaultIndex={excerpt.source.excerpts
       .map((excerpt) => excerpt.language.language_name_en)
       .findIndex(
@@ -18,11 +19,11 @@ const ExcerptCard = ({ excerpt }) => (
         <Tab key="0">{excerpt.language.language_name_en}</Tab>
       ))}
     </TabList>
-    <TabPanels>
+    <TabPanels className="mt-4">
       {excerpt.source.excerpts.map((excerpt) => (
-        <TabPanel
-          className="border-l-4 border-gray-800 my-1 p-8 xs:p-16 bg-gray-200 text-gray-900 font-sans shadow-lg rounded-sm"
-          key="0"
+        <TabPanel key="0">
+        <div
+          className="max-w-xl border-l-4 border-bspblue my-1 p-8 xs:p-16 bg-gray-200 text-gray-900 font-sans shadow-lg rounded-sm"
         >
           <div className="">
             {(() => {
@@ -38,6 +39,30 @@ const ExcerptCard = ({ excerpt }) => (
             <div className="mt-2">{excerpt.source.source_author}</div>
             <div className="mt-2">{excerpt.source.source_description}</div>
           </div>
+        </div>
+        {(() => {
+    if (
+        excerpt.songs
+    ) {
+        let songs = excerpt.songs.filter((song_) => song_.slug !== song.slug)
+        return (
+            <div className="mt-8">
+                <div className="mt-2 grid col-gap-3 row-gap-6 md:col-gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3">
+
+                {
+                    songs.map((song) => (
+                        <div key="0" className="">
+                        <SongCard song={song} />
+                        </div>
+                    ))
+                }
+
+                </div>
+            </div>
+
+        );
+    }
+})()}
         </TabPanel>
       ))}
     </TabPanels>

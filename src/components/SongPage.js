@@ -88,13 +88,22 @@ export const query = graphql`
                 title
                 slug
                 song_description
+                languages {
+                  language_name_en
+                  language_code
+                }
+                tags {
+                  tag_id
+                  tag_name
+                  tag_slug
+                }
                 contributors {
-                  contributor_name
+                  contributor_id
                   contributor_slug
+                  contributor_name
                 }
                 performances {
                   content_url
-                  performance_prio
                 }
               }
             }
