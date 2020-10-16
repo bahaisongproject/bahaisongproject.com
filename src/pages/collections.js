@@ -14,22 +14,20 @@ function Collections({ data }) {
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6 mb-2">
-          <h1 className="text-3xl text-gray-900 leading-tight font-extrabold">
+          <h1 className="mb-8 text-3xl text-gray-900 leading-tight font-extrabold">
             Collections
           </h1>
           <div className="prose prose-2xl">
-            <ul>
               {data.collections.nodes.sort((a, b) => a.childMdx.frontmatter.title > b.childMdx.frontmatter.title ? 1 : -1).map((node) => (
-              <li key="0">
-                <Link to={node.childMdx.frontmatter.slug} >
+              <div key="0" className="mt-8">
+                <Link to={node.childMdx.frontmatter.slug} className="leading-tight" >
                   {node.childMdx.frontmatter.title}
                 </Link>
-                <div className="">
-                {node.childMdx.frontmatter.description}
+                <div>
+                  {node.childMdx.frontmatter.description}
                 </div>
-                </li>
+              </div>
               ))}
-            </ul>
           </div>
         </div>
       </Results>

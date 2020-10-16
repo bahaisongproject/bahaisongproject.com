@@ -21,7 +21,7 @@ const ExcerptCard = ({ excerpt }) => (
     <TabPanels>
       {excerpt.source.excerpts.map((excerpt) => (
         <TabPanel
-          className="border-l-4 border-gray-800 my-1 p-8 xs:p-16 bg-gray-200 text-gray-900 font-serif shadow-lg rounded-sm"
+          className="border-l-4 border-gray-800 my-1 p-8 xs:p-16 bg-gray-200 text-gray-900 font-sans shadow-lg rounded-sm"
           key="0"
         >
           <div className="">
