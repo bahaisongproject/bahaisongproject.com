@@ -13,10 +13,10 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-eslint`
+      resolve: `gatsby-plugin-eslint`,
     },
     {
-      resolve: `gatsby-plugin-react-helmet`
+      resolve: `gatsby-plugin-react-helmet`,
     },
     {
       resolve: "gatsby-source-graphql",
@@ -92,10 +92,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-sharp`
+      resolve: `gatsby-plugin-sharp`,
     },
     {
-      resolve: `gatsby-remark-images`
+      resolve: `gatsby-remark-images`,
     },
     {
       resolve: `gatsby-plugin-mdx`,
@@ -107,7 +107,7 @@ module.exports = {
             options: {
               maxWidth: 1200,
               linkImagesToOriginal: false,
-              showCaptions: ['alt', 'title'],
+              showCaptions: ["alt", "title"],
             },
           },
           {
@@ -126,16 +126,16 @@ module.exports = {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleAnalytics: {
-          trackingId: 'UA-27019014-2',
+          trackingId: "UA-27019014-2",
           // Setting this parameter is optional
-          anonymize: true
+          anonymize: true,
         },
         // Defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production']
+        environments: ["production"],
       },
     },
     {
-      resolve: `gatsby-plugin-sitemap`
+      resolve: `gatsby-plugin-sitemap`,
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,

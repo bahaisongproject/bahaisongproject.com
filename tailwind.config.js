@@ -1,7 +1,5 @@
 module.exports = {
-  purge: [
-    './src/**/*.js',
-  ],
+  purge: ["./src/**/*.js"],
   theme: {
     extend: {
       spacing: {
@@ -61,9 +59,9 @@ module.exports = {
         ],
       },
       colors: {
-        bspblue: '#416788',
-        bspgreen: '#89B4AD',
-      }
+        bspblue: "#416788",
+        bspgreen: "#89B4AD",
+      },
     },
     screens: {
       xs: "480px",

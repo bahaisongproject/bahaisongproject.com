@@ -24,7 +24,7 @@ function Song({ data }) {
             <TagList song={song} />
           </div>
           <div className="flex flex-col mt-6 xs:items-end xs:flex-row xs:place-content-between">
-            <div> 
+            <div>
               <h1 className="text-3xl font-semibold font-sans leading-tight">
                 {song.title}
               </h1>
@@ -32,7 +32,10 @@ function Song({ data }) {
                 className="text-gray-700 leading-tight text-lg mt-1"
                 song={song}
               />
-              <SongDescription className="text-gray-700 leading-tight text-lg mt-1" song={song} />
+              <SongDescription
+                className="text-gray-700 leading-tight text-lg mt-1"
+                song={song}
+              />
             </div>
             <DownloadButton
               url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}

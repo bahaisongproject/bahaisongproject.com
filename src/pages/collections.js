@@ -18,15 +18,22 @@ function Collections({ data }) {
             Collections
           </h1>
           <div className="prose prose-2xl">
-              {data.collections.nodes.sort((a, b) => a.childMdx.frontmatter.title > b.childMdx.frontmatter.title ? 1 : -1).map((node) => (
-              <div key="0" className="mt-8">
-                <Link to={node.childMdx.frontmatter.slug} className="leading-tight" >
-                  {node.childMdx.frontmatter.title}
-                </Link>
-                <div>
-                  {node.childMdx.frontmatter.description}
+            {data.collections.nodes
+              .sort((a, b) =>
+                a.childMdx.frontmatter.title > b.childMdx.frontmatter.title
+                  ? 1
+                  : -1
+              )
+              .map((node) => (
+                <div key="0" className="mt-8">
+                  <Link
+                    to={node.childMdx.frontmatter.slug}
+                    className="leading-tight"
+                  >
+                    {node.childMdx.frontmatter.title}
+                  </Link>
+                  <div>{node.childMdx.frontmatter.description}</div>
                 </div>
-              </div>
               ))}
           </div>
         </div>
@@ -39,7 +46,12 @@ export default Collections;
 
 export const query = graphql`
   query {
-    collections: allFile(filter: { sourceInstanceName: { eq: "collections" }, extension: {in: ["md", "mdx"]}}) {
+    collections: allFile(
+      filter: {
+        sourceInstanceName: { eq: "collections" }
+        extension: { in: ["md", "mdx"] }
+      }
+    ) {
       nodes {
         childMdx {
           frontmatter {

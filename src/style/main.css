@@ -44,7 +44,7 @@
 
 /* Figure Caption */
 .gatsby-resp-image-figcaption {
-    @apply text-sm mt-2 ml-2;
+  @apply text-sm mt-2 ml-2;
 }
 
 /*! purgecss start ignore */

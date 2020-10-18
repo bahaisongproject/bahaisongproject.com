@@ -5,7 +5,7 @@ import SEO from "./seo";
 import PropTypes from "prop-types";
 import SongGrid from "./SongGrid";
 import Results from "./Results";
-import DownloadButton from "./DownloadButton"
+import DownloadButton from "./DownloadButton";
 
 function ContributorPage({ data }) {
   const contributor = data.bsp.contributor;
@@ -17,23 +17,21 @@ function ContributorPage({ data }) {
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
-        <h2 className="text-lg text-gray-700 uppercase font-bold">Contributor</h2>
+          <h2 className="text-lg text-gray-700 uppercase font-bold">
+            Contributor
+          </h2>
           <h1 className="text-3xl font-semibold">
             {contributor.contributor_name}
           </h1>
           {(() => {
-          if (
-            contributor.contributor_url
-          ) {
-            return (
-              <DownloadButton
-              url={contributor.contributor_url}
-            >
-              Website
-            </DownloadButton>
-            );
-          }
-        })()}
+            if (contributor.contributor_url) {
+              return (
+                <DownloadButton url={contributor.contributor_url}>
+                  Website
+                </DownloadButton>
+              );
+            }
+          })()}
           <SongGrid
             className="grid mt-4 col-gap-3 row-gap-6 md:col-gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3"
             songList={contributor.songs.sort((a, b) =>

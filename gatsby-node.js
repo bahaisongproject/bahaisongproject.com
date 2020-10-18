@@ -23,7 +23,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           tag_slug
         }
       }
-      collections: allFile(filter: { sourceInstanceName: { eq: "collections" }, extension: {in: ["md", "mdx"]}}) {
+      collections: allFile(
+        filter: {
+          sourceInstanceName: { eq: "collections" }
+          extension: { in: ["md", "mdx"] }
+        }
+      ) {
         nodes {
           childMdx {
             frontmatter {
@@ -32,7 +37,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      pages: allFile(filter: { sourceInstanceName: { eq: "pages" }, extension: {in: ["md", "mdx"]}}) {
+      pages: allFile(
+        filter: {
+          sourceInstanceName: { eq: "pages" }
+          extension: { in: ["md", "mdx"] }
+        }
+      ) {
         nodes {
           childMdx {
             frontmatter {

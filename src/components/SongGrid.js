@@ -10,19 +10,14 @@ const SongGrid = ({ songList, className }) => (
     }
   >
     {(() => {
-          if (
-            songList
-          ) {
-            return (
-              songList.map((hit) => (
-                <div key={hit.objectID} className="">
-                  <SongCard song={hit} />
-                </div>
-              ))
-            );
-          }
-        })()}
-
+      if (songList) {
+        return songList.map((hit) => (
+          <div key={hit.objectID} className="">
+            <SongCard song={hit} />
+          </div>
+        ));
+      }
+    })()}
   </div>
 );
 
