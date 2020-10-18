@@ -42,12 +42,10 @@
   @apply border-current;
 }
 
-/* Markdown */
-/* @layer base {
-  .markdown {
-    @apply prose;
-  }
-} */
+/* Figure Caption */
+.gatsby-resp-image-figcaption {
+    @apply text-sm mt-2 ml-2;
+}
 
 /*! purgecss start ignore */
 @tailwind base;
