@@ -21,14 +21,6 @@ function Header({ siteName }) {
 
   return (
     <header className="bg-green-blue">
-      <Banner title="This is a preview release.">
-        <p>
-          <Link to="/contact" className="underline">
-            Message us
-          </Link>{" "}
-          with problems, mistakes, typos or any other feedback!
-        </p>
-      </Banner>
       <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:px-8 xs:py-4 md:py-4">
         <Link to="/">
           <h1 className="flex items-center text-white no-underline">
