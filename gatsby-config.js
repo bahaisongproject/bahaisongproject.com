@@ -139,5 +139,8 @@ module.exports = {
         siteUrl: `https://www.bahaisongproject.com`,
       },
     },
+    {
+      resolve: `gatsby-plugin-remove-trailing-slashes`,
+    }
   ],
 };
