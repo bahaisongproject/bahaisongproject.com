@@ -6,7 +6,7 @@ https://bsp.app/* https://www.bahaisongproject.com/:splat 301!
 https://www.bsp.app/* https://www.bahaisongproject.com/:splat 301!
 
 # Subscribe domain
-https://subscribe.bahaisongproject.com https://www.bahaisongproject.com/subscribe 301!
+https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/subscribe 301!
 
 # Slug changes
 
