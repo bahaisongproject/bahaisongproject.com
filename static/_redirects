@@ -5,6 +5,9 @@ https://wwwbahaisongprojectcom.netlify.app/* https://www.bahaisongproject.com/:s
 https://bsp.app/* https://www.bahaisongproject.com/:splat 301!
 https://www.bsp.app/* https://www.bahaisongproject.com/:splat 301!
 
+# Subscribe domain
+https://subscribe.bahaisongproject.com https://www.bahaisongproject.com/subscribe
+
 # Slug changes
 
 /boundless-love /may-this-boundless-love 301!
