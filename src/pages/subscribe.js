@@ -61,20 +61,10 @@ function Subscribe() {
               time.
             </p>
           </div>
-          {/* <MailchimpSubscribe
-            url={url}
-            render={({ subscribe, status, message }) => (
-              <CustomForm
-                status={status}
-                message={message}
-                onValidated={(formData) => subscribe(formData)}
-              />
-            )}
-          /> */}
           <iframe
           scrolling="no"
           // style={{width: "100% !important"}}
-          className="w-full -ml-2"
+          className="w-full h-64"
           src="https://buttondown.email/bsp?as_embed=true"
           ></iframe><br /><br />
         </div>
