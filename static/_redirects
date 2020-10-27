@@ -142,7 +142,8 @@ https://bsp.app/static/zu-allen-zeiten-56244a878c300feab71f59138cd22a29.pdf	http
 
 # bahai-song-project.de
 https://bahai-song-project.de/ https://www.bahaisongproject.com    301!
-https://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com    301!
+https://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com/all-songs    301!
+http://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com/all-songs    301!
 https://bahai-song-project.de/song-book/	https://www.bahaisongproject.com/songbook.pdf   301!
 https://bahai-song-project.de/youtube/	https://www.youtube.com/bahaisongproject    301!
 https://bahai-song-project.de/app/	https://apps.apple.com/de/app/bah%C3%A1%C3%AD-song-project/id1194063574 301!
@@ -445,3 +446,4 @@ https://bahai-song-project.de/category/language/greek/	https://www.bahaisongproj
 https://bahai-song-project.de/category/language/romanian/	https://www.bahaisongproject.com/language/ro    301!
 https://bahai-song-project.de/page/11/	https://www.bahaisongproject.com/   301!
 https://bahai-song-project.de/page/12/	https://www.bahaisongproject.com/   301!
+https://bahai-song-project.de/* https://www.bahaisongproject.com/:splat    301!
