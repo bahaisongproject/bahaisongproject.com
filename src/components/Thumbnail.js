@@ -14,7 +14,7 @@ const Thumbnail = ({ song }) => (
             a.performance_prio > b.performance_prio ? 1 : -1
           )[0];
         const thumbnail_url =
-          "https://img.youtube.com/vi/" +
+          "https://www.bahaisongproject.com/ytimage/" +
           get_youtube_id(yt_performance.content_url) +
           "/hqdefault.jpg";
         return (
