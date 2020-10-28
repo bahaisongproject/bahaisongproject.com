@@ -18,6 +18,7 @@
     "gatsby-plugin-gtag": "^1.0.13",
     "gatsby-plugin-manifest": "2.3.3",
     "gatsby-plugin-mdx": "^1.2.43",
+    "gatsby-plugin-netlify": "^2.3.24",
     "gatsby-plugin-postcss": "2.2.1",
     "gatsby-plugin-purgecss": "5.0.0",
     "gatsby-plugin-react-helmet": "3.2.2",

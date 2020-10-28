@@ -126,7 +126,7 @@ module.exports = {
       resolve: `gatsby-plugin-gtag`,
       options: {
         head: true,
-        trackingId: `UA-27019014-2`,
+        trackingId: `G-5EBGT3JE8D`,
         anonymize: true,
       },
     },
@@ -141,6 +141,9 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-remove-trailing-slashes`,
+    },
+    {
+      resolve: `gatsby-plugin-netlify`
     }
   ],
 };
