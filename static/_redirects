@@ -1,21 +1,3 @@
-
-# Host name redirects
-https://wwwbahaisongprojectcom.netlify.app/* https://www.bahaisongproject.com/:splat 301!
-https://bahaisongs.com/* https://www.bahaisongproject.com/:splat 301!
-https://www.bahaisongs.com/* https://www.bahaisongproject.com/:splat 301!
-https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/subscribe 301!
-
-# Slug changes
-/boundless-love /may-this-boundless-love 301!
-/drita-e-united /drita-e-unitet 301!
-/all-songs.pdf /songbook.pdf 302!
-/collection /collections 301!
-/impressum /legal 301!
-
-# Proxy PDFs and ChordPro files
-/:slug.pdf  https://pdf.bahaisongproject.com/:slug.pdf  200
-/:slug.pro  https://pdf.bahaisongproject.com/:slug.pro  200
-
 # bahai-song-project.de
 https://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com/all-songs    301!
 https://bahai-song-project.de/song-book/	https://www.bahaisongproject.com/songbook   301!
@@ -439,3 +421,20 @@ https://bsp.app/static/youth-prayer-339bcdb8acecd5f5890df00928bd931f.pdf	https:/
 https://bsp.app/static/zu-allen-zeiten-56244a878c300feab71f59138cd22a29.pdf	https://bahaisongproject.com/zu-allen-zeiten.pdf	301!
 https://bsp.app/* https://www.bahaisongproject.com/:splat 301!
 https://www.bsp.app/* https://www.bahaisongproject.com/:splat 301!
+
+# Host name redirects
+https://wwwbahaisongprojectcom.netlify.app/* https://www.bahaisongproject.com/:splat 301!
+https://bahaisongs.com/* https://www.bahaisongproject.com/:splat 301!
+https://www.bahaisongs.com/* https://www.bahaisongproject.com/:splat 301!
+https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/subscribe 301!
+
+# Slug changes
+/boundless-love /may-this-boundless-love 301!
+/drita-e-united /drita-e-unitet 301!
+/all-songs.pdf /songbook.pdf 302!
+/collection /collections 301!
+/impressum /legal 301!
+
+# Proxy PDFs and ChordPro files
+/:slug.pdf  https://pdf.bahaisongproject.com/:slug.pdf  200
+/:slug.pro  https://pdf.bahaisongproject.com/:slug.pro  200
