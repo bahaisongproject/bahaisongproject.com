@@ -447,3 +447,6 @@ https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/subscr
 # Proxy PDFs and ChordPro files
 /:slug.pdf  https://pdf.bahaisongproject.com/:slug.pdf  200
 /:slug.pro  https://pdf.bahaisongproject.com/:slug.pro  200
+
+# Prosy YouTube images
+/ytimage/* https://img.youtube.com/vi/:splat 200
