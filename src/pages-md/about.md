@@ -3,8 +3,8 @@ slug: "/about"
 title: "About"
 ---
 
-> Intone, O My servant, the verses of God that have been received by thee, as intoned by them who have drawn nigh unto Him, that the sweetness of thy melody may kindle thine own soul, and attract the hearts of all men...
-> — Bahá'u'lláh
+> Therefore … set to music the verses and the divine words so that they may be sung with soul-stirring melody in the Assemblies and gatherings, and that the hearts of the listeners may become tumultuous and rise towards the Kingdom of Abhá in supplication and prayer.
+> — ʻAbdu'l-Bahá
 
 bahá’í song project was launched in 2011 by a group of friends who wanted to encourage others to sing and play Bahá’í songs in their communities. Over the years it has become a resource for people from all around the world who share the understanding that singing prayers and sacred verses can bring much joy and vibrancy to a community, and resources for learning to sing and play songs should be easily accessible. We hope this website can serve as a tool to create a joyous and uplifting atmosphere in your communities.
 
