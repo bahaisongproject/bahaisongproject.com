@@ -40,7 +40,7 @@ module.exports = {
         background_color: fullConfig.theme.colors.white,
         theme_color: fullConfig.theme.colors.gray,
         display: `standalone`,
-        icon: `src/images/bahaisongproject-icon.png`,
+        icon: `src/images/logo.png`,
       },
     },
     {
