@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
 import CustomSearchBox from "./SearchBox";
-import logo from "../images/logo.png"
+import logo from "../images/logo_100x100.png"
 
 const searchIndices = [
   { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
