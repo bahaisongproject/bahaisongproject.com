@@ -448,5 +448,8 @@ https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/subscr
 /:slug.pdf  https://pdf.bahaisongproject.com/:slug.pdf  200
 /:slug.pro  https://pdf.bahaisongproject.com/:slug.pro  200
 
-# Prosy YouTube images
+# Proxy YouTube images
 /ytimage/* https://img.youtube.com/vi/:splat 200
+
+# Survey
+/survey https://docs.google.com/forms/d/e/1FAIpQLSejtfUv8cqH9azhPZ3qhCr11zxQV24PxnHupIZzVV05-EHkfg/viewform 200
