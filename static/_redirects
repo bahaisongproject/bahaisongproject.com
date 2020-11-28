@@ -1,3 +1,7 @@
+# Survey
+https://bsp.app/survey https://docs.google.com/forms/d/e/1FAIpQLSejtfUv8cqH9azhPZ3qhCr11zxQV24PxnHupIZzVV05-EHkfg/viewform 301!
+https://bahaisongproject.com/survey https://docs.google.com/forms/d/e/1FAIpQLSejtfUv8cqH9azhPZ3qhCr11zxQV24PxnHupIZzVV05-EHkfg/viewform 301!
+
 # bahai-song-project.de
 https://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com/all-songs    301!
 http://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com/all-songs    301!
@@ -450,6 +454,3 @@ https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/subscr
 
 # Proxy YouTube images
 /ytimage/* https://img.youtube.com/vi/:splat 200
-
-# Survey
-/survey https://docs.google.com/forms/d/e/1FAIpQLSejtfUv8cqH9azhPZ3qhCr11zxQV24PxnHupIZzVV05-EHkfg/viewform 302!
