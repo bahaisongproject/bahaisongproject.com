@@ -12,11 +12,19 @@ module.exports = {
     siteUrl: `https://www.bahaisongproject.com`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-eslint`,
+    { 
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: "G-5EBGT3JE8D",
+        head: true,
+        anonymize: true
+      }
     },
     {
       resolve: `gatsby-plugin-react-helmet`,
+    },
+    {
+      resolve: `gatsby-plugin-eslint`,
     },
     {
       resolve: "gatsby-source-graphql",
@@ -120,14 +128,6 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        head: true,
-        trackingId: `G-5EBGT3JE8D`,
-        anonymize: true,
       },
     },
     {
