@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import { PoweredBy } from "react-instantsearch-dom";
 import Results from "../components/Results";
 import SongGrid from "../components/SongGrid";
+import SongShowcaseGrid from "../components/SongShowcaseGrid";
+import SongShowcase from "../components/SongShowcase";
 
 function IndexPage({ data }) {
   return (
@@ -15,13 +17,25 @@ function IndexPage({ data }) {
           <CustomSearchBox />
         </div> */}
       <Results>
+      <div className="flex justify-center px-4 mt-6 mb-4">
+          <h1 className="text-2xl text-gray-900 leading-none font-extrabold">
+            Featured
+          </h1>
+        </div>
+        <div className="xs:mx-3 md:mx-4">
+          <SongShowcaseGrid>
+            <SongShowcase songSlug="kodi-palinso-wina" />
+            <SongShowcase songSlug="god-is-sufficient-unto-me" />
+            <SongShowcase songSlug="thy-confirmations" />
+          </SongShowcaseGrid>
+        </div>
+
         <div className="flex justify-center px-4 mt-6 mb-4">
           <h1 className="text-2xl text-gray-900 leading-none font-extrabold">
             Recent Additions
           </h1>
         </div>
-        {/* <HitList /> */}
-        <SongGrid songList={[...data.bsp.songs].reverse().slice(0, 10)} />
+        <SongGrid songList={[...data.bsp.songs].reverse().slice(0, 5)} />
       </Results>
       <div className="flex justify-center mt-12">
         <Link
