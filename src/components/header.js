@@ -40,9 +40,6 @@ function Header({ siteName }) {
               <div className="text-xl font-serif tracking-normal font-bold ml-1">
                 {site.siteMetadata.title}
               </div>
-              <Link to="/preview" className="ml-1 text-xs">
-                preview
-              </Link>
             </div>
           </h1>
         </Link>
