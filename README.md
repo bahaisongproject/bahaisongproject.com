@@ -6,8 +6,8 @@ Access the the preview here https://www.bahaisongproject.com
 
 ## Getting started
 
-1. Clone repo with `git clone git@github.com:bahaisongproject/bsp-website.git`
-1. `cd` into repo with `cd bsp-website`
+1. Clone repo with `git clone git@github.com:bahaisongproject/bahaisongproject.com.git`
+1. `cd` into repo with `cd bahaisongproject.com`
 1. Use correct node version: `nvm use`
 1. Install dependencies: `yarn install`
 
