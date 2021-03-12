@@ -3312,6 +3312,11 @@ babel-eslint@10.1.0:
     eslint-visitor-keys "^1.0.0"
     resolve "^1.12.0"
 
+babel-jsx-utils@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/babel-jsx-utils/-/babel-jsx-utils-1.0.1.tgz#f2d171cba526594e7d69e9893d634502cf950f07"
+  integrity sha512-Qph/atlQiSvfmkoIZ9VA+t8dA0ex2TwL37rkhLT9YLJdhaTMZ2HSM2QGzbqjLWanKA+I3wRQJjjhtuIEgesuLw==
+
 babel-loader@^8.2.2:
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.2.tgz#9363ce84c10c9a40e6c753748e1441b60c8a0b81"
@@ -7127,6 +7132,23 @@ gatsby-plugin-gtag@^1.0.13:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-gtag/-/gatsby-plugin-gtag-1.0.13.tgz#ffa08a728ba1cfe33090e52764d014a025a5d35a"
   integrity sha512-Oul6O67klajrEjkkF1diD228SmyUWsAwTq/1tYq41vBwmyNiPk4dhk8K93rrNQ5d5zesSv+awBeGBa503tQqGw==
 
+gatsby-plugin-image@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.0.1.tgz#b2b46ec7b2203c05b3511e1440100bcd3d2af68a"
+  integrity sha512-Aa8CV+bt5kboHDWPaZZ9OWDDnlZp7Ut+cx5nMfoXAq5fPgAFtausiLzyBfsYcikjZxgYIc4VBXaUJoi0I7sjTA==
+  dependencies:
+    "@babel/parser" "^7.12.5"
+    "@babel/traverse" "^7.12.5"
+    babel-jsx-utils "^1.0.1"
+    babel-plugin-remove-graphql-queries "^3.0.0"
+    camelcase "^5.3.1"
+    chokidar "^3.5.1"
+    common-tags "^1.8.0"
+    fs-extra "^8.1.0"
+    gatsby-core-utils "^2.0.0"
+    objectFitPolyfill "^2.3.0"
+    prop-types "^15.7.2"
+
 gatsby-plugin-manifest@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-3.0.0.tgz#4d5a7933bd2c539f9d35307812c4903e4c34b107"
@@ -7503,6 +7525,20 @@ gatsby-telemetry@^2.0.0:
     lodash "^4.17.20"
     node-fetch "^2.6.1"
     uuid "3.4.0"
+
+gatsby-transformer-sharp@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-3.0.0.tgz#7fb9806aef08966d2cb610cc6e814639075c931f"
+  integrity sha512-ydkUxYdoELPHcuE2OyTjgS3odcCikn6MPRC//dxPYDrIDMoJ6xPkbetTrshOEdGa2Yf02pp75Fs82PSeC+AXhA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    bluebird "^3.7.2"
+    common-tags "^1.8.0"
+    fs-extra "^9.1.0"
+    potrace "^2.1.8"
+    probe-image-size "^6.0.0"
+    semver "^7.3.4"
+    sharp "^0.27.0"
 
 gatsby@3.0.4:
   version "3.0.4"
@@ -11114,6 +11150,11 @@ object.values@^1.1.0, object.values@^1.1.1:
     es-abstract "^1.17.0-next.1"
     function-bind "^1.1.1"
     has "^1.0.3"
+
+objectFitPolyfill@^2.3.0:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/objectFitPolyfill/-/objectFitPolyfill-2.3.5.tgz#be8c83064aabfa4e88780f776c2013c48ce1f745"
+  integrity sha512-8Quz071ZmGi0QWEG4xB3Bv5Lpw6K0Uca87FLoLMKMWjB6qIq9IyBegP3b/VLNxv2WYvIMGoeUQ+c6ibUkNa8TA==
 
 obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"

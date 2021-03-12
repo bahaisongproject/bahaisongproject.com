@@ -100,7 +100,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-image`,
+    },
+    {
       resolve: `gatsby-plugin-sharp`,
+    },
+    {
+      resolve: `gatsby-transformer-sharp`,
     },
     {
       resolve: `gatsby-remark-images`,
