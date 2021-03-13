@@ -3,34 +3,52 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
-import { PoweredBy } from "react-instantsearch-dom";
 import Results from "../components/Results";
 import SongGrid from "../components/SongGrid";
-import SongCard from "../components/SongCard"
-import SongShowcaseGrid from "../components/SongShowcaseGrid";
-import SongShowcase from "../components/SongShowcase";
+import SongCard from "../components/SongCard";
 
 function IndexPage({ data }) {
-  const featuredSongs = ["kuna-mtu", "kindle-the-fire-of-love", "kodi-palinso-wina", "dies-ist-der-tag", "gioisci"]
+  const featuredSongsSlugList = [
+    "kuna-mtu",
+    "kindle-the-fire-of-love",
+    "kodi-palinso-wina",
+    "dies-ist-der-tag",
+    "gioisci",
+  ];
+  const featuredSongList = [...data.bsp.songs].filter((song) =>
+    featuredSongsSlugList.includes(song.slug)
+  );
+  const recentSongList = [...data.bsp.songs].reverse().slice(0, 10);
   return (
     <Layout siteName="index">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
-      {/* <div className="flex justify-center items-center mt-6 my-2 mx-4 lg:hidden">
-          <CustomSearchBox />
-        </div> */}
       <Results>
-      <div className="flex justify-center px-4 mt-6 mb-4">
+        <div className="flex justify-center px-4 mt-6 mb-4">
           <h1 className="text-2xl text-gray-900 leading-none font-normal">
             Featured
           </h1>
         </div>
-        <SongGrid songList={[...data.bsp.songs].filter(song => featuredSongs.includes(song.slug) )} />
+        <SongGrid className="mt-4 xs:mx-3 md:mx-4 lg:grid-cols-4 xl:grid-cols-5">
+          {(() => {
+            return featuredSongList.map((song) => (
+              <SongCard key={song.slug} song={song} />
+            ));
+          })()}
+        </SongGrid>
         <div className="flex justify-center px-4 mt-6 mb-4">
           <h1 className="text-2xl text-gray-900 leading-none font-normal">
             Recent Additions
           </h1>
         </div>
-        <SongGrid songList={[...data.bsp.songs].reverse().slice(0, 10)} />
+        <SongGrid className="mt-4 xs:mx-3 md:mx-4 lg:grid-cols-4 xl:grid-cols-5">
+          {(() => {
+            if (recentSongList) {
+              return recentSongList.map((song) => (
+                <SongCard key={song.slug} song={song} />
+              ));
+            }
+          })()}
+        </SongGrid>
       </Results>
       <div className="flex justify-center mt-12">
         <Link

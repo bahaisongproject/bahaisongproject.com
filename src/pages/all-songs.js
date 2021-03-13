@@ -3,9 +3,13 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import SongGrid from "../components/SongGrid";
+import SongCard from "../components/SongCard";
 import Results from "../components/Results";
 
 function AllSongs({ data }) {
+  const allSongList = data.bsp.songs.sort((a, b) =>
+    a.title > b.title ? 1 : -1
+  );
   return (
     <Layout>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="All Songs" />
@@ -15,9 +19,15 @@ function AllSongs({ data }) {
             All Songs
           </h1>
         </div>
-        <SongGrid
-          songList={data.bsp.songs.sort((a, b) => (a.title > b.title ? 1 : -1))}
-        />
+        <SongGrid className="mt-4 xs:mx-3 md:mx-4 lg:grid-cols-4 xl:grid-cols-5">
+          {(() => {
+            if (allSongList) {
+              return allSongList.map((song) => (
+                <SongCard key={song.slug} song={song} />
+              ));
+            }
+          })()}
+        </SongGrid>
       </Results>
     </Layout>
   );

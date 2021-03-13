@@ -32,12 +32,13 @@ function ContributorPage({ data }) {
               );
             }
           })()}
-          <SongGrid
-            className="grid mt-4 col-gap-3 row-gap-6 md:col-gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3"
-            songList={contributor.songs.sort((a, b) =>
-              a.title > b.title ? 1 : -1
-            )}
-          />
+          <div className="mt-4 ">
+            <SongGrid
+              songList={contributor.songs.sort((a, b) =>
+                a.title > b.title ? 1 : -1
+              )}
+            />
+          </div>
         </div>
       </Results>
     </Layout>

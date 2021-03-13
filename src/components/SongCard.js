@@ -8,11 +8,11 @@ import SongDescription from "./SongDescription";
 
 const SongCard = ({ song }) => (
   <div className="overflow-hidden">
-    <Link to={song.slug}>
+    <Link to={`/` + song.slug}>
       <Thumbnail song={song} />
     </Link>
     <div className="pl-3 pr-1 py-2">
-      <Link to={song.slug}>
+      <Link to={`/` + song.slug}>
         <div className="flex items-center">
           <div className=" text-xl font-medium leading-snug">{song.title}</div>
         </div>

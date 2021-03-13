@@ -4,10 +4,14 @@ import Layout from "./layout";
 import SEO from "./seo";
 import PropTypes from "prop-types";
 import SongGrid from "./SongGrid";
+import SongCard from "./SongCard";
 import Results from "./Results";
 
 function LanguagePage({ data }) {
   const language = data.bsp.language;
+  const languageSongList = language.songs.sort((a, b) =>
+    a.title > b.title ? 1 : -1
+  );
   return (
     <Layout>
       <SEO
@@ -22,12 +26,15 @@ function LanguagePage({ data }) {
           <h1 className="text-3xl font-semibold">
             {language.language_name_en}
           </h1>
-          <SongGrid
-            className="grid mt-4 col-gap-3 row-gap-6 md:col-gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3"
-            songList={language.songs.sort((a, b) =>
-              a.title > b.title ? 1 : -1
-            )}
-          />
+          <SongGrid className="mt-4">
+            {(() => {
+              if (languageSongList) {
+                return languageSongList.map((song) => (
+                  <SongCard key={song.slug} song={song} />
+                ));
+              }
+            })()}
+          </SongGrid>
         </div>
       </Results>
     </Layout>
