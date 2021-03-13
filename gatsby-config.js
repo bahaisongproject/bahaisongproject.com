@@ -12,13 +12,13 @@ module.exports = {
     siteUrl: `https://www.bahaisongproject.com`,
   },
   plugins: [
-    { 
+    {
       resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: "G-5EBGT3JE8D",
         head: true,
-        anonymize: true
-      }
+        anonymize: true,
+      },
     },
     {
       resolve: `gatsby-plugin-react-helmet`,
@@ -149,7 +149,7 @@ module.exports = {
       resolve: `gatsby-plugin-remove-trailing-slashes`,
     },
     {
-      resolve: `gatsby-plugin-netlify`
-    }
+      resolve: `gatsby-plugin-netlify`,
+    },
   ],
 };

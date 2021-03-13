@@ -1,5 +1,5 @@
 import React from "react";
-import { OutboundLink } from 'gatsby-plugin-gtag'
+import { OutboundLink } from "gatsby-plugin-gtag";
 
 const DownloadButton = ({ children, url }) => (
   <OutboundLink href={url} target="_blank" rel="noopener noreferrer">

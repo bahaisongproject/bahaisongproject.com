@@ -62,11 +62,13 @@ function Subscribe() {
             </p>
           </div>
           <iframe
-          scrolling="no"
-          // style={{width: "100% !important"}}
-          className="w-full h-64"
-          src="https://buttondown.email/bsp?as_embed=true"
-          ></iframe><br /><br />
+            scrolling="no"
+            // style={{width: "100% !important"}}
+            className="w-full h-64"
+            src="https://buttondown.email/bsp?as_embed=true"
+          ></iframe>
+          <br />
+          <br />
         </div>
       </Results>
     </Layout>
