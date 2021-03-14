@@ -1,0 +1,159 @@
+const path = require(`path`);
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+const {is_youtube, get_youtube_id} = require("./src/utils/embed")
+
+
+exports.createPages = async ({ actions, store, cache, createNodeId, graphql, reporter }) => {
+
+  const { createNode } = actions;
+
+  // **Note:** The graphql function call returns a Promise
+  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
+  const result = await graphql(`
+    query {
+      bsp: bsp {
+        songs {
+          title
+          slug
+          performances {
+            content_url
+          }
+        }
+        contributors {
+          contributor_id
+          contributor_slug
+        }
+        languages {
+          language_id
+          language_code
+        }
+        tags {
+          tag_id
+          tag_slug
+        }
+      }
+      collections: allFile(
+        filter: {
+          sourceInstanceName: { eq: "collections" }
+          extension: { in: ["md", "mdx"] }
+        }
+      ) {
+        nodes {
+          childMdx {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+      pages: allFile(
+        filter: {
+          sourceInstanceName: { eq: "pages" }
+          extension: { in: ["md", "mdx"] }
+        }
+      ) {
+        nodes {
+          childMdx {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  result.data.bsp.songs.forEach(async (song) => {
+    const youtubePerformances = song.performances.filter((p) => is_youtube(p.content_url))
+    let fileNode = null
+    if (
+      youtubePerformances.length > 0
+    ) {
+      let fileNode = await createRemoteFileNode({
+        url: "https://img.youtube.com/vi/" + get_youtube_id(youtubePerformances[0].content_url) + "/hqdefault.jpg", // string that points to the URL of the image
+        parentNodeId: null, // id of the parent node of the fileNode you are going to create
+        createNode, // helper function in gatsby-node to generate the node
+        createNodeId, // helper function in gatsby-node to generate the node id
+        cache, // Gatsby's cache
+        store, // Gatsby's Redux store
+        ext: ".jpg",
+        name: song.slug,
+      })
+      // console.log(fileNode)
+    }
+    // console.log(fileNode)
+    actions.createPage({
+      path: `/${song.slug}`,
+      component: path.resolve(`./src/components/SongPage.js`),
+      context: {
+        songSlug: song.slug,
+        thumbnail: fileNode,
+      },
+    });
+  });
+
+  result.data.bsp.contributors.forEach((contributor) => {
+    actions.createPage({
+      path: `/contributor/${contributor.contributor_slug}`,
+      component: path.resolve(`./src/components/ContributorPage.js`),
+      context: {
+        contributorId: contributor.contributor_id,
+      },
+    });
+  });
+
+  result.data.bsp.languages.forEach((language) => {
+    actions.createPage({
+      path: `/language/${language.language_code}`,
+      component: path.resolve(`./src/components/LanguagePage.js`),
+      context: {
+        languageId: language.language_id,
+      },
+    });
+  });
+
+  result.data.bsp.tags.forEach((tag) => {
+    actions.createPage({
+      path: `/tag/${tag.tag_slug}`,
+      component: path.resolve(`./src/components/TagPage.js`),
+      context: {
+        tagId: tag.tag_id,
+      },
+    });
+  });
+
+  const pageTemplate = require.resolve(`./src/templates/pageTemplate.js`);
+  const collectionTemplate = require.resolve(
+    `./src/templates/collectionTemplate.js`
+  );
+
+  const pageNodes = result.data.pages.nodes;
+  const collectionNodes = result.data.collections.nodes;
+
+  pageNodes.forEach((node) => {
+    actions.createPage({
+      path: node.childMdx.frontmatter.slug,
+      component: pageTemplate,
+      context: {
+        // additional data can be passed via context
+        slug: node.childMdx.frontmatter.slug,
+      },
+    });
+  });
+  collectionNodes.forEach((node) => {
+    actions.createPage({
+      path: node.childMdx.frontmatter.slug,
+      component: collectionTemplate,
+      context: {
+        // additional data can be passed via context
+        slug: node.childMdx.frontmatter.slug,
+      },
+    });
+  });
+};

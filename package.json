@@ -10,6 +10,7 @@
     "@tailwindcss/typography": "^0.2.0",
     "algoliasearch": "^4.8.6",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "gatsby": "3.0.4",
     "gatsby-cli": "^2.11.9",
     "gatsby-plugin-algolia": "^0.17.0",
