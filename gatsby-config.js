@@ -66,12 +66,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        tailwind: true,
-      },
-    },
     // {
     //   resolve: `gatsby-plugin-algolia`,
     //   options: {
