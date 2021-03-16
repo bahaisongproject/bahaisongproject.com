@@ -70,7 +70,6 @@ module.exports = {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         tailwind: true,
-        purgeOnly: [`src/css/main.css`],
       },
     },
     // {
