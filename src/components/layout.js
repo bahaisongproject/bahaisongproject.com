@@ -16,7 +16,7 @@ function Layout({ children, className, siteName }) {
       <div className="min-h-screen flex flex-col text-gray-900">
         <Header siteName={siteName} />
         <main className={"flex-1 w-full mb-12 " + className}>{children}</main>
-        <footer className="bg-green-blue text-white flex justify-center flex-wrap items-baseline text-sm">
+        <footer className="bg-gradient-to-r from-bspgreen to-bspblue text-white flex justify-center flex-wrap items-baseline text-sm">
           <nav className="flex p-4">
             <ul className="flex">
               <li>
