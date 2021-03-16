@@ -5,7 +5,7 @@ const {is_youtube, get_youtube_id} = require("./src/utils/embed")
 
 exports.createPages = async ({ actions, store, cache, createNodeId, graphql, reporter }) => {
 
-  const { createNode } = actions;
+  const { createNode, createPage } = actions;
 
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
@@ -69,7 +69,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
     return;
   }
 
-  result.data.bsp.songs.forEach(async (song) => {
+  await Promise.all(result.data.bsp.songs.map(async (song) => {
     const youtubePerformances = song.performances.filter((p) => is_youtube(p.content_url))
     let fileNode = null
     if (
@@ -88,18 +88,17 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
       // console.log(fileNode)
     }
     // console.log(fileNode)
-    actions.createPage({
+    createPage({
       path: `/${song.slug}`,
       component: path.resolve(`./src/components/SongPage.js`),
       context: {
         songSlug: song.slug,
-        thumbnail: fileNode,
       },
     });
-  });
+  }));
 
   result.data.bsp.contributors.forEach((contributor) => {
-    actions.createPage({
+    createPage({
       path: `/contributor/${contributor.contributor_slug}`,
       component: path.resolve(`./src/components/ContributorPage.js`),
       context: {
@@ -109,7 +108,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   });
 
   result.data.bsp.languages.forEach((language) => {
-    actions.createPage({
+    createPage({
       path: `/language/${language.language_code}`,
       component: path.resolve(`./src/components/LanguagePage.js`),
       context: {
@@ -119,7 +118,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   });
 
   result.data.bsp.tags.forEach((tag) => {
-    actions.createPage({
+    createPage({
       path: `/tag/${tag.tag_slug}`,
       component: path.resolve(`./src/components/TagPage.js`),
       context: {
@@ -137,7 +136,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   const collectionNodes = result.data.collections.nodes;
 
   pageNodes.forEach((node) => {
-    actions.createPage({
+    createPage({
       path: node.childMdx.frontmatter.slug,
       component: pageTemplate,
       context: {
@@ -147,7 +146,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
     });
   });
   collectionNodes.forEach((node) => {
-    actions.createPage({
+    createPage({
       path: node.childMdx.frontmatter.slug,
       component: collectionTemplate,
       context: {

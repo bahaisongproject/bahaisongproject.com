@@ -52,7 +52,7 @@ function IndexPage({ data }) {
       </Results>
       <div className="flex justify-center mt-12">
         <Link
-          className="border bg-emerald tracking-wide text-white px-4 py-2 rounded-full focus:outline-none"
+          className="border bg-gradient-to-r from-bspgreen to-bspblue tracking-wide text-white px-4 py-2 rounded-full focus:outline-none"
           to="/all-songs"
         >
           More songs

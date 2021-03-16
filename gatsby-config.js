@@ -5,6 +5,9 @@ const queries = require("./src/utils/algolia");
 require("dotenv").config();
 
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
   siteMetadata: {
     title: `bahá'í song project`,
     description: `100+ Bahá'í songs with lyrics, chords and videos`,
@@ -67,7 +70,6 @@ module.exports = {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         tailwind: true,
-        purgeOnly: [`src/css/main.css`],
       },
     },
     // {

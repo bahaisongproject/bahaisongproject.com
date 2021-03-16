@@ -1,6 +1,7 @@
 const songQuery = `{
     bsp {
         songs {
+          objectID: song_id
           title
           slug
           song_description

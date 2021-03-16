@@ -45,7 +45,7 @@ const ExcerptCard = ({ excerpt, song }) => (
               );
               return (
                 <div className="mt-8">
-                  <div className="mt-2 grid col-gap-3 row-gap-6 md:col-gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3">
+                  <div className="mt-2 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3">
                     {songs.map((song) => (
                       <div key="0" className="">
                         <SongCard song={song} />

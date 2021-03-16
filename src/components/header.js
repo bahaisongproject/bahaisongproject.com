@@ -20,7 +20,7 @@ function Header({ siteName }) {
   `);
 
   return (
-    <header className="bg-green-blue">
+    <header className="bg-gradient-to-r from-bspgreen to-bspblue">
       <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:px-8 xs:py-4 md:py-4">
         <Link to="/">
           <h1 className="flex items-center text-white no-underline">

@@ -121,7 +121,7 @@ function Contact() {
               </div>
             </div>
             <input
-              className="bg-emerald hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-gradient-to-r from-bspgreen to-bspblue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               type="submit"
               value={
                 state.isLoading ? "..." : state.submitted ? "Sent ✓" : "Send"

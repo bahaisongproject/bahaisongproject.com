@@ -8,7 +8,7 @@ import Results from "../components/Results";
 
 function AllSongs({ data }) {
   const allSongList = data.bsp.songs.sort((a, b) =>
-    a.title > b.title ? 1 : -1
+    a.slug > b.slug ? 1 : -1
   );
   return (
     <Layout>

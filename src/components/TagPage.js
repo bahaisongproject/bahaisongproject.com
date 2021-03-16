@@ -9,7 +9,7 @@ import Results from "./Results";
 
 function TagPage({ data }) {
   const tag = data.bsp.tag;
-  const tagSongList = tag.songs.sort((a, b) => (a.title > b.title ? 1 : -1));
+  const tagSongList = tag.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
   return (
     <Layout>
       <SEO

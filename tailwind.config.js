@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        "28": "7rem",
+        28: "7rem",
         "1/2": "50%",
         "1/3": "33.333333%",
         "2/3": "66.666667%",
@@ -30,7 +30,7 @@ module.exports = {
         "9/12": "75%",
         "10/12": "83.333333%",
         "11/12": "91.666667%",
-        "14/25": "56%",
+        "9/16": "56.25%",
       },
       fontFamily: {
         serif: [
@@ -59,8 +59,8 @@ module.exports = {
         ],
       },
       colors: {
-        bspblue: "#416788",
-        bspgreen: "#89B4AD",
+        'bspblue': '#416788',
+        'bspgreen': '#89B4AD',
       },
     },
     screens: {
@@ -93,19 +93,9 @@ module.exports = {
         colors: ["circle", "#CCC", "#000"],
       },
     }),
-    typography: {
-      default: {
-        css: {
-          noprose: false,
-        },
-      },
-    },
   },
   variants: {
     gradients: ["responsive", "hover"],
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("tailwindcss-plugins/gradients"),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
