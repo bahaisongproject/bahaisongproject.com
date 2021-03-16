@@ -10,7 +10,7 @@ import Results from "./Results";
 function LanguagePage({ data }) {
   const language = data.bsp.language;
   const languageSongList = language.songs.sort((a, b) =>
-    a.title > b.title ? 1 : -1
+    a.slug > b.slug ? 1 : -1
   );
   return (
     <Layout>

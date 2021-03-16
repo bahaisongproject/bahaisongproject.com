@@ -4,11 +4,13 @@ import Layout from "./layout";
 import SEO from "./seo";
 import PropTypes from "prop-types";
 import SongGrid from "./SongGrid";
+import SongCard from "./SongCard";
 import Results from "./Results";
 import DownloadButton from "./DownloadButton";
 
 function ContributorPage({ data }) {
   const contributor = data.bsp.contributor;
+  const contributorSongList = contributor.songs.sort((a, b) => a.title > b.title ? 1 : -1)
   return (
     <Layout>
       <SEO
@@ -33,11 +35,15 @@ function ContributorPage({ data }) {
             }
           })()}
           <div className="mt-4 ">
-            <SongGrid
-              songList={contributor.songs.sort((a, b) =>
-                a.title > b.title ? 1 : -1
-              )}
-            />
+            <SongGrid className="mt-4">
+              {(() => {
+                if (contributorSongList) {
+                  return contributorSongList.map((song) => (
+                    <SongCard key={song.slug} song={song} />
+                  ));
+                }
+              })()}
+            </SongGrid>
           </div>
         </div>
       </Results>
