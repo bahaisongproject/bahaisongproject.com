@@ -22,6 +22,7 @@
     "gatsby-plugin-manifest": "3.0.0",
     "gatsby-plugin-mdx": "^2.0.1",
     "gatsby-plugin-netlify": "^3.0.1",
+    "gatsby-plugin-open-graph-images": "^0.1.7",
     "gatsby-plugin-postcss": "4.0.0",
     "gatsby-plugin-react-helmet": "4.0.0",
     "gatsby-plugin-remove-trailing-slashes": "^3.0.0",
@@ -49,7 +50,7 @@
     "react-pdf": "^5.2.0",
     "react-responsive-embed": "^2.1.0",
     "react-soundcloud": "^0.1.1",
-    "tailwindcss": "^2.0.3",
+    "tailwindcss": "^2.0.4",
     "webpack": "^5.26.0"
   },
   "keywords": [

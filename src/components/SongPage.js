@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import React from "react";
+import React, { Component } from 'react';
 import Layout from "./layout";
 import SEO from "./seo";
 import PropTypes from "prop-types";
@@ -11,44 +11,58 @@ import PerformanceList from "./PerformanceList";
 import ExcerptList from "./ExcerptList";
 import SongDescription from "./SongDescription";
 import Results from "./Results";
+import {describe_song} from "../utils/description"
 
-function Song({ data }) {
-  const song = data.bsp.song;
-  return (
-    <Layout>
-      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title={song.title} />
-      <Results>
-        <div className="max-w-4xl mx-auto px-4 mt-6">
-          <div className="flex flex-wrap">
-            <LanguageList song={song} />
-            <TagList song={song} />
-          </div>
-          <div className="flex flex-col mt-6 xs:items-end xs:flex-row xs:place-content-between">
-            <div>
-              <h1 className="text-3xl font-semibold font-sans leading-tight">
-                {song.title}
-              </h1>
-              <ContributorList
-                className="text-gray-700 leading-tight text-lg mt-1"
-                song={song}
-              />
-              <SongDescription
-                className="text-gray-700 leading-tight text-lg mt-1"
-                song={song}
-              />
+class Song extends Component {
+  render() {
+    const song = this.props.data.bsp.song;
+    const description = describe_song(song)
+    const image = {
+      src: `/__social/${song.slug}.png`,
+      width: 1200,
+      height: 628
+    }
+    return (
+      <Layout>
+        <SEO
+          title={song.title}
+          description={description}
+          image={image}
+          pathname={this.props.location.pathname}
+        />
+        <Results>
+          <div className="max-w-4xl mx-auto px-4 mt-6">
+            <div className="flex flex-wrap">
+              <LanguageList song={song} />
+              <TagList song={song} />
             </div>
-            <DownloadButton
-              url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
-            >
-              Song Sheet
-            </DownloadButton>
+            <div className="flex flex-col mt-6 xs:items-end xs:flex-row xs:place-content-between">
+              <div>
+                <h1 className="text-3xl font-semibold font-sans leading-tight">
+                  {song.title}
+                </h1>
+                <ContributorList
+                  className="text-gray-700 leading-tight text-lg mt-1"
+                  song={song}
+                />
+                <SongDescription
+                  className="text-gray-700 leading-tight text-lg mt-1"
+                  song={song}
+                />
+              </div>
+              <DownloadButton
+                url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
+              >
+                Song Sheet
+              </DownloadButton>
+            </div>
+            <PerformanceList song={song} />
+            <ExcerptList song={song} />
           </div>
-          <PerformanceList song={song} />
-          <ExcerptList song={song} />
-        </div>
-      </Results>
-    </Layout>
-  );
+        </Results>
+      </Layout>
+    );
+  }
 }
 
 Song.propTypes = {

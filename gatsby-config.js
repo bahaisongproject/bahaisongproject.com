@@ -10,9 +10,16 @@ module.exports = {
   },
   siteMetadata: {
     title: `bahá'í song project`,
-    description: `100+ Bahá'í songs with lyrics, chords and videos`,
+    description: `200+ Bahá'í songs with lyrics, chords and videos`,
     author: `Dayyan Smith`,
     siteUrl: `https://www.bahaisongproject.com`,
+    keywords: [
+      "bahai",
+      "music",
+      "songs",
+      "videos",
+      "chords"
+    ],
   },
   plugins: [
     {
@@ -25,6 +32,9 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-react-helmet`,
+    },
+    {
+      resolve: `gatsby-plugin-open-graph-images`,
     },
     {
       resolve: `gatsby-plugin-eslint`,

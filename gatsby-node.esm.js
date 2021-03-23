@@ -1,11 +1,24 @@
 const path = require(`path`);
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+const { createOpenGraphImage } = require(`gatsby-plugin-open-graph-images`);
 const {is_youtube, get_youtube_id} = require("./src/utils/embed")
 
 
 exports.createPages = async ({ actions, store, cache, createNodeId, graphql, reporter }) => {
 
   const { createNode, createPage } = actions;
+
+  createOpenGraphImage(createPage, {
+    path: "/__social/default.png",
+    component: path.resolve(`src/templates/defaultPreviewImage.js`),
+    size: {
+      width: 1200,
+      height: 628
+    },
+    context: {
+      description: "a image created with gatsby-plugin-open-graph-images"
+    }
+  });
 
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
@@ -93,6 +106,15 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
       component: path.resolve(`./src/components/SongPage.js`),
       context: {
         songSlug: song.slug,
+        ogImage: createOpenGraphImage(createPage, {
+          path: `__social/${song.slug}.png`,
+          component: path.resolve(`src/templates/songPreviewImage.js`),
+          size: {
+            width: 1200,
+            height: 628
+          },
+          context: { songSlug: song.slug }
+        })
       },
     });
   }));

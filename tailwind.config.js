@@ -1,5 +1,8 @@
 module.exports = {
-  purge: ["./src/**/*.js"],
+  purge: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue}',
+  ],
   theme: {
     extend: {
       spacing: {
@@ -42,7 +45,7 @@ module.exports = {
           "serif",
         ],
         sans: [
-          "Jost",
+          "Inter",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
