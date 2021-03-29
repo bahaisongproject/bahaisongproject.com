@@ -14,9 +14,9 @@ function has_video(song){
 function describe_song(song) {
     var description = ""
     if (has_video(song)) {
-        description = `Get lyrics and chords for ${song.title} and learn how play with a video.`
+        description = `Get lyrics and chords for ${song.title} and learn how play with a video`
     } else {
-        description = `Get lyrics and chords for ${song.title}.`
+        description = `Get lyrics and chords for ${song.title}`
     }
     return description
 }

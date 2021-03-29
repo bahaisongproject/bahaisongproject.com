@@ -7,12 +7,20 @@ import SongCard from "../components/SongCard";
 import Results from "../components/Results";
 
 function AllSongs({ data }) {
+  const image = {
+    src: `/meta.png`,
+    width: 1200,
+    height: 628
+  }
   const allSongList = data.bsp.songs.sort((a, b) =>
     a.slug > b.slug ? 1 : -1
   );
   return (
     <Layout>
-      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="All Songs" />
+      <SEO keywords={[`bahai`, `song`, `music`, `chords`]}
+      title="All Songs"
+      image={image}
+      />
       <Results>
         <div className="flex justify-center px-4 mt-6 mb-4">
           <h1 className="text-2xl text-gray-900 leading-none font-extrabold">

@@ -8,6 +8,11 @@ import SongGrid from "../components/SongGrid";
 import SongCard from "../components/SongCard";
 
 function IndexPage({ data }) {
+  const image = {
+    src: `/meta.png`,
+    width: 1200,
+    height: 628
+  }
   const featuredSongsSlugList = [
     "kuna-mtu",
     "kindle-the-fire-of-love",
@@ -21,7 +26,10 @@ function IndexPage({ data }) {
   const recentSongList = [...data.bsp.songs].reverse().slice(0, 10);
   return (
     <Layout siteName="index">
-      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Home" />
+      <SEO
+        keywords={[`bahai`, `song`, `music`, `chords`]}
+        title="Home"
+        image={image} />
       <Results>
         <div className="flex justify-center px-4 mt-6 mb-4">
           <h1 className="text-2xl text-gray-900 leading-none font-normal">

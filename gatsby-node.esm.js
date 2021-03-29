@@ -8,18 +8,6 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
 
   const { createNode, createPage } = actions;
 
-  createOpenGraphImage(createPage, {
-    path: "/__social/default.png",
-    component: path.resolve(`src/templates/defaultPreviewImage.js`),
-    size: {
-      width: 1200,
-      height: 628
-    },
-    context: {
-      description: "a image created with gatsby-plugin-open-graph-images"
-    }
-  });
-
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
   const result = await graphql(`
