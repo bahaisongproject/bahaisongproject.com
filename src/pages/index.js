@@ -28,7 +28,6 @@ function IndexPage({ data }) {
     <Layout siteName="index">
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
-        title="Home"
         image={image} />
       <Results>
         <div className="flex justify-center px-4 mt-6 mb-4">

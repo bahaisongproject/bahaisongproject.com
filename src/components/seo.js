@@ -93,7 +93,7 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
         )
         .concat(meta)}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={title ? `%s | ${site.siteMetadata.title}` : title}
       link={
         canonical
           ? [
