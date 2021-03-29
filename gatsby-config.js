@@ -11,7 +11,7 @@ module.exports = {
   siteMetadata: {
     title: `bahá'í song project`,
     description: `200+ Bahá'í songs with lyrics, chords and videos`,
-    author: `Dayyan Smith`,
+    author: `@bahaisongp`,
     siteUrl: `https://www.bahaisongproject.com`,
     keywords: [
       "bahai",
@@ -144,6 +144,9 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/__generated/*`],
+      }  
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
