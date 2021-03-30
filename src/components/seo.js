@@ -41,7 +41,7 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
         },
         {
           property: `og:title`,
-          content: title ? `%s | ${site.siteMetadata.title}` : title,
+          content: title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title,
         },
         {
           property: `og:description`,
@@ -57,7 +57,7 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
         },
         {
           name: `twitter:title`,
-          content: title ? `%s | ${site.siteMetadata.title}` : title,
+          content: title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title,
         },
         {
           name: `twitter:description`,
@@ -92,8 +92,7 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
               ]
         )
         .concat(meta)}
-      title={title}
-      titleTemplate={title ? `%s | ${site.siteMetadata.title}` : title}
+      title={title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title}
       link={
         canonical
           ? [
