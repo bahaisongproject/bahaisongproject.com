@@ -1,7 +1,5 @@
 # bahá'í song project website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d764f493-7b18-4c5d-8cf9-b644faf80a39/deploy-status)](https://app.netlify.com/sites/wwwbahaisongprojectcom/deploys)
-
 A static website generated using Gatsby
 
 Visit us at https://www.bahaisongproject.com
