@@ -15,7 +15,7 @@ function IndexPage({ data }) {
   }
   const featuredSongsSlugList = [
     "kuna-mtu",
-    "kindle-the-fire-of-love",
+    "remember-at-all-times",
     "kodi-palinso-wina",
     "dies-ist-der-tag",
     "gioisci",
