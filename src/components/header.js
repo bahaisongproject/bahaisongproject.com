@@ -88,8 +88,8 @@ function Header({ siteName }) {
               className: ``,
             },
             {
-              route: `/about`,
-              title: `About`,
+              route: `/contribute`,
+              title: `Contribute`,
               className: ``,
             },
           ].map((link) => (

@@ -39,6 +39,11 @@ function Layout({ children, className, siteName }) {
                   Subscribe
                 </Link>
               </li>
+              <li>
+                <Link className="p-2" to="/about">
+                  About
+                </Link>
+              </li>
             </ul>
           </nav>
           <div className="flex justify-center flex-wrap items-center p-4 text-sm">
