@@ -7,7 +7,7 @@ const searchIndices = [
   { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
 ];
 
-function Header({ siteName }) {
+function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {

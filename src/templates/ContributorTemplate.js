@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import React from "react";
-import Layout from "../components/Layout";
-import SEO from "../components/Seo";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 import SongCard from "../components/SongCard";
 import Results from "../components/Results";
 import Button from "../components/Button";

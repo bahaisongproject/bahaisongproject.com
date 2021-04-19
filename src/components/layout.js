@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Link } from "gatsby";
 import algoliasearch from "algoliasearch";
 import { InstantSearch } from "react-instantsearch-dom";
 import Header from "./header";
