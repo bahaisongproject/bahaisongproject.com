@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image"
 
 
-export default function Template({
+export default function SongPreviewImageTemplate({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const song = data.bsp.song

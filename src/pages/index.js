@@ -4,7 +4,6 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PropTypes from "prop-types";
 import Results from "../components/Results";
-import SongGrid from "../components/SongGrid";
 import SongCard from "../components/SongCard";
 
 function IndexPage({ data }) {
@@ -33,19 +32,19 @@ function IndexPage({ data }) {
             Featured
           </h1>
         </div>
-        <SongGrid className="mt-4 xs:mx-3 md:mx-4 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="mt-4 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {(() => {
             return featuredSongList.map((song) => (
               <SongCard key={song.slug} song={song} />
             ));
           })()}
-        </SongGrid>
+        </div>
         <div className="flex justify-center px-4 mt-6 mb-4">
           <h1 className="text-2xl text-gray-900 leading-none font-normal">
             Recent Additions
           </h1>
         </div>
-        <SongGrid className="mt-4 xs:mx-3 md:mx-4 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="mt-4 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {(() => {
             if (recentSongList) {
               return recentSongList.map((song) => (
@@ -53,7 +52,7 @@ function IndexPage({ data }) {
               ));
             }
           })()}
-        </SongGrid>
+        </div>
       </Results>
       <div className="flex justify-center mt-12">
         <Link

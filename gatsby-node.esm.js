@@ -91,12 +91,12 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
     // console.log(fileNode)
     createPage({
       path: `/${song.slug}`,
-      component: path.resolve(`./src/components/SongPage.js`),
+      component: path.resolve(`./src/templates/SongTemplate.js`),
       context: {
         songSlug: song.slug,
         ogImage: createOpenGraphImage(createPage, {
           path: `__social/${song.slug}.png`,
-          component: path.resolve(`src/templates/songPreviewImage.js`),
+          component: path.resolve(`src/templates/SongPreviewImageTemplate.js`),
           size: {
             width: 1200,
             height: 628
@@ -110,7 +110,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   result.data.bsp.contributors.forEach((contributor) => {
     createPage({
       path: `/contributor/${contributor.contributor_slug}`,
-      component: path.resolve(`./src/components/ContributorPage.js`),
+      component: path.resolve(`./src/templates/ContributorTemplate.js`),
       context: {
         contributorId: contributor.contributor_id,
       },
@@ -120,7 +120,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   result.data.bsp.languages.forEach((language) => {
     createPage({
       path: `/language/${language.language_code}`,
-      component: path.resolve(`./src/components/LanguagePage.js`),
+      component: path.resolve(`./src/templates/LanguageTemplate.js`),
       context: {
         languageId: language.language_id,
       },
@@ -130,16 +130,16 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   result.data.bsp.tags.forEach((tag) => {
     createPage({
       path: `/tag/${tag.tag_slug}`,
-      component: path.resolve(`./src/components/TagPage.js`),
+      component: path.resolve(`./src/templates/TagTemplate.js`),
       context: {
         tagId: tag.tag_id,
       },
     });
   });
 
-  const pageTemplate = require.resolve(`./src/templates/pageTemplate.js`);
-  const collectionTemplate = require.resolve(
-    `./src/templates/collectionTemplate.js`
+  const PageTemplate = require.resolve(`./src/templates/PageTemplate.js`);
+  const CollectionTemplate = require.resolve(
+    `./src/templates/CollectionTemplate.js`
   );
 
   const pageNodes = result.data.pages.nodes;
@@ -148,7 +148,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   pageNodes.forEach((node) => {
     createPage({
       path: node.childMdx.frontmatter.slug,
-      component: pageTemplate,
+      component: PageTemplate,
       context: {
         // additional data can be passed via context
         slug: node.childMdx.frontmatter.slug,
@@ -158,7 +158,7 @@ exports.createPages = async ({ actions, store, cache, createNodeId, graphql, rep
   collectionNodes.forEach((node) => {
     createPage({
       path: node.childMdx.frontmatter.slug,
-      component: collectionTemplate,
+      component: CollectionTemplate,
       context: {
         // additional data can be passed via context
         slug: node.childMdx.frontmatter.slug,

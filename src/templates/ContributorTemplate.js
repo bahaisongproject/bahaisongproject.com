@@ -1,16 +1,16 @@
 import { graphql } from "gatsby";
 import React from "react";
-import Layout from "./layout";
-import SEO from "./seo";
-import PropTypes from "prop-types";
-import SongGrid from "./SongGrid";
-import SongCard from "./SongCard";
-import Results from "./Results";
-import DownloadButton from "./DownloadButton";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import SongCard from "../components/SongCard";
+import Results from "../components/Results";
+import Button from "../components/Button";
 
-function ContributorPage({ data }) {
+function ContributorTemplate({ data }) {
   const contributor = data.bsp.contributor;
-  const contributorSongList = contributor.songs.sort((a, b) => a.title > b.title ? 1 : -1)
+  const contributorSongList = contributor.songs.sort((a, b) =>
+    a.title > b.title ? 1 : -1
+  );
   return (
     <Layout>
       <SEO
@@ -27,15 +27,11 @@ function ContributorPage({ data }) {
           </h1>
           {(() => {
             if (contributor.contributor_url) {
-              return (
-                <DownloadButton url={contributor.contributor_url}>
-                  Website
-                </DownloadButton>
-              );
+              return <Button url={contributor.contributor_url}>Website</Button>;
             }
           })()}
           <div className="mt-4 ">
-            <SongGrid className="mt-4">
+            <div className="mt-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3">
               {(() => {
                 if (contributorSongList) {
                   return contributorSongList.map((song) => (
@@ -43,17 +39,13 @@ function ContributorPage({ data }) {
                   ));
                 }
               })()}
-            </SongGrid>
+            </div>
           </div>
         </div>
       </Results>
     </Layout>
   );
 }
-
-ContributorPage.propTypes = {
-  data: PropTypes.object,
-};
 
 export const query = graphql`
   query($contributorId: Int!) {
@@ -89,4 +81,4 @@ export const query = graphql`
   }
 `;
 
-export default ContributorPage;
+export default ContributorTemplate;

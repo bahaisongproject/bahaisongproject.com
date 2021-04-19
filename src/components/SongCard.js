@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import Thumbnail from "./Thumbnail";
-import LanguageList from "./LanguageList";
-import TagList from "./TagList";
-import ContributorList from "./ContributorList";
-import SongDescription from "./SongDescription";
 
 const SongCard = ({ song }) => (
   <div className="overflow-hidden">
@@ -17,19 +13,55 @@ const SongCard = ({ song }) => (
           <div className=" text-xl font-medium leading-snug">{song.title}</div>
         </div>
       </Link>
-      <ContributorList className=" text-gray-700 leading-tight" song={song} />
+
+      {/* Contributors */}
+      <div className="flex flex-wrap">
+        {song.contributors.map((contributor, i) => (
+          <div
+            className={
+              "contributor-name text-gray-700 leading-tight text-lg mt-1"
+            }
+            key="0"
+          >
+            <Link to={"/contributor/" + contributor.contributor_slug}>
+              {contributor.contributor_name}
+            </Link>
+          </div>
+        ))}
+      </div>
+
+      {/* Show song description if no contributors, if available */}
       {(() => {
         if (song.contributors.length === 0)
           return (
-            <SongDescription
-              className="text-gray-700 leading-tight"
-              song={song}
-            />
+            <div className="text-gray-700 leading-tight">
+              {song.song_description}
+            </div>
           );
       })()}
+
+      {/* Show languages and tags under song title */}
       <div className="flex flex-wrap">
-        <LanguageList song={song} />
-        <TagList song={song} />
+        {/* Languages */}
+        {song.languages.map((language) => (
+          <div
+            className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
+            key="0"
+          >
+            <Link to={"/language/" + language.language_code}>
+              {language.language_name_en}
+            </Link>
+          </div>
+        ))}
+        {/* Tags */}
+        {song.tags.map((tag) => (
+          <div
+            className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
+            key="0"
+          >
+            <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>
+          </div>
+        ))}
       </div>
     </div>
   </div>

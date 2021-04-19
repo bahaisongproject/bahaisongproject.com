@@ -6,20 +6,14 @@ require("dotenv").config();
 
 module.exports = {
   flags: {
-    DEV_SSR: true
+    DEV_SSR: true,
   },
   siteMetadata: {
     title: `bahá'í song project`,
     description: `200+ Bahá'í songs with lyrics, chords and videos`,
     author: `@bahaisongp`,
     siteUrl: `https://www.bahaisongproject.com`,
-    keywords: [
-      "bahai",
-      "music",
-      "songs",
-      "videos",
-      "chords"
-    ],
+    keywords: ["bahai", "music", "songs", "videos", "chords"],
   },
   plugins: [
     {
@@ -33,9 +27,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-helmet`,
     },
-    {
-      resolve: `gatsby-plugin-open-graph-images`,
-    },
+    ...(process.env.SOCIAL_IMAGES_SKIP_GENERATION == "false"
+      ? [
+          {
+            resolve: `gatsby-plugin-open-graph-images`,
+          },
+        ]
+      : []),
     {
       resolve: `gatsby-plugin-eslint`,
     },
@@ -76,15 +74,16 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-algolia`,
-    //   options: {
-    //     appId: process.env.GATSBY_ALGOLIA_APP_ID,
-    //     apiKey: process.env.ALGOLIA_ADMIN_KEY,
-    //     queries,
-    //     chunkSize: 10000, // default: 1000
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+        skipIndexing: process.env.ALGOLIA_SKIP_INDEXING == "true",
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -146,7 +145,7 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         exclude: [`/__generated/*`],
-      }  
+      },
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,

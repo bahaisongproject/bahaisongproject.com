@@ -1,7 +1,7 @@
 import React from "react";
 import { OutboundLink } from "gatsby-plugin-gtag";
 
-const DownloadButton = ({ children, url }) => (
+const Button = ({ children, url }) => (
   <OutboundLink href={url} target="_blank" rel="noopener noreferrer">
     <button className="flex items-center font-medium text-gray-100 bg-bspgreen bg-gradient-to-r from-orange-400 to-teal-600 py-2 px-4 mt-4 rounded-full whitespace-no-wrap focus:outline-none">
       {children}
@@ -13,4 +13,4 @@ const DownloadButton = ({ children, url }) => (
   </OutboundLink>
 );
 
-export default DownloadButton;
+export default Button;
