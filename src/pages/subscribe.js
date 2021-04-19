@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from "../components/Layout";
+import SEO from "../components/Seo";
 import Results from "../components/Results";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 
@@ -49,11 +49,15 @@ function Subscribe() {
   const image = {
     src: `/meta.png`,
     width: 1200,
-    height: 628
-  }
+    height: 628,
+  };
   return (
     <Layout>
-      <SEO keywords={[`bahai`, `song`, `music`, `chords`]} title="Subscribe" image={image} />
+      <SEO
+        keywords={[`bahai`, `song`, `music`, `chords`]}
+        title="Subscribe"
+        image={image}
+      />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6 mb-2">
           <h1 className="mb-8 text-5xl text-gray-900 leading-tight font-extrabold">

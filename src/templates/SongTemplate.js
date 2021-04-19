@@ -1,8 +1,7 @@
 import { graphql, Link } from "gatsby";
 import React, { Component } from "react";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import PropTypes from "prop-types";
+import Layout from "../components/Layout";
+import SEO from "../components/Seo";
 import Button from "../components/Button";
 import ContentEmbedder from "../components/embedding/ContentEmbedder";
 import ExcerptCard from "../components/ExcerptCard";
