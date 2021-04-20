@@ -1,117 +1,328 @@
-import { graphql, useStaticQuery, Link } from "gatsby";
-import React, { useState } from "react";
-import CustomSearchBox from "./SearchBox";
+/* This example requires Tailwind CSS v2.0+ */
+import React, { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import {
+  BookmarkAltIcon,
+  BookOpenIcon,
+  CalendarIcon,
+  ChartBarIcon,
+  CollectionIcon,
+  CursorClickIcon,
+  ExclamationCircleIcon,
+  MenuIcon,
+  MusicNoteIcon,
+  PhoneIcon,
+  PlayIcon,
+  QuestionMarkCircleIcon,
+  RefreshIcon,
+  ShieldCheckIcon,
+  SupportIcon,
+  ViewGridIcon,
+  XIcon,
+} from "@heroicons/react/outline";
+import { ChevronDownIcon } from "@heroicons/react/solid";
+import SearchBox from "./SearchBox";
 import logo from "../images/logo_100x100.png";
 
-const searchIndices = [
-  { name: `bsp-songs`, title: `Songs`, hitComp: `SongHit` },
+const solutions = [
+  {
+    name: "All Songs",
+    description: "View all songs",
+    href: "#",
+    icon: MusicNoteIcon,
+  },
+  {
+    name: "Song Book",
+    description: "Download a PDF with all song sheets",
+    href: "#",
+    icon: BookOpenIcon,
+  },
+  {
+    name: "Collections",
+    description: "View curated collections",
+    href: "/collections",
+    icon: CollectionIcon,
+  },
 ];
 
-function Header() {
-  const [isExpanded, toggleExpansion] = useState(false);
-  const { site } = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+const callsToAction = [
+  { name: "Request Song", href: "/contribute", icon: QuestionMarkCircleIcon },
+  { name: "Report Error", href: "/contact", icon: ExclamationCircleIcon },
+];
+const resources = [
+  {
+    name: "Help Center",
+    description:
+      "Get all of your questions answered in our forums or contact support.",
+    href: "#",
+    icon: SupportIcon,
+  },
+  {
+    name: "Guides",
+    description:
+      "Learn how to maximize our platform to get the most out of it.",
+    href: "#",
+    icon: BookmarkAltIcon,
+  },
+  {
+    name: "Events",
+    description:
+      "See what meet-ups and other events we might be planning near you.",
+    href: "#",
+    icon: CalendarIcon,
+  },
+  {
+    name: "Security",
+    description: "Understand how we take your privacy seriously.",
+    href: "#",
+    icon: ShieldCheckIcon,
+  },
+];
+const recentPosts = [
+  { id: 1, name: "Your Favorites", href: "/collection/your-favourites" },
+  {
+    id: 2,
+    name: "For Children",
+    href: "/collection/for-children",
+  },
+  {
+    id: 3,
+    name: "The Centenary of the Ascension of ‘Abdu’l-Bahá",
+    href: "/collection/centenary-ascension-abdul-baha",
+  },
+];
 
-  return (
-    <header className="bg-gradient-to-r from-bspgreen to-bspblue">
-      <div className="flex flex-wrap items-center justify-between p-4 mx-auto md:px-8 xs:py-4 md:py-4">
-        <Link to="/">
-          <h1 className="flex items-center text-white no-underline">
-            <img src={logo} alt="Logo" className="w-8" />
-            <div className="flex">
-              <div className="text-xl font-serif tracking-normal font-bold ml-1">
-                {site.siteMetadata.title}
-              </div>
-            </div>
-          </h1>
-        </Link>
-        <div className={`flex-grow ml-16 mr-8 hidden lg:block`}>
-          <CustomSearchBox />
-        </div>
-        <button
-          className="flex items-center px-3 py-2 text-white md:hidden focus:outline-none"
-          onClick={() => toggleExpansion(!isExpanded)}
-        >
-          <svg
-            className={isExpanded ? `hidden` : `w-6 fill-current`}
-            viewBox="0 0 20 20"
-          >
-            <title>Menu</title>
-            <path
-              fillRule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-          <svg
-            className={isExpanded ? `w-6 fill-current` : `hidden`}
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </button>
-        <nav
-          className={`${
-            isExpanded ? `` : `hidden`
-          } md:flex md:items-baseline w-full md:w-auto`}
-        >
-          {[
-            {
-              route: `/all-songs`,
-              title: `All Songs`,
-              className: `${isExpanded ? `` : `text-3xl font-bold`}`,
-            },
-            {
-              route: `/collections`,
-              title: `Collections`,
-              className: `${isExpanded ? `` : ``}`,
-            },
-            {
-              route: `/songbook`,
-              title: `Song Book`,
-              className: ``,
-            },
-            {
-              route: `/contact`,
-              title: `Contact`,
-              className: ``,
-            },
-            {
-              route: `/contribute`,
-              title: `Contribute`,
-              className: ``,
-            },
-          ].map((link) => (
-            <Link
-              className={
-                "block mt-4 text-lg  text-white no-underline md:inline-block md:mt-0 md:ml-6" +
-                " " +
-                link.className
-              }
-              key={link.title}
-              to={link.route}
-            >
-              {link.title}
-            </Link>
-          ))}
-        </nav>
-      </div>
-      <div className={`flex justify-center mb-4 mx-4 lg:hidden`}>
-        <CustomSearchBox />
-      </div>
-    </header>
-  );
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
 }
 
-export default Header;
+export default function Example() {
+  return (
+    <Popover className="relative bg-white z-10">
+      {({ open }) => (
+        <>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+              <div className="flex justify-start">
+                <a href="/">
+                  <span className="sr-only">bahá&apos;í song project</span>
+                  <img className="h-8 w-auto sm:h-10" src={logo} alt="" />
+                </a>
+              </div>
+              <div className={`flex ml-6 mr-4 max-w-48 flex-1`}>
+                <SearchBox />
+              </div>
+              <div className="-mr-2 -my-2 md:hidden">
+                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <span className="sr-only">Open menu</span>
+                  <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                </Popover.Button>
+              </div>
+              <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
+                <Popover.Group as="nav" className="hidden md:flex space-x-10">
+                  <Popover className="relative">
+                    {({ open }) => (
+                      <>
+                        <Popover.Button
+                          className={classNames(
+                            open ? "text-gray-900" : "text-gray-500",
+                            "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          )}
+                        >
+                          <span>Explore</span>
+                          <ChevronDownIcon
+                            className={classNames(
+                              open ? "text-gray-600" : "text-gray-400",
+                              "ml-2 h-5 w-5 group-hover:text-gray-500"
+                            )}
+                            aria-hidden="true"
+                          />
+                        </Popover.Button>
+
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          enter="transition ease-out duration-200"
+                          enterFrom="opacity-0 translate-y-1"
+                          enterTo="opacity-100 translate-y-0"
+                          leave="transition ease-in duration-150"
+                          leaveFrom="opacity-100 translate-y-0"
+                          leaveTo="opacity-0 translate-y-1"
+                        >
+                          <Popover.Panel
+                            static
+                            className="absolute z-10 mt-3 transform px-2 w-screen max-w-md sm:px-0 ml-0 left-1/2 -translate-x-1/2"
+                          >
+                            <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                              <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                                {solutions.map((item) => (
+                                  <a
+                                    key={item.name}
+                                    href={item.href}
+                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                                  >
+                                    <item.icon
+                                      className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                      aria-hidden="true"
+                                    />
+                                    <div className="ml-4">
+                                      <p className="text-base font-medium text-gray-900">
+                                        {item.name}
+                                      </p>
+                                      <p className="mt-1 text-sm text-gray-500">
+                                        {item.description}
+                                      </p>
+                                    </div>
+                                  </a>
+                                ))}
+                              </div>
+                              <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
+                                <div>
+                                  <h3 className="text-sm tracking-wide font-medium text-gray-500 uppercase">
+                                    Featured Collections
+                                  </h3>
+                                  <ul className="mt-4 space-y-4">
+                                    {recentPosts.map((post) => (
+                                      <li
+                                        key={post.id}
+                                        className="text-base truncate"
+                                      >
+                                        <a
+                                          href={post.href}
+                                          className="font-medium text-gray-900 hover:text-gray-700"
+                                        >
+                                          {post.name}
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div className="mt-5 text-sm">
+                                  <a
+                                    href="/collections"
+                                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                                  >
+                                    {" "}
+                                    View all collections{" "}
+                                    <span aria-hidden="true">&rarr;</span>
+                                  </a>
+                                </div>
+                              </div>
+                              <div className="px-5 py-5 bg-gray-50 space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
+                                {callsToAction.map((item) => (
+                                  <div key={item.name} className="flow-root">
+                                    <a
+                                      href={item.href}
+                                      className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
+                                    >
+                                      <item.icon
+                                        className="flex-shrink-0 h-6 w-6 text-gray-400"
+                                        aria-hidden="true"
+                                      />
+                                      <span className="ml-3">{item.name}</span>
+                                    </a>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </Popover.Panel>
+                        </Transition>
+                      </>
+                    )}
+                  </Popover>
+                </Popover.Group>
+                <a
+                  href="/contact"
+                  className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                >
+                  Contact
+                </a>
+                <a
+                  href="/contribute"
+                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                >
+                  Contribute
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Popover */}
+          <Transition
+            show={open}
+            as={Fragment}
+            enter="duration-200 ease-out"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="duration-100 ease-in"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <Popover.Panel
+              focus
+              static
+              className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+            >
+              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+                <div className="pt-5 pb-6 px-5">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <img
+                        className="h-8 w-auto"
+                        src={logo}
+                        alt="bahá'í song project"
+                      />
+                    </div>
+                    <div className="-mr-2">
+                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span className="sr-only">Close menu</span>
+                        <XIcon className="h-6 w-6" aria-hidden="true" />
+                      </Popover.Button>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <nav className="grid gap-y-8">
+                      {solutions.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                        >
+                          <item.icon
+                            className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                            aria-hidden="true"
+                          />
+                          <span className="ml-3 text-base font-medium text-gray-900">
+                            {item.name}
+                          </span>
+                        </a>
+                      ))}
+                    </nav>
+                  </div>
+                </div>
+                <div className="py-6 px-5 space-y-6">
+                  <div>
+                    <a
+                      href="#"
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                    >
+                      Contribute
+                    </a>
+                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                      <a
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-500"
+                      >
+                        Contact
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Popover.Panel>
+          </Transition>
+        </>
+      )}
+    </Popover>
+  );
+}

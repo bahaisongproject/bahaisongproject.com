@@ -14,7 +14,7 @@ function Layout({ children, className, siteName }) {
   return (
     <InstantSearch searchClient={searchClient} indexName="bsp-songs">
       <div className="min-h-screen flex flex-col text-gray-900">
-        <Header siteName={siteName} />
+        <Header />
         <main className={"flex-1 w-full mb-12 " + className}>{children}</main>
         <Footer />
       </div>
