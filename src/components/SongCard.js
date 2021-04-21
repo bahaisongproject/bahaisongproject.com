@@ -2,8 +2,12 @@ import React from "react";
 import { Link } from "gatsby";
 import Thumbnail from "./Thumbnail";
 
-const SongCard = ({ song }) => (
-  <div className="overflow-hidden">
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const SongCard = ({ song, className }) => (
+  <div className={classNames("overflow-hidden", className)}>
     <Link to={`/` + song.slug}>
       <Thumbnail song={song} />
     </Link>
