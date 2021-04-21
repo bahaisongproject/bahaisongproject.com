@@ -1,23 +1,15 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React, { Fragment } from "react";
+import { Link } from "gatsby";
 import { Popover, Transition } from "@headlessui/react";
 import {
-  BookmarkAltIcon,
   BookOpenIcon,
-  CalendarIcon,
-  ChartBarIcon,
   CollectionIcon,
-  CursorClickIcon,
   ExclamationCircleIcon,
   MenuIcon,
   MusicNoteIcon,
-  PhoneIcon,
-  PlayIcon,
+  PlusCircleIcon,
   QuestionMarkCircleIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
   XIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
@@ -46,8 +38,9 @@ const solutions = [
 ];
 
 const callsToAction = [
-  { name: "Request Song", href: "/contribute", icon: QuestionMarkCircleIcon },
-  { name: "Report Error", href: "/contact", icon: ExclamationCircleIcon },
+  { name: "Request", href: "/request-submit", icon: QuestionMarkCircleIcon },
+  { name: "Submit", href: "/request-submit", icon: PlusCircleIcon },
+  { name: "Report", href: "/contact", icon: ExclamationCircleIcon },
 ];
 
 const recentPosts = [
@@ -76,10 +69,10 @@ export default function Example() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
               <div className="flex justify-start">
-                <a href="/">
+                <Link to="/">
                   <span className="sr-only">bahá&apos;í song project</span>
                   <img className="h-8 w-auto sm:h-10" src={logo} alt="" />
-                </a>
+                </Link>
               </div>
               <div className={`flex ml-6 mr-4 max-w-48 flex-1`}>
                 <SearchBox />
@@ -128,9 +121,9 @@ export default function Example() {
                             <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                               <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                 {solutions.map((item) => (
-                                  <a
+                                  <Link
                                     key={item.name}
-                                    href={item.href}
+                                    to={item.href}
                                     className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                   >
                                     <item.icon
@@ -145,7 +138,7 @@ export default function Example() {
                                         {item.description}
                                       </p>
                                     </div>
-                                  </a>
+                                  </Link>
                                 ))}
                               </div>
                               <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
@@ -159,32 +152,35 @@ export default function Example() {
                                         key={post.id}
                                         className="text-base truncate"
                                       >
-                                        <a
-                                          href={post.href}
+                                        <Link
+                                          to={post.href}
                                           className="font-medium text-gray-900 hover:text-gray-700"
                                         >
                                           {post.name}
-                                        </a>
+                                        </Link>
                                       </li>
                                     ))}
                                   </ul>
                                 </div>
                                 <div className="mt-5 text-sm">
-                                  <a
-                                    href="/collections"
+                                  <Link
+                                    to="/collections"
                                     className="font-medium text-indigo-600 hover:text-indigo-500"
                                   >
                                     {" "}
                                     View all collections{" "}
                                     <span aria-hidden="true">&rarr;</span>
-                                  </a>
+                                  </Link>
                                 </div>
                               </div>
-                              <div className="px-5 py-5 bg-gray-50 space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
+                              <div className="px-5 pt-5 text-center bg-white sm:px-8">
+                                Song missing or wrong?
+                              </div>
+                              <div className="px-5 py-5 bg-white space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
                                 {callsToAction.map((item) => (
                                   <div key={item.name} className="flow-root">
-                                    <a
-                                      href={item.href}
+                                    <Link
+                                      to={item.href}
                                       className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
                                     >
                                       <item.icon
@@ -192,7 +188,7 @@ export default function Example() {
                                         aria-hidden="true"
                                       />
                                       <span className="ml-3">{item.name}</span>
-                                    </a>
+                                    </Link>
                                   </div>
                                 ))}
                               </div>
@@ -203,18 +199,18 @@ export default function Example() {
                     )}
                   </Popover>
                 </Popover.Group>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                 >
                   Contact
-                </a>
-                <a
-                  href="/contribute"
+                </Link>
+                <Link
+                  to="/contribute"
                   className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                 >
                   Contribute
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -255,9 +251,9 @@ export default function Example() {
                   <div className="mt-6">
                     <nav className="grid gap-y-8">
                       {solutions.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
                           className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                         >
                           <item.icon
@@ -267,26 +263,26 @@ export default function Example() {
                           <span className="ml-3 text-base font-medium text-gray-900">
                             {item.name}
                           </span>
-                        </a>
+                        </Link>
                       ))}
                     </nav>
                   </div>
                 </div>
                 <div className="py-6 px-5 space-y-6">
                   <div>
-                    <a
-                      href="/contribute"
+                    <Link
+                      to="/contribute"
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                     >
                       Contribute
-                    </a>
+                    </Link>
                     <p className="mt-6 text-center text-base font-medium text-gray-500">
-                      <a
-                        href="/contact"
+                      <Link
+                        to="/contact"
                         className="text-indigo-600 hover:text-indigo-500"
                       >
                         Contact
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
