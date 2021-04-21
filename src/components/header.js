@@ -28,13 +28,13 @@ const solutions = [
   {
     name: "All Songs",
     description: "View all songs",
-    href: "#",
+    href: "/all-songs",
     icon: MusicNoteIcon,
   },
   {
     name: "Song Book",
     description: "Download a PDF with all song sheets",
-    href: "#",
+    href: "/songbook",
     icon: BookOpenIcon,
   },
   {
@@ -303,14 +303,14 @@ export default function Example() {
                 <div className="py-6 px-5 space-y-6">
                   <div>
                     <a
-                      href="#"
+                      href="/contribute"
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                     >
                       Contribute
                     </a>
                     <p className="mt-6 text-center text-base font-medium text-gray-500">
                       <a
-                        href="#"
+                        href="/contact"
                         className="text-indigo-600 hover:text-indigo-500"
                       >
                         Contact
