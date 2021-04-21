@@ -49,35 +49,7 @@ const callsToAction = [
   { name: "Request Song", href: "/contribute", icon: QuestionMarkCircleIcon },
   { name: "Report Error", href: "/contact", icon: ExclamationCircleIcon },
 ];
-const resources = [
-  {
-    name: "Help Center",
-    description:
-      "Get all of your questions answered in our forums or contact support.",
-    href: "#",
-    icon: SupportIcon,
-  },
-  {
-    name: "Guides",
-    description:
-      "Learn how to maximize our platform to get the most out of it.",
-    href: "#",
-    icon: BookmarkAltIcon,
-  },
-  {
-    name: "Events",
-    description:
-      "See what meet-ups and other events we might be planning near you.",
-    href: "#",
-    icon: CalendarIcon,
-  },
-  {
-    name: "Security",
-    description: "Understand how we take your privacy seriously.",
-    href: "#",
-    icon: ShieldCheckIcon,
-  },
-];
+
 const recentPosts = [
   { id: 1, name: "Your Favorites", href: "/collection/your-favorites" },
   {
@@ -129,7 +101,7 @@ export default function Example() {
                             "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                           )}
                         >
-                          <span>Explore</span>
+                          <span>Discover</span>
                           <ChevronDownIcon
                             className={classNames(
                               open ? "text-gray-600" : "text-gray-400",
