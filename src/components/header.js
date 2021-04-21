@@ -79,7 +79,7 @@ const resources = [
   },
 ];
 const recentPosts = [
-  { id: 1, name: "Your Favorites", href: "/collection/your-favourites" },
+  { id: 1, name: "Your Favorites", href: "/collection/your-favorites" },
   {
     id: 2,
     name: "For Children",
