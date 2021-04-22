@@ -33,7 +33,7 @@ function IndexPage({ data }) {
               Lyrics, Chords, Videos
             </h2>
             <h1 className="sm:text-3xl text-2xl font-medium mb-4 text-gray-900 capitalize">
-              Discover and learn Bahá&apos;í songs.
+              Discover and learn Bahá&apos;í songs
             </h1>
           </div>
         </div>
