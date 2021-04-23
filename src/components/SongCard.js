@@ -23,7 +23,7 @@ const SongCard = ({ song, className }) => (
         {song.contributors.map((contributor, i) => (
           <div
             className={
-              "contributor-name text-gray-700 leading-tight text-lg mt-1"
+              "contributor-name text-gray-700 hover:text-gray-900 leading-tight text-lg mt-1"
             }
             key="0"
           >
