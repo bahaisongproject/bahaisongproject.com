@@ -42,11 +42,11 @@ function IndexPage({ data }) {
           </div>
         </div>
         <div className="flex justify-center px-4 mt-6 mb-4">
-          <h1 className="text-2xl text-gray-900 leading-none font-normal">
+          <h1 className="text-4xl text-gray-900 font-medium text-gradient bg-gradient-to-r from-rose-400 via-purple-400 to-indigo-500">
             Featured
           </h1>
         </div>
-        <div className="mt-4 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="mt-8 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           <SongCard key={featuredSongList[0].slug} song={featuredSongList[0]} />
           <SongCard key={featuredSongList[1].slug} song={featuredSongList[1]} />
           <SongCard
@@ -65,12 +65,12 @@ function IndexPage({ data }) {
             song={featuredSongList[4]}
           />
         </div>
-        <div className="flex justify-center px-4 mt-6 mb-4">
-          <h1 className="text-2xl text-gray-900 leading-none font-normal">
+        <div className="flex justify-center px-4 mt-24 mb-4">
+          <h1 className="text-4xl text-gray-900 font-medium">
             Recent Additions
           </h1>
         </div>
-        <div className="mt-4 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="mt-8 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           <SongCard className="" key={0} song={recentSongList[0]} />
           <SongCard className="" key={1} song={recentSongList[1]} />
           <SongCard className="" key={2} song={recentSongList[2]} />
