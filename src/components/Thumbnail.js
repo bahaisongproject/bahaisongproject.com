@@ -49,14 +49,14 @@ export default function Thumbnail({ song }) {
             );
             return (
               <GatsbyImage
-                className="xs:rounded-sm bg-gradient-to-r from-bspgreen to-bspblue"
+                className="xs:rounded-sm bg-gradient-to-r from-gray-300 to-gray-400"
                 image={thumbnail_image}
                 alt=""
               />
             );
           } else {
             return (
-              <div className="pt-9/16 bg-gradient-to-r from-bspgreen to-bspblue" />
+              <div className="pt-9/16 bg-gradient-to-r from-gray-300 to-gray-400" />
             );
           }
         })()
