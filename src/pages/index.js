@@ -42,7 +42,7 @@ function IndexPage({ data }) {
           </div>
         </div>
         <div className="flex justify-center px-4 mt-6 mb-4">
-          <h1 className="text-4xl text-gray-900 font-medium text-gradient bg-gradient-to-r from-rose-400 via-purple-400 to-indigo-500">
+          <h1 className="text-4xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500">
             Featured
           </h1>
         </div>

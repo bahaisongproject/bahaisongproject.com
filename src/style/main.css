@@ -15,13 +15,6 @@
   }
 }
 
-@layer utilities {
-  .text-gradient {
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
-
 /* @reach/tabs styling */
 :root {
   --reach-tabs: 1;
