@@ -27,6 +27,15 @@ const columns = [
     selector: "words",
     sortable: true,
   },
+  {
+    name: "Song Sheet",
+    sortable: false,
+    cell: (row) => (
+      <Link className="hover:underline" to={`/${row.slug}.pdf`}>
+        Download
+      </Link>
+    ),
+  },
 ];
 
 function AllSongs({ data }) {
@@ -52,7 +61,7 @@ function AllSongs({ data }) {
 
         {/* Song Grid */}
         <div className="max-w-4xl mx-auto">
-          <DataTable noHeader columns={columns} data={allSongList} />
+          <DataTable noHeader columns={columns} data={allSongList} pagination />
         </div>
       </Results>
     </Layout>
