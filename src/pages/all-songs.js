@@ -61,7 +61,14 @@ function AllSongs({ data }) {
 
         {/* Song Grid */}
         <div className="max-w-4xl mx-auto">
-          <DataTable noHeader columns={columns} data={allSongList} pagination />
+          <DataTable
+            noHeader
+            columns={columns}
+            data={allSongList}
+            pagination
+            paginationRowsPerPageOptions={[10, 50, 100, 200, 500]}
+            paginationPerPage={50}
+          />
         </div>
       </Results>
     </Layout>
