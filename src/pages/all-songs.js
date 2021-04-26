@@ -1,9 +1,33 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import SongCard from "../components/SongCard";
 import Results from "../components/Results";
+import DataTable from "react-data-table-component";
+
+const columns = [
+  {
+    name: "Title",
+    selector: "title",
+    sortable: true,
+    cell: (row) => (
+      <Link className="hover:underline" to={`/${row.slug}`}>
+        {row.title}
+      </Link>
+    ),
+  },
+  {
+    name: "Music",
+    selector: "music",
+    sortable: true,
+  },
+  {
+    name: "Words",
+    selector: "words",
+    sortable: true,
+  },
+];
 
 function AllSongs({ data }) {
   const image = {
@@ -27,14 +51,8 @@ function AllSongs({ data }) {
         </div>
 
         {/* Song Grid */}
-        <div className="mt-4 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {(() => {
-            if (allSongList) {
-              return allSongList.map((song) => (
-                <SongCard key={song.slug} song={song} />
-              ));
-            }
-          })()}
+        <div className="max-w-4xl mx-auto">
+          <DataTable noHeader columns={columns} data={allSongList} />
         </div>
       </Results>
     </Layout>
@@ -48,6 +66,8 @@ export const query = graphql`
     bsp {
       songs {
         title
+        music
+        words
         slug
         song_description
         languages {
