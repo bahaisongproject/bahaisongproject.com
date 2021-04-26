@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import { DocumentDownloadIcon } from "@heroicons/react/outline";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import SongCard from "../components/SongCard";
@@ -30,9 +31,10 @@ const columns = [
   {
     name: "Song Sheet",
     sortable: false,
+    center: true,
     cell: (row) => (
       <Link className="hover:underline" to={`/${row.slug}.pdf`}>
-        Download
+        <DocumentDownloadIcon className="w-6 h-6" aria-hidden="true" />
       </Link>
     ),
   },
