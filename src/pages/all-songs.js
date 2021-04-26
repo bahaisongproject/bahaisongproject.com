@@ -1,5 +1,7 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import { OutboundLink } from "gatsby-plugin-gtag";
+
 import { DocumentDownloadIcon } from "@heroicons/react/outline";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -12,6 +14,7 @@ const columns = [
     name: "Title",
     selector: "title",
     sortable: true,
+    grow: 2,
     cell: (row) => (
       <Link className="hover:underline" to={`/${row.slug}`}>
         {row.title}
@@ -22,20 +25,30 @@ const columns = [
     name: "Music",
     selector: "music",
     sortable: true,
+    wrap: true,
+    grow: 2,
   },
   {
-    name: "Words",
+    name: "Based on writings of",
     selector: "words",
     sortable: true,
+    wrap: true,
+    grow: 1,
   },
   {
     name: "Song Sheet",
     sortable: false,
     center: true,
+    width: "60px",
     cell: (row) => (
-      <Link className="hover:underline" to={`/${row.slug}.pdf`}>
+      <OutboundLink
+        className="hover:underline"
+        href={`/${row.slug}.pdf`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <DocumentDownloadIcon className="w-6 h-6" aria-hidden="true" />
-      </Link>
+      </OutboundLink>
     ),
   },
 ];
@@ -69,7 +82,7 @@ function AllSongs({ data }) {
             data={allSongList}
             pagination
             paginationRowsPerPageOptions={[10, 50, 100, 200, 500]}
-            paginationPerPage={50}
+            paginationPerPage={100}
           />
         </div>
       </Results>
