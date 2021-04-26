@@ -30,10 +30,10 @@ class SongTemplate extends Component {
             {/* Show languages and tags over song title */}
             <div className="flex flex-wrap">
               {/* Languages */}
-              {song.languages.map((language) => (
+              {song.languages.map((language, i) => (
                 <div
                   className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
-                  key="0"
+                  key={i}
                 >
                   <Link to={"/language/" + language.language_code}>
                     {language.language_name_en}
@@ -42,10 +42,10 @@ class SongTemplate extends Component {
               ))}
 
               {/* Tags */}
-              {song.tags.map((tag) => (
+              {song.tags.map((tag, i) => (
                 <div
                   className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
-                  key="0"
+                  key={i}
                 >
                   <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>
                 </div>
@@ -66,7 +66,7 @@ class SongTemplate extends Component {
                       className={
                         "contributor-name text-gray-700 leading-tight text-lg mt-1"
                       }
-                      key="0"
+                      key={i}
                     >
                       <Link to={"/contributor/" + contributor.contributor_slug}>
                         {contributor.contributor_name}
@@ -94,11 +94,11 @@ class SongTemplate extends Component {
               .sort((a, b) =>
                 a.performance_prio > b.performance_prio ? 1 : -1
               )
-              .map((performance) => (
-                <ContentEmbedder performance={performance} key="0" />
+              .map((performance, i) => (
+                <ContentEmbedder performance={performance} key={i} />
               ))}
-            {song.excerpts.map((excerpt) => (
-              <ExcerptCard excerpt={excerpt} song={song} key="0" />
+            {song.excerpts.map((excerpt, i) => (
+              <ExcerptCard excerpt={excerpt} song={song} key={i} />
             ))}
           </div>
         </Results>
@@ -123,6 +123,7 @@ export const query = graphql`
           performance_prio
         }
         excerpts {
+          excerpt_id
           excerpt_text
           language {
             language_name_en
@@ -131,6 +132,7 @@ export const query = graphql`
             source_author
             source_description
             excerpts {
+              excerpt_id
               excerpt_text
               language {
                 language_name_en
@@ -140,6 +142,7 @@ export const query = graphql`
                 source_description
               }
               songs {
+                song_id
                 title
                 slug
                 song_description

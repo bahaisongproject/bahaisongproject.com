@@ -5,7 +5,7 @@ import BandcampEmbedder from "./BandcampEmbedder";
 import { is_youtube, is_soundcloud, is_bandcamp } from "../../utils/embed";
 
 const ContentEmbedder = ({ performance }) => (
-  <div className="mt-8" key="0">
+  <div className="mt-8">
     {(() => {
       if (is_youtube(performance.content_url))
         return <YouTubeEmbedder performance={performance} />;

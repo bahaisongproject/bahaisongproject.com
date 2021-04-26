@@ -25,7 +25,7 @@ const SongCard = ({ song, className }) => (
             className={
               "contributor-name text-gray-700 hover:text-gray-900 leading-tight text-lg mt-1"
             }
-            key="0"
+            key={i}
           >
             <Link to={"/contributor/" + contributor.contributor_slug}>
               {contributor.contributor_name}
@@ -47,10 +47,10 @@ const SongCard = ({ song, className }) => (
       {/* Show languages and tags under song title */}
       <div className="flex flex-wrap">
         {/* Languages */}
-        {song.languages.map((language) => (
+        {song.languages.map((language, i) => (
           <div
             className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
-            key="0"
+            key={i}
           >
             <Link to={"/language/" + language.language_code}>
               {language.language_name_en}
@@ -58,10 +58,10 @@ const SongCard = ({ song, className }) => (
           </div>
         ))}
         {/* Tags */}
-        {song.tags.map((tag) => (
+        {song.tags.map((tag, i) => (
           <div
             className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
-            key="0"
+            key={i}
           >
             <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>
           </div>

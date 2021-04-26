@@ -31,8 +31,8 @@ function Collections({ data }) {
                   ? 1
                   : -1
               )
-              .map((node) => (
-                <div key="0" className="mt-8">
+              .map((node, i) => (
+                <div key={i} className="mt-8">
                   <Link
                     to={node.childMdx.frontmatter.slug}
                     className="leading-tight"
