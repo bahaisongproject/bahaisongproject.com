@@ -9,6 +9,8 @@ import SongCard from "../components/SongCard";
 import Results from "../components/Results";
 import DataTable from "react-data-table-component";
 
+const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+
 const columns = [
   {
     name: "Title",
@@ -24,7 +26,6 @@ const columns = [
   {
     name: "Music",
     selector: "music",
-    sortable: true,
     wrap: true,
     grow: 2,
   },
@@ -34,6 +35,15 @@ const columns = [
     sortable: true,
     wrap: true,
     grow: 1,
+  },
+  {
+    name: "Published",
+    selector: "created_at",
+    sortable: true,
+    wrap: true,
+    grow: 1,
+    format: (row) =>
+      new Date(row.created_at).toLocaleDateString("en-gb", dateOptions),
   },
   {
     name: "Song Sheet",
@@ -96,6 +106,7 @@ export const query = graphql`
   query {
     bsp {
       songs {
+        created_at
         title
         music
         words
