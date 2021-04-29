@@ -16,7 +16,7 @@ const columns = [
     name: "Title",
     selector: "title",
     sortable: true,
-    grow: 2,
+    grow: 3,
     cell: (row) => (
       <Link className="hover:underline" to={`/${row.slug}`}>
         {row.title}
@@ -69,7 +69,9 @@ function AllSongs({ data }) {
     width: 1200,
     height: 628,
   };
-  const allSongList = data.bsp.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
+  const allSongList = data.bsp.songs.sort((a, b) =>
+    a.slug > b.slug ? 1 : -1
+  );
   return (
     <Layout>
       <SEO
