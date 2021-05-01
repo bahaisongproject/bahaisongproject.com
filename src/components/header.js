@@ -63,9 +63,10 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <Popover className="relative bg-white z-10">
+    <Popover className="relative z-10">
       {({ open }) => (
         <>
+          {/* Normal Menu */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
               <div className="flex justify-start">
@@ -215,7 +216,7 @@ export default function Example() {
             </div>
           </div>
 
-          {/* Mobile Popover */}
+          {/* Mobile Menu */}
           <Transition
             show={open}
             as={Fragment}

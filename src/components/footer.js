@@ -4,7 +4,7 @@ import logo from "../images/logo_100x100.png";
 
 function Footer() {
   return (
-    <footer className="max-w-7xl mx-auto flex justify-center flex-wrap items-baseline text-sm border-t-2 border-gray-100">
+    <footer className="mx-auto flex justify-center flex-wrap items-baseline text-sm border-t-2 border-gray-100">
       <nav className="flex p-4">
         <ul className="flex">
           <li>

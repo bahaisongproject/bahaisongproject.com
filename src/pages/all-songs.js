@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import { graphql, Link } from "gatsby";
 import { OutboundLink } from "gatsby-plugin-gtag";
 
 import { DocumentDownloadIcon } from "@heroicons/react/outline";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import SongCard from "../components/SongCard";
 import Results from "../components/Results";
 import DataTable from "react-data-table-component";
 
@@ -13,28 +12,18 @@ const dateOptions = { year: "numeric", month: "long", day: "numeric" };
 
 const columns = [
   {
-    name: "Title",
+    name: "Song",
     selector: "title",
     sortable: true,
-    grow: 3,
-    cell: (row) => (
-      <Link className="hover:underline" to={`/${row.slug}`}>
-        {row.title}
-      </Link>
-    ),
-  },
-  {
-    name: "Music",
-    selector: "music",
-    wrap: true,
     grow: 2,
-  },
-  {
-    name: "Based on writings of",
-    selector: "words",
-    sortable: true,
-    wrap: true,
-    grow: 1,
+    cell: (row) => (
+      <div className="py-2 gap-y-1 flex flex-col">
+        <Link className="hover:underline font-bold" to={`/${row.slug}`}>
+          {row.title}
+        </Link>
+        <div className="italic">{row.music}</div>
+      </div>
+    ),
   },
   {
     name: "Published",
@@ -69,9 +58,7 @@ function AllSongs({ data }) {
     width: 1200,
     height: 628,
   };
-  const allSongList = data.bsp.songs.sort((a, b) =>
-    a.slug > b.slug ? 1 : -1
-  );
+  const allSongList = data.bsp.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
   return (
     <Layout>
       <SEO
@@ -86,7 +73,7 @@ function AllSongs({ data }) {
           </h1>
         </div>
 
-        {/* Song Grid */}
+        {/* Song list */}
         <div className="max-w-4xl mx-auto">
           <DataTable
             noHeader
