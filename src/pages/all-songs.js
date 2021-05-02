@@ -68,7 +68,7 @@ function AllSongs({ data }) {
       />
       <Results>
         <div className="flex justify-center px-4 mt-6 mb-4">
-          <h1 className="text-2xl text-gray-900 leading-none font-extrabold">
+          <h1 className="text-2xl text-gray-900 leading-none font-medium">
             All Songs
           </h1>
         </div>

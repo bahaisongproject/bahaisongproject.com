@@ -5,6 +5,9 @@ const songQuery = `{
           title
           slug
           song_description
+          created_at
+          music
+          words
           languages {
             language_code
             language_name_en
