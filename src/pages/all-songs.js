@@ -42,7 +42,7 @@ const columns = [
     cell: (row) => (
       <OutboundLink
         className="hover:underline"
-        href={`/${row.slug}.pdf`}
+        href={`https://www.bahaisongproject.com/${row.slug}.pdf`}
         target="_blank"
         rel="noopener noreferrer"
       >
