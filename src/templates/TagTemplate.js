@@ -1,9 +1,55 @@
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import SongCard from "../components/SongCard";
 import Results from "../components/Results";
+import DataTable from "react-data-table-component";
+import { DocumentDownloadIcon } from "@heroicons/react/outline";
+import { OutboundLink } from "gatsby-plugin-gtag";
+
+const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+
+const columns = [
+  {
+    name: "Song",
+    selector: "title",
+    sortable: true,
+    grow: 2,
+    cell: (row) => (
+      <div className="py-2 gap-y-1 flex flex-col">
+        <Link className="hover:underline font-bold" to={`/${row.slug}`}>
+          {row.title}
+        </Link>
+        <div className="italic">{row.music}</div>
+      </div>
+    ),
+  },
+  {
+    name: "Published",
+    selector: "created_at",
+    sortable: true,
+    wrap: true,
+    grow: 1,
+    format: (row) =>
+      new Date(row.created_at).toLocaleDateString("en-gb", dateOptions),
+  },
+  {
+    name: "Song Sheet",
+    sortable: false,
+    center: true,
+    width: "60px",
+    cell: (row) => (
+      <OutboundLink
+        className="hover:underline"
+        href={`https://www.bahaisongproject.com/${row.slug}.pdf`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <DocumentDownloadIcon className="w-6 h-6" aria-hidden="true" />
+      </OutboundLink>
+    ),
+  },
+];
 
 function TagTemplate({ data }) {
   const tag = data.bsp.tag;
@@ -19,12 +65,12 @@ function TagTemplate({ data }) {
           <h2 className="text-lg text-gray-700 uppercase font-bold">Tag</h2>
           <h1 className="text-3xl font-semibold">{tag.tag_name}</h1>
           <div>{tag.tag_description}</div>
-          <div className="mt-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3">
+          <div className="max-w-4xl mx-auto">
             {(() => {
               if (tagSongList) {
-                return tagSongList.map((song) => (
-                  <SongCard key={song.slug} song={song} />
-                ));
+                return (
+                  <DataTable noHeader columns={columns} data={tagSongList} />
+                );
               }
             })()}
           </div>
@@ -43,6 +89,8 @@ export const query = graphql`
         songs {
           title
           slug
+          created_at
+          music
           contributors {
             contributor_id
             contributor_slug

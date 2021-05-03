@@ -55,15 +55,7 @@ const HitListTmp = ({ hits }) => {
     <div className="max-w-4xl mx-auto">
       {(() => {
         if (hits) {
-          return (
-            <DataTable
-              noHeader
-              columns={columns}
-              data={hits}
-              paginationRowsPerPageOptions={[10, 50, 100, 200, 500]}
-              paginationPerPage={100}
-            />
-          );
+          return <DataTable noHeader columns={columns} data={hits} />;
         }
       })()}
     </div>
