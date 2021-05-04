@@ -62,7 +62,7 @@ module.exports = {
         ],
       },
       colors: {
-        primary: colors.emerald,
+        primary: colors.teal,
       },
       maxWidth: {
         "8xl": "88rem",
