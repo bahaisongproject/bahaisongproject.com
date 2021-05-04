@@ -1,5 +1,6 @@
 import { graphql, Link } from "gatsby";
 import React, { Component } from "react";
+import ChordSheetJS from 'chordsheetjs';
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Button from "../components/Button";
@@ -7,6 +8,23 @@ import ContentEmbedder from "../components/embedding/ContentEmbedder";
 import ExcerptCard from "../components/ExcerptCard";
 import Results from "../components/Results";
 import { describe_song } from "../utils/description";
+
+const parser = new ChordSheetJS.ChordProParser();
+const songSheetFormatter = new ChordSheetJS.TextFormatter();
+
+function preProcessChordSheet(songSheetString) {
+  return songSheetString
+    .replace(/^({[^c]).*$/gm, "") // Remove all directives but the c (comment) directive
+    .replace(/^\s+|\s+$/g, "") // Remove newlines at start
+    .replace(/\|/g, "❘")
+}
+
+function createSongSheetMarkup(songSheetString) {
+  const preprocessedChordSheet = preProcessChordSheet(songSheetString)
+  const parsedSongSheet = parser.parse(preprocessedChordSheet);
+  const formattedSongSheet = songSheetFormatter.format(parsedSongSheet);
+  return {__html: formattedSongSheet}
+}
 
 class SongTemplate extends Component {
   render() {
@@ -97,9 +115,16 @@ class SongTemplate extends Component {
               .map((performance, i) => (
                 <ContentEmbedder performance={performance} key={i} />
               ))}
+
+            {/* Excerpts */}
             {song.excerpts.map((excerpt, i) => (
               <ExcerptCard excerpt={excerpt} song={song} key={i} />
             ))}
+
+            <div className="h-24"/>
+
+            {/* Song sheet */}
+            <div className="-mr-4 font-mono whitespace-pre overflow-x-auto" dangerouslySetInnerHTML={createSongSheetMarkup(song.song_sheet)} />
           </div>
         </Results>
       </Layout>
@@ -114,6 +139,7 @@ export const query = graphql`
         title
         slug
         song_description
+        song_sheet
         contributors {
           contributor_name
           contributor_slug
