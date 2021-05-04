@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   mode: "jit",
   purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
@@ -60,8 +62,10 @@ module.exports = {
         ],
       },
       colors: {
-        bspblue: "#416788",
-        bspgreen: "#89B4AD",
+        primary: colors.emerald,
+      },
+      maxWidth: {
+        "8xl": "88rem",
       },
     },
     screens: {

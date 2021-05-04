@@ -148,7 +148,7 @@ function Contact() {
               </div>
             </div>
             <input
-              className="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              className="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
               type="submit"
               value={
                 state.isLoading ? "..." : state.submitted ? "Sent ✓" : "Send"

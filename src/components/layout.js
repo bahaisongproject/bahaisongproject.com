@@ -13,7 +13,7 @@ const searchClient = algoliasearch(
 function Layout({ children, siteName }) {
   return (
     <InstantSearch searchClient={searchClient} indexName="bsp-songs">
-      <div className="min-h-screen flex flex-col text-gray-900">
+      <div className="min-h-screen flex flex-col text-gray-900 bg-primary">
         <Header />
         <main className="flex-1 w-full mb-12">{children}</main>
         <Footer />

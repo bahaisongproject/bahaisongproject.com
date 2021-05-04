@@ -79,7 +79,7 @@ export default function Example() {
                 <SearchBox />
               </div>
               <div className="-mr-2 -my-2 md:hidden">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -92,7 +92,7 @@ export default function Example() {
                         <Popover.Button
                           className={classNames(
                             open ? "text-gray-900" : "text-gray-500",
-                            "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                           )}
                         >
                           <span>Discover</span>
@@ -128,7 +128,7 @@ export default function Example() {
                                     className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                   >
                                     <item.icon
-                                      className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                      className="flex-shrink-0 h-6 w-6 text-primary-600"
                                       aria-hidden="true"
                                     />
                                     <div className="ml-4">
@@ -166,7 +166,7 @@ export default function Example() {
                                 <div className="mt-5 text-sm">
                                   <Link
                                     to="/collections"
-                                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                                    className="font-medium text-primary-600 hover:text-primary-500"
                                   >
                                     {" "}
                                     View all collections{" "}
@@ -208,7 +208,7 @@ export default function Example() {
                 </Link>
                 <Link
                   to="/contribute"
-                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
                 >
                   Contribute
                 </Link>
@@ -243,7 +243,7 @@ export default function Example() {
                       />
                     </div>
                     <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
                         <span className="sr-only">Close menu</span>
                         <XIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
@@ -258,7 +258,7 @@ export default function Example() {
                           className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                         >
                           <item.icon
-                            className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                            className="flex-shrink-0 h-6 w-6 text-primary-600"
                             aria-hidden="true"
                           />
                           <span className="ml-3 text-base font-medium text-gray-900">
@@ -273,14 +273,14 @@ export default function Example() {
                   <div>
                     <Link
                       to="/contribute"
-                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
                     >
                       Contribute
                     </Link>
                     <p className="mt-6 text-center text-base font-medium text-gray-500">
                       <Link
                         to="/contact"
-                        className="text-indigo-600 hover:text-indigo-500"
+                        className="text-primary-600 hover:text-primary-500"
                       >
                         Contact
                       </Link>

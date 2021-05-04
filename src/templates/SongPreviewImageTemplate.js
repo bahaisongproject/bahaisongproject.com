@@ -18,12 +18,11 @@ export default function SongPreviewImageTemplate({
     >
       <div className="p-24 flex flex-col h-full">
         <div className="flex flex-grow items-end text-7xl">
-          <div className="p-8 w-full font-black text-8xl text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500">
+          <div className="p-8 w-full font-black text-8xl text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-green-400 to-primary-500">
             {song.title}
           </div>
         </div>
         <div className="mx-auto mt-8">
-          {/* <div className="text-6xl font-black">bahaisongproject.com</div> */}
           <StaticImage
             src="../images/logo_500x500.png"
             height={100}
