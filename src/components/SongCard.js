@@ -49,7 +49,7 @@ const SongCard = ({ song, className }) => (
         {/* Languages */}
         {song.languages.map((language, i) => (
           <div
-            className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
+            className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
             <Link to={"/language/" + language.language_code}>
@@ -60,7 +60,7 @@ const SongCard = ({ song, className }) => (
         {/* Tags */}
         {song.tags.map((tag, i) => (
           <div
-            className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
+            className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
             <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>

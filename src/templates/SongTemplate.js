@@ -53,7 +53,7 @@ class SongTemplate extends Component {
               {/* Languages */}
               {song.languages.map((language, i) => (
                 <div
-                  className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
+                  className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
                   <Link to={"/language/" + language.language_code}>
@@ -65,7 +65,7 @@ class SongTemplate extends Component {
               {/* Tags */}
               {song.tags.map((tag, i) => (
                 <div
-                  className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
+                  className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
                   <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>
@@ -113,15 +113,16 @@ class SongTemplate extends Component {
               ))}
 
             {/* Song sheet */}
-            <div className="flex flex-col space-y-6 mt-12">
+            <div className="flex flex-col items-start space-y-6 mt-12">
               {/* Song Sheet Download Button */}
               <OutboundLink
                 href={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-block px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
               >
-                <button className="flex w-52 justify-between items-center px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
-                  <span>Download Song Sheet</span>
+                <button className="flex justify-between items-center">
+                  <span>Download</span>
                   <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
                 </button>
               </OutboundLink>
@@ -129,7 +130,7 @@ class SongTemplate extends Component {
               <Disclosure>
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex w-52 justify-between px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
+                    <Disclosure.Button className="flex justify-between px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
                       <span>View Song Sheet</span>
                       <ChevronUpIcon
                         className={`${
