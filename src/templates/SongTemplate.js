@@ -1,6 +1,9 @@
 import { graphql, Link } from "gatsby";
 import React, { Component } from "react";
-import ChordSheetJS from 'chordsheetjs';
+import { OutboundLink } from "gatsby-plugin-gtag";
+import ChordSheetJS from "chordsheetjs";
+import { Disclosure, Transition } from "@headlessui/react";
+import { ChevronUpIcon, ExternalLinkIcon } from "@heroicons/react/solid";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Button from "../components/Button";
@@ -16,14 +19,14 @@ function preProcessChordSheet(songSheetString) {
   return songSheetString
     .replace(/^({[^c]).*$/gm, "") // Remove all directives but the c (comment) directive
     .replace(/^\s+|\s+$/g, "") // Remove newlines at start
-    .replace(/\|/g, "❘")
+    .replace(/(\d)\\(\d)/g, "$1\\\\$2"); // Escape backslash in tabs
 }
 
 function createSongSheetMarkup(songSheetString) {
-  const preprocessedChordSheet = preProcessChordSheet(songSheetString)
+  const preprocessedChordSheet = preProcessChordSheet(songSheetString);
   const parsedSongSheet = parser.parse(preprocessedChordSheet);
   const formattedSongSheet = songSheetFormatter.format(parsedSongSheet);
-  return {__html: formattedSongSheet}
+  return { __html: formattedSongSheet };
 }
 
 class SongTemplate extends Component {
@@ -98,13 +101,6 @@ class SongTemplate extends Component {
                   {song.song_description}
                 </div>
               </div>
-
-              {/* Song Sheet Download Button */}
-              <Button
-                url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
-              >
-                Song Sheet
-              </Button>
             </div>
 
             {/* Performances */}
@@ -116,15 +112,61 @@ class SongTemplate extends Component {
                 <ContentEmbedder performance={performance} key={i} />
               ))}
 
+            {/* Song sheet */}
+            <div className="flex flex-col space-y-6 mt-12">
+              {/* Song Sheet Download Button */}
+              <OutboundLink
+                href={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="flex w-52 justify-between px-4 py-2 text-sm font-medium text-left text-primary-900 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
+                  <span>Download Song Sheet</span>
+                  <ExternalLinkIcon className="w-5 h-5 text-primary-500" />
+                </button>
+              </OutboundLink>
+
+              <Disclosure>
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button className="flex w-52 justify-between px-4 py-2 text-sm font-medium text-left text-primary-900 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
+                      <span>View Song Sheet</span>
+                      <ChevronUpIcon
+                        className={`${
+                          open ? "transform rotate-180" : ""
+                        } w-5 h-5 text-primary-500`}
+                      />
+                    </Disclosure.Button>
+                    <Transition
+                      show={open}
+                      enter="transition duration-100 ease-out"
+                      enterFrom="transform scale-95 opacity-0"
+                      enterTo="transform scale-100 opacity-100"
+                      leave="transition duration-75 ease-out"
+                      leaveFrom="transform scale-100 opacity-100"
+                      leaveTo="transform scale-95 opacity-0"
+                    >
+                      <Disclosure.Panel
+                        static
+                        className="px-4 pt-4 pb-2 text-gray-900"
+                      >
+                        <div
+                          className="-mr-4 font-mono whitespace-pre overflow-x-auto"
+                          dangerouslySetInnerHTML={createSongSheetMarkup(
+                            song.song_sheet
+                          )}
+                        />
+                      </Disclosure.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Disclosure>
+            </div>
+
             {/* Excerpts */}
             {song.excerpts.map((excerpt, i) => (
               <ExcerptCard excerpt={excerpt} song={song} key={i} />
             ))}
-
-            <div className="h-24"/>
-
-            {/* Song sheet */}
-            <div className="-mr-4 font-mono whitespace-pre overflow-x-auto" dangerouslySetInnerHTML={createSongSheetMarkup(song.song_sheet)} />
           </div>
         </Results>
       </Layout>
