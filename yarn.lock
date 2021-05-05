@@ -3963,9 +3963,9 @@ chokidar@^3.4.2, chokidar@^3.4.3, chokidar@^3.5.1:
     fsevents "~2.3.1"
 
 chordsheetjs@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/chordsheetjs/-/chordsheetjs-4.1.0.tgz#828b3dc497f3d83f1742f0dd7f45993d08b0d55e"
-  integrity sha512-4VcTU9JRINxnmz9ayQlAEOSxHlXlZ7NEqoBuB2wGBaz/dqCmcprKDUoa6iMB4XPgOTc9gwb0xB/2EAxCPxG4TA==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/chordsheetjs/-/chordsheetjs-4.2.0.tgz#0dff45a443968c43b576dad13b1fd78d5447cf95"
+  integrity sha512-WPWNUPHGdhr7rqqblZ9DSwvO71EYmlzkMaqJsAsODrBM0h056yMpGhNl70UpyDeHwvntU1XRoRE4hmudHKSnTQ==
   dependencies:
     handlebars "^4.7.6"
 
