@@ -22,7 +22,7 @@ const ExcerptCard = ({ excerpt, song }) => (
     <TabPanels className="mt-4">
       {excerpt.source.excerpts.map((excerpt, i) => (
         <TabPanel key={i}>
-          <div className="max-w-xl border-l-4 border-bspblue my-1 p-8 xs:p-16 bg-gray-200 text-gray-900 font-sans shadow-lg rounded-sm">
+          <div className="max-w-xl border-primary-500 my-1 p-8 xs:p-16 bg-primary-50 text-gray-900 font-sans shadow-lg rounded-sm">
             <div className="">
               {(() => {
                 let excerpt_text = excerpt.excerpt_text

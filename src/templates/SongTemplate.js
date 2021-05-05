@@ -120,21 +120,21 @@ class SongTemplate extends Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="flex w-52 justify-between px-4 py-2 text-sm font-medium text-left text-primary-900 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
+                <button className="flex w-52 justify-between items-center px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
                   <span>Download Song Sheet</span>
-                  <ExternalLinkIcon className="w-5 h-5 text-primary-500" />
+                  <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
                 </button>
               </OutboundLink>
 
               <Disclosure>
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex w-52 justify-between px-4 py-2 text-sm font-medium text-left text-primary-900 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
+                    <Disclosure.Button className="flex w-52 justify-between px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
                       <span>View Song Sheet</span>
                       <ChevronUpIcon
                         className={`${
                           open ? "transform rotate-180" : ""
-                        } w-5 h-5 text-primary-500`}
+                        } w-5 h-5 text-gray-600`}
                       />
                     </Disclosure.Button>
                     <Transition
