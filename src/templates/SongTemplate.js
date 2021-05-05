@@ -121,7 +121,7 @@ class SongTemplate extends Component {
                 rel="noopener noreferrer"
                 className="inline-block px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
               >
-                <button className="flex justify-between items-center">
+                <button className="flex space-x-1 items-center">
                   <span>Download</span>
                   <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
                 </button>
@@ -130,7 +130,7 @@ class SongTemplate extends Component {
               <Disclosure>
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className="flex justify-between px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
+                    <Disclosure.Button className="flex space-x-1 px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
                       <span>View Song Sheet</span>
                       <ChevronUpIcon
                         className={`${
@@ -149,7 +149,7 @@ class SongTemplate extends Component {
                     >
                       <Disclosure.Panel
                         static
-                        className="px-4 pt-4 pb-2 text-gray-900"
+                        className="px-4 pt-4 pb-2 text-gray-900 "
                       >
                         <div
                           className="-mr-4 font-mono whitespace-pre overflow-x-auto"
