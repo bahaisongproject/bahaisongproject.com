@@ -119,12 +119,10 @@ class SongTemplate extends Component {
                 href={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-4 py-2 text-sm text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+                className="flex space-x-1 items-center font-medium px-4 py-2 text-sm text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
               >
-                <button className="flex space-x-1 items-center font-medium">
-                  <span>Download Song Sheet</span>
-                  <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
-                </button>
+                <span>Download Song Sheet</span>
+                <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
               </OutboundLink>
 
               <Disclosure>
