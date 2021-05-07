@@ -27,21 +27,44 @@ function IndexPage({ data }) {
     <Layout siteName="index">
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} image={image} />
       <Results>
-        <div className="container px-5 py-24 mx-auto">
-          <div className="mt-12 flex flex-col text-center w-full mb-20">
-            <h2 className="text-xs text-primary-500 tracking-widest font-medium title-font mb-1 uppercase">
-              Lyrics, Chords, Videos
-            </h2>
-            <h1 className="sm:text-3xl text-2xl font-medium mb-4 text-gray-900 capitalize">
-              Discover, learn and listen to Bahá&apos;í songs
+        <div className="mt-10 mx-auto max-w-5xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+          <div className="sm:text-center lg:text-left">
+            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              <span className="block xl:inline">Learn and listen to</span>{" "}
+              <span className="block text-primary-600 xl:inline">
+                Bahá&apos;í songs
+              </span>
             </h1>
-            <p>
-              Find your (new) favorite song. Learn how to play with lyrics,
-              chords and videos. Sing with your community.
+            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+              Find your favorite song, learn how to play with lyrics, chords and
+              videos and sing with your community.
             </p>
+            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+              <div className="rounded-md shadow">
+                <Link
+                  to={`/${
+                    data.bsp.songs[
+                      Math.floor(Math.random() * data.bsp.songs.length)
+                    ].slug
+                  }`}
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10"
+                >
+                  Random Song
+                </Link>
+              </div>
+              <div className="mt-3 sm:mt-0 sm:ml-3">
+                <Link
+                  to="/collections"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 md:py-4 md:text-lg md:px-10"
+                >
+                  Curated Collections
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="flex justify-center px-4 mt-6 mb-4">
+
+        <div className="flex justify-center px-4 mt-16 sm:mt-20 md:mt-48 mb-4">
           <h1 className="text-4xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-green-400 to-primary-500">
             Featured
           </h1>
@@ -74,9 +97,7 @@ function IndexPage({ data }) {
           </div>
         </div>
         <div className="flex justify-center px-4 mt-24 mb-4">
-          <h1 className="text-4xl text-gray-900 font-medium">
-            Recent Additions
-          </h1>
+          <h1 className="text-xl text-gray-900">Recent Additions</h1>
         </div>
         <div className="max-w-8xl mx-auto">
           <div className="mt-8 xs:mx-3 md:mx-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
