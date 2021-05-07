@@ -76,7 +76,7 @@ class SongTemplate extends Component {
             {/* Show contributors and / or song description */}
             <div className="flex flex-col mt-6 xs:items-end xs:flex-row xs:place-content-between">
               <div>
-                <h1 className="text-3xl font-semibold font-sans leading-tight">
+                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                   {song.title}
                 </h1>
 
@@ -85,7 +85,7 @@ class SongTemplate extends Component {
                   {song.contributors.map((contributor, i) => (
                     <div
                       className={
-                        "contributor-name text-gray-700 leading-tight text-lg mt-1"
+                        "contributor-name leading-tight text-lg text-gray-500 sm:text-2xl md:text-3xl mt-1 sm:mt-4"
                       }
                       key={i}
                     >
@@ -97,7 +97,7 @@ class SongTemplate extends Component {
                 </div>
 
                 {/* Song Description */}
-                <div className="text-lg text-gray-700 leading-tight mt-1">
+                <div className="leading-tight mt-1 text-lg text-gray-500 sm:text-2xl md:text-3xl">
                   {song.song_description}
                 </div>
               </div>
