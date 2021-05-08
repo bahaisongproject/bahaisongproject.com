@@ -113,7 +113,7 @@ class SongTemplate extends Component {
               ))}
 
             {/* Song sheet */}
-            <div className="flex flex-col items-start space-y-6 mt-12">
+            <div className="flex flex-col items-start space-y-6 mt-12 w-full">
               {/* Song Sheet Download Button */}
               <OutboundLink
                 href={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
@@ -127,7 +127,7 @@ class SongTemplate extends Component {
 
               <Disclosure>
                 {({ open }) => (
-                  <>
+                  <div className="w-full">
                     <Disclosure.Button className="flex space-x-1 px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
                       <span>View Song Sheet</span>
                       <ChevronUpIcon
@@ -147,17 +147,17 @@ class SongTemplate extends Component {
                     >
                       <Disclosure.Panel
                         static
-                        className="px-4 pt-4 pb-2 text-gray-900 "
+                        className="mt-4 text-gray-900 w-full"
                       >
                         <div
-                          className="-mr-4 font-mono whitespace-pre overflow-x-auto"
+                          className="pl-4 -ml-4 -mr-4 font-mono whitespace-pre overflow-hidden overflow-x-auto"
                           dangerouslySetInnerHTML={createSongSheetMarkup(
                             song.song_sheet
                           )}
                         />
                       </Disclosure.Panel>
                     </Transition>
-                  </>
+                  </div>
                 )}
               </Disclosure>
             </div>
