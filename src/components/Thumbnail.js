@@ -49,7 +49,7 @@ export default function Thumbnail({ song }) {
             );
             return (
               <GatsbyImage
-                className="filter drop-shadow-lg xs:rounded-sm bg-gradient-to-r from-gray-300 to-gray-400"
+                className="xs:rounded-sm bg-gradient-to-r from-gray-300 to-gray-400"
                 image={thumbnail_image}
                 alt=""
               />
