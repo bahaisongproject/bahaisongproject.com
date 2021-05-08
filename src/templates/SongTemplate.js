@@ -150,7 +150,7 @@ class SongTemplate extends Component {
                         className="mt-4 text-gray-900 w-full"
                       >
                         <div
-                          className="pl-4 -ml-4 -mr-4 font-mono whitespace-pre overflow-hidden overflow-x-auto"
+                          className="pl-4 pb-4 -ml-4 -mr-4 font-mono whitespace-pre overflow-hidden overflow-x-auto"
                           dangerouslySetInnerHTML={createSongSheetMarkup(
                             song.song_sheet
                           )}
