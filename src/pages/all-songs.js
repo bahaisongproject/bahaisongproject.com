@@ -17,11 +17,11 @@ const columns = [
     sortable: true,
     grow: 2,
     cell: (row) => (
-      <div className="py-2 gap-y-1 flex flex-col">
+      <div className="py-2 flex flex-col sm:text-base md:text-lg">
         <Link className="hover:underline font-bold" to={`/${row.slug}`}>
           {row.title}
         </Link>
-        <div className="italic">{row.music}</div>
+        <div className="text-gray-700">{row.music}</div>
       </div>
     ),
   },
@@ -31,8 +31,11 @@ const columns = [
     sortable: true,
     wrap: true,
     grow: 1,
-    format: (row) =>
-      new Date(row.created_at).toLocaleDateString("en-gb", dateOptions),
+    cell: (row) => (
+      <div className="py-2 sm:text-base md:text-lg">
+        {new Date(row.created_at).toLocaleDateString("en-gb", dateOptions)}
+      </div>
+    ),
   },
   {
     name: "Song Sheet",
