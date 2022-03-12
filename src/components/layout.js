@@ -20,7 +20,7 @@ const searchStateToUrl = (location, searchState) =>
 
 const urlToSearchState = location => qs.parse(location.search.slice(1));
 
-function Layout({ children, siteName, location }) {
+function Layout({ children, location }) {
   const [searchState, setSearchState] = useState(urlToSearchState(location));
   const debouncedSetStateRef = useRef(null);
 

@@ -55,7 +55,7 @@ const columns = [
   },
 ];
 
-function AllSongs({ data }) {
+function AllSongs({ data, location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
@@ -63,7 +63,7 @@ function AllSongs({ data }) {
   };
   const allSongList = data.bsp.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title="All Songs"

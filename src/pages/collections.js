@@ -5,14 +5,14 @@ import SEO from "../components/seo";
 
 import Results from "../components/Results";
 
-function Collections({ data }) {
+function Collections({ data, location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
     height: 628,
   };
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title="Collections"

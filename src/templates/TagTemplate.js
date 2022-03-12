@@ -51,11 +51,11 @@ const columns = [
   },
 ];
 
-function TagTemplate({ data }) {
+function TagTemplate({ data, location }) {
   const tag = data.bsp.tag;
   const tagSongList = tag.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title={tag.tag_name}

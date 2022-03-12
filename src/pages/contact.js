@@ -10,7 +10,7 @@ function encode(data) {
     .join("&");
 }
 
-function Contact() {
+function Contact({ location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
@@ -53,7 +53,7 @@ function Contact() {
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title="Contact"

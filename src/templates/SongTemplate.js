@@ -39,7 +39,7 @@ class SongTemplate extends Component {
       height: 628,
     };
     return (
-      <Layout>
+      <Layout location={this.props.location} >
         <SEO
           title={song.title}
           description={description}

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Results from "../components/Results";
 import SongCard from "../components/SongCard";
 
-function IndexPage({ data, location, history }) {
+function IndexPage({ data, location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,

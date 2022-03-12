@@ -51,13 +51,13 @@ const columns = [
   },
 ];
 
-function LanguageTemplate({ data }) {
+function LanguageTemplate({ data, location }) {
   const language = data.bsp.language;
   const languageSongList = language.songs.sort((a, b) =>
     a.slug > b.slug ? 1 : -1
   );
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title={language.language_name_en}

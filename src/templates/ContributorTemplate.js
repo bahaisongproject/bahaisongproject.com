@@ -52,13 +52,13 @@ const columns = [
   },
 ];
 
-function ContributorTemplate({ data }) {
+function ContributorTemplate({ data, location }) {
   const contributor = data.bsp.contributor;
   const contributorSongList = contributor.songs.sort((a, b) =>
     a.title > b.title ? 1 : -1
   );
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title={contributor.contributor_name}

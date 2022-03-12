@@ -8,11 +8,12 @@ import MDXWrapper from "../components/MDXWrapper";
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
+  location
 }) {
   const { mdx } = data; // data.mdx holds your post data
   const { frontmatter, body } = mdx;
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title={frontmatter.title}
