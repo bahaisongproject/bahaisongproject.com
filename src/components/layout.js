@@ -13,10 +13,10 @@ const searchClient = algoliasearch(
   "2c640df937f8f88f2c89e59a730941b4"
 );
 
-const createURL = state => `?${qs.stringify(state)}`;
+const createURL = state => `?${qs.stringify({query: state.query}, { format : 'RFC1738' })}`;
 
 const searchStateToUrl = (location, searchState) =>
-  searchState ? `${location.pathname}${createURL(searchState)}` : '';
+  searchState ? `/${createURL(searchState)}` : '';
 
 const urlToSearchState = location => qs.parse(location.search.slice(1));
 
