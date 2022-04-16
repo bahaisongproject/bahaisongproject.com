@@ -2,8 +2,8 @@ import { is_youtube } from "./embed";
 
 function has_video(song){
     if (
-        song.performances.length > 0 &&
-        song.performances.filter((p) => is_youtube(p.content_url)).length > 0
+        song.renditions.length > 0 &&
+        song.renditions.filter((p) => is_youtube(p.contentUrl)).length > 0
       ) {
           return true
       } else {

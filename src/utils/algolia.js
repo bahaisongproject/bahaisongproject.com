@@ -1,48 +1,48 @@
 const songQuery = `{
     bsp {
-        songs {
-          objectID: song_id
-          title
+      allSongs {
+        objectID: song_id
+        title
+        slug
+        description
+        sources
+        music
+        words
+        languages {
+          code
+          nameEn
+          nameNative
+        }
+        contributors {
+          id
+          name
           slug
-          song_description
-          created_at
-          music
-          words
-          languages {
-            language_code
-            language_name_en
-            language_name_native
+        }
+        tags {
+          id
+          name
+          description
+          slug
+        }
+        renditions {
+          contentUrl
+          prio
+        }
+        excerpts {
+          source {
+            description
+            author
           }
-          contributors {
-            contributor_id
-            contributor_name
-            contributor_slug
-          }
-          tags {
-            tag_id
-            tag_name
-            tag_description
-            tag_slug
-          }
-          performances {
-            content_url
-            performance_prio
-          }
-          excerpts {
-            source {
-              source_description
-              source_author
-            }
-            excerpt_text
-          }
+          text
         }
       }
+    }    
   }`;
 
 const queries = [
   {
     query: songQuery,
-    transformer: ({ data }) => data.bsp.songs,
+    transformer: ({ data }) => data.bsp.allSongs,
     indexName: `bsp-songs`,
   },
 ];

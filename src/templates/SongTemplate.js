@@ -1,33 +1,14 @@
 import { graphql, Link } from "gatsby";
 import React, { Component } from "react";
 import { OutboundLink } from "gatsby-plugin-gtag";
-import ChordSheetJS from "chordsheetjs";
-import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronUpIcon, ExternalLinkIcon } from "@heroicons/react/solid";
+import { ExternalLinkIcon } from "@heroicons/react/solid";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import Button from "../components/Button";
 import ContentEmbedder from "../components/embedding/ContentEmbedder";
 import ExcerptCard from "../components/ExcerptCard";
 import Results from "../components/Results";
 import { describe_song } from "../utils/description";
 
-const parser = new ChordSheetJS.ChordProParser();
-const songSheetFormatter = new ChordSheetJS.TextFormatter();
-
-function preProcessChordSheet(songSheetString) {
-  return songSheetString
-    .replace(/^({[^c]).*$/gm, "") // Remove all directives but the c (comment) directive
-    .replace(/^\s+|\s+$/g, "") // Remove newlines at start
-    .replace(/(\d)\\(\d)/g, "$1\\\\$2"); // Escape backslash in tabs
-}
-
-function createSongSheetMarkup(songSheetString) {
-  const preprocessedChordSheet = preProcessChordSheet(songSheetString);
-  const parsedSongSheet = parser.parse(preprocessedChordSheet);
-  const formattedSongSheet = songSheetFormatter.format(parsedSongSheet);
-  return { __html: formattedSongSheet };
-}
 
 class SongTemplate extends Component {
   render() {
@@ -39,7 +20,7 @@ class SongTemplate extends Component {
       height: 628,
     };
     return (
-      <Layout location={this.props.location} >
+      <Layout location={this.props.location } >
         <SEO
           title={song.title}
           description={description}
@@ -56,8 +37,8 @@ class SongTemplate extends Component {
                   className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
-                  <Link to={"/language/" + language.language_code}>
-                    {language.language_name_en}
+                  <Link to={"/language/" + language.code}>
+                    {language.nameEn}
                   </Link>
                 </div>
               ))}
@@ -68,7 +49,7 @@ class SongTemplate extends Component {
                   className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
-                  <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>
+                  <Link to={"/tag/" + tag.slug}>{tag.name}</Link>
                 </div>
               ))}
             </div>
@@ -89,8 +70,8 @@ class SongTemplate extends Component {
                       }
                       key={i}
                     >
-                      <Link to={"/contributor/" + contributor.contributor_slug}>
-                        {contributor.contributor_name}
+                      <Link to={"/contributor/" + contributor.slug}>
+                        {contributor.name}
                       </Link>
                     </div>
                   ))}
@@ -98,18 +79,18 @@ class SongTemplate extends Component {
 
                 {/* Song Description */}
                 <div className="leading-tight mt-1 text-lg text-gray-500 sm:text-2xl md:text-3xl">
-                  {song.song_description}
+                  {song.description}
                 </div>
               </div>
             </div>
 
-            {/* Performances */}
-            {song.performances
+            {/* Renditions */}
+            {song.renditions
               .sort((a, b) =>
-                a.performance_prio > b.performance_prio ? 1 : -1
+                a.prio > b.prio ? 1 : -1
               )
-              .map((performance, i) => (
-                <ContentEmbedder performance={performance} key={i} />
+              .map((rendition, i) => (
+                <ContentEmbedder rendition={rendition} key={i} />
               ))}
 
             {/* Song sheet */}
@@ -124,42 +105,6 @@ class SongTemplate extends Component {
                 <span>Download Song Sheet</span>
                 <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
               </OutboundLink>
-
-              <Disclosure>
-                {({ open }) => (
-                  <div className="w-full">
-                    <Disclosure.Button className="flex space-x-1 px-4 py-2 text-sm font-medium text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75">
-                      <span>View Song Sheet</span>
-                      <ChevronUpIcon
-                        className={`${
-                          open ? "transform rotate-180" : ""
-                        } w-5 h-5 text-gray-600`}
-                      />
-                    </Disclosure.Button>
-                    <Transition
-                      show={open}
-                      enter="transition duration-100 ease-out"
-                      enterFrom="transform scale-95 opacity-0"
-                      enterTo="transform scale-100 opacity-100"
-                      leave="transition duration-75 ease-out"
-                      leaveFrom="transform scale-100 opacity-100"
-                      leaveTo="transform scale-95 opacity-0"
-                    >
-                      <Disclosure.Panel
-                        static
-                        className="mt-4 text-gray-900 w-full"
-                      >
-                        <div
-                          className="pl-4 pb-4 -ml-4 -mr-4 font-mono whitespace-pre overflow-hidden overflow-x-auto"
-                          dangerouslySetInnerHTML={createSongSheetMarkup(
-                            song.song_sheet
-                          )}
-                        />
-                      </Disclosure.Panel>
-                    </Transition>
-                  </div>
-                )}
-              </Disclosure>
             </div>
 
             {/* Excerpts */}
@@ -176,72 +121,73 @@ class SongTemplate extends Component {
 export const query = graphql`
   query($songSlug: String!) {
     bsp {
-      song(where: { slug: $songSlug }) {
+      song(songUniqueInput: {
+        slug: $songSlug
+      }) {
         title
         slug
-        song_description
-        song_sheet
+        description
         contributors {
-          contributor_name
-          contributor_slug
+          name
+          slug
         }
-        performances {
-          content_url
-          performance_prio
+        renditions {
+          contentUrl
+          prio
         }
         excerpts {
-          excerpt_id
-          excerpt_text
+          id
+          text
           language {
-            language_name_en
+            nameEn
           }
           source {
-            source_author
-            source_description
+            author
+            description
             excerpts {
-              excerpt_id
-              excerpt_text
+              id
+              text
               language {
-                language_name_en
+                nameEn
               }
               source {
-                source_author
-                source_description
+                author
+                description
               }
               songs {
-                song_id
+                id
                 title
                 slug
-                song_description
+                description
                 languages {
-                  language_name_en
-                  language_code
+                  nameEn
+                  code
                 }
                 tags {
-                  tag_id
-                  tag_name
-                  tag_slug
+                  id
+                  name
+                  slug
                 }
                 contributors {
-                  contributor_id
-                  contributor_slug
-                  contributor_name
+                  id
+                  slug
+                  name
                 }
-                performances {
-                  content_url
+                renditions {
+                  contentUrl
                 }
               }
             }
           }
         }
         languages {
-          language_code
-          language_name_en
+          code
+          nameEn
         }
         tags {
-          tag_id
-          tag_name
-          tag_slug
+          id
+          name
+          slug
         }
       }
     }

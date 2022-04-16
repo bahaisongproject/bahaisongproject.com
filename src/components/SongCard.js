@@ -27,8 +27,8 @@ const SongCard = ({ song, className }) => (
             }
             key={i}
           >
-            <Link to={"/contributor/" + contributor.contributor_slug}>
-              {contributor.contributor_name}
+            <Link to={"/contributor/" + contributor.slug}>
+              {contributor.name}
             </Link>
           </div>
         ))}
@@ -39,7 +39,7 @@ const SongCard = ({ song, className }) => (
         if (song.contributors.length === 0)
           return (
             <div className="text-gray-700 leading-tight">
-              {song.song_description}
+              {song.description}
             </div>
           );
       })()}
@@ -52,8 +52,8 @@ const SongCard = ({ song, className }) => (
             className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
-            <Link to={"/language/" + language.language_code}>
-              {language.language_name_en}
+            <Link to={"/language/" + language.code}>
+              {language.nameEn}
             </Link>
           </div>
         ))}
@@ -63,7 +63,7 @@ const SongCard = ({ song, className }) => (
             className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
-            <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>
+            <Link to={"/tag/" + tag.slug}>{tag.name}</Link>
           </div>
         ))}
       </div>

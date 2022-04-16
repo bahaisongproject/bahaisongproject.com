@@ -27,7 +27,7 @@ const columns = [
   },
   {
     name: "Published",
-    selector: "created_at",
+    selector: "publishedAt",
     sortable: true,
     wrap: true,
     grow: 1,
@@ -61,7 +61,7 @@ function AllSongs({ data, location }) {
     width: 1200,
     height: 628,
   };
-  const allSongList = data.bsp.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
+  const allSongList = data.bsp.allSongs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
   return (
     <Layout location={location}>
       <SEO
@@ -97,37 +97,37 @@ export default AllSongs;
 export const query = graphql`
   query {
     bsp {
-      songs {
-        created_at
+      allSongs {
+        publishedAt
         title
         music
         words
         slug
-        song_description
+        description
         languages {
-          language_name_en
-          language_code
+          nameEn
+          code
         }
         tags {
-          tag_id
-          tag_name
-          tag_slug
+          id
+          name
+          slug
         }
         contributors {
-          contributor_id
-          contributor_slug
-          contributor_name
+          id
+          slug
+          name
         }
-        performances {
-          content_url
+        renditions {
+          contentUrl
         }
       }
-      languages {
-        language_name_en
-        language_code
+      allLanguages {
+        nameEn
+        code
       }
-      tags {
-        tag_name
+      allTags {
+        name
       }
     }
   }

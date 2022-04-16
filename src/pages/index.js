@@ -19,10 +19,10 @@ function IndexPage({ data, location }) {
     "heri-pahali",
     "apple-of-mine-eye",
   ];
-  const featuredSongList = [...data.bsp.songs].filter((song) =>
+  const featuredSongList = [...data.bsp.allSongs].filter((song) =>
     featuredSongsSlugList.includes(song.slug)
   );
-  const recentSongList = [...data.bsp.songs].reverse().slice(0, 10);
+  const recentSongList = [...data.bsp.allSongs].reverse().slice(0, 10);
   return (
     <Layout siteName="index" location={location} >
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} image={image} />
@@ -43,8 +43,8 @@ function IndexPage({ data, location }) {
               <div className="rounded-md shadow">
                 <Link
                   to={`/${
-                    data.bsp.songs[
-                      Math.floor(Math.random() * data.bsp.songs.length)
+                    data.bsp.allSongs[
+                      Math.floor(Math.random() * data.bsp.allSongs.length)
                     ].slug
                   }`}
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10"
@@ -155,34 +155,34 @@ export default IndexPage;
 export const query = graphql`
   query {
     bsp {
-      songs {
+      allSongs {
         title
         slug
-        song_description
+        description
         languages {
-          language_name_en
-          language_code
+          nameEn
+          code
         }
         tags {
-          tag_id
-          tag_name
-          tag_slug
+          id
+          name
+          slug
         }
         contributors {
-          contributor_id
-          contributor_slug
-          contributor_name
+          id
+          slug
+          name
         }
-        performances {
-          content_url
+        renditions {
+          contentUrl
         }
       }
-      languages {
-        language_name_en
-        language_code
+      allLanguages {
+        nameEn
+        code
       }
-      tags {
-        tag_name
+      allTags {
+        name
       }
     }
   }

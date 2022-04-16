@@ -1,6 +1,5 @@
 const path = require(`path`);
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
-const { createOpenGraphImage } = require(`gatsby-plugin-open-graph-images`);
 const { is_youtube, get_youtube_id } = require("./src/utils/embed");
 
 exports.createPages = async ({
@@ -18,24 +17,24 @@ exports.createPages = async ({
   const result = await graphql(`
     query {
       bsp: bsp {
-        songs {
+        allSongs {
           title
           slug
-          performances {
-            content_url
+          renditions {
+            contentUrl
           }
         }
-        contributors {
-          contributor_id
-          contributor_slug
+        allContributors {
+          id
+          slug
         }
-        languages {
-          language_id
-          language_code
+        allLanguages {
+          id
+          code
         }
-        tags {
-          tag_id
-          tag_slug
+        allTags {
+          id
+          slug
         }
       }
       collections: allFile(
@@ -75,17 +74,18 @@ exports.createPages = async ({
     return;
   }
 
+  // console.log(JSON.stringify(result.data.bsp.allSongs, null, 2));
   await Promise.all(
-    result.data.bsp.songs.map(async (song) => {
-      const youtubePerformances = song.performances.filter((p) =>
-        is_youtube(p.content_url)
+    result.data.bsp.allSongs.map(async (song) => {
+      const youtubePerformances = song.renditions.filter((p) =>
+        is_youtube(p.contentUrl)
       );
       let fileNode = null;
       if (youtubePerformances.length > 0) {
         let fileNode = await createRemoteFileNode({
           url:
             "https://img.youtube.com/vi/" +
-            get_youtube_id(youtubePerformances[0].content_url) +
+            get_youtube_id(youtubePerformances[0].contentUrl) +
             "/hqdefault.jpg", // string that points to the URL of the image
           parentNodeId: null, // id of the parent node of the fileNode you are going to create
           createNode, // helper function in gatsby-node to generate the node
@@ -103,48 +103,37 @@ exports.createPages = async ({
         component: path.resolve(`./src/templates/SongTemplate.js`),
         context: {
           songSlug: song.slug,
-          ogImage: createOpenGraphImage(createPage, {
-            path: `__social/${song.slug}.png`,
-            component: path.resolve(
-              `src/templates/SongPreviewImageTemplate.js`
-            ),
-            size: {
-              width: 1200,
-              height: 628,
-            },
-            context: { songSlug: song.slug },
-          }),
         },
       });
     })
   );
 
-  result.data.bsp.contributors.forEach((contributor) => {
+  result.data.bsp.allContributors.forEach((contributor) => {
     createPage({
       path: `/contributor/${contributor.contributor_slug}`,
       component: path.resolve(`./src/templates/ContributorTemplate.js`),
       context: {
-        contributorId: contributor.contributor_id,
+        contributorId: contributor.id,
       },
     });
   });
 
-  result.data.bsp.languages.forEach((language) => {
+  result.data.bsp.allLanguages.forEach((language) => {
     createPage({
       path: `/language/${language.language_code}`,
       component: path.resolve(`./src/templates/LanguageTemplate.js`),
       context: {
-        languageId: language.language_id,
+        languageId: language.id,
       },
     });
   });
 
-  result.data.bsp.tags.forEach((tag) => {
+  result.data.bsp.allTags.forEach((tag) => {
     createPage({
       path: `/tag/${tag.tag_slug}`,
       component: path.resolve(`./src/templates/TagTemplate.js`),
       context: {
-        tagId: tag.tag_id,
+        tagId: tag.id,
       },
     });
   });

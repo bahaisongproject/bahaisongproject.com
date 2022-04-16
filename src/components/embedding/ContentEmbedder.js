@@ -4,16 +4,16 @@ import SoundCloudEmbedder from "./SoundCloudEmbedder";
 import BandcampEmbedder from "./BandcampEmbedder";
 import { is_youtube, is_soundcloud, is_bandcamp } from "../../utils/embed";
 
-const ContentEmbedder = ({ performance }) => (
+const ContentEmbedder = ({ rendition }) => (
   <div className="mt-8">
     {(() => {
-      if (is_youtube(performance.content_url))
-        return <YouTubeEmbedder performance={performance} />;
-      if (is_soundcloud(performance.content_url)) {
-        return <SoundCloudEmbedder performance={performance} />;
+      if (is_youtube(rendition.contentUrl))
+        return <YouTubeEmbedder rendition={rendition} />;
+      if (is_soundcloud(rendition.contentUrl)) {
+        return <SoundCloudEmbedder rendition={rendition} />;
       }
-      if (is_bandcamp(performance.content_url)) {
-        return <BandcampEmbedder performance={performance} />;
+      if (is_bandcamp(rendition.contentUrl)) {
+        return <BandcampEmbedder rendition={rendition} />;
       } else return null;
     })()}
   </div>
