@@ -33,7 +33,7 @@ const columns = [
     grow: 1,
     cell: (row) => (
       <div className="py-2 sm:text-base md:text-lg">
-        {new Date(row.created_at).toLocaleDateString("en-gb", dateOptions)}
+        {new Date(row.publishedAt).toLocaleDateString("en-gb", dateOptions)}
       </div>
     ),
   },
@@ -62,6 +62,7 @@ function AllSongs({ data, location }) {
     height: 628,
   };
   const allSongList = data.bsp.allSongs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
+  console.log(allSongList[0]);
   return (
     <Layout location={location}>
       <SEO

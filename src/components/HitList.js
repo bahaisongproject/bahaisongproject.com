@@ -25,12 +25,12 @@ const columns = [
   },
   {
     name: "Published",
-    selector: "created_at",
+    selector: "publishedAt",
     sortable: true,
     wrap: true,
     grow: 1,
     format: (row) =>
-      new Date(row.created_at).toLocaleDateString("en-gb", dateOptions),
+      new Date(row.publishedAt).toLocaleDateString("en-gb", dateOptions),
   },
   {
     name: "Song Sheet",
