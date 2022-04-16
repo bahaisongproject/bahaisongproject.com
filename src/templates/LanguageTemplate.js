@@ -60,7 +60,7 @@ function LanguageTemplate({ data, location }) {
     <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
-        title={language.language_name_en}
+        title={language.nameEn}
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
@@ -68,7 +68,7 @@ function LanguageTemplate({ data, location }) {
             Language
           </h2>
           <h1 className="text-3xl font-semibold">
-            {language.language_name_en}
+            {language.nameEn}
           </h1>
           <div className="max-w-4xl mx-auto">
             {(() => {
@@ -92,30 +92,30 @@ function LanguageTemplate({ data, location }) {
 export const query = graphql`
   query($languageId: Int!) {
     bsp {
-      language(where: { language_id: $languageId }) {
-        language_name_en
+      language(id: $languageId) {
+        nameEn
         songs {
           title
           slug
           music
-          created_at
+          publishedAt
           contributors {
-            contributor_id
-            contributor_slug
-            contributor_name
+            id
+            slug
+            name
           }
           languages {
-            language_code
-            language_name_en
+            code
+            nameEn
           }
           tags {
-            tag_id
-            tag_name
-            tag_slug
+            id
+            name
+            slug
           }
-          performances {
-            performance_prio
-            content_url
+          renditions {
+            prio
+            contentUrl
           }
         }
       }

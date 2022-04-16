@@ -8,15 +8,15 @@ const ExcerptCard = ({ excerpt, song }) => (
   <Tabs
     className=" mt-8 mb-4"
     defaultIndex={excerpt.source.excerpts
-      .map((excerpt) => excerpt.language.language_name_en)
+      .map((excerpt) => excerpt.language.nameEn)
       .findIndex(
-        (language_name_en) =>
-          language_name_en === excerpt.language.language_name_en
+        (nameEn) =>
+        nameEn === excerpt.language.nameEn
       )}
   >
     <TabList className="ml-1">
       {excerpt.source.excerpts.map((excerpt, i) => (
-        <Tab key={i}>{excerpt.language.language_name_en}</Tab>
+        <Tab key={i}>{excerpt.language.nameEn}</Tab>
       ))}
     </TabList>
     <TabPanels className="mt-4">
@@ -25,7 +25,7 @@ const ExcerptCard = ({ excerpt, song }) => (
           <div className="max-w-xl border-primary-500 my-1 p-8 xs:p-16 bg-primary-50 text-gray-900 font-sans shadow-lg rounded-sm">
             <div className="">
               {(() => {
-                let excerpt_text = excerpt.excerpt_text
+                let excerpt_text = excerpt.text
                   .split("  ")
                   .map((paragraph, i) => {
                     return <p key={i}>{paragraph}</p>;
@@ -34,8 +34,8 @@ const ExcerptCard = ({ excerpt, song }) => (
               })()}
             </div>
             <div className="text-sm mt-8 flex flex-wrap justify-between">
-              <div className="mt-2">{excerpt.source.source_author}</div>
-              <div className="mt-2">{excerpt.source.source_description}</div>
+              <div className="mt-2">{excerpt.source.author}</div>
+              <div className="mt-2">{excerpt.source.description}</div>
             </div>
           </div>
           {(() => {

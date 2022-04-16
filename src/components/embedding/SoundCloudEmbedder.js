@@ -1,10 +1,10 @@
 import React from "react";
 
-const SoundCloudEmbedder = ({ performance }) => (
+const SoundCloudEmbedder = ({ rendition }) => (
   <iframe
     src={
       "https://w.soundcloud.com/player/?url=" +
-      performance.content_url +
+      rendition.contentUrl +
       "&color=%238bb6af"
     }
     width="100%"

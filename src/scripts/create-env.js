@@ -13,7 +13,7 @@ fs.writeFileSync(
 );
 fs.writeFileSync(
   "./.env.production",
-  `BSP_API_URL=${process.env.BSP_API_URL}\n`
+  `BSP_API_URL_NEW=${process.env.BSP_API_URL_NEW}\n`
 );
 fs.writeFileSync(
   "./.env.production",

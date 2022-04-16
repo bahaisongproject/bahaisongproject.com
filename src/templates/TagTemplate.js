@@ -83,35 +83,36 @@ function TagTemplate({ data, location }) {
 export const query = graphql`
   query($tagId: Int!) {
     bsp {
-      tag(where: { tag_id: $tagId }) {
-        tag_name
-        tag_description
+      tag(id: $tagId) {
+        name
+        description
         songs {
           title
           slug
-          created_at
+          publishedAt
           music
           contributors {
-            contributor_id
-            contributor_slug
-            contributor_name
+            id
+            slug
+            name
           }
           languages {
-            language_code
-            language_name_en
+            code
+            nameEn
           }
           tags {
-            tag_id
-            tag_name
-            tag_slug
+            id
+            name
+            slug
           }
-          performances {
-            performance_prio
-            content_url
+          renditions {
+            prio
+            contentUrl
           }
         }
       }
     }
+
   }
 `;
 

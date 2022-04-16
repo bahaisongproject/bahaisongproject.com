@@ -61,7 +61,7 @@ function ContributorTemplate({ data, location }) {
     <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
-        title={contributor.contributor_name}
+        title={contributor.name}
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
@@ -69,11 +69,11 @@ function ContributorTemplate({ data, location }) {
             Contributor
           </h2>
           <h1 className="text-3xl font-semibold">
-            {contributor.contributor_name}
+            {contributor.name}
           </h1>
           {(() => {
             if (contributor.contributor_url) {
-              return <Button url={contributor.contributor_url}>Website</Button>;
+              return <Button url={contributor.website}>Website</Button>;
             }
           })()}
           <div className="mt-4 ">
@@ -100,32 +100,32 @@ function ContributorTemplate({ data, location }) {
 export const query = graphql`
   query($contributorId: Int!) {
     bsp {
-      contributor(where: { contributor_id: $contributorId }) {
-        contributor_name
-        contributor_url
+      contributor(id: $contributorId) {
+        name
+        website
         songs {
           title
           slug
-          created_at
+          publishedAt
           music
           contributors {
-            contributor_id
-            contributor_slug
-            contributor_name
-            contributor_url
+            id
+            slug
+            name
+            website
           }
           languages {
-            language_code
-            language_name_en
+            code
+            nameEn
           }
           tags {
-            tag_id
-            tag_name
-            tag_slug
+            id
+            name
+            slug
           }
-          performances {
-            performance_prio
-            content_url
+          renditions {
+            prio
+            contentUrl
           }
         }
       }

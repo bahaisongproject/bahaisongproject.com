@@ -27,13 +27,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-helmet`,
     },
-    ...(process.env.SOCIAL_IMAGES_SKIP_GENERATION == "false"
-      ? [
-          {
-            resolve: `gatsby-plugin-open-graph-images`,
-          },
-        ]
-      : []),
     {
       resolve: `gatsby-plugin-eslint`,
     },
@@ -45,7 +38,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "bsp",
         // Url to query from
-        url: process.env.BSP_API_URL,
+        url: process.env.BSP_API_URL_NEW,
         // Refetch interval in seconds
         refetchInterval: 20,
       },

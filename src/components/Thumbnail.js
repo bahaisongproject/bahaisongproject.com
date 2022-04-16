@@ -29,18 +29,18 @@ export default function Thumbnail({ song }) {
       render={(data) =>
         (() => {
           if (
-            song.performances.length > 0 &&
-            song.performances.filter((p) => is_youtube(p.content_url)).length >
+            song.renditions.length > 0 &&
+            song.renditions.filter((p) => is_youtube(p.contentUrl)).length >
               0
           ) {
-            const yt_performance = song.performances
-              .filter((p) => is_youtube(p.content_url))
+            const yt_performance = song.renditions
+              .filter((p) => is_youtube(p.contentUrl))
               .sort((a, b) =>
-                a.performance_prio > b.performance_prio ? 1 : -1
+                a.prio > b.prio ? 1 : -1
               )[0];
             const thumbnail_url =
               "https://www.bahaisongproject.com/ytimage/" +
-              get_youtube_id(yt_performance.content_url) +
+              get_youtube_id(yt_performance.contentUrl) +
               "/hqdefault.jpg";
             const thumbnail_image = getImage(
               data.allFile.nodes.find(
