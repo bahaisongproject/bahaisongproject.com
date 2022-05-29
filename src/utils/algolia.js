@@ -1,11 +1,14 @@
 const songQuery = `{
     bsp {
       allSongs {
-        objectID: song_id
+        objectID: id
         title
         slug
         description
-        sources
+        sources {
+          description
+          author
+        }
         music
         words
         languages {
