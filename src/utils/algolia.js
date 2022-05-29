@@ -5,6 +5,7 @@ const songQuery = `{
         title
         slug
         description
+        publishedAt
         sources {
           description
           author
