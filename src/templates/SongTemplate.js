@@ -37,9 +37,7 @@ class SongTemplate extends Component {
                   className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
-                  <Link to={"/language/" + language.code}>
-                    {language.nameEn}
-                  </Link>
+                  {language.nameEn}
                 </div>
               ))}
 
@@ -49,7 +47,7 @@ class SongTemplate extends Component {
                   className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
-                  <Link to={"/tag/" + tag.slug}>{tag.name}</Link>
+                  {tag.name}
                 </div>
               ))}
             </div>
@@ -70,9 +68,7 @@ class SongTemplate extends Component {
                       }
                       key={i}
                     >
-                      <Link to={"/contributor/" + contributor.slug}>
-                        {contributor.name}
-                      </Link>
+                      {contributor.name}
                     </div>
                   ))}
                 </div>
