@@ -10,7 +10,7 @@ function encode(data) {
     .join("&");
 }
 
-function Contact() {
+function Contact({ location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
@@ -53,7 +53,7 @@ function Contact() {
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title="Contact"
@@ -64,6 +64,23 @@ function Contact() {
           <h1 className="text-3xl text-gray-900 leading-tight font-extrabold">
             Contact
           </h1>
+          <div className="mt-8 prose">
+            <p className=" font-bold">We would love to hear from you.</p>
+            <p>
+              Tell us what your favorite song is, report an error or just say
+              hi!
+            </p>
+            <p>Here are some of the things you could write us</p>
+            <ul>
+              <li>Tell us what your favorite song is</li>
+              <li>Report an error</li>
+              <li>Just say hi</li>
+              <li>Share how you use bahá&apos;í song project</li>
+              <li>
+                Ask a question about <Link to="/contribute">contributing</Link>
+              </li>
+            </ul>
+          </div>
           <form
             className="pt-8"
             name="contact"
@@ -131,7 +148,7 @@ function Contact() {
               </div>
             </div>
             <input
-              className="bg-gradient-to-r from-bspgreen to-bspblue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
               type="submit"
               value={
                 state.isLoading ? "..." : state.submitted ? "Sent ✓" : "Send"

@@ -3,7 +3,15 @@ import PropTypes from "prop-types";
 import React from "react";
 import Helmet from "react-helmet";
 
-function SEO({ description, keywords, lang, meta, image: metaImage, title, pathname }) {
+function SEO({
+  description,
+  keywords,
+  lang,
+  meta,
+  image: metaImage,
+  title,
+  pathname,
+}) {
   const { site } = useStaticQuery(graphql`
     query DefaultSEOQuery {
       site {
@@ -22,8 +30,8 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
   const image =
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`
-      : null
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
+      : null;
+  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null;
 
   return (
     <Helmet
@@ -37,11 +45,15 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
         },
         {
           name: "keywords",
-          content: keywords ? keywords.join(",") : site.siteMetadata.keywords.join(","),
+          content: keywords
+            ? keywords.join(",")
+            : site.siteMetadata.keywords.join(","),
         },
         {
           property: `og:title`,
-          content: title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title,
+          content: title
+            ? `${title} | ${site.siteMetadata.title}`
+            : site.siteMetadata.title,
         },
         {
           property: `og:description`,
@@ -57,7 +69,9 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
         },
         {
           name: `twitter:title`,
-          content: title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title,
+          content: title
+            ? `${title} | ${site.siteMetadata.title}`
+            : site.siteMetadata.title,
         },
         {
           name: `twitter:description`,
@@ -92,7 +106,11 @@ function SEO({ description, keywords, lang, meta, image: metaImage, title, pathn
               ]
         )
         .concat(meta)}
-      title={title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title}
+      title={
+        title
+          ? `${title} | ${site.siteMetadata.title}`
+          : site.siteMetadata.title
+      }
       link={
         canonical
           ? [
@@ -112,20 +130,6 @@ SEO.defaultProps = {
   keywords: [],
   meta: [],
   description: ``,
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  title: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-  }),
-  pathname: PropTypes.string,
 };
 
 export default SEO;

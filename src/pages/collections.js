@@ -5,14 +5,14 @@ import SEO from "../components/seo";
 
 import Results from "../components/Results";
 
-function Collections({ data }) {
+function Collections({ data, location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
     height: 628,
   };
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title="Collections"
@@ -31,8 +31,8 @@ function Collections({ data }) {
                   ? 1
                   : -1
               )
-              .map((node) => (
-                <div key="0" className="mt-8">
+              .map((node, i) => (
+                <div key={i} className="mt-8">
                   <Link
                     to={node.childMdx.frontmatter.slug}
                     className="leading-tight"

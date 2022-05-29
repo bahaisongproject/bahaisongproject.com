@@ -1,18 +1,19 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/Layout";
-import SEO from "../components/Seo";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 import Results from "../components/Results";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import MDXWrapper from "../components/MDXWrapper";
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
+  location
 }) {
   const { mdx } = data; // data.mdx holds your post data
   const { frontmatter, body } = mdx;
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
         title={frontmatter.title}

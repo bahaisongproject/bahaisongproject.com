@@ -1,9 +1,10 @@
 import { Link } from "gatsby";
 import React from "react";
+import logo from "../images/logo_100x100.png";
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-bspgreen to-bspblue text-white flex justify-center flex-wrap items-baseline text-sm">
+    <footer className="mx-auto flex justify-center flex-wrap items-baseline text-sm border-t-2 border-gray-100">
       <nav className="flex p-4">
         <ul className="flex">
           <li>

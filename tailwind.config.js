@@ -1,8 +1,8 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
-  purge: [
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
+  mode: "jit",
+  purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
   theme: {
     extend: {
       spacing: {
@@ -62,8 +62,10 @@ module.exports = {
         ],
       },
       colors: {
-        'bspblue': '#416788',
-        'bspgreen': '#89B4AD',
+        primary: colors.teal,
+      },
+      maxWidth: {
+        "8xl": "88rem",
       },
     },
     screens: {
@@ -73,29 +75,6 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
     },
-    gradients: (theme) => ({
-      // Array definition (defaults to linear gradients).
-      topaz: ["30deg", theme("colors.orange.500"), theme("colors.pink.400")],
-      "topaz-dark": [
-        "30deg",
-        theme("colors.orange.700"),
-        theme("colors.pink.600"),
-      ],
-      emerald: [
-        "to right",
-        theme("colors.green.400"),
-        theme("colors.teal.500"),
-      ],
-      fireopal: ["to right", "#40E0D0", "#FF8C00", "#FF0080"],
-      relay: ["to top left", "#3A1C71", "#D76D77", "#FFAF7B"],
-      "green-blue": ["30deg", "#89B4AD", "#416788"],
-
-      // Object definition.
-      "mono-circle": {
-        type: "radial",
-        colors: ["circle", "#CCC", "#000"],
-      },
-    }),
   },
   variants: {
     gradients: ["responsive", "hover"],

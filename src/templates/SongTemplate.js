@@ -1,12 +1,14 @@
 import { graphql, Link } from "gatsby";
 import React, { Component } from "react";
+import { OutboundLink } from "gatsby-plugin-gtag";
+import { ExternalLinkIcon } from "@heroicons/react/solid";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import Button from "../components/Button";
 import ContentEmbedder from "../components/embedding/ContentEmbedder";
 import ExcerptCard from "../components/ExcerptCard";
 import Results from "../components/Results";
 import { describe_song } from "../utils/description";
+
 
 class SongTemplate extends Component {
   render() {
@@ -18,7 +20,7 @@ class SongTemplate extends Component {
       height: 628,
     };
     return (
-      <Layout>
+      <Layout location={this.props.location } >
         <SEO
           title={song.title}
           description={description}
@@ -30,24 +32,24 @@ class SongTemplate extends Component {
             {/* Show languages and tags over song title */}
             <div className="flex flex-wrap">
               {/* Languages */}
-              {song.languages.map((language) => (
+              {song.languages.map((language, i) => (
                 <div
-                  className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
-                  key="0"
+                  className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+                  key={i}
                 >
-                  <Link to={"/language/" + language.language_code}>
-                    {language.language_name_en}
+                  <Link to={"/language/" + language.code}>
+                    {language.nameEn}
                   </Link>
                 </div>
               ))}
 
               {/* Tags */}
-              {song.tags.map((tag) => (
+              {song.tags.map((tag, i) => (
                 <div
-                  className="border bg-gray-100 tracking-wide text-xs text-gray-600 px-1 mr-1 mt-2 rounded-sm focus:outline-none"
-                  key="0"
+                  className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+                  key={i}
                 >
-                  <Link to={"/tag/" + tag.tag_slug}>{tag.tag_name}</Link>
+                  <Link to={"/tag/" + tag.slug}>{tag.name}</Link>
                 </div>
               ))}
             </div>
@@ -55,7 +57,7 @@ class SongTemplate extends Component {
             {/* Show contributors and / or song description */}
             <div className="flex flex-col mt-6 xs:items-end xs:flex-row xs:place-content-between">
               <div>
-                <h1 className="text-3xl font-semibold font-sans leading-tight">
+                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                   {song.title}
                 </h1>
 
@@ -64,41 +66,50 @@ class SongTemplate extends Component {
                   {song.contributors.map((contributor, i) => (
                     <div
                       className={
-                        "contributor-name text-gray-700 leading-tight text-lg mt-1"
+                        "contributor-name leading-tight text-lg text-gray-500 sm:text-2xl md:text-3xl mt-1 sm:mt-4"
                       }
-                      key="0"
+                      key={i}
                     >
-                      <Link to={"/contributor/" + contributor.contributor_slug}>
-                        {contributor.contributor_name}
+                      <Link to={"/contributor/" + contributor.slug}>
+                        {contributor.name}
                       </Link>
                     </div>
                   ))}
                 </div>
 
                 {/* Song Description */}
-                <div className="text-lg text-gray-700 leading-tight mt-1">
-                  {song.song_description}
+                <div className="leading-tight mt-1 text-lg text-gray-500 sm:text-2xl md:text-3xl">
+                  {song.description}
                 </div>
               </div>
-
-              {/* Song Sheet Download Button */}
-              <Button
-                url={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
-              >
-                Song Sheet
-              </Button>
             </div>
 
-            {/* Performances */}
-            {song.performances
+            {/* Renditions */}
+            {song.renditions
               .sort((a, b) =>
-                a.performance_prio > b.performance_prio ? 1 : -1
+                a.prio > b.prio ? 1 : -1
               )
-              .map((performance) => (
-                <ContentEmbedder performance={performance} key="0" />
+              .map((rendition, i) => (
+                <ContentEmbedder rendition={rendition} key={i} />
               ))}
-            {song.excerpts.map((excerpt) => (
-              <ExcerptCard excerpt={excerpt} song={song} key="0" />
+
+            {/* Song sheet */}
+            <div className="flex flex-col items-start space-y-6 mt-12 w-full">
+              {/* Song Sheet Download Button */}
+              <OutboundLink
+                href={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex space-x-1 items-center font-medium px-4 py-2 text-sm text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+              >
+                <span>Download Song Sheet</span>
+                <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
+              </OutboundLink>
+            </div>
+
+            {/* Excerpts */}
+            {song.excerpts.map((excerpt, i) => (
+              <ExcerptCard excerpt={excerpt} song={song} key={i} />
             ))}
           </div>
         </Results>
@@ -110,68 +121,73 @@ class SongTemplate extends Component {
 export const query = graphql`
   query($songSlug: String!) {
     bsp {
-      song(where: { slug: $songSlug }) {
+      song(songUniqueInput: {
+        slug: $songSlug
+      }) {
         title
         slug
-        song_description
+        description
         contributors {
-          contributor_name
-          contributor_slug
+          name
+          slug
         }
-        performances {
-          content_url
-          performance_prio
+        renditions {
+          contentUrl
+          prio
         }
         excerpts {
-          excerpt_text
+          id
+          text
           language {
-            language_name_en
+            nameEn
           }
           source {
-            source_author
-            source_description
+            author
+            description
             excerpts {
-              excerpt_text
+              id
+              text
               language {
-                language_name_en
+                nameEn
               }
               source {
-                source_author
-                source_description
+                author
+                description
               }
               songs {
+                id
                 title
                 slug
-                song_description
+                description
                 languages {
-                  language_name_en
-                  language_code
+                  nameEn
+                  code
                 }
                 tags {
-                  tag_id
-                  tag_name
-                  tag_slug
+                  id
+                  name
+                  slug
                 }
                 contributors {
-                  contributor_id
-                  contributor_slug
-                  contributor_name
+                  id
+                  slug
+                  name
                 }
-                performances {
-                  content_url
+                renditions {
+                  contentUrl
                 }
               }
             }
           }
         }
         languages {
-          language_code
-          language_name_en
+          code
+          nameEn
         }
         tags {
-          tag_id
-          tag_name
-          tag_slug
+          id
+          name
+          slug
         }
       }
     }

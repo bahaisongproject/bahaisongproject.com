@@ -1,20 +1,66 @@
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import SongCard from "../components/SongCard";
 import Results from "../components/Results";
+import DataTable from "react-data-table-component";
+import { DocumentDownloadIcon } from "@heroicons/react/outline";
+import { OutboundLink } from "gatsby-plugin-gtag";
 
-function LanguageTemplate({ data }) {
+const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+
+const columns = [
+  {
+    name: "Song",
+    selector: "title",
+    sortable: true,
+    grow: 2,
+    cell: (row) => (
+      <div className="py-2 gap-y-1 flex flex-col">
+        <Link className="hover:underline font-bold" to={`/${row.slug}`}>
+          {row.title}
+        </Link>
+        <div className="italic">{row.music}</div>
+      </div>
+    ),
+  },
+  {
+    name: "Published",
+    selector: "publishedAt",
+    sortable: true,
+    wrap: true,
+    grow: 1,
+    format: (row) =>
+      new Date(row.publishedAt).toLocaleDateString("en-gb", dateOptions),
+  },
+  {
+    name: "Song Sheet",
+    sortable: false,
+    center: true,
+    width: "60px",
+    cell: (row) => (
+      <OutboundLink
+        className="hover:underline"
+        href={`https://www.bahaisongproject.com/${row.slug}.pdf`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <DocumentDownloadIcon className="w-6 h-6" aria-hidden="true" />
+      </OutboundLink>
+    ),
+  },
+];
+
+function LanguageTemplate({ data, location }) {
   const language = data.bsp.language;
   const languageSongList = language.songs.sort((a, b) =>
     a.slug > b.slug ? 1 : -1
   );
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO
         keywords={[`bahai`, `song`, `music`, `chords`]}
-        title={language.language_name_en}
+        title={language.nameEn}
       />
       <Results>
         <div className="max-w-4xl mx-auto px-4 mt-6">
@@ -22,14 +68,18 @@ function LanguageTemplate({ data }) {
             Language
           </h2>
           <h1 className="text-3xl font-semibold">
-            {language.language_name_en}
+            {language.nameEn}
           </h1>
-          <div className="mt-4 grid gap-x-3 gap-y-6 md:gap-x-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3">
+          <div className="max-w-4xl mx-auto">
             {(() => {
               if (languageSongList) {
-                return languageSongList.map((song) => (
-                  <SongCard key={song.slug} song={song} />
-                ));
+                return (
+                  <DataTable
+                    noHeader
+                    columns={columns}
+                    data={languageSongList}
+                  />
+                );
               }
             })()}
           </div>
@@ -42,28 +92,30 @@ function LanguageTemplate({ data }) {
 export const query = graphql`
   query($languageId: Int!) {
     bsp {
-      language(where: { language_id: $languageId }) {
-        language_name_en
+      language(id: $languageId) {
+        nameEn
         songs {
           title
           slug
+          music
+          publishedAt
           contributors {
-            contributor_id
-            contributor_slug
-            contributor_name
+            id
+            slug
+            name
           }
           languages {
-            language_code
-            language_name_en
+            code
+            nameEn
           }
           tags {
-            tag_id
-            tag_name
-            tag_slug
+            id
+            name
+            slug
           }
-          performances {
-            performance_prio
-            content_url
+          renditions {
+            prio
+            contentUrl
           }
         }
       }
