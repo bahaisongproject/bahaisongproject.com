@@ -52,9 +52,7 @@ const SongCard = ({ song, className }) => (
             className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
-            <Link to={"/language/" + language.code}>
-              {language.nameEn}
-            </Link>
+            {language.nameEn}
           </div>
         ))}
         {/* Tags */}
@@ -63,7 +61,7 @@ const SongCard = ({ song, className }) => (
             className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
-            <Link to={"/tag/" + tag.slug}>{tag.name}</Link>
+            {tag.name}
           </div>
         ))}
       </div>
