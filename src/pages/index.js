@@ -13,11 +13,11 @@ function IndexPage({ data, location }) {
     height: 628,
   };
   const featuredSongsSlugList = [
-    "say",
-    "remember-at-all-times",
-    "armed",
-    "heri-pahali",
-    "apple-of-mine-eye",
+    "observe-all-the-things",
+    "die-erde-ist-nur-ein-land",
+    "god-is-sufficient-unto-me",
+    "o-fils-de-lexistence",
+    "ey-yalla",
   ];
   const featuredSongList = [...data.bsp.allSongs].filter((song) =>
     featuredSongsSlugList.includes(song.slug)
