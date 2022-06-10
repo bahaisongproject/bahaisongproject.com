@@ -62,7 +62,6 @@ function AllSongs({ data, location }) {
     height: 628,
   };
   const allSongList = data.bsp.allSongs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
-  console.log(allSongList[0]);
   return (
     <Layout location={location}>
       <SEO
