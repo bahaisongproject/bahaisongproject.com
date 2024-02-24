@@ -57,6 +57,7 @@ export const query = graphql`
       filter: {
         sourceInstanceName: { eq: "collections" }
         extension: { in: ["md", "mdx"] }
+        childMdx: { frontmatter: { public: { ne: false } } }
       }
     ) {
       nodes {
