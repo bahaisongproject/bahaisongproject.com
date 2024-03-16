@@ -22,7 +22,7 @@ function IndexPage({ data, location }) {
   const featuredSongList = [...data.bsp.allSongs].filter((song) =>
     featuredSongsSlugList.includes(song.slug)
   );
-  const recentSongList = [...data.bsp.allSongs].reverse().slice(0, 10);
+  const recentSongList = [...data.bsp.allSongs].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, 10);
   return (
     <Layout siteName="index" location={location} >
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} image={image} />
@@ -156,6 +156,7 @@ export const query = graphql`
   query {
     bsp {
       allSongs {
+        publishedAt
         title
         slug
         description
