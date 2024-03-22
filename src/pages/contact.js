@@ -133,6 +133,7 @@ function Contact({ location }) {
             </div>
             <div className="gdpr-check flex items-baseline py-4">
               <input
+                id="privacy-policy-checkbox"
                 type="checkbox"
                 name="gdpr-check"
                 checked={state["gdpr-check"]}
@@ -140,12 +141,12 @@ function Contact({ location }) {
                 aria-required="true"
                 required
               />
-              <div className="pl-2">
+              <label for="privacy-policy-checkbox" className="pl-2">
                 I have read and agree to the{" "}
                 <Link className="underline" to="/privacy">
                   privacy policy
                 </Link>
-              </div>
+              </label>
             </div>
             <input
               className="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
@@ -153,7 +154,7 @@ function Contact({ location }) {
               value={
                 state.isLoading ? "..." : state.submitted ? "Sent ✓" : "Send"
               }
-              disabled={state["gdpr-check"] ? false : true}
+              disabled={!state["gdpr-check"]}
             />
           </form>
         </div>
