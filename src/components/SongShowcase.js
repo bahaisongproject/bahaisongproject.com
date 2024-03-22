@@ -1,6 +1,6 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import SongCard from "./SongCard";
+import React from "react"
+import { StaticQuery, graphql } from "gatsby"
+import SongCard from "./SongCard"
 
 export default function SongShowcase({ songSlug }) {
   const songsQuery = graphql`
@@ -30,7 +30,7 @@ export default function SongShowcase({ songSlug }) {
         }
       }
     }
-  `;
+  `
   return (
     <StaticQuery
       query={songsQuery}
@@ -42,5 +42,5 @@ export default function SongShowcase({ songSlug }) {
         </div>
       )}
     />
-  );
+  )
 }

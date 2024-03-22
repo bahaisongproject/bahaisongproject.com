@@ -1,6 +1,6 @@
-import React from "react";
-import ResponsiveEmbed from "react-responsive-embed";
-import { get_youtube_id } from "../../utils/embed";
+import React from "react"
+import ResponsiveEmbed from "react-responsive-embed"
+import { get_youtube_id } from "../../utils/embed"
 
 const YouTubeEmbedder = ({ rendition }) => (
   <ResponsiveEmbed
@@ -9,6 +9,6 @@ const YouTubeEmbedder = ({ rendition }) => (
     }
     allowFullScreen
   />
-);
+)
 
-export default YouTubeEmbedder;
+export default YouTubeEmbedder

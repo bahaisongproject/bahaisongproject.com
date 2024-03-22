@@ -1,16 +1,16 @@
-import React from "react";
-import { graphql, Link } from "gatsby";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import React from "react"
+import { graphql, Link } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 
-import Results from "../components/Results";
+import Results from "../components/Results"
 
 function Collections({ data, location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
     height: 628,
-  };
+  }
   return (
     <Layout location={location}>
       <SEO
@@ -46,10 +46,10 @@ function Collections({ data, location }) {
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
-export default Collections;
+export default Collections
 
 export const query = graphql`
   query {
@@ -71,4 +71,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

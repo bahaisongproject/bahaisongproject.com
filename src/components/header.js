@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React, { Fragment } from "react";
-import { Link } from "gatsby";
-import { Popover, Transition } from "@headlessui/react";
+import React, { Fragment } from "react"
+import { Link } from "gatsby"
+import { Popover, Transition } from "@headlessui/react"
 import {
   BookOpenIcon,
   CollectionIcon,
@@ -11,10 +11,10 @@ import {
   PlusCircleIcon,
   QuestionMarkCircleIcon,
   XIcon,
-} from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
-import SearchBox from "./SearchBox";
-import logo from "../images/logo_100x100.png";
+} from "@heroicons/react/outline"
+import { ChevronDownIcon } from "@heroicons/react/solid"
+import SearchBox from "./SearchBox"
+import logo from "../images/logo_100x100.png"
 
 const solutions = [
   {
@@ -35,13 +35,13 @@ const solutions = [
     href: "/collections",
     icon: CollectionIcon,
   },
-];
+]
 
 const callsToAction = [
   { name: "Request", href: "/request-submit", icon: QuestionMarkCircleIcon },
   { name: "Submit", href: "/request-submit", icon: PlusCircleIcon },
   { name: "Report", href: "/contact", icon: ExclamationCircleIcon },
-];
+]
 
 const recentPosts = [
   { id: 1, name: "Your Favorites", href: "/collection/your-favorites" },
@@ -55,10 +55,10 @@ const recentPosts = [
     name: "The Centenary of the Ascension of ‘Abdu’l-Bahá",
     href: "/collection/centenary-ascension-abdul-baha",
   },
-];
+]
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(" ")
 }
 
 export default function Example() {
@@ -293,5 +293,5 @@ export default function Example() {
         </>
       )}
     </Popover>
-  );
+  )
 }

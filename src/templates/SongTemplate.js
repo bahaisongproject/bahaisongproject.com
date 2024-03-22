@@ -1,26 +1,25 @@
-import { graphql, Link } from "gatsby";
-import React, { Component } from "react";
-import { OutboundLink } from "gatsby-plugin-gtag";
-import { ExternalLinkIcon } from "@heroicons/react/solid";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import ContentEmbedder from "../components/embedding/ContentEmbedder";
-import ExcerptCard from "../components/ExcerptCard";
-import Results from "../components/Results";
-import { describe_song } from "../utils/description";
-
+import { graphql, Link } from "gatsby"
+import React, { Component } from "react"
+import { OutboundLink } from "gatsby-plugin-gtag"
+import { ExternalLinkIcon } from "@heroicons/react/solid"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import ContentEmbedder from "../components/embedding/ContentEmbedder"
+import ExcerptCard from "../components/ExcerptCard"
+import Results from "../components/Results"
+import { describe_song } from "../utils/description"
 
 class SongTemplate extends Component {
   render() {
-    const song = this.props.data.bsp.song;
-    const description = describe_song(song);
+    const song = this.props.data.bsp.song
+    const description = describe_song(song)
     const image = {
       src: `/__social/${song.slug}.png`,
       width: 1200,
       height: 628,
-    };
+    }
     return (
-      <Layout location={this.props.location } >
+      <Layout location={this.props.location}>
         <SEO
           title={song.title}
           description={description}
@@ -82,9 +81,7 @@ class SongTemplate extends Component {
 
             {/* Renditions */}
             {song.renditions
-              .sort((a, b) =>
-                a.prio > b.prio ? 1 : -1
-              )
+              .sort((a, b) => (a.prio > b.prio ? 1 : -1))
               .map((rendition, i) => (
                 <ContentEmbedder rendition={rendition} key={i} />
               ))}
@@ -110,16 +107,14 @@ class SongTemplate extends Component {
           </div>
         </Results>
       </Layout>
-    );
+    )
   }
 }
 
 export const query = graphql`
   query($songSlug: String!) {
     bsp {
-      song(songUniqueInput: {
-        slug: $songSlug
-      }) {
+      song(songUniqueInput: { slug: $songSlug }) {
         title
         slug
         description
@@ -188,6 +183,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default SongTemplate;
+export default SongTemplate

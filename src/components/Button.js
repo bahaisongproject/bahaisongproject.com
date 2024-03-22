@@ -1,5 +1,5 @@
-import React from "react";
-import { OutboundLink } from "gatsby-plugin-gtag";
+import React from "react"
+import { OutboundLink } from "gatsby-plugin-gtag"
 
 const Button = ({ children, url }) => (
   <OutboundLink href={url} target="_blank" rel="noopener noreferrer">
@@ -11,6 +11,6 @@ const Button = ({ children, url }) => (
       </svg>
     </button>
   </OutboundLink>
-);
+)
 
-export default Button;
+export default Button

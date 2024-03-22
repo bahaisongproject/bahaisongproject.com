@@ -1,17 +1,17 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Results from "../components/Results";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import MDXWrapper from "../components/MDXWrapper";
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Results from "../components/Results"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import MDXWrapper from "../components/MDXWrapper"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
-  location
+  location,
 }) {
-  const { mdx } = data; // data.mdx holds your post data
-  const { frontmatter, body } = mdx;
+  const { mdx } = data // data.mdx holds your post data
+  const { frontmatter, body } = mdx
   return (
     <Layout location={location}>
       <SEO
@@ -33,7 +33,7 @@ export default function Template({
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -45,4 +45,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

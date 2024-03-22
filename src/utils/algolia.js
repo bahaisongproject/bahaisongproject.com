@@ -41,7 +41,7 @@ const songQuery = `{
         }
       }
     }    
-  }`;
+  }`
 
 const queries = [
   {
@@ -49,6 +49,6 @@ const queries = [
     transformer: ({ data }) => data.bsp.allSongs,
     indexName: `bsp-songs`,
   },
-];
+]
 
-module.exports = queries;
+module.exports = queries

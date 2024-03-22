@@ -1,6 +1,6 @@
-const path = require(`path`);
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
-const { is_youtube, get_youtube_id } = require("./src/utils/embed");
+const path = require(`path`)
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
+const { is_youtube, get_youtube_id } = require("./src/utils/embed")
 
 exports.createPages = async ({
   actions,
@@ -10,7 +10,7 @@ exports.createPages = async ({
   graphql,
   reporter,
 }) => {
-  const { createNode, createPage } = actions;
+  const { createNode, createPage } = actions
 
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
@@ -66,12 +66,12 @@ exports.createPages = async ({
         }
       }
     }
-  `);
+  `)
 
   // Handle errors
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
-    return;
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
   }
 
   // console.log(JSON.stringify(result.data.bsp.allSongs, null, 2));
@@ -79,8 +79,8 @@ exports.createPages = async ({
     result.data.bsp.allSongs.map(async (song) => {
       const youtubePerformances = song.renditions.filter((p) =>
         is_youtube(p.contentUrl)
-      );
-      let fileNode = null;
+      )
+      let fileNode = null
       if (youtubePerformances.length > 0) {
         let fileNode = await createRemoteFileNode({
           url:
@@ -94,7 +94,7 @@ exports.createPages = async ({
           store, // Gatsby's Redux store
           ext: ".jpg",
           name: song.slug,
-        });
+        })
         // console.log(fileNode)
       }
       // console.log(fileNode)
@@ -104,9 +104,9 @@ exports.createPages = async ({
         context: {
           songSlug: song.slug,
         },
-      });
+      })
     })
-  );
+  )
 
   result.data.bsp.allContributors.forEach((contributor) => {
     createPage({
@@ -115,8 +115,8 @@ exports.createPages = async ({
       context: {
         contributorId: contributor.id,
       },
-    });
-  });
+    })
+  })
 
   result.data.bsp.allLanguages.forEach((language) => {
     createPage({
@@ -125,8 +125,8 @@ exports.createPages = async ({
       context: {
         languageId: language.id,
       },
-    });
-  });
+    })
+  })
 
   result.data.bsp.allTags.forEach((tag) => {
     createPage({
@@ -135,16 +135,16 @@ exports.createPages = async ({
       context: {
         tagId: tag.id,
       },
-    });
-  });
+    })
+  })
 
-  const PageTemplate = require.resolve(`./src/templates/PageTemplate.js`);
+  const PageTemplate = require.resolve(`./src/templates/PageTemplate.js`)
   const CollectionTemplate = require.resolve(
     `./src/templates/CollectionTemplate.js`
-  );
+  )
 
-  const pageNodes = result.data.pages.nodes;
-  const collectionNodes = result.data.collections.nodes;
+  const pageNodes = result.data.pages.nodes
+  const collectionNodes = result.data.collections.nodes
 
   pageNodes.forEach((node) => {
     createPage({
@@ -154,8 +154,8 @@ exports.createPages = async ({
         // additional data can be passed via context
         slug: node.childMdx.frontmatter.slug,
       },
-    });
-  });
+    })
+  })
   collectionNodes.forEach((node) => {
     createPage({
       path: node.childMdx.frontmatter.slug,
@@ -164,6 +164,6 @@ exports.createPages = async ({
         // additional data can be passed via context
         slug: node.childMdx.frontmatter.slug,
       },
-    });
-  });
-};
+    })
+  })
+}

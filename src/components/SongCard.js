@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "gatsby";
-import Thumbnail from "./Thumbnail";
+import React from "react"
+import { Link } from "gatsby"
+import Thumbnail from "./Thumbnail"
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(" ")
 }
 
 const SongCard = ({ song, className }) => (
@@ -41,7 +41,7 @@ const SongCard = ({ song, className }) => (
             <div className="text-gray-700 leading-tight">
               {song.description}
             </div>
-          );
+          )
       })()}
 
       {/* Show languages and tags under song title */}
@@ -67,6 +67,6 @@ const SongCard = ({ song, className }) => (
       </div>
     </div>
   </div>
-);
+)
 
-export default SongCard;
+export default SongCard

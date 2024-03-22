@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const SoundCloudEmbedder = ({ rendition }) => (
   <iframe
@@ -13,6 +13,6 @@ const SoundCloudEmbedder = ({ rendition }) => (
     frameBorder="no"
     allow="autoplay"
   />
-);
+)
 
-export default SoundCloudEmbedder;
+export default SoundCloudEmbedder

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const BandcampEmbedder = ({ rendition }) => (
   <iframe
@@ -9,6 +9,6 @@ const BandcampEmbedder = ({ rendition }) => (
     }
     seamless
   />
-);
+)
 
-export default BandcampEmbedder;
+export default BandcampEmbedder

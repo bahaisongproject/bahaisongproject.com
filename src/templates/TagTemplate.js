@@ -1,13 +1,13 @@
-import { graphql, Link } from "gatsby";
-import React from "react";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Results from "../components/Results";
-import DataTable from "react-data-table-component";
-import { DocumentDownloadIcon } from "@heroicons/react/outline";
-import { OutboundLink } from "gatsby-plugin-gtag";
+import { graphql, Link } from "gatsby"
+import React from "react"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Results from "../components/Results"
+import DataTable from "react-data-table-component"
+import { DocumentDownloadIcon } from "@heroicons/react/outline"
+import { OutboundLink } from "gatsby-plugin-gtag"
 
-const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+const dateOptions = { year: "numeric", month: "long", day: "numeric" }
 
 const columns = [
   {
@@ -49,11 +49,11 @@ const columns = [
       </OutboundLink>
     ),
   },
-];
+]
 
 function TagTemplate({ data, location }) {
-  const tag = data.bsp.tag;
-  const tagSongList = tag.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
+  const tag = data.bsp.tag
+  const tagSongList = tag.songs.sort((a, b) => (a.slug > b.slug ? 1 : -1))
   return (
     <Layout location={location}>
       <SEO
@@ -70,14 +70,14 @@ function TagTemplate({ data, location }) {
               if (tagSongList) {
                 return (
                   <DataTable noHeader columns={columns} data={tagSongList} />
-                );
+                )
               }
             })()}
           </div>
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
 export const query = graphql`
@@ -112,8 +112,7 @@ export const query = graphql`
         }
       }
     }
-
   }
-`;
+`
 
-export default TagTemplate;
+export default TagTemplate

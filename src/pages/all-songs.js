@@ -1,14 +1,14 @@
-import React, { Fragment, useState } from "react";
-import { graphql, Link } from "gatsby";
-import { OutboundLink } from "gatsby-plugin-gtag";
+import React, { Fragment, useState } from "react"
+import { graphql, Link } from "gatsby"
+import { OutboundLink } from "gatsby-plugin-gtag"
 
-import { DocumentDownloadIcon } from "@heroicons/react/outline";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Results from "../components/Results";
-import DataTable from "react-data-table-component";
+import { DocumentDownloadIcon } from "@heroicons/react/outline"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Results from "../components/Results"
+import DataTable from "react-data-table-component"
 
-const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+const dateOptions = { year: "numeric", month: "long", day: "numeric" }
 
 const columns = [
   {
@@ -53,15 +53,17 @@ const columns = [
       </OutboundLink>
     ),
   },
-];
+]
 
 function AllSongs({ data, location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
     height: 628,
-  };
-  const allSongList = data.bsp.allSongs.sort((a, b) => (a.slug > b.slug ? 1 : -1));
+  }
+  const allSongList = data.bsp.allSongs.sort((a, b) =>
+    a.slug > b.slug ? 1 : -1
+  )
   return (
     <Layout location={location}>
       <SEO
@@ -89,10 +91,10 @@ function AllSongs({ data, location }) {
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
-export default AllSongs;
+export default AllSongs
 
 export const query = graphql`
   query {
@@ -131,4 +133,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

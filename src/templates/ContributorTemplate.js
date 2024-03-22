@@ -1,14 +1,14 @@
-import { graphql, Link } from "gatsby";
-import React from "react";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Results from "../components/Results";
-import Button from "../components/Button";
-import DataTable from "react-data-table-component";
-import { DocumentDownloadIcon } from "@heroicons/react/outline";
-import { OutboundLink } from "gatsby-plugin-gtag";
+import { graphql, Link } from "gatsby"
+import React from "react"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Results from "../components/Results"
+import Button from "../components/Button"
+import DataTable from "react-data-table-component"
+import { DocumentDownloadIcon } from "@heroicons/react/outline"
+import { OutboundLink } from "gatsby-plugin-gtag"
 
-const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+const dateOptions = { year: "numeric", month: "long", day: "numeric" }
 
 const columns = [
   {
@@ -50,13 +50,13 @@ const columns = [
       </OutboundLink>
     ),
   },
-];
+]
 
 function ContributorTemplate({ data, location }) {
-  const contributor = data.bsp.contributor;
+  const contributor = data.bsp.contributor
   const contributorSongList = contributor.songs.sort((a, b) =>
     a.title > b.title ? 1 : -1
-  );
+  )
   return (
     <Layout location={location}>
       <SEO
@@ -68,12 +68,10 @@ function ContributorTemplate({ data, location }) {
           <h2 className="text-lg text-gray-700 uppercase font-bold">
             Contributor
           </h2>
-          <h1 className="text-3xl font-semibold">
-            {contributor.name}
-          </h1>
+          <h1 className="text-3xl font-semibold">{contributor.name}</h1>
           {(() => {
             if (contributor.contributor_url) {
-              return <Button url={contributor.website}>Website</Button>;
+              return <Button url={contributor.website}>Website</Button>
             }
           })()}
           <div className="mt-4 ">
@@ -86,7 +84,7 @@ function ContributorTemplate({ data, location }) {
                       columns={columns}
                       data={contributorSongList}
                     />
-                  );
+                  )
                 }
               })()}
             </div>
@@ -94,7 +92,7 @@ function ContributorTemplate({ data, location }) {
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
 export const query = graphql`
@@ -131,6 +129,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default ContributorTemplate;
+export default ContributorTemplate

@@ -1,6 +1,6 @@
-import React from "react";
-import { connectStateResults, PoweredBy } from "react-instantsearch-dom";
-import HitList from "./HitList";
+import React from "react"
+import { connectStateResults, PoweredBy } from "react-instantsearch-dom"
+import HitList from "./HitList"
 
 const Results = connectStateResults(({ children, searchState }) =>
   searchState && searchState.query ? (
@@ -18,6 +18,6 @@ const Results = connectStateResults(({ children, searchState }) =>
   ) : (
     children
   )
-);
+)
 
-export default Results;
+export default Results

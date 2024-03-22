@@ -1,42 +1,43 @@
-import PropTypes from "prop-types";
-import React, { useRef, useState, useEffect } from 'react';
+import PropTypes from "prop-types"
+import React, { useRef, useState, useEffect } from "react"
 import { navigate } from "gatsby"
-import algoliasearch from "algoliasearch";
-import { InstantSearch } from "react-instantsearch-dom";
-import qs from 'qs';
-import Header from "./header";
-import Footer from "./footer";
+import algoliasearch from "algoliasearch"
+import { InstantSearch } from "react-instantsearch-dom"
+import qs from "qs"
+import Header from "./header"
+import Footer from "./footer"
 
-const DEBOUNCE_TIME = 400;
+const DEBOUNCE_TIME = 400
 const searchClient = algoliasearch(
   "KBJLQ93WI4",
   "2c640df937f8f88f2c89e59a730941b4"
-);
+)
 
-const createURL = state => `?${qs.stringify({query: state.query}, { format : 'RFC1738' })}`;
+const createURL = (state) =>
+  `?${qs.stringify({ query: state.query }, { format: "RFC1738" })}`
 
 const searchStateToUrl = (location, searchState) =>
-  searchState ? `/${createURL(searchState)}` : '';
+  searchState ? `/${createURL(searchState)}` : ""
 
-const urlToSearchState = location => qs.parse(location.search.slice(1));
+const urlToSearchState = (location) => qs.parse(location.search.slice(1))
 
 function Layout({ children, location }) {
-  const [searchState, setSearchState] = useState(urlToSearchState(location));
-  const debouncedSetStateRef = useRef(null);
+  const [searchState, setSearchState] = useState(urlToSearchState(location))
+  const debouncedSetStateRef = useRef(null)
 
   function onSearchStateChange(updatedSearchState) {
-    clearTimeout(debouncedSetStateRef.current);
+    clearTimeout(debouncedSetStateRef.current)
 
     debouncedSetStateRef.current = setTimeout(() => {
-      navigate(searchStateToUrl(location, updatedSearchState));
-    }, DEBOUNCE_TIME);
+      navigate(searchStateToUrl(location, updatedSearchState))
+    }, DEBOUNCE_TIME)
 
-    setSearchState(updatedSearchState);
+    setSearchState(updatedSearchState)
   }
 
   useEffect(() => {
-    setSearchState(urlToSearchState(location));
-  }, [location]);
+    setSearchState(urlToSearchState(location))
+  }, [location])
 
   return (
     <InstantSearch
@@ -45,7 +46,6 @@ function Layout({ children, location }) {
       searchState={searchState}
       onSearchStateChange={onSearchStateChange}
       createURL={createURL}
-
     >
       <div className="min-h-screen flex flex-col text-gray-900 bg-primary">
         <Header />
@@ -53,7 +53,7 @@ function Layout({ children, location }) {
         <Footer />
       </div>
     </InstantSearch>
-  );
+  )
 }
 
 Layout.propTypes = {
@@ -62,6 +62,6 @@ Layout.propTypes = {
     push: PropTypes.func.isRequired,
   }),
   location: PropTypes.object.isRequired,
-};
+}
 
-export default Layout;
+export default Layout

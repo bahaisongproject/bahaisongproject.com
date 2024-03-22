@@ -1,6 +1,6 @@
-import { Link } from "gatsby";
-import React from "react";
-import logo from "../images/logo_100x100.png";
+import { Link } from "gatsby"
+import React from "react"
+import logo from "../images/logo_100x100.png"
 
 function Footer() {
   return (
@@ -38,7 +38,7 @@ function Footer() {
         <p>&copy; 2011 – {new Date().getFullYear()} bahá&apos;í song project</p>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

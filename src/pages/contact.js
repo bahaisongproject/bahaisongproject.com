@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "gatsby";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Results from "../components/Results";
+import React, { useState } from "react"
+import { Link } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Results from "../components/Results"
 
 function encode(data) {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+    .join("&")
 }
 
 function Contact({ location }) {
@@ -15,25 +15,25 @@ function Contact({ location }) {
     src: `/meta.png`,
     width: 1200,
     height: 628,
-  };
+  }
 
   const [state, setState] = useState({
     isLoading: false,
     submitted: false,
     "gdpr-check": false,
-  });
+  })
 
   function handleChange(e) {
-    const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-    setState((prevState) => ({ ...prevState, [name]: value }));
+    const target = e.target
+    const value = target.type === "checkbox" ? target.checked : target.value
+    const name = target.name
+    setState((prevState) => ({ ...prevState, [name]: value }))
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setState((prevState) => ({ ...prevState, isLoading: true }));
-    const form = e.target;
+    e.preventDefault()
+    setState((prevState) => ({ ...prevState, isLoading: true }))
+    const form = e.target
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -49,7 +49,7 @@ function Contact({ location }) {
           submitted: true,
         }))
       )
-      .catch((error) => alert(error));
+      .catch((error) => alert(error))
   }
 
   return (
@@ -160,7 +160,7 @@ function Contact({ location }) {
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
-export default Contact;
+export default Contact

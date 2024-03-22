@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "gatsby";
+import React, { useState } from "react"
+import { Link } from "gatsby"
 
 function Banner({ children, title }) {
-  const [bannerExpanded, toggleBannerExpansion] = useState(false);
+  const [bannerExpanded, toggleBannerExpansion] = useState(false)
 
   return (
     <button
@@ -35,7 +35,7 @@ function Banner({ children, title }) {
         </svg>
       </div>
     </button>
-  );
+  )
 }
 
-export default Banner;
+export default Banner

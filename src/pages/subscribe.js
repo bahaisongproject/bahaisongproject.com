@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Results from "../components/Results";
+import React, { useState } from "react"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Results from "../components/Results"
 
 function Subscribe({ location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
     height: 628,
-  };
+  }
   return (
     <Layout location={location}>
       <SEO
@@ -39,7 +39,7 @@ function Subscribe({ location }) {
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
-export default Subscribe;
+export default Subscribe

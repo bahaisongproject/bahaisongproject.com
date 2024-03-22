@@ -1,5 +1,5 @@
-import React from "react";
-import SongCard from "./SongCard";
+import React from "react"
+import SongCard from "./SongCard"
 
 const SongGrid = ({ songList, className, children }) => (
   <div
@@ -11,6 +11,6 @@ const SongGrid = ({ songList, className, children }) => (
   >
     {children}
   </div>
-);
+)
 
-export default SongGrid;
+export default SongGrid

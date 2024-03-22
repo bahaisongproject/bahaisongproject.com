@@ -1,13 +1,13 @@
-import { graphql, Link } from "gatsby";
-import React from "react";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Results from "../components/Results";
-import DataTable from "react-data-table-component";
-import { DocumentDownloadIcon } from "@heroicons/react/outline";
-import { OutboundLink } from "gatsby-plugin-gtag";
+import { graphql, Link } from "gatsby"
+import React from "react"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import Results from "../components/Results"
+import DataTable from "react-data-table-component"
+import { DocumentDownloadIcon } from "@heroicons/react/outline"
+import { OutboundLink } from "gatsby-plugin-gtag"
 
-const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+const dateOptions = { year: "numeric", month: "long", day: "numeric" }
 
 const columns = [
   {
@@ -49,13 +49,13 @@ const columns = [
       </OutboundLink>
     ),
   },
-];
+]
 
 function LanguageTemplate({ data, location }) {
-  const language = data.bsp.language;
+  const language = data.bsp.language
   const languageSongList = language.songs.sort((a, b) =>
     a.slug > b.slug ? 1 : -1
-  );
+  )
   return (
     <Layout location={location}>
       <SEO
@@ -67,9 +67,7 @@ function LanguageTemplate({ data, location }) {
           <h2 className="text-lg text-gray-700 uppercase font-bold">
             Language
           </h2>
-          <h1 className="text-3xl font-semibold">
-            {language.nameEn}
-          </h1>
+          <h1 className="text-3xl font-semibold">{language.nameEn}</h1>
           <div className="max-w-4xl mx-auto">
             {(() => {
               if (languageSongList) {
@@ -79,14 +77,14 @@ function LanguageTemplate({ data, location }) {
                     columns={columns}
                     data={languageSongList}
                   />
-                );
+                )
               }
             })()}
           </div>
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
 export const query = graphql`
@@ -121,6 +119,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default LanguageTemplate;
+export default LanguageTemplate

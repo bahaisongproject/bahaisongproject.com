@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from "react"
+import { Link } from "gatsby"
 
-import { connectHits } from "react-instantsearch-dom";
-import DataTable from "react-data-table-component";
-import { DocumentDownloadIcon } from "@heroicons/react/outline";
-import { OutboundLink } from "gatsby-plugin-gtag";
+import { connectHits } from "react-instantsearch-dom"
+import DataTable from "react-data-table-component"
+import { DocumentDownloadIcon } from "@heroicons/react/outline"
+import { OutboundLink } from "gatsby-plugin-gtag"
 
-const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+const dateOptions = { year: "numeric", month: "long", day: "numeric" }
 
 const columns = [
   {
@@ -48,20 +48,20 @@ const columns = [
       </OutboundLink>
     ),
   },
-];
+]
 
 const HitListTmp = ({ hits }) => {
   return (
     <div className="max-w-4xl mx-auto">
       {(() => {
         if (hits) {
-          return <DataTable noHeader columns={columns} data={hits} />;
+          return <DataTable noHeader columns={columns} data={hits} />
         }
       })()}
     </div>
-  );
-};
+  )
+}
 
-const HitList = connectHits(HitListTmp);
+const HitList = connectHits(HitListTmp)
 
-export default HitList;
+export default HitList

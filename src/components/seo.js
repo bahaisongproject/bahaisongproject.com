@@ -1,7 +1,7 @@
-import { useStaticQuery, graphql } from "gatsby";
-import PropTypes from "prop-types";
-import React from "react";
-import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import Helmet from "react-helmet"
 
 function SEO({
   description,
@@ -24,14 +24,14 @@ function SEO({
         }
       }
     }
-  `);
+  `)
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = description || site.siteMetadata.description
   const image =
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`
-      : null;
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null;
+      : null
+  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
   return (
     <Helmet
@@ -122,7 +122,7 @@ function SEO({
           : []
       }
     />
-  );
+  )
 }
 
 SEO.defaultProps = {
@@ -130,6 +130,6 @@ SEO.defaultProps = {
   keywords: [],
   meta: [],
   description: ``,
-};
+}
 
-export default SEO;
+export default SEO

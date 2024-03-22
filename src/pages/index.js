@@ -1,30 +1,32 @@
-import React from "react";
-import { graphql, Link } from "gatsby";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import PropTypes from "prop-types";
-import Results from "../components/Results";
-import SongCard from "../components/SongCard";
+import React from "react"
+import { graphql, Link } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import PropTypes from "prop-types"
+import Results from "../components/Results"
+import SongCard from "../components/SongCard"
 
 function IndexPage({ data, location }) {
   const image = {
     src: `/meta.png`,
     width: 1200,
     height: 628,
-  };
+  }
   const featuredSongsSlugList = [
     "observe-all-the-things",
     "die-erde-ist-nur-ein-land",
     "god-is-sufficient-unto-me",
     "o-fils-de-lexistence",
     "ey-yalla",
-  ];
+  ]
   const featuredSongList = [...data.bsp.allSongs].filter((song) =>
     featuredSongsSlugList.includes(song.slug)
-  );
-  const recentSongList = [...data.bsp.allSongs].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, 10);
+  )
+  const recentSongList = [...data.bsp.allSongs]
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, 10)
   return (
-    <Layout siteName="index" location={location} >
+    <Layout siteName="index" location={location}>
       <SEO keywords={[`bahai`, `song`, `music`, `chords`]} image={image} />
       <Results>
         <div className="mt-10 mx-auto max-w-5xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
@@ -143,14 +145,14 @@ function IndexPage({ data, location }) {
         </div>
       </Results>
     </Layout>
-  );
+  )
 }
 
 IndexPage.propTypes = {
   data: PropTypes.object,
-};
+}
 
-export default IndexPage;
+export default IndexPage
 
 export const query = graphql`
   query {
@@ -187,4 +189,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`
