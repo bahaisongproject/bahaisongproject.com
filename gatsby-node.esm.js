@@ -20,8 +20,68 @@ exports.createPages = async ({
         allSongs {
           title
           slug
+          description
+          contributors {
+            name
+            slug
+          }
           renditions {
             contentUrl
+            prio
+          }
+          tags {
+            id
+            name
+            slug
+          }
+          excerpts {
+            id
+            text
+            language {
+              nameEn
+            }
+            source {
+              author
+              description
+              excerpts {
+                id
+                text
+                language {
+                  nameEn
+                }
+                source {
+                  author
+                  description
+                }
+                songs {
+                  id
+                  title
+                  slug
+                  description
+                  languages {
+                    nameEn
+                    code
+                  }
+                  tags {
+                    id
+                    name
+                    slug
+                  }
+                  contributors {
+                    id
+                    slug
+                    name
+                  }
+                  renditions {
+                    contentUrl
+                  }
+                }
+              }
+            }
+          }
+          languages {
+            code
+            nameEn
           }
         }
         allContributors {
@@ -102,7 +162,8 @@ exports.createPages = async ({
         path: `/${song.slug}`,
         component: path.resolve(`./src/templates/SongTemplate.js`),
         context: {
-          songSlug: song.slug,
+          // songSlug: song.slug,
+          song: song,
         },
       })
     })

@@ -11,7 +11,7 @@ import { describe_song } from "../utils/description"
 
 class SongTemplate extends Component {
   render() {
-    const song = this.props.data.bsp.song
+    const { song } = this.props.pageContext // Get song data from page context
     const description = describe_song(song)
     const image = {
       src: `/__social/${song.slug}.png`,
@@ -110,79 +110,5 @@ class SongTemplate extends Component {
     )
   }
 }
-
-export const query = graphql`
-  query($songSlug: String!) {
-    bsp {
-      song(songUniqueInput: { slug: $songSlug }) {
-        title
-        slug
-        description
-        contributors {
-          name
-          slug
-        }
-        renditions {
-          contentUrl
-          prio
-        }
-        excerpts {
-          id
-          text
-          language {
-            nameEn
-          }
-          source {
-            author
-            description
-            excerpts {
-              id
-              text
-              language {
-                nameEn
-              }
-              source {
-                author
-                description
-              }
-              songs {
-                id
-                title
-                slug
-                description
-                languages {
-                  nameEn
-                  code
-                }
-                tags {
-                  id
-                  name
-                  slug
-                }
-                contributors {
-                  id
-                  slug
-                  name
-                }
-                renditions {
-                  contentUrl
-                }
-              }
-            }
-          }
-        }
-        languages {
-          code
-          nameEn
-        }
-        tags {
-          id
-          name
-          slug
-        }
-      }
-    }
-  }
-`
 
 export default SongTemplate
