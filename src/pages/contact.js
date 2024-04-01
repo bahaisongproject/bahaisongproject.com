@@ -141,7 +141,7 @@ function Contact({ location }) {
                 aria-required="true"
                 required
               />
-              <label for="privacy-policy-checkbox" className="pl-2">
+              <label htmlFor="privacy-policy-checkbox" className="pl-2">
                 I have read and agree to the{" "}
                 <Link className="underline" to="/privacy">
                   privacy policy

@@ -108,36 +108,6 @@ exports.createPages = async ({
     })
   )
 
-  result.data.bsp.allContributors.forEach((contributor) => {
-    createPage({
-      path: `/contributor/${contributor.contributor_slug}`,
-      component: path.resolve(`./src/templates/ContributorTemplate.js`),
-      context: {
-        contributorId: contributor.id,
-      },
-    })
-  })
-
-  result.data.bsp.allLanguages.forEach((language) => {
-    createPage({
-      path: `/language/${language.language_code}`,
-      component: path.resolve(`./src/templates/LanguageTemplate.js`),
-      context: {
-        languageId: language.id,
-      },
-    })
-  })
-
-  result.data.bsp.allTags.forEach((tag) => {
-    createPage({
-      path: `/tag/${tag.tag_slug}`,
-      component: path.resolve(`./src/templates/TagTemplate.js`),
-      context: {
-        tagId: tag.id,
-      },
-    })
-  })
-
   const PageTemplate = require.resolve(`./src/templates/PageTemplate.js`)
   const CollectionTemplate = require.resolve(
     `./src/templates/CollectionTemplate.js`
