@@ -60,15 +60,17 @@ class SongTemplate extends Component {
 
                 {/* Contributors */}
                 <div className="flex flex-wrap">
-                  {song.contributors.map((contributor, i) => (
-                    <div
-                      className={
-                        "contributor-name leading-tight text-lg text-gray-500 sm:text-2xl md:text-3xl mt-1 sm:mt-4"
-                      }
-                      key={i}
-                    >
-                      {contributor.name}
-                    </div>
+                  {song.contributors
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((contributor, i) => (
+                      <div
+                        className={
+                          "contributor-name leading-tight text-lg text-gray-500 sm:text-2xl md:text-3xl mt-1 sm:mt-4"
+                        }
+                        key={i}
+                      >
+                        {contributor.name}
+                      </div>
                   ))}
                 </div>
 

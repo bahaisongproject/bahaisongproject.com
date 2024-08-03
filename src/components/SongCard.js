@@ -20,7 +20,9 @@ const SongCard = ({ song, className }) => (
 
       {/* Contributors */}
       <div className="flex flex-wrap">
-        {song.contributors.map((contributor, i) => (
+        {song.contributors
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((contributor, i) => (
             <div
               className={
                 "contributor-name text-gray-700 leading-tight text-lg mt-1"
