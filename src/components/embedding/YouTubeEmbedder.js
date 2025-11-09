@@ -9,6 +9,7 @@ const YouTubeEmbedder = ({ rendition }) => (
       get_youtube_id(rendition.contentUrl)
     }
     allowFullScreen
+    referrerPolicy="strict-origin-when-cross-origin"
   />
 )
 
