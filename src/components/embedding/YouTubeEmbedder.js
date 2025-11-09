@@ -5,9 +5,11 @@ import { get_youtube_id } from "../../utils/embed"
 const YouTubeEmbedder = ({ rendition }) => (
   <ResponsiveEmbed
     src={
-      "https://www.youtube.com/embed/" + get_youtube_id(rendition.contentUrl)
+      "https://www.youtube-nocookie.com/embed/" +
+      get_youtube_id(rendition.contentUrl)
     }
     allowFullScreen
+    referrerPolicy="strict-origin-when-cross-origin"
   />
 )
 
