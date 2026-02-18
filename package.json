@@ -21,13 +21,13 @@
     "gatsby-plugin-feed-mdx": "^1.1.0",
     "gatsby-plugin-gtag": "^1.0.13",
     "gatsby-plugin-image": "^1.0.1",
-    "gatsby-plugin-manifest": "3.0.0",
+    "gatsby-plugin-manifest": "^3.15.0",
     "gatsby-plugin-mdx": "^2.0.1",
-    "gatsby-plugin-netlify": "^4.2.0",
+    "gatsby-plugin-netlify": "^3.0.0",
     "gatsby-plugin-postcss": "4.0.0",
     "gatsby-plugin-react-helmet": "4.0.0",
     "gatsby-plugin-remove-trailing-slashes": "^3.0.0",
-    "gatsby-plugin-sharp": "^3.0.1",
+    "gatsby-plugin-sharp": "^3.15.0",
     "gatsby-plugin-sitemap": "^3.0.0",
     "gatsby-remark-copy-linked-files": "^3.0.0",
     "gatsby-remark-images": "^4.0.0",
@@ -35,8 +35,8 @@
     "gatsby-remark-responsive-iframe": "^3.0.0",
     "gatsby-remark-smartypants": "^3.0.0",
     "gatsby-source-filesystem": "^3.0.0",
-    "gatsby-source-graphql": "^3.0.0",
-    "gatsby-transformer-sharp": "^3.0.0",
+    "gatsby-source-graphql": "^3.15.0",
+    "gatsby-transformer-sharp": "^3.15.0",
     "graphql": "^15.0.0",
     "netlify-plugin-gatsby-cache": "^0.3.2",
     "postcss": "^8.2.8",
@@ -53,7 +53,7 @@
     "react-responsive-embed": "^2.1.0",
     "styled-components": "^5.2.3",
     "tailwindcss": "^2.0.4",
-    "webpack": "^5.26.0"
+    "webpack": "5.25.1"
   },
   "keywords": [
     "bahai",
@@ -63,6 +63,10 @@
     "chords"
   ],
   "license": "MIT",
+  "engines": {
+    "node": "16.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "analyze:lint": "eslint --ext .jsx --ext .js .",
     "analyze:prettier": "prettier --list-different \"**/*.{css,js,jsx,json,md}\"",
@@ -91,6 +95,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bahaisongproject/bsp-website/"
+  },
+  "resolutions": {
+    "webpack-virtual-modules": "^0.6.2"
   },
   "bugs": {
     "url": "https://github.com/bahaisongproject/bsp-website/issues"

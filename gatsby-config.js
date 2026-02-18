@@ -3,10 +3,11 @@ const tailwindConfig = require("./tailwind.config.js")
 const fullConfig = resolveConfig(tailwindConfig)
 const queries = require("./src/utils/algolia")
 require("dotenv").config()
+const graphqlRefetchInterval = Number(process.env.BSP_API_REFETCH_INTERVAL || 0)
 
 module.exports = {
   flags: {
-    DEV_SSR: true,
+    DEV_SSR: process.env.GATSBY_DEV_SSR === "true",
   },
   siteMetadata: {
     title: `bahá'í song project`,
@@ -28,9 +29,6 @@ module.exports = {
       resolve: `gatsby-plugin-react-helmet`,
     },
     {
-      resolve: `gatsby-plugin-eslint`,
-    },
-    {
       resolve: "gatsby-source-graphql",
       options: {
         // Arbitrary name for the remote schema Query type
@@ -39,8 +37,11 @@ module.exports = {
         fieldName: "bsp",
         // Url to query from
         url: process.env.BSP_API_URL_NEW,
-        // Refetch interval in seconds
-        refetchInterval: 20,
+        // Refetch interval in seconds (disabled by default in develop to avoid
+        // churn during bootstrap; set BSP_API_REFETCH_INTERVAL to re-enable).
+        ...(graphqlRefetchInterval > 0
+          ? { refetchInterval: graphqlRefetchInterval }
+          : {}),
       },
     },
     {
