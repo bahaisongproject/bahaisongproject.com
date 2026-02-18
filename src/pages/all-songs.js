@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React from "react"
 import { graphql, Link } from "gatsby"
 import { OutboundLink } from "gatsby-plugin-gtag"
 
@@ -73,7 +73,7 @@ function AllSongs({ data, location }) {
     width: 1200,
     height: 628,
   }
-  const allSongList = data.bsp.allSongs.sort((a, b) =>
+  const allSongList = data.allBspListSong.nodes.sort((a, b) =>
     a.slug > b.slug ? 1 : -1
   )
   return (
@@ -110,8 +110,8 @@ export default AllSongs
 
 export const query = graphql`
   query {
-    bsp {
-      allSongs {
+    allBspListSong {
+      nodes {
         publishedAt
         title
         music
@@ -120,28 +120,16 @@ export const query = graphql`
         description
         languages {
           nameEn
-          code
         }
         tags {
-          id
           name
-          slug
         }
         contributors {
-          id
-          slug
           name
         }
         renditions {
           contentUrl
         }
-      }
-      allLanguages {
-        nameEn
-        code
-      }
-      allTags {
-        name
       }
     }
   }

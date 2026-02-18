@@ -1,7 +1,7 @@
 const songQuery = `{
-    bsp {
-      allSongs {
-        objectID: id
+    allBspAlgoliaSong {
+      nodes {
+        objectID: songId
         title
         slug
         description
@@ -40,13 +40,13 @@ const songQuery = `{
           text
         }
       }
-    }    
+    }
   }`
 
 const queries = [
   {
     query: songQuery,
-    transformer: ({ data }) => data.bsp.allSongs,
+    transformer: ({ data }) => data.allBspAlgoliaSong.nodes,
     indexName: `bsp-songs`,
   },
 ]

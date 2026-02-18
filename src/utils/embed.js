@@ -42,4 +42,4 @@ function get_youtube_id(content_url) {
   }
 }
 
-export { is_youtube, is_soundcloud, is_bandcamp, get_youtube_id }
+module.exports = { is_youtube, is_soundcloud, is_bandcamp, get_youtube_id }

@@ -35,7 +35,6 @@
     "gatsby-remark-responsive-iframe": "^3.0.0",
     "gatsby-remark-smartypants": "^3.0.0",
     "gatsby-source-filesystem": "^3.0.0",
-    "gatsby-source-graphql": "^3.15.0",
     "gatsby-transformer-sharp": "^3.15.0",
     "graphql": "^15.0.0",
     "netlify-plugin-gatsby-cache": "^0.3.2",
