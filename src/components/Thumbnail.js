@@ -1,6 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import { is_youtube, get_youtube_id } from "../utils/embed"
+import { is_youtube } from "../utils/embed"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export default function Thumbnail({ song }) {
@@ -32,18 +32,17 @@ export default function Thumbnail({ song }) {
             song.renditions.length > 0 &&
             song.renditions.filter((p) => is_youtube(p.contentUrl)).length > 0
           ) {
-            const yt_performance = song.renditions
-              .filter((p) => is_youtube(p.contentUrl))
-              .sort((a, b) => (a.prio > b.prio ? 1 : -1))[0]
-            const thumbnail_url =
-              "https://www.bahaisongproject.com/ytimage/" +
-              get_youtube_id(yt_performance.contentUrl) +
-              "/hqdefault.jpg"
-            const thumbnail_image = getImage(
-              data.allFile.nodes.find(
-                (thumbnail) => thumbnail.name == song.slug
-              )
+            const thumbnailNode = data.allFile.nodes.find(
+              (thumbnail) => thumbnail.name == song.slug
             )
+            const thumbnail_image = thumbnailNode
+              ? getImage(thumbnailNode)
+              : null
+            if (!thumbnail_image) {
+              return (
+                <div className="pt-9/16 bg-gradient-to-r from-gray-300 to-gray-400" />
+              )
+            }
             return (
               <GatsbyImage
                 className="xs:rounded-sm bg-gradient-to-r from-gray-300 to-gray-400"

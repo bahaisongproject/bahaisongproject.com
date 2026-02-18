@@ -137,27 +137,32 @@ exports.createPages = async ({
   // console.log(JSON.stringify(result.data.bsp.allSongs, null, 2));
   await Promise.all(
     result.data.bsp.allSongs.map(async (song) => {
-      const youtubePerformances = song.renditions.filter((p) =>
+      const youtubePerformances = (song.renditions || []).filter((p) =>
         is_youtube(p.contentUrl)
       )
-      let fileNode = null
       if (youtubePerformances.length > 0) {
-        let fileNode = await createRemoteFileNode({
-          url:
-            "https://img.youtube.com/vi/" +
-            get_youtube_id(youtubePerformances[0].contentUrl) +
-            "/hqdefault.jpg", // string that points to the URL of the image
-          parentNodeId: null, // id of the parent node of the fileNode you are going to create
-          createNode, // helper function in gatsby-node to generate the node
-          createNodeId, // helper function in gatsby-node to generate the node id
-          cache, // Gatsby's cache
-          store, // Gatsby's Redux store
-          ext: ".jpg",
-          name: song.slug,
-        })
-        // console.log(fileNode)
+        const youtubeId = get_youtube_id(youtubePerformances[0].contentUrl)
+        if (youtubeId) {
+          const thumbnailUrl =
+            "https://img.youtube.com/vi/" + youtubeId + "/hqdefault.jpg"
+          try {
+            await createRemoteFileNode({
+              url: thumbnailUrl, // string that points to the URL of the image
+              parentNodeId: null, // id of the parent node of the fileNode you are going to create
+              createNode, // helper function in gatsby-node to generate the node
+              createNodeId, // helper function in gatsby-node to generate the node id
+              cache, // Gatsby's cache
+              store, // Gatsby's Redux store
+              ext: ".jpg",
+              name: song.slug,
+            })
+          } catch (error) {
+            reporter.warn(
+              `Skipping thumbnail for "${song.slug}" (${thumbnailUrl}): ${error.message}`
+            )
+          }
+        }
       }
-      // console.log(fileNode)
       createPage({
         path: `/${song.slug}`,
         component: path.resolve(`./src/templates/SongTemplate.js`),
