@@ -1,27 +1,14 @@
 const fs = require("fs")
-fs.writeFileSync(
-  "./.env.production",
-  `GATSBY_ALGOLIA_APP_ID=${process.env.GATSBY_ALGOLIA_APP_ID}\n`
-)
-fs.writeFileSync(
-  "./.env.production",
-  `GATSBY_ALGOLIA_SEARCH_KEY=${process.env.GATSBY_ALGOLIA_SEARCH_KEY}\n`
-)
-fs.writeFileSync(
-  "./.env.production",
-  `ALGOLIA_ADMIN_KEY=${process.env.ALGOLIA_ADMIN_KEY}\n`
-)
-fs.writeFileSync(
-  "./.env.production",
-  `BSP_API_URL_NEW=${process.env.BSP_API_URL_NEW}\n`
-)
-fs.writeFileSync(
-  "./.env.production",
-  `ALGOLIA_SKIP_INDEXING=${process.env.ALGOLIA_SKIP_INDEXING}\n`
-)
-fs.writeFileSync(
-  "./.env.production",
-  `SOCIAL_IMAGES_SKIP_GENERATION=${process.env.SOCIAL_IMAGES_SKIP_GENERATION}\n`
-)
+
+const envFileContents = [
+  `GATSBY_ALGOLIA_APP_ID=${process.env.GATSBY_ALGOLIA_APP_ID}`,
+  `GATSBY_ALGOLIA_SEARCH_KEY=${process.env.GATSBY_ALGOLIA_SEARCH_KEY}`,
+  `ALGOLIA_ADMIN_KEY=${process.env.ALGOLIA_ADMIN_KEY}`,
+  `ALGOLIA_SKIP_INDEXING=${process.env.ALGOLIA_SKIP_INDEXING}`,
+  `CONVEX_SITE_URL=${process.env.CONVEX_SITE_URL}`,
+  `SOCIAL_IMAGES_SKIP_GENERATION=${process.env.SOCIAL_IMAGES_SKIP_GENERATION}`,
+].join("\n")
+
+fs.writeFileSync("./.env.production", `${envFileContents}\n`)
 
 console.log("Created .env")

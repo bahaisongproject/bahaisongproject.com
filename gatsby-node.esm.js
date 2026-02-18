@@ -1,6 +1,56 @@
+/* eslint-env es6 */
 const path = require(`path`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const { is_youtube, get_youtube_id } = require("./src/utils/embed")
+const {
+  getSongsForListViews,
+  getSongsForAlgolia,
+  getSongDetail,
+} = require("./src/utils/bsp-api")
+
+exports.sourceNodes = async ({
+  actions,
+  createContentDigest,
+  createNodeId,
+  reporter,
+}) => {
+  const { createNode } = actions
+
+  try {
+    const [listSongs, algoliaSongs] = await Promise.all([
+      getSongsForListViews(),
+      getSongsForAlgolia(),
+    ])
+
+    listSongs.forEach((song) => {
+      const { id: songId, ...songFields } = song
+      createNode({
+        ...songFields,
+        songId: songId || null,
+        id: createNodeId(`bsp-list-song-${song.slug}`),
+        internal: {
+          type: "BspListSong",
+          contentDigest: createContentDigest(song),
+        },
+      })
+    })
+
+    algoliaSongs.forEach((song) => {
+      const { id: songId, ...songFields } = song
+      createNode({
+        ...songFields,
+        songId: songId || null,
+        id: createNodeId(`bsp-algolia-song-${song.slug}`),
+        internal: {
+          type: "BspAlgoliaSong",
+          contentDigest: createContentDigest(song),
+        },
+      })
+    })
+  } catch (error) {
+    reporter.panicOnBuild(`Error while sourcing REST songs: ${error.message}`)
+  }
+}
 
 exports.createPages = async ({
   actions,
@@ -11,92 +61,12 @@ exports.createPages = async ({
   reporter,
 }) => {
   const { createNode, createPage } = actions
+  const allSongs = await getSongsForListViews()
 
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
   const result = await graphql(`
     query {
-      bsp: bsp {
-        allSongs {
-          title
-          slug
-          description
-          contributors {
-            name
-            slug
-          }
-          renditions {
-            contentUrl
-            prio
-          }
-          tags {
-            id
-            name
-            slug
-          }
-          excerpts {
-            id
-            text
-            language {
-              nameEn
-            }
-            source {
-              author
-              description
-              excerpts {
-                id
-                text
-                language {
-                  nameEn
-                }
-                source {
-                  author
-                  description
-                }
-                songs {
-                  id
-                  title
-                  slug
-                  description
-                  languages {
-                    nameEn
-                    code
-                  }
-                  tags {
-                    id
-                    name
-                    slug
-                  }
-                  contributors {
-                    id
-                    slug
-                    name
-                  }
-                  renditions {
-                    contentUrl
-                  }
-                }
-              }
-            }
-          }
-          languages {
-            code
-            nameEn
-          }
-        }
-        allContributors {
-          id
-          slug
-        }
-        allLanguages {
-          id
-          code
-        }
-        allTags {
-          id
-          slug
-        }
-      }
       collections: allFile(
         filter: {
           sourceInstanceName: { eq: "collections" }
@@ -134,9 +104,17 @@ exports.createPages = async ({
     return
   }
 
-  // console.log(JSON.stringify(result.data.bsp.allSongs, null, 2));
   await Promise.all(
-    result.data.bsp.allSongs.map(async (song) => {
+    allSongs.map(async (listSong) => {
+      let song = listSong
+      try {
+        song = await getSongDetail(listSong.slug)
+      } catch (error) {
+        reporter.warn(
+          `Using list payload for "${listSong.slug}" because detail fetch failed: ${error.message}`
+        )
+      }
+
       const youtubePerformances = (song.renditions || []).filter((p) =>
         is_youtube(p.contentUrl)
       )

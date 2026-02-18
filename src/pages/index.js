@@ -7,6 +7,7 @@ import Results from "../components/Results"
 import SongCard from "../components/SongCard"
 
 function IndexPage({ data, location }) {
+  const allSongs = data.allBspListSong.nodes
   const image = {
     src: `/meta.png`,
     width: 1200,
@@ -19,10 +20,10 @@ function IndexPage({ data, location }) {
     "o-fils-de-lexistence",
     "ey-yalla",
   ]
-  const featuredSongList = [...data.bsp.allSongs].filter((song) =>
+  const featuredSongList = [...allSongs].filter((song) =>
     featuredSongsSlugList.includes(song.slug)
   )
-  const recentSongList = [...data.bsp.allSongs]
+  const recentSongList = [...allSongs]
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
     .slice(0, 10)
   return (
@@ -45,9 +46,7 @@ function IndexPage({ data, location }) {
               <div className="rounded-md shadow">
                 <Link
                   to={`/${
-                    data.bsp.allSongs[
-                      Math.floor(Math.random() * data.bsp.allSongs.length)
-                    ].slug
+                    allSongs[Math.floor(Math.random() * allSongs.length)].slug
                   }`}
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10"
                 >
@@ -156,36 +155,24 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    bsp {
-      allSongs {
+    allBspListSong {
+      nodes {
         publishedAt
         title
         slug
         description
         languages {
           nameEn
-          code
         }
         tags {
-          id
           name
-          slug
         }
         contributors {
-          id
-          slug
           name
         }
         renditions {
           contentUrl
         }
-      }
-      allLanguages {
-        nameEn
-        code
-      }
-      allTags {
-        name
       }
     }
   }
