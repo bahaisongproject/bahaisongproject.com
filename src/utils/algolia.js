@@ -30,7 +30,6 @@ const songQuery = `{
         }
         renditions {
           contentUrl
-          prio
         }
         excerpts {
           source {

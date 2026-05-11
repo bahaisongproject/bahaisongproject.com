@@ -82,11 +82,9 @@ class SongTemplate extends Component {
             </div>
 
             {/* Renditions */}
-            {song.renditions
-              .sort((a, b) => (a.prio > b.prio ? 1 : -1))
-              .map((rendition, i) => (
-                <ContentEmbedder rendition={rendition} key={i} />
-              ))}
+            {song.renditions.map((rendition, i) => (
+              <ContentEmbedder rendition={rendition} key={i} />
+            ))}
 
             {/* Song sheet */}
             <div className="flex flex-col items-start space-y-6 mt-12 w-full">
