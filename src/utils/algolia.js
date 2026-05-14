@@ -18,12 +18,10 @@ const songQuery = `{
           nameNative
         }
         contributors {
-          id
           name
           slug
         }
         tags {
-          id
           name
           description
           slug
