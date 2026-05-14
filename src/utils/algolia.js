@@ -13,7 +13,6 @@ const songQuery = `{
         music
         words
         languages {
-          code
           nameEn
           nameNative
         }
