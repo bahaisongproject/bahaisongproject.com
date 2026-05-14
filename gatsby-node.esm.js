@@ -23,10 +23,9 @@ exports.sourceNodes = async ({
     ])
 
     listSongs.forEach((song) => {
-      const { id: songId, ...songFields } = song
+      const { id, ...songFields } = song
       createNode({
         ...songFields,
-        songId: songId || null,
         id: createNodeId(`bsp-list-song-${song.slug}`),
         internal: {
           type: "BspListSong",
@@ -36,10 +35,9 @@ exports.sourceNodes = async ({
     })
 
     algoliaSongs.forEach((song) => {
-      const { id: songId, ...songFields } = song
+      const { id, ...songFields } = song
       createNode({
         ...songFields,
-        songId: songId || null,
         id: createNodeId(`bsp-algolia-song-${song.slug}`),
         internal: {
           type: "BspAlgoliaSong",

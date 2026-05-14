@@ -1,7 +1,7 @@
 const songQuery = `{
     allBspAlgoliaSong {
       nodes {
-        objectID: songId
+        objectID: slug
         title
         slug
         description
