@@ -14,7 +14,6 @@ const songQuery = `{
         words
         languages {
           nameEn
-          nameNative
         }
         contributors {
           name
