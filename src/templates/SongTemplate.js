@@ -88,16 +88,32 @@ class SongTemplate extends Component {
 
             {/* Song sheet */}
             <div className="flex flex-col items-start space-y-6 mt-12 w-full">
-              {/* Song Sheet Download Button */}
-              <OutboundLink
-                href={"https://www.bahaisongproject.com/" + song.slug + ".pdf"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex space-x-1 items-center font-medium px-4 py-2 text-sm text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
-              >
-                <span>Download Song Sheet</span>
-                <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
-              </OutboundLink>
+              <div>
+                <div className="flex flex-col xs:flex-row xs:items-center gap-3">
+                  <OutboundLink
+                    href={
+                      "https://songbook.bahaisongs.com/songs/" + song.slug
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex space-x-1 items-center font-medium px-4 py-2 text-sm text-left text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+                  >
+                    <span>Open in Songbook</span>
+                    <ExternalLinkIcon className="w-4 h-4 text-primary-100" />
+                  </OutboundLink>
+                  <OutboundLink
+                    href={
+                      "https://www.bahaisongproject.com/" + song.slug + ".pdf"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex space-x-1 items-center font-medium px-4 py-2 text-sm text-left text-gray-700 bg-primary-100 rounded-lg hover:bg-primary-200 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+                  >
+                    <span>Download PDF</span>
+                    <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
+                  </OutboundLink>
+                </div>
+              </div>
               <p className="text-sm text-left text-gray-500">
                 Something missing or incorrect?{" "}
                 <OutboundLink

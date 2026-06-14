@@ -62,6 +62,27 @@ function IndexPage({ data, location }) {
                 </Link>
               </div>
             </div>
+            <div className="mt-8 max-w-xl sm:mx-auto lg:mx-0">
+              <div>
+                <h2 className="flex items-center justify-center lg:justify-start space-x-2 text-base font-semibold text-gray-900">
+                  <span>Try the new Songbook</span>
+                  <span className="inline-flex items-center rounded-sm border border-primary-100 bg-primary-50 px-1.5 py-0.5 text-xs font-medium uppercase tracking-wide text-primary-700">
+                    Experimental
+                  </span>
+                </h2>
+                <p className="mt-1 text-sm leading-6 text-gray-600">
+                  Find songs faster, transpose chords, and switch between
+                  guitar and ukulele diagrams. Each song page includes lyrics
+                  and chords, no PDF download required.
+                </p>
+              </div>
+              <a
+                href="https://songbook.bahaisongs.com"
+                className="inline-flex mt-3 items-center justify-center px-3 py-1.5 border border-primary-200 text-sm font-medium rounded-md text-primary-700 bg-white hover:bg-primary-50 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+              >
+                Open Songbook
+              </a>
+            </div>
           </div>
         </div>
 
