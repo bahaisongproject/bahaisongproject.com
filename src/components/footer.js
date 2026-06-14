@@ -23,11 +23,6 @@ function Footer() {
             </Link>
           </li>
           <li>
-            <Link className="p-2" to="/subscribe">
-              Subscribe
-            </Link>
-          </li>
-          <li>
             <Link className="p-2" to="/about">
               About
             </Link>

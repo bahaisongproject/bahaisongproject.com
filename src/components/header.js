@@ -5,11 +5,9 @@ import { Popover, Transition } from "@headlessui/react"
 import {
   BookOpenIcon,
   CollectionIcon,
-  ExclamationCircleIcon,
   MenuIcon,
   MusicNoteIcon,
   PlusCircleIcon,
-  QuestionMarkCircleIcon,
   XIcon,
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
@@ -38,9 +36,12 @@ const solutions = [
 ]
 
 const callsToAction = [
-  { name: "Request", href: "/request-submit", icon: QuestionMarkCircleIcon },
-  { name: "Submit", href: "/request-submit", icon: PlusCircleIcon },
-  { name: "Report", href: "/contact", icon: ExclamationCircleIcon },
+  {
+    name: "Add or improve a song",
+    description: "Submit a new song, add missing details, or suggest updates.",
+    href: "https://portal.bahaisongs.com/submissions",
+    icon: PlusCircleIcon,
+  },
 ]
 
 const recentPosts = [
@@ -174,22 +175,26 @@ export default function Example() {
                                   </Link>
                                 </div>
                               </div>
-                              <div className="px-5 pt-5 text-center bg-white sm:px-8">
-                                Song missing or wrong?
-                              </div>
-                              <div className="px-5 py-5 bg-white space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
+                              <div className="px-5 py-5 bg-white sm:px-8">
                                 {callsToAction.map((item) => (
                                   <div key={item.name} className="flow-root">
-                                    <Link
-                                      to={item.href}
-                                      className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
+                                    <a
+                                      href={item.href}
+                                      className="-m-3 p-3 flex items-start rounded-md hover:bg-gray-100"
                                     >
                                       <item.icon
-                                        className="flex-shrink-0 h-6 w-6 text-gray-400"
+                                        className="flex-shrink-0 h-6 w-6 text-gray-400 mt-1"
                                         aria-hidden="true"
                                       />
-                                      <span className="ml-3">{item.name}</span>
-                                    </Link>
+                                      <span className="ml-3">
+                                        <span className="block text-base font-medium text-gray-900">
+                                          {item.name}
+                                        </span>
+                                        <span className="block mt-1 text-sm text-gray-500">
+                                          {item.description}
+                                        </span>
+                                      </span>
+                                    </a>
                                   </div>
                                 ))}
                               </div>

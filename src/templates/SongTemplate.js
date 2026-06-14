@@ -98,6 +98,21 @@ class SongTemplate extends Component {
                 <span>Download Song Sheet</span>
                 <ExternalLinkIcon className="w-4 h-4 text-gray-600" />
               </OutboundLink>
+              <p className="text-sm text-left text-gray-500">
+                Something missing or incorrect?{" "}
+                <OutboundLink
+                  href={
+                    "https://portal.bahaisongs.com/submissions/update/" +
+                    song.slug
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:no-underline hover:text-gray-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+                >
+                  Improve this song
+                </OutboundLink>
+                .
+              </p>
             </div>
 
             {/* Excerpts */}
