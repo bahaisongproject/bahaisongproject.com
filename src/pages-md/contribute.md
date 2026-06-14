@@ -11,15 +11,6 @@ The main way to contribute is through the [Bahá'í Songs Portal](https://portal
 
 Create an account or sign in on the portal, then choose whether you want to add a new song or improve an existing one.
 
-## Let's connect
-
-We let you know about new songs, and you help us reach more people.
-
-- [YouTube](https://www.youtube.com/bahaisongproject)
-- [Instagram](https://www.instagram.com/bahaisongproject)
-- [Facebook](https://www.facebook.com/bahaisongproject/)
-- [Twitter](https://www.instagram.com/bahaisongproject)
-
 ## Spread the word
 
 Tell a friend about bahá'í song project.
