@@ -7,8 +7,8 @@ https://www.bahaisongproject.com/survey https://docs.google.com/forms/d/e/1FAIpQ
 # bahai-song-project.de
 https://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com/all-songs    301!
 http://bahai-song-project.de/alphabetical-list/	https://www.bahaisongproject.com/all-songs    301!
-https://bahai-song-project.de/song-book/	https://www.bahaisongproject.com/songbook   301!
-http://bahai-song-project.de/song-book/	https://www.bahaisongproject.com/songbook   301!
+https://bahai-song-project.de/song-book/	https://www.bahaisongproject.com/songbook.pdf   301!
+http://bahai-song-project.de/song-book/	https://www.bahaisongproject.com/songbook.pdf   301!
 https://bahai-song-project.de/youtube/	https://www.youtube.com/bahaisongproject    301!
 http://bahai-song-project.de/youtube/	https://www.youtube.com/bahaisongproject    301!
 https://bahai-song-project.de/app/	https://apps.apple.com/de/app/bah%C3%A1%C3%AD-song-project/id1194063574 301
@@ -451,6 +451,7 @@ https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/contri
 /impressum /legal 301!
 /request-submit https://portal.bahaisongs.com/submissions 301!
 /subscribe /contribute 301!
+/songbook /songbook.pdf 301!
 
 # Proxy PDFs and ChordPro files
 /:slug.pdf  https://pdf.bahaisongproject.com/:slug.pdf  200

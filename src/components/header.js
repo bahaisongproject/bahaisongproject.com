@@ -22,9 +22,9 @@ const solutions = [
     icon: MusicNoteIcon,
   },
   {
-    name: "Song Book",
-    description: "Download a PDF with all song sheets",
-    href: "/songbook",
+    name: "Song Sheets PDF",
+    description: "Download one PDF with all song sheets",
+    href: "https://www.bahaisongproject.com/songbook.pdf",
     icon: BookOpenIcon,
   },
   {
@@ -60,6 +60,24 @@ const recentPosts = [
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
+}
+
+function MenuLink({ item, children, className }) {
+  const isExternal = item.href.startsWith("http")
+
+  if (isExternal) {
+    return (
+      <a href={item.href} className={className}>
+        {children}
+      </a>
+    )
+  }
+
+  return (
+    <Link to={item.href} className={className}>
+      {children}
+    </Link>
+  )
 }
 
 export default function Example() {
@@ -123,9 +141,9 @@ export default function Example() {
                             <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                               <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                 {solutions.map((item) => (
-                                  <Link
+                                  <MenuLink
                                     key={item.name}
-                                    to={item.href}
+                                    item={item}
                                     className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                   >
                                     <item.icon
@@ -140,7 +158,7 @@ export default function Example() {
                                         {item.description}
                                       </p>
                                     </div>
-                                  </Link>
+                                  </MenuLink>
                                 ))}
                               </div>
                               <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
@@ -257,9 +275,9 @@ export default function Example() {
                   <div className="mt-6">
                     <nav className="grid gap-y-8">
                       {solutions.map((item) => (
-                        <Link
+                        <MenuLink
                           key={item.name}
-                          to={item.href}
+                          item={item}
                           className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                         >
                           <item.icon
@@ -269,7 +287,7 @@ export default function Example() {
                           <span className="ml-3 text-base font-medium text-gray-900">
                             {item.name}
                           </span>
-                        </Link>
+                        </MenuLink>
                       ))}
                     </nav>
                   </div>
