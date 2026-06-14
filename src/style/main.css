@@ -58,3 +58,7 @@
 .gatsby-resp-image-figcaption {
   @apply text-sm mt-2 ml-2;
 }
+
+.page-prose h2 {
+  @apply text-2xl;
+}
