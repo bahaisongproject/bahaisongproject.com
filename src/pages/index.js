@@ -62,9 +62,9 @@ function IndexPage({ data, location }) {
                 </Link>
               </div>
             </div>
-            <div className="mt-8 max-w-xl sm:mx-auto lg:mx-0">
+            <div className="mt-8 max-w-xl sm:mx-auto lg:mx-0 text-left sm:text-center lg:text-left">
               <div>
-                <h2 className="flex items-center justify-center lg:justify-start space-x-2 text-base font-semibold text-gray-900">
+                <h2 className="flex items-center justify-start sm:justify-center lg:justify-start space-x-2 text-base font-semibold text-gray-900">
                   <span>Try the new Songbook</span>
                   <span className="inline-flex items-center rounded-sm border border-primary-100 bg-primary-50 px-1.5 py-0.5 text-xs font-medium uppercase tracking-wide text-primary-700">
                     Experimental
@@ -78,7 +78,7 @@ function IndexPage({ data, location }) {
               </div>
               <a
                 href="https://songbook.bahaisongs.com"
-                className="inline-flex mt-3 items-center justify-center px-3 py-1.5 border border-primary-200 text-sm font-medium rounded-md text-primary-700 bg-white hover:bg-primary-50 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
+                className="inline-flex mt-3 sm:mx-auto lg:mx-0 items-center justify-center px-3 py-1.5 border border-primary-200 text-sm font-medium rounded-md text-primary-700 bg-white hover:bg-primary-50 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
               >
                 Open Songbook
               </a>
