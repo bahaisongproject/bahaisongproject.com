@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "interface-design": {
+      "source": "Dammyjay93/interface-design",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/interface-design/SKILL.md",
+      "computedHash": "981da2a0d61da22ad243981c22754dd5b03518a59b5ede040e6a10e992d71b87"
+    }
+  }
+}
