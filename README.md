@@ -1,18 +1,19 @@
 # bahá'í song project website
 
-A static website generated using Gatsby
+A static website generated with Astro.
 
-Visit us at https://www.bahaisongproject.com
+Visit https://www.bahaisongproject.com
 
 ## Getting started
 
-1. Clone repo with `git clone git@github.com:bahaisongproject/bahaisongproject.com.git`
-1. `cd` into repo with `cd bahaisongproject.com`
-1. Use correct node version: `nvm use`
-1. Install dependencies: `yarn install`
+1. Clone the repo.
+2. Use the expected Node version with `nvm use`.
+3. Install dependencies with `yarn install`.
 
-What you can do now
+## Development
 
-- Start Gatsby development server with `yarn run dev`. You can access the development version of the website at `http://localhost:8000/`.
-- Build the production website with `yarn run build`. This will generate all necessary files and place them in the `public` directory.
-- Serve the production website with `yarn run serve`. You can access the production version of the website at `http://localhost:9000/`
+- Start the local development server with `yarn dev`.
+- Build the production site with `yarn build`.
+- Preview the production build with `yarn preview`.
+
+The homepage contains the searchable song list. Song and collection pages are generated at build time from the Convex song API and the MDX content in `src/collections` and `src/pages-md`.

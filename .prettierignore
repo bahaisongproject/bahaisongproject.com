@@ -1,4 +1,9 @@
 .cache
+.agents/
+.astro/
+.playwright-mcp/
+dist/
+node_modules/
 package.json
 package-lock.json
-public
+public/

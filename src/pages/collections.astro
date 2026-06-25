@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { getCollectionEntriesWithSongCounts } from "../lib/content.mjs"
+
+const collections = getCollectionEntriesWithSongCounts()
+  .filter((entry) => entry.frontmatter.public !== false)
+  .sort((a, b) =>
+    String(a.frontmatter.title || "").localeCompare(
+      String(b.frontmatter.title || ""),
+    ),
+  )
+---
+
+<BaseLayout
+  title="Collections"
+  description="Find a song you like in one of our curated collections"
+>
+  <section
+    class="mx-auto mt-16 w-full max-w-6xl px-4 sm:px-6 lg:px-8"
+    aria-labelledby="collections-title"
+  >
+    <div
+      class="mb-5 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+    >
+      <div>
+        <h2
+          id="collections-title"
+          class="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl"
+        >
+          Collections
+        </h2>
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-700 sm:text-base">
+          Curated starting points for gatherings, themes, and practice.
+        </p>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-slate-600">
+        <span>{collections.length} collections</span>
+      </div>
+    </div>
+
+    <div class="rounded-lg border bg-card text-card-foreground">
+      <div class="hidden md:block">
+        <div class="relative w-full overflow-auto">
+          <table class="w-full caption-bottom text-sm">
+            <thead class="[&_tr]:border-b">
+              <tr class="border-b transition-colors">
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground"
+                >
+                  Collection
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground"
+                >
+                  Songs
+                </th>
+                <th
+                  class="h-12 px-4 text-right align-middle font-medium text-muted-foreground w-20"
+                >
+                  View
+                </th>
+              </tr>
+            </thead>
+            <tbody class="[&_tr:last-child]:border-0">
+              {
+                collections.map((collection) => (
+                  <tr class="border-b transition-colors hover:bg-muted/50">
+                    <td class="p-4 align-middle">
+                      <a
+                        href={`/${collection.route}`}
+                        class="font-medium text-slate-950 no-underline hover:text-primary-700"
+                      >
+                        {collection.frontmatter.title}
+                      </a>
+                      {collection.frontmatter.description && (
+                        <p class="mt-1 text-sm leading-6 text-slate-700">
+                          {collection.frontmatter.description}
+                        </p>
+                      )}
+                    </td>
+                    <td class="p-4 align-middle whitespace-nowrap text-slate-700">
+                      {collection.songCount}
+                    </td>
+                    <td class="p-4 align-middle text-right">
+                      <a
+                        href={`/${collection.route}`}
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                        aria-label={`View ${collection.frontmatter.title}`}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </a>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="divide-y md:hidden">
+        {
+          collections.map((collection) => (
+            <article class="p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <a
+                    href={`/${collection.route}`}
+                    class="font-medium text-slate-950 no-underline hover:text-primary-700"
+                  >
+                    {collection.frontmatter.title}
+                  </a>
+                  {collection.frontmatter.description && (
+                    <p class="mt-1 text-sm leading-5 text-slate-700">
+                      {collection.frontmatter.description}
+                    </p>
+                  )}
+                </div>
+                <a
+                  href={`/${collection.route}`}
+                  class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                  aria-label={`View ${collection.frontmatter.title}`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <p class="mt-2 text-sm text-slate-700">
+                {collection.songCount} songs
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

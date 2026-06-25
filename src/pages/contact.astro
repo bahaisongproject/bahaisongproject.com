@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+---
+
+<BaseLayout title="Contact">
+  <div class="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold leading-tight text-slate-950">
+      Contact
+    </h1>
+    <div class="page-prose mt-8">
+      <p>
+        We would love to hear from you. Share a favorite song, report an error,
+        ask about <a href="/contribute">contributing</a>, or just say hi.
+      </p>
+    </div>
+    <form
+      class="mt-8 max-w-sm space-y-4"
+      name="contact"
+      method="post"
+      action="/contact-success"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>
+          Don't fill this out:
+          <input name="bot-field" />
+        </label>
+      </p>
+      <div>
+        <label class="sr-only" for="name">Your name</label>
+        <input
+          id="name"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm"
+          type="text"
+          name="name"
+          required
+          placeholder="Your name"
+        />
+      </div>
+      <div>
+        <label class="sr-only" for="email">Your email</label>
+        <input
+          id="email"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm"
+          type="email"
+          name="Email"
+          required
+          placeholder="Your email"
+        />
+      </div>
+      <div>
+        <label class="sr-only" for="message">Your message</label>
+        <textarea
+          id="message"
+          class="flex min-h-40 w-full rounded-md border border-input bg-background px-3 py-2 text-base text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm"
+          name="message"
+          required
+          placeholder="Your message"></textarea>
+      </div>
+      <div class="flex items-start gap-2 text-sm text-slate-700">
+        <input
+          id="privacy-policy-checkbox"
+          type="checkbox"
+          name="gdpr-check"
+          required
+          class="mt-1"
+        />
+        <label for="privacy-policy-checkbox">
+          I have read and agree to the <a href="/privacy">privacy policy</a>.
+        </label>
+      </div>
+      <button
+        class="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        type="submit"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</BaseLayout>

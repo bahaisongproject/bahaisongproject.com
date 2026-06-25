@@ -1,0 +1,22 @@
+---
+import SongResultsList from "./home/SongResultsList"
+import { getSongsForListViews } from "../lib/songs.mjs"
+
+const { songSlugs = [] } = Astro.props
+const songs = await getSongsForListViews()
+const songsBySlug = new Map(songs.map((song) => [song.slug, song]))
+const collectionSongs = songSlugs
+  .map((slug) => songsBySlug.get(slug))
+  .filter(Boolean)
+---
+
+<div class="not-prose my-10">
+  <SongResultsList songs={collectionSongs} />
+  {
+    songSlugs
+      .filter((slug) => !songsBySlug.has(slug))
+      .map((slug) => (
+        <p class="mt-3 text-sm text-destructive">Song not found: {slug}</p>
+      ))
+  }
+</div>
