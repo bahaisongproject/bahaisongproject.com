@@ -1,0 +1,90 @@
+---
+import Prose from "../components/Prose.astro"
+import SongCollection from "../components/SongCollection.astro"
+import SongPage from "../components/SongPage.astro"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import {
+  getCollectionEntries,
+  getPageEntries,
+  normalizeRouteSlug,
+} from "../lib/content.mjs"
+import { describeSong } from "../lib/description.mjs"
+import { getSongDetailsForStaticPaths } from "../lib/songs.mjs"
+
+export async function getStaticPaths() {
+  const songs = await getSongDetailsForStaticPaths()
+  const pages = getPageEntries().filter(
+    (entry) => !["404"].includes(entry.route),
+  )
+  const collections = getCollectionEntries()
+
+  return [
+    ...songs.map((song) => ({
+      params: { slug: song.slug },
+      props: { type: "song", song },
+    })),
+    ...pages.map((entry) => ({
+      params: { slug: entry.route },
+      props: { type: "page", entry },
+    })),
+    ...collections.map((entry) => ({
+      params: { slug: entry.route },
+      props: { type: "collection", entry },
+    })),
+  ]
+}
+
+const { type, song, entry } = Astro.props
+const Content = entry?.Content
+const mdxComponents = { SongCollection, Prose }
+---
+
+{
+  type === "song" ? (
+    <BaseLayout
+      title={song.title}
+      description={describeSong(song)}
+      pathname={`/${song.slug}`}
+    >
+      <SongPage song={song} />
+    </BaseLayout>
+  ) : type === "collection" ? (
+    <BaseLayout
+      title={entry.frontmatter.title}
+      description={entry.frontmatter.description}
+      pathname={`/${normalizeRouteSlug(entry.frontmatter.slug)}`}
+    >
+      <div class="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-lg font-bold text-slate-700">Collection</h2>
+        <div class="mb-8 mt-1">
+          <h1 class="text-3xl font-extrabold leading-tight text-slate-950">
+            {entry.frontmatter.title}
+          </h1>
+          {entry.frontmatter.description && (
+            <p class="mt-2 text-lg text-slate-700">
+              {entry.frontmatter.description}
+            </p>
+          )}
+        </div>
+        <div class="page-prose">
+          <Content components={mdxComponents} />
+        </div>
+      </div>
+    </BaseLayout>
+  ) : (
+    <BaseLayout
+      title={entry.frontmatter.title}
+      description={entry.frontmatter.description}
+      pathname={`/${normalizeRouteSlug(entry.frontmatter.slug)}`}
+    >
+      <div class="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h1 class="mb-8 text-3xl font-extrabold leading-tight text-slate-950">
+          {entry.frontmatter.title}
+        </h1>
+        <div class="page-prose">
+          <Content components={mdxComponents} />
+        </div>
+      </div>
+    </BaseLayout>
+  )
+}

@@ -6,6 +6,9 @@ yarn-error.log
 
 # Build directory
 /public
+/dist
+/.astro
+/.playwright-mcp
 
 # macOS
 .DS_Store

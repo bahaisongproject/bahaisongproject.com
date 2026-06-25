@@ -1,0 +1,84 @@
+---
+import "../style/main.css"
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import { site } from "../lib/site.mjs"
+
+interface Props {
+  title?: string
+  description?: string
+  image?: {
+    src: string
+    width?: number
+    height?: number
+  }
+  pathname?: string
+}
+
+const {
+  title,
+  description = site.description,
+  image = { src: "/meta.png", width: 1200, height: 628 },
+  pathname = Astro.url.pathname,
+} = Astro.props
+const pageTitle = title ? `${title} | ${site.title}` : site.title
+const canonical = new URL(pathname, site.url).toString()
+const imageUrl = new URL(image.src, site.url).toString()
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={site.keywords.join(",")} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/images/logo_100x100.png" />
+    <link rel="apple-touch-icon" href="/images/logo_500x500.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    {
+      image.width && (
+        <meta property="og:image:width" content={String(image.width)} />
+      )
+    }
+    {
+      image.height && (
+        <meta property="og:image:height" content={String(image.height)} />
+      )
+    }
+    <meta name="twitter:creator" content={site.author} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={imageUrl} />
+    <slot name="head" />
+    <script
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}`}
+    ></script>
+    <script is:inline define:vars={{ analyticsId: site.analyticsId }}>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+      gtag("config", analyticsId, { anonymize_ip: true })
+    </script>
+  </head>
+  <body>
+    <div class="site-shell flex min-h-screen flex-col">
+      <Header />
+      <main class="flex-1 pb-16">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

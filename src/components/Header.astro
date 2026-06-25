@@ -1,0 +1,34 @@
+---
+import logo from "../images/logo_100x100.png"
+---
+
+<header class="border-b border-slate-200 bg-white/80">
+  <div
+    class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:px-6 md:flex-row md:items-center md:justify-between"
+  >
+    <a href="/" class="flex items-center gap-3 no-underline">
+      <img src={logo.src} width="40" height="40" alt="" class="h-9 w-9" />
+      <span class="text-sm font-semibold text-slate-950 sm:text-base">
+        bahá'í song project
+      </span>
+    </a>
+    <nav
+      aria-label="Main navigation"
+      class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-slate-700"
+    >
+      <a href="/collections" class="text-slate-700 hover:text-primary-700"
+        >Collections</a
+      >
+      <a
+        href="https://www.bahaisongproject.com/songbook.pdf"
+        class="text-slate-700 hover:text-primary-700">Songbook PDF</a
+      >
+      <a href="/contribute" class="text-slate-700 hover:text-primary-700"
+        >Contribute</a
+      >
+      <a href="/contact" class="text-slate-700 hover:text-primary-700"
+        >Contact</a
+      >
+    </nav>
+  </div>
+</header>

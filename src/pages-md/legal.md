@@ -7,7 +7,7 @@ title: "Legal Information"
 
 bahá'í song project is not an official Bahá'í site but an individual initiative. You can visit the official website of the worldwide Bahá'í community at [www.bahai.org](https://www.bahai.org).
 
-<div className="uppercase font-bold mt-8">
+<div class="uppercase font-bold mt-8">
 Information in accordance with §5 TMG
 </div>
 

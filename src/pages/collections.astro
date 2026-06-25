@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { getCollectionEntries } from "../lib/content.mjs"
+
+const collections = getCollectionEntries()
+  .filter((entry) => entry.frontmatter.public !== false)
+  .sort((a, b) =>
+    String(a.frontmatter.title || "").localeCompare(
+      String(b.frontmatter.title || ""),
+    ),
+  )
+---
+
+<BaseLayout
+  title="Collections"
+  description="Find a song you like in one of our curated collections"
+>
+  <div class="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold leading-tight text-slate-950">
+      Collections
+    </h1>
+    <p class="mt-3 max-w-2xl text-lg leading-7 text-slate-700">
+      Curated starting points for gatherings, themes, and practice.
+    </p>
+    <ul class="mt-8 divide-y divide-slate-200 border-y border-slate-200">
+      {
+        collections.map((collection) => (
+          <li class="py-5 first:pt-0 last:pb-0">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <a
+                  href={`/${collection.route}`}
+                  class="text-lg font-medium text-slate-950 no-underline hover:text-primary-700"
+                >
+                  {collection.frontmatter.title}
+                </a>
+                {collection.frontmatter.description && (
+                  <p class="mt-1 text-sm leading-6 text-slate-700">
+                    {collection.frontmatter.description}
+                  </p>
+                )}
+              </div>
+              <a
+                href={`/${collection.route}`}
+                class="text-sm font-medium text-primary-700 no-underline hover:text-primary-800"
+              >
+                View collection
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

@@ -1,0 +1,87 @@
+---
+import ContentEmbedder from "./embedding/ContentEmbedder.astro"
+import Excerpts from "./Excerpts.astro"
+
+const { song } = Astro.props
+const contributors = [...(song.contributors || [])].sort((a, b) =>
+  String(a.name || "").localeCompare(String(b.name || "")),
+)
+---
+
+<div class="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+  <div class="flex flex-wrap gap-1">
+    {
+      (song.languages || []).map((language) =>
+        language.nameEn ? (
+          <span class="song-chip">{language.nameEn}</span>
+        ) : null,
+      )
+    }
+    {
+      (song.tags || []).map((tag) =>
+        tag.name ? <span class="song-chip">{tag.name}</span> : null,
+      )
+    }
+  </div>
+
+  <div class="mt-6">
+    <h1
+      class="text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl md:text-6xl"
+    >
+      {song.title}
+    </h1>
+    {
+      contributors.length > 0 && (
+        <div class="mt-3 flex flex-wrap text-xl leading-tight text-slate-700 sm:text-2xl md:text-3xl">
+          {contributors.map((contributor) => (
+            <span class="contributor-name">{contributor.name}</span>
+          ))}
+        </div>
+      )
+    }
+    {
+      song.description && (
+        <p class="mt-3 text-xl text-slate-700">{song.description}</p>
+      )
+    }
+  </div>
+
+  {
+    (song.renditions || []).map((rendition) => (
+      <ContentEmbedder rendition={rendition} />
+    ))
+  }
+
+  <div class="mt-12 flex flex-col items-start gap-4">
+    <div class="flex flex-col gap-3 xs:flex-row">
+      <a
+        href={`https://songbook.bahaisongs.com/songs/${song.slug}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground no-underline hover:bg-primary/90"
+      >
+        Open in Songbook
+      </a>
+      <a
+        href={`https://www.bahaisongproject.com/${song.slug}.pdf`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground no-underline hover:bg-secondary/80"
+      >
+        Download PDF
+      </a>
+    </div>
+    <p class="text-sm text-slate-700">
+      Something missing or incorrect?
+      <a
+        href={`https://portal.bahaisongs.com/submissions/update/${song.slug}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Improve this song
+      </a>.
+    </p>
+  </div>
+
+  <Excerpts song={song} />
+</div>

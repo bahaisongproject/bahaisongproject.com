@@ -1,0 +1,39 @@
+---
+import {
+  getYouTubeId,
+  isBandcamp,
+  isSoundCloud,
+  isYouTube,
+} from "../../lib/embed.mjs"
+
+const { rendition } = Astro.props
+const contentUrl = rendition?.contentUrl || ""
+---
+
+{
+  isYouTube(contentUrl) ? (
+    <div class="responsive-embed mt-8">
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(contentUrl)}`}
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="YouTube video player"
+      />
+    </div>
+  ) : isSoundCloud(contentUrl) ? (
+    <iframe
+      class="mt-8 w-full border-0"
+      src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(contentUrl)}&color=%238bb6af`}
+      height="166"
+      scrolling="no"
+      allow="autoplay"
+      title="SoundCloud player"
+    />
+  ) : isBandcamp(contentUrl) ? (
+    <iframe
+      class="mt-8 h-16 w-full border-0"
+      src={`${contentUrl}/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true`}
+      title="Bandcamp player"
+    />
+  ) : null
+}
