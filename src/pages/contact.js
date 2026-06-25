@@ -65,21 +65,11 @@ function Contact({ location }) {
             Contact
           </h1>
           <div className="mt-8 prose">
-            <p className=" font-bold">We would love to hear from you.</p>
             <p>
-              Tell us what your favorite song is, report an error or just say
-              hi!
+              We would love to hear from you. Share a favorite song, report an
+              error, ask about <Link to="/contribute">contributing</Link>, or
+              just say hi.
             </p>
-            <p>Here are some of the things you could write us</p>
-            <ul>
-              <li>Tell us what your favorite song is</li>
-              <li>Report an error</li>
-              <li>Just say hi</li>
-              <li>Share how you use bahá&apos;í song project</li>
-              <li>
-                Ask a question about <Link to="/contribute">contributing</Link>
-              </li>
-            </ul>
           </div>
           <form
             className="pt-8"
