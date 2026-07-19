@@ -444,6 +444,7 @@ https://www.bahaisongs.com/* https://www.bahaisongproject.com/:splat 301!
 https://subscribe.bahaisongproject.com/* https://www.bahaisongproject.com/contribute 301!
 
 # Slug changes
+/entzuendet /entzuende 301!
 /boundless-love /may-this-boundless-love 301!
 /drita-e-united /drita-e-unitet 301!
 /all-songs.pdf /songbook.pdf 302!
