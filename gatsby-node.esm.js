@@ -5,7 +5,7 @@ const { is_youtube, get_youtube_id } = require("./src/utils/embed")
 const {
   getSongsForListViews,
   getSongsForAlgolia,
-  getSongDetail,
+  getSongsForDetailViews,
 } = require("./src/utils/bsp-api")
 
 exports.sourceNodes = async ({
@@ -59,7 +59,7 @@ exports.createPages = async ({
   reporter,
 }) => {
   const { createNode, createPage } = actions
-  const allSongs = await getSongsForListViews()
+  const allSongs = await getSongsForDetailViews()
 
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
@@ -102,17 +102,10 @@ exports.createPages = async ({
     return
   }
 
+  // The bulk detail endpoint builds the complete catalog once. Reuse that
+  // response so page generation does not perform one full-database read per song.
   await Promise.all(
-    allSongs.map(async (listSong) => {
-      let song = listSong
-      try {
-        song = await getSongDetail(listSong.slug)
-      } catch (error) {
-        reporter.warn(
-          `Using list payload for "${listSong.slug}" because detail fetch failed: ${error.message}`
-        )
-      }
-
+    allSongs.map(async (song) => {
       const youtubePerformances = (song.renditions || []).filter((p) =>
         is_youtube(p.contentUrl)
       )

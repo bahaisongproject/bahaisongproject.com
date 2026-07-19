@@ -9,7 +9,7 @@ const DEFAULT_CONVEX_SITE_URL =
 const endpointCache = {
   listSongsPromise: null,
   algoliaSongsPromise: null,
-  detailSongPromisesBySlug: {},
+  detailSongsPromise: null,
 }
 
 function getBaseUrl() {
@@ -112,27 +112,10 @@ function normalizeSongsResponse(response, endpointPath) {
   })
 }
 
-function normalizeSongResponse(response, endpointPath) {
-  if (
-    !response ||
-    typeof response.song !== "object" ||
-    response.song === null
-  ) {
-    throw new Error(`Expected { song: {...} } response from ${endpointPath}`)
-  }
-  return normalizeSong(response.song)
-}
-
 async function getSongsFromPath(endpointPath) {
   const url = new URL(endpointPath, `${getBaseUrl()}/`).toString()
   const response = await requestJson(url)
   return normalizeSongsResponse(response, endpointPath)
-}
-
-async function getSongFromPath(endpointPath) {
-  const url = new URL(endpointPath, `${getBaseUrl()}/`).toString()
-  const response = await requestJson(url)
-  return normalizeSongResponse(response, endpointPath)
 }
 
 function getSongsForListViews() {
@@ -151,25 +134,17 @@ function getSongsForAlgolia() {
   return endpointCache.algoliaSongsPromise
 }
 
-function getSongDetail(slug) {
-  if (!slug) {
-    throw new Error("Song slug is required")
+function getSongsForDetailViews() {
+  if (!endpointCache.detailSongsPromise) {
+    endpointCache.detailSongsPromise = getSongsFromPath(
+      "/api/v0/songs?for=detail"
+    )
   }
-
-  const cachedPromise = endpointCache.detailSongPromisesBySlug[slug]
-  if (cachedPromise) {
-    return cachedPromise
-  }
-
-  const detailPromise = getSongFromPath(
-    `/api/v0/songs/${encodeURIComponent(slug)}`
-  )
-  endpointCache.detailSongPromisesBySlug[slug] = detailPromise
-  return detailPromise
+  return endpointCache.detailSongsPromise
 }
 
 module.exports = {
   getSongsForListViews,
   getSongsForAlgolia,
-  getSongDetail,
+  getSongsForDetailViews,
 }
