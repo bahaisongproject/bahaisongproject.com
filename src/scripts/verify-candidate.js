@@ -2,6 +2,8 @@
 const fs = require("fs")
 const path = require("path")
 const { getWebsiteSongs } = require("../utils/bsp-api")
+const algoliaQueries = require("../utils/algolia")
+const legacyManifest = require("../data/legacy-song-route-manifest.json")
 const {
   ALGOLIA_RECORD_FIELDS,
   FEATURED_SONG_SLUGS,
@@ -66,6 +68,18 @@ function verifyRedirects(failures) {
 function verifyCandidateBuild(songs) {
   const failures = []
   const expectedSongSlugs = new Set(songs.map((song) => song.slug))
+  const songsBySlug = new Map(songs.map((song) => [song.slug, song]))
+  legacyManifest.songs.forEach((baselineSong) => {
+    const candidateSong = songsBySlug.get(baselineSong.slug)
+    if (!candidateSong)
+      failures.push(`missing baseline Song route: ${baselineSong.slug}`)
+    else if (candidateSong.title !== baselineSong.title)
+      failures.push(
+        `changed baseline title: ${baselineSong.slug} (${baselineSong.title} -> ${candidateSong.title})`
+      )
+  })
+  if (legacyManifest.songCount !== legacyManifest.songs.length)
+    failures.push("invalid baseline Song count")
   const requiredStaticRoutes = [
     "index.html",
     "all-songs/index.html",
@@ -110,7 +124,7 @@ function verifyCandidateBuild(songs) {
     })
     .map((entry) => entry.name)
 
-  const algoliaRecords = []
+  const algoliaInputNodes = []
   songs.forEach((song) => {
     const htmlPath = path.join(publicDirectory, song.slug, "index.html")
     if (!fs.existsSync(htmlPath)) {
@@ -131,15 +145,37 @@ function verifyCandidateBuild(songs) {
     )
       failures.push(`wrong rendition order: ${song.slug}`)
 
-    const record = { objectID: builtSong.songId, ...builtSong }
-    delete record.songId
-    delete record.renditions
+    const { songId, renditions, ...recordFields } = builtSong
+    algoliaInputNodes.push({ objectID: songId, ...recordFields })
+  })
+
+  if (algoliaQueries.length !== 1)
+    failures.push(`Algolia query count ${algoliaQueries.length} != 1`)
+  const algoliaQuery = algoliaQueries[0]
+  if (!algoliaQuery || algoliaQuery.indexName !== "bsp-songs")
+    failures.push("wrong Algolia index name")
+  const algoliaRecords = algoliaQuery
+    ? algoliaQuery.transformer({
+        data: { allBspSong: { nodes: algoliaInputNodes } },
+      })
+    : []
+  ALGOLIA_RECORD_FIELDS.forEach((field) => {
+    const queryField = field === "objectID" ? "objectID: songId" : field
+    if (!algoliaQuery || !algoliaQuery.query.includes(queryField))
+      failures.push(`Algolia query missing field: ${field}`)
+  })
+  ;["sources", "excerpts", "music", "words", "artifacts"].forEach(
+    (removedField) => {
+      if (algoliaQuery && algoliaQuery.query.includes(removedField))
+        failures.push(`Algolia query retains field: ${removedField}`)
+    }
+  )
+  algoliaRecords.forEach((record) => {
     if (
       JSON.stringify(Object.keys(record).sort()) !==
       JSON.stringify([...ALGOLIA_RECORD_FIELDS].sort())
     )
-      failures.push(`wrong Algolia record shape: ${song.slug}`)
-    algoliaRecords.push(record)
+      failures.push(`wrong Algolia record shape: ${record.slug}`)
   })
 
   builtSongSlugs
@@ -192,6 +228,10 @@ function verifyCandidateBuild(songs) {
   if (failures.length) throw new Error(JSON.stringify({ failures }, null, 2))
   return {
     catalogEndpoint: "/v2/catalog/songs",
+    baselineCapturedAt: legacyManifest.capturedAt,
+    baselineSongCount: legacyManifest.songCount,
+    historicalSongCount: legacyManifest.historicalDecisionRecordCount,
+    historicalCountDisposition: legacyManifest.historicalCountDisposition,
     songCount: songs.length,
     songRouteCount: builtSongSlugs.length,
     algoliaRecordCount: algoliaRecords.length,
