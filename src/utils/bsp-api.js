@@ -15,13 +15,6 @@ const KNOWN_RELATIONS = new Set([
   "accompaniment",
   "tutorial",
 ])
-const CONTRIBUTOR_ROLES = new Set([
-  "composer",
-  "lyricist",
-  "translator",
-  "arranger",
-  "producer",
-])
 let catalogPromise = null
 
 function isObject(value) {
@@ -48,16 +41,7 @@ function contributorNames(value, location) {
   return value.map((item, index) => {
     if (!isObject(item))
       throw new Error(`${location}[${index}] must be an object`)
-    const name = requiredString(item.name, `${location}[${index}].name`)
-    if (!Array.isArray(item.roles))
-      throw new Error(`${location}[${index}].roles must be an array`)
-    item.roles.forEach((role) => {
-      if (!CONTRIBUTOR_ROLES.has(role))
-        throw new Error(
-          `${location}[${index}] has unknown contributor role ${role}`
-        )
-    })
-    return name
+    return requiredString(item.name, `${location}[${index}].name`)
   })
 }
 
@@ -171,8 +155,18 @@ function retryAfterMs(value) {
     : null
 }
 
-function requestCatalog(url) {
+function requestCatalog(url, options = {}) {
+  const timeoutMs = options.timeoutMs || 30000
   return new Promise((resolve, reject) => {
+    let timeout
+    const resolveRequest = (value) => {
+      clearTimeout(timeout)
+      resolve(value)
+    }
+    const rejectRequest = (error) => {
+      clearTimeout(timeout)
+      reject(error)
+    }
     const parsed = new URL(url)
     const request = (parsed.protocol === "https:" ? https : http).get(
       parsed,
@@ -187,7 +181,7 @@ function requestCatalog(url) {
             error.retryable = false
             response.destroy(error)
             request.destroy(error)
-            reject(error)
+            rejectRequest(error)
             return
           }
           chunks.push(chunk)
@@ -200,33 +194,34 @@ function requestCatalog(url) {
             )
             error.retryable = status === 408 || status === 429 || status >= 500
             error.retryAfterMs = retryAfterMs(response.headers["retry-after"])
-            reject(error)
+            rejectRequest(error)
             return
           }
           try {
-            resolve(
+            resolveRequest(
               projectCatalogResponse(
                 JSON.parse(Buffer.concat(chunks).toString("utf8"))
               )
             )
           } catch (error) {
-            reject(error)
+            rejectRequest(error)
           }
         })
       }
     )
-    request.setTimeout(30000, () => {
-      const error = new Error("Catalog request timed out after 30 seconds")
+    timeout = setTimeout(() => {
+      const error = new Error(`Catalog request timed out after ${timeoutMs}ms`)
       error.retryable = true
+      rejectRequest(error)
       request.destroy(error)
-    })
+    }, timeoutMs)
     request.on("error", (error) => {
       if (
         error.retryable === undefined &&
         !error.message.includes("exceeds 10 MiB")
       )
         error.retryable = true
-      reject(error)
+      rejectRequest(error)
     })
   })
 }

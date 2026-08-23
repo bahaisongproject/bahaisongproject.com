@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import PropTypes from "prop-types"
 import Results from "../components/Results"
 import SongCard from "../components/SongCard"
+import { FEATURED_SONG_SLUGS } from "../utils/site-contract"
 
 function IndexPage({ data, location }) {
   const allSongs = data.allBspSong.nodes
@@ -13,15 +14,8 @@ function IndexPage({ data, location }) {
     width: 1200,
     height: 628,
   }
-  const featuredSongsSlugList = [
-    "observe-all-the-things",
-    "die-erde-ist-nur-ein-land",
-    "god-is-sufficient-unto-me",
-    "o-fils-de-lexistence",
-    "ey-yalla",
-  ]
   const featuredSongList = [...allSongs].filter((song) =>
-    featuredSongsSlugList.includes(song.slug)
+    FEATURED_SONG_SLUGS.includes(song.slug)
   )
   const recentSongList = [...allSongs]
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
