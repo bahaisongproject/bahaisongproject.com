@@ -7,7 +7,7 @@ import Results from "../components/Results"
 import SongCard from "../components/SongCard"
 
 function IndexPage({ data, location }) {
-  const allSongs = data.allBspListSong.nodes
+  const allSongs = data.allBspSong.nodes
   const image = {
     src: `/meta.png`,
     width: 1200,
@@ -71,9 +71,9 @@ function IndexPage({ data, location }) {
                   </span>
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-600">
-                  Find songs faster, transpose chords, and switch between
-                  guitar and ukulele diagrams. Each song page includes lyrics
-                  and chords, no PDF download required.
+                  Find songs faster, transpose chords, and switch between guitar
+                  and ukulele diagrams. Each song page includes lyrics and
+                  chords, no PDF download required.
                 </p>
               </div>
               <a
@@ -176,21 +176,15 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allBspListSong {
+    allBspSong {
       nodes {
         publishedAt
         title
         slug
-        description
-        languages {
-          nameEn
-        }
-        tags {
-          name
-        }
-        contributors {
-          name
-        }
+        creditText
+        contributorNames
+        languageNames
+        tagNames
         renditions {
           contentUrl
         }

@@ -13,7 +13,7 @@ const TitleCell = ({ row }) => (
     <Link className="hover:underline font-bold" to={`/${row.slug}`}>
       {row.title}
     </Link>
-    <div className="italic">{row.music}</div>
+    <div className="italic">{row.creditLine}</div>
   </div>
 )
 

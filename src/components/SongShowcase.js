@@ -5,20 +5,14 @@ import SongCard from "./SongCard"
 export default function SongShowcase({ songSlug }) {
   const songsQuery = graphql`
     query AllSongsQuery {
-      allBspListSong {
+      allBspSong {
         nodes {
           title
           slug
-          description
-          languages {
-            nameEn
-          }
-          tags {
-            name
-          }
-          contributors {
-            name
-          }
+          creditText
+          contributorNames
+          languageNames
+          tagNames
           renditions {
             contentUrl
           }
@@ -32,9 +26,7 @@ export default function SongShowcase({ songSlug }) {
       render={(data) => (
         <div className="noprose">
           <SongCard
-            song={data.allBspListSong.nodes.find(
-              (song) => song.slug == songSlug
-            )}
+            song={data.allBspSong.nodes.find((song) => song.slug == songSlug)}
           />
         </div>
       )}

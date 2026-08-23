@@ -1,13 +1,9 @@
 import React from "react"
 import ResponsiveEmbed from "react-responsive-embed"
-import { get_youtube_id } from "../../utils/embed"
 
 const YouTubeEmbedder = ({ rendition }) => (
   <ResponsiveEmbed
-    src={
-      "https://www.youtube-nocookie.com/embed/" +
-      get_youtube_id(rendition.contentUrl)
-    }
+    src={"https://www.youtube-nocookie.com/embed/" + rendition.videoId}
     allowFullScreen
     referrerPolicy="strict-origin-when-cross-origin"
   />

@@ -2,149 +2,271 @@
 const http = require("http")
 const https = require("https")
 const { URL } = require("url")
+const { get_youtube_id } = require("./embed")
 
 const DEFAULT_CONVEX_SITE_URL =
   "https://pastel-canary-414.eu-west-1.convex.site"
+const MAX_RESPONSE_BYTES = 10 * 1024 * 1024
+const KNOWN_RELATIONS = new Set([
+  "leadSheet",
+  "notation",
+  "lyrics",
+  "rendition",
+  "accompaniment",
+  "tutorial",
+])
+const CONTRIBUTOR_ROLES = new Set([
+  "composer",
+  "lyricist",
+  "translator",
+  "arranger",
+  "producer",
+])
+let catalogPromise = null
 
-const endpointCache = {
-  listSongsPromise: null,
-  algoliaSongsPromise: null,
-  detailSongsPromise: null,
+function isObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value)
 }
 
-function getBaseUrl() {
-  return (process.env.CONVEX_SITE_URL || DEFAULT_CONVEX_SITE_URL).replace(
-    /\/+$/,
-    ""
+function requiredString(value, location) {
+  if (typeof value !== "string" || value.trim() === "")
+    throw new Error(`${location} must be a nonempty string`)
+  return value
+}
+
+function namedValues(value, location) {
+  if (!Array.isArray(value)) throw new Error(`${location} must be an array`)
+  return value.map((item, index) => {
+    if (!isObject(item))
+      throw new Error(`${location}[${index}] must be an object`)
+    return requiredString(item.name, `${location}[${index}].name`)
+  })
+}
+
+function contributorNames(value, location) {
+  if (!Array.isArray(value)) throw new Error(`${location} must be an array`)
+  return value.map((item, index) => {
+    if (!isObject(item))
+      throw new Error(`${location}[${index}] must be an object`)
+    const name = requiredString(item.name, `${location}[${index}].name`)
+    if (!Array.isArray(item.roles))
+      throw new Error(`${location}[${index}].roles must be an array`)
+    item.roles.forEach((role) => {
+      if (!CONTRIBUTOR_ROLES.has(role))
+        throw new Error(
+          `${location}[${index}] has unknown contributor role ${role}`
+        )
+    })
+    return name
+  })
+}
+
+function renditionFromArtifact(artifact, location) {
+  const contentUrl = requiredString(artifact.url, `${location}.url`)
+  let parsed
+  try {
+    parsed = new URL(contentUrl)
+  } catch (error) {
+    throw new Error(`${location}.url must be an absolute HTTP(S) URL`)
+  }
+  if (!/^https?:$/.test(parsed.protocol))
+    throw new Error(`${location}.url must be an absolute HTTP(S) URL`)
+  const host = parsed.hostname.toLowerCase().replace(/^www\./, "")
+  if (
+    host === "youtu.be" ||
+    host === "youtube.com" ||
+    host.endsWith(".youtube.com") ||
+    host === "youtube-nocookie.com" ||
+    host.endsWith(".youtube-nocookie.com")
+  ) {
+    const videoId = get_youtube_id(contentUrl)
+    if (!videoId)
+      throw new Error(`${location}.url has no valid YouTube video ID`)
+    return { provider: "youtube", contentUrl, videoId }
+  }
+  if (host === "soundcloud.com" || host.endsWith(".soundcloud.com"))
+    return { provider: "soundcloud", contentUrl }
+  if (host === "bandcamp.com" || host.endsWith(".bandcamp.com"))
+    return { provider: "bandcamp", contentUrl }
+  return null
+}
+
+function projectSong(song, index) {
+  const location = `songs[${index}]`
+  if (!isObject(song)) throw new Error(`${location} must be an object`)
+  if (!isObject(song.authority) || song.authority.kind !== "catalog")
+    throw new Error(`${location}.authority must be Catalog authority`)
+  if (!Array.isArray(song.artifacts))
+    throw new Error(`${location}.artifacts must be an array`)
+  const names = contributorNames(song.contributors, `${location}.contributors`)
+  const creditText =
+    song.creditText === undefined || song.creditText === null
+      ? null
+      : requiredString(song.creditText, `${location}.creditText`)
+  const renditions = []
+  song.artifacts.forEach((artifact, artifactIndex) => {
+    const artifactLocation = `${location}.artifacts[${artifactIndex}]`
+    if (!isObject(artifact))
+      throw new Error(`${artifactLocation} must be an object`)
+    const relation = requiredString(
+      artifact.relation,
+      `${artifactLocation}.relation`
+    )
+    if (!KNOWN_RELATIONS.has(relation))
+      throw new Error(`${artifactLocation}.relation is unknown: ${relation}`)
+    if (relation === "rendition") {
+      const rendition = renditionFromArtifact(artifact, artifactLocation)
+      if (rendition) renditions.push(rendition)
+    }
+  })
+  return {
+    songId: requiredString(song.id, `${location}.id`),
+    slug: requiredString(song.authority.slug, `${location}.authority.slug`),
+    title: requiredString(song.title, `${location}.title`),
+    publishedAt: requiredString(
+      song.authority.publishedAt,
+      `${location}.authority.publishedAt`
+    ),
+    creditText,
+    contributorNames: names,
+    languageNames: namedValues(song.languages, `${location}.languages`),
+    tagNames: namedValues(song.tags, `${location}.tags`),
+    creditLine: names.length ? names.join(", ") : creditText,
+    renditions,
+  }
+}
+
+function projectCatalogResponse(response) {
+  if (!isObject(response) || !Array.isArray(response.songs))
+    throw new Error("Expected { songs: [...] } from /v2/catalog/songs")
+  if (!response.songs.length) throw new Error("Catalog must not be empty")
+  if (
+    ["nextCursor", "cursor", "page"].some((key) =>
+      Object.prototype.hasOwnProperty.call(response, key)
+    )
   )
+    throw new Error("Catalog response must not be paginated")
+  const songs = response.songs.map(projectSong)
+  const ids = new Set()
+  const slugs = new Set()
+  songs.forEach((song) => {
+    if (ids.has(song.songId))
+      throw new Error(`Duplicate Song ID: ${song.songId}`)
+    if (slugs.has(song.slug))
+      throw new Error(`Duplicate Catalog slug: ${song.slug}`)
+    ids.add(song.songId)
+    slugs.add(song.slug)
+  })
+  return songs
 }
 
-function requestJson(url) {
-  return new Promise(function requestPromise(resolve, reject) {
-    const parsedUrl = new URL(url)
-    const client = parsedUrl.protocol === "https:" ? https : http
+function retryAfterMs(value) {
+  if (typeof value !== "string" || !value.trim()) return null
+  const seconds = Number(value)
+  if (Number.isFinite(seconds) && seconds >= 0)
+    return Math.min(seconds * 1000, 30000)
+  const dateMs = Date.parse(value)
+  return Number.isFinite(dateMs)
+    ? Math.min(Math.max(dateMs - Date.now(), 0), 30000)
+    : null
+}
 
-    const req = client.get(
-      parsedUrl,
-      {
-        headers: {
-          Accept: "application/json",
-        },
-      },
-      function onResponse(res) {
-        const statusCode = res.statusCode || 0
-        const headers = res.headers || {}
-        let body = ""
-
-        res.setEncoding("utf8")
-        res.on("data", function onData(chunk) {
-          body += chunk
-        })
-
-        res.on("end", function onEnd() {
-          if (
-            statusCode >= 300 &&
-            statusCode < 400 &&
-            typeof headers.location === "string"
-          ) {
-            const redirectedUrl = new URL(
-              headers.location,
-              parsedUrl
-            ).toString()
-            resolve(requestJson(redirectedUrl))
+function requestCatalog(url) {
+  return new Promise((resolve, reject) => {
+    const parsed = new URL(url)
+    const request = (parsed.protocol === "https:" ? https : http).get(
+      parsed,
+      { headers: { Accept: "application/json" } },
+      (response) => {
+        const chunks = []
+        let bytes = 0
+        response.on("data", (chunk) => {
+          bytes += chunk.length
+          if (bytes > MAX_RESPONSE_BYTES) {
+            const error = new Error("Catalog response exceeds 10 MiB")
+            error.retryable = false
+            response.destroy(error)
+            request.destroy(error)
+            reject(error)
             return
           }
-
-          if (statusCode < 200 || statusCode >= 300) {
-            reject(
-              new Error(
-                `Request failed (${statusCode}) for ${url}: ${body.slice(
-                  0,
-                  300
-                )}`
+          chunks.push(chunk)
+        })
+        response.on("end", () => {
+          const status = response.statusCode || 0
+          if (status < 200 || status >= 300) {
+            const error = new Error(
+              `Catalog request failed with HTTP ${status}`
+            )
+            error.retryable = status === 408 || status === 429 || status >= 500
+            error.retryAfterMs = retryAfterMs(response.headers["retry-after"])
+            reject(error)
+            return
+          }
+          try {
+            resolve(
+              projectCatalogResponse(
+                JSON.parse(Buffer.concat(chunks).toString("utf8"))
               )
             )
-            return
-          }
-
-          try {
-            resolve(JSON.parse(body))
           } catch (error) {
-            reject(new Error(`Invalid JSON from ${url}: ${error.message}`))
+            reject(error)
           }
         })
       }
     )
-
-    req.on("error", function onError(error) {
-      reject(new Error(`Request error for ${url}: ${error.message}`))
+    request.setTimeout(30000, () => {
+      const error = new Error("Catalog request timed out after 30 seconds")
+      error.retryable = true
+      request.destroy(error)
+    })
+    request.on("error", (error) => {
+      if (
+        error.retryable === undefined &&
+        !error.message.includes("exceeds 10 MiB")
+      )
+        error.retryable = true
+      reject(error)
     })
   })
 }
 
-function normalizeSong(song) {
-  const safeSong = song || {}
-  const normalizedSong = Object.assign({}, safeSong)
-
-  normalizedSong.contributors = Array.isArray(safeSong.contributors)
-    ? safeSong.contributors
-    : []
-  normalizedSong.excerpts = Array.isArray(safeSong.excerpts)
-    ? safeSong.excerpts
-    : []
-  normalizedSong.languages = Array.isArray(safeSong.languages)
-    ? safeSong.languages
-    : []
-  normalizedSong.renditions = Array.isArray(safeSong.renditions)
-    ? safeSong.renditions
-    : []
-  normalizedSong.tags = Array.isArray(safeSong.tags) ? safeSong.tags : []
-
-  return normalizedSong
-}
-
-function normalizeSongsResponse(response, endpointPath) {
-  if (!response || !Array.isArray(response.songs)) {
-    throw new Error(`Expected { songs: [...] } response from ${endpointPath}`)
+async function fetchWebsiteSongs(options = {}) {
+  const request = options.request || requestCatalog
+  const wait =
+    options.wait ||
+    ((milliseconds) =>
+      new Promise((resolve) => setTimeout(resolve, milliseconds)))
+  const baseUrl = (
+    process.env.CONVEX_SITE_URL || DEFAULT_CONVEX_SITE_URL
+  ).replace(/\/+$/, "")
+  const url =
+    options.url || new URL("/v2/catalog/songs", `${baseUrl}/`).toString()
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      return await request(url)
+    } catch (error) {
+      if (!error.retryable || attempt === 3) throw error
+      await wait(
+        error.retryAfterMs == null ? attempt * 1000 : error.retryAfterMs
+      )
+    }
   }
-  return response.songs.map(function mapSong(song) {
-    return normalizeSong(song)
-  })
 }
 
-async function getSongsFromPath(endpointPath) {
-  const url = new URL(endpointPath, `${getBaseUrl()}/`).toString()
-  const response = await requestJson(url)
-  return normalizeSongsResponse(response, endpointPath)
+function getWebsiteSongs() {
+  if (!catalogPromise) catalogPromise = fetchWebsiteSongs()
+  return catalogPromise
 }
 
-function getSongsForListViews() {
-  if (!endpointCache.listSongsPromise) {
-    endpointCache.listSongsPromise = getSongsFromPath("/api/v0/songs")
-  }
-  return endpointCache.listSongsPromise
-}
-
-function getSongsForAlgolia() {
-  if (!endpointCache.algoliaSongsPromise) {
-    endpointCache.algoliaSongsPromise = getSongsFromPath(
-      "/api/v0/songs?for=algolia"
-    )
-  }
-  return endpointCache.algoliaSongsPromise
-}
-
-function getSongsForDetailViews() {
-  if (!endpointCache.detailSongsPromise) {
-    endpointCache.detailSongsPromise = getSongsFromPath(
-      "/api/v0/songs?for=detail"
-    )
-  }
-  return endpointCache.detailSongsPromise
+function resetCatalogCacheForTests() {
+  catalogPromise = null
 }
 
 module.exports = {
-  getSongsForListViews,
-  getSongsForAlgolia,
-  getSongsForDetailViews,
+  fetchWebsiteSongs,
+  getWebsiteSongs,
+  projectCatalogResponse,
+  requestCatalog,
+  resetCatalogCacheForTests,
 }

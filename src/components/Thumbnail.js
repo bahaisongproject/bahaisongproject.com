@@ -1,6 +1,5 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import { is_youtube } from "../utils/embed"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export default function Thumbnail({ song }) {
@@ -30,7 +29,9 @@ export default function Thumbnail({ song }) {
         (() => {
           if (
             song.renditions.length > 0 &&
-            song.renditions.filter((p) => is_youtube(p.contentUrl)).length > 0
+            song.renditions.some(
+              (rendition) => rendition.provider === "youtube"
+            )
           ) {
             const thumbnailNode = data.allFile.nodes.find(
               (thumbnail) => thumbnail.name == song.slug

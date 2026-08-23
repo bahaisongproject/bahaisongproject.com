@@ -20,48 +20,46 @@ const SongCard = ({ song, className }) => (
 
       {/* Contributors */}
       <div className="flex flex-wrap">
-        {song.contributors
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map((contributor, i) => (
+        {[...song.contributorNames]
+          .sort((a, b) => a.localeCompare(b))
+          .map((contributorName, i) => (
             <div
               className={
                 "contributor-name text-gray-700 leading-tight text-lg mt-1"
               }
               key={i}
             >
-              {contributor.name}
+              {contributorName}
             </div>
           ))}
       </div>
 
       {/* Show song description if no contributors, if available */}
       {(() => {
-        if (song.contributors.length === 0)
+        if (song.contributorNames.length === 0)
           return (
-            <div className="text-gray-700 leading-tight">
-              {song.description}
-            </div>
+            <div className="text-gray-700 leading-tight">{song.creditText}</div>
           )
       })()}
 
       {/* Show languages and tags under song title */}
       <div className="flex flex-wrap">
         {/* Languages */}
-        {song.languages.map((language, i) => (
+        {song.languageNames.map((languageName, i) => (
           <div
             className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
-            {language.nameEn}
+            {languageName}
           </div>
         ))}
         {/* Tags */}
-        {song.tags.map((tag, i) => (
+        {song.tagNames.map((tagName, i) => (
           <div
             className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none"
             key={i}
           >
-            {tag.name}
+            {tagName}
           </div>
         ))}
       </div>

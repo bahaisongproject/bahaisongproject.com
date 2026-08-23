@@ -1,29 +1,22 @@
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import React, { Component } from "react"
 import { OutboundLink } from "gatsby-plugin-gtag"
 import { ExternalLinkIcon } from "@heroicons/react/solid"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ContentEmbedder from "../components/embedding/ContentEmbedder"
-import ExcerptCard from "../components/ExcerptCard"
 import Results from "../components/Results"
 import { describe_song } from "../utils/description"
 
 class SongTemplate extends Component {
   render() {
-    const { song } = this.props.pageContext // Get song data from page context
+    const { song } = this.props.data
     const description = describe_song(song)
-    const image = {
-      src: `/__social/${song.slug}.png`,
-      width: 1200,
-      height: 628,
-    }
     return (
       <Layout location={this.props.location}>
         <SEO
           title={song.title}
           description={description}
-          image={image}
           pathname={this.props.location.pathname}
         />
         <Results>
@@ -31,22 +24,22 @@ class SongTemplate extends Component {
             {/* Show languages and tags over song title */}
             <div className="flex flex-wrap">
               {/* Languages */}
-              {song.languages.map((language, i) => (
+              {song.languageNames.map((languageName, i) => (
                 <div
                   className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
-                  {language.nameEn}
+                  {languageName}
                 </div>
               ))}
 
               {/* Tags */}
-              {song.tags.map((tag, i) => (
+              {song.tagNames.map((tagName, i) => (
                 <div
                   className="border border-primary-100 bg-primary-50 tracking-wide text-xs text-gray-500 px-1 mr-1 mt-2 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   key={i}
                 >
-                  {tag.name}
+                  {tagName}
                 </div>
               ))}
             </div>
@@ -60,23 +53,23 @@ class SongTemplate extends Component {
 
                 {/* Contributors */}
                 <div className="flex flex-wrap">
-                  {song.contributors
-                    .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((contributor, i) => (
+                  {[...song.contributorNames]
+                    .sort((a, b) => a.localeCompare(b))
+                    .map((contributorName, i) => (
                       <div
                         className={
                           "contributor-name leading-tight text-lg text-gray-500 sm:text-2xl md:text-3xl mt-1 sm:mt-4"
                         }
                         key={i}
                       >
-                        {contributor.name}
+                        {contributorName}
                       </div>
-                  ))}
+                    ))}
                 </div>
 
                 {/* Song Description */}
                 <div className="leading-tight mt-1 text-lg text-gray-500 sm:text-2xl md:text-3xl">
-                  {song.description}
+                  {song.creditText}
                 </div>
               </div>
             </div>
@@ -91,9 +84,7 @@ class SongTemplate extends Component {
               <div>
                 <div className="flex flex-col xs:flex-row xs:items-center gap-3">
                   <OutboundLink
-                    href={
-                      "https://songbook.bahaisongs.com/songs/" + song.slug
-                    }
+                    href={"https://songbook.bahaisongs.com/songs/" + song.slug}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex space-x-1 items-center font-medium px-4 py-2 text-sm text-left text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
@@ -130,11 +121,6 @@ class SongTemplate extends Component {
                 .
               </p>
             </div>
-
-            {/* Excerpts */}
-            {song.excerpts.map((excerpt, i) => (
-              <ExcerptCard excerpt={excerpt} song={song} key={i} />
-            ))}
           </div>
         </Results>
       </Layout>
@@ -143,3 +129,24 @@ class SongTemplate extends Component {
 }
 
 export default SongTemplate
+
+export const query = graphql`
+  query SongPage($songId: String!) {
+    song: bspSong(songId: { eq: $songId }) {
+      songId
+      slug
+      title
+      publishedAt
+      creditText
+      creditLine
+      contributorNames
+      languageNames
+      tagNames
+      renditions {
+        provider
+        contentUrl
+        videoId
+      }
+    }
+  }
+`

@@ -15,7 +15,7 @@ const TitleCell = ({ row }) => (
     <Link className="hover:underline font-bold" to={`/${row.slug}`}>
       {row.title}
     </Link>
-    <div className="text-gray-700">{row.music}</div>
+    <div className="text-gray-700">{row.creditLine}</div>
   </div>
 )
 
@@ -73,7 +73,7 @@ function AllSongs({ data, location }) {
     width: 1200,
     height: 628,
   }
-  const allSongList = data.allBspListSong.nodes.sort((a, b) =>
+  const allSongList = data.allBspSong.nodes.sort((a, b) =>
     a.slug > b.slug ? 1 : -1
   )
   return (
@@ -110,23 +110,12 @@ export default AllSongs
 
 export const query = graphql`
   query {
-    allBspListSong {
+    allBspSong {
       nodes {
         publishedAt
         title
-        music
-        words
         slug
-        description
-        languages {
-          nameEn
-        }
-        tags {
-          name
-        }
-        contributors {
-          name
-        }
+        creditLine
         renditions {
           contentUrl
         }

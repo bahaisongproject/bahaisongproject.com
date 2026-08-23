@@ -73,12 +73,13 @@
     "fix:prettier": "prettier --write \"**/*.{css,js,jsx,json,md}\"",
     "fix": "npm run fix:lint && npm run fix:prettier",
     "build": "gatsby build",
+    "verify:candidate": "node src/scripts/verify-candidate.js",
     "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "dev": "npm run develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "bun test"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
