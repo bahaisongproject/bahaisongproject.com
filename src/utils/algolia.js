@@ -1,39 +1,15 @@
 const songQuery = `{
-    allBspAlgoliaSong {
+    allBspSong {
       nodes {
-        objectID: slug
+        objectID: songId
         title
         slug
-        description
         publishedAt
-        sources {
-          description
-          author
-        }
-        music
-        words
-        languages {
-          nameEn
-        }
-        contributors {
-          name
-          slug
-        }
-        tags {
-          name
-          description
-          slug
-        }
-        renditions {
-          contentUrl
-        }
-        excerpts {
-          source {
-            description
-            author
-          }
-          text
-        }
+        creditLine
+        creditText
+        contributorNames
+        languageNames
+        tagNames
       }
     }
   }`
@@ -41,7 +17,7 @@ const songQuery = `{
 const queries = [
   {
     query: songQuery,
-    transformer: ({ data }) => data.allBspAlgoliaSong.nodes,
+    transformer: ({ data }) => data.allBspSong.nodes,
     indexName: `bsp-songs`,
   },
 ]

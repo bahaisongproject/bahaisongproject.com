@@ -1,29 +1,3 @@
-function is_youtube(content_url) {
-  return get_youtube_id(content_url) !== false
-}
-
-function is_soundcloud(content_url) {
-  if (content_url != undefined && content_url != "") {
-    var regExp = /soundcloud.com/
-    var match = content_url.match(regExp)
-    if (match) {
-      return true
-    }
-  }
-  return false
-}
-
-function is_bandcamp(content_url) {
-  if (content_url != undefined && content_url != "") {
-    var regExp = /bandcamp.com/
-    var match = content_url.match(regExp)
-    if (match) {
-      return true
-    }
-  }
-  return false
-}
-
 function get_youtube_id(content_url) {
   if (typeof content_url !== "string" || content_url.trim() === "") {
     return false
@@ -59,4 +33,4 @@ function get_youtube_id(content_url) {
   }
 }
 
-module.exports = { is_youtube, is_soundcloud, is_bandcamp, get_youtube_id }
+module.exports = { get_youtube_id }

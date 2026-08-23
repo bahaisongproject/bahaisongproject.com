@@ -1,12 +1,7 @@
 /* eslint-env es6 */
 const path = require(`path`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
-const { is_youtube, get_youtube_id } = require("./src/utils/embed")
-const {
-  getSongsForListViews,
-  getSongsForAlgolia,
-  getSongsForDetailViews,
-} = require("./src/utils/bsp-api")
+const { getWebsiteSongs } = require("./src/utils/bsp-api")
 
 exports.sourceNodes = async ({
   actions,
@@ -14,39 +9,19 @@ exports.sourceNodes = async ({
   createNodeId,
   reporter,
 }) => {
-  const { createNode } = actions
-
   try {
-    const [listSongs, algoliaSongs] = await Promise.all([
-      getSongsForListViews(),
-      getSongsForAlgolia(),
-    ])
-
-    listSongs.forEach((song) => {
-      const { id, ...songFields } = song
-      createNode({
-        ...songFields,
-        id: createNodeId(`bsp-list-song-${song.slug}`),
-        internal: {
-          type: "BspListSong",
-          contentDigest: createContentDigest(song),
-        },
-      })
-    })
-
-    algoliaSongs.forEach((song) => {
-      const { id, ...songFields } = song
-      createNode({
-        ...songFields,
-        id: createNodeId(`bsp-algolia-song-${song.slug}`),
-        internal: {
-          type: "BspAlgoliaSong",
-          contentDigest: createContentDigest(song),
-        },
+    const songs = await getWebsiteSongs()
+    songs.forEach((song) => {
+      actions.createNode({
+        ...song,
+        id: createNodeId(`bsp-song-${song.songId}`),
+        internal: { type: "BspSong", contentDigest: createContentDigest(song) },
       })
     })
   } catch (error) {
-    reporter.panicOnBuild(`Error while sourcing REST songs: ${error.message}`)
+    reporter.panicOnBuild(
+      `Error while sourcing REST v2 Catalog: ${error.message}`
+    )
   }
 }
 
@@ -59,10 +34,6 @@ exports.createPages = async ({
   reporter,
 }) => {
   const { createNode, createPage } = actions
-  const allSongs = await getSongsForDetailViews()
-
-  // **Note:** The graphql function call returns a Promise
-  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
   const result = await graphql(`
     query {
       collections: allFile(
@@ -93,52 +64,52 @@ exports.createPages = async ({
           }
         }
       }
+      songs: allBspSong {
+        nodes {
+          songId
+          slug
+          renditions {
+            provider
+            contentUrl
+            videoId
+          }
+        }
+      }
     }
   `)
-
-  // Handle errors
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
 
-  // The bulk detail endpoint builds the complete catalog once. Reuse that
-  // response so page generation does not perform one full-database read per song.
   await Promise.all(
-    allSongs.map(async (song) => {
-      const youtubePerformances = (song.renditions || []).filter((p) =>
-        is_youtube(p.contentUrl)
+    result.data.songs.nodes.map(async (song) => {
+      const youtube = song.renditions.find(
+        (rendition) => rendition.provider === "youtube"
       )
-      if (youtubePerformances.length > 0) {
-        const youtubeId = get_youtube_id(youtubePerformances[0].contentUrl)
-        if (youtubeId) {
-          const thumbnailUrl =
-            "https://img.youtube.com/vi/" + youtubeId + "/hqdefault.jpg"
-          try {
-            await createRemoteFileNode({
-              url: thumbnailUrl, // string that points to the URL of the image
-              parentNodeId: null, // id of the parent node of the fileNode you are going to create
-              createNode, // helper function in gatsby-node to generate the node
-              createNodeId, // helper function in gatsby-node to generate the node id
-              cache, // Gatsby's cache
-              store, // Gatsby's Redux store
-              ext: ".jpg",
-              name: song.slug,
-            })
-          } catch (error) {
-            reporter.warn(
-              `Skipping thumbnail for "${song.slug}" (${thumbnailUrl}): ${error.message}`
-            )
-          }
+      if (youtube) {
+        const thumbnailUrl = `https://img.youtube.com/vi/${youtube.videoId}/hqdefault.jpg`
+        try {
+          await createRemoteFileNode({
+            url: thumbnailUrl,
+            parentNodeId: null,
+            createNode,
+            createNodeId,
+            cache,
+            store,
+            ext: ".jpg",
+            name: song.slug,
+          })
+        } catch (error) {
+          reporter.warn(
+            `Skipping thumbnail for "${song.slug}" (${thumbnailUrl}): ${error.message}`
+          )
         }
       }
       createPage({
         path: `/${song.slug}`,
         component: path.resolve(`./src/templates/SongTemplate.js`),
-        context: {
-          // songSlug: song.slug,
-          song: song,
-        },
+        context: { songId: song.songId },
       })
     })
   )
@@ -147,28 +118,18 @@ exports.createPages = async ({
   const CollectionTemplate = require.resolve(
     `./src/templates/CollectionTemplate.js`
   )
-
-  const pageNodes = result.data.pages.nodes
-  const collectionNodes = result.data.collections.nodes
-
-  pageNodes.forEach((node) => {
+  result.data.pages.nodes.forEach((node) =>
     createPage({
       path: node.childMdx.frontmatter.slug,
       component: PageTemplate,
-      context: {
-        // additional data can be passed via context
-        slug: node.childMdx.frontmatter.slug,
-      },
+      context: { slug: node.childMdx.frontmatter.slug },
     })
-  })
-  collectionNodes.forEach((node) => {
+  )
+  result.data.collections.nodes.forEach((node) =>
     createPage({
       path: node.childMdx.frontmatter.slug,
       component: CollectionTemplate,
-      context: {
-        // additional data can be passed via context
-        slug: node.childMdx.frontmatter.slug,
-      },
+      context: { slug: node.childMdx.frontmatter.slug },
     })
-  })
+  )
 }

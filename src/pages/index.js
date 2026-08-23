@@ -5,23 +5,17 @@ import SEO from "../components/seo"
 import PropTypes from "prop-types"
 import Results from "../components/Results"
 import SongCard from "../components/SongCard"
+import { FEATURED_SONG_SLUGS } from "../utils/site-contract"
 
 function IndexPage({ data, location }) {
-  const allSongs = data.allBspListSong.nodes
+  const allSongs = data.allBspSong.nodes
   const image = {
     src: `/meta.png`,
     width: 1200,
     height: 628,
   }
-  const featuredSongsSlugList = [
-    "observe-all-the-things",
-    "die-erde-ist-nur-ein-land",
-    "god-is-sufficient-unto-me",
-    "o-fils-de-lexistence",
-    "ey-yalla",
-  ]
   const featuredSongList = [...allSongs].filter((song) =>
-    featuredSongsSlugList.includes(song.slug)
+    FEATURED_SONG_SLUGS.includes(song.slug)
   )
   const recentSongList = [...allSongs]
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
@@ -71,9 +65,9 @@ function IndexPage({ data, location }) {
                   </span>
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-gray-600">
-                  Find songs faster, transpose chords, and switch between
-                  guitar and ukulele diagrams. Each song page includes lyrics
-                  and chords, no PDF download required.
+                  Find songs faster, transpose chords, and switch between guitar
+                  and ukulele diagrams. Each song page includes lyrics and
+                  chords, no PDF download required.
                 </p>
               </div>
               <a
@@ -176,21 +170,15 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allBspListSong {
+    allBspSong {
       nodes {
         publishedAt
         title
         slug
-        description
-        languages {
-          nameEn
-        }
-        tags {
-          name
-        }
-        contributors {
-          name
-        }
+        creditText
+        contributorNames
+        languageNames
+        tagNames
         renditions {
           contentUrl
         }
