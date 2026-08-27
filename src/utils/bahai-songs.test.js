@@ -1,15 +1,15 @@
 // eslint-disable-next-line import/no-unresolved
 import { expect, test } from "bun:test"
-import { songbookSongUrl } from "./songbook"
+import { bahaiSongsSongUrl } from "./bahai-songs"
 
-test("opens a song on the current Songbook detail route", () => {
-  expect(songbookSongUrl("a-lover-feareth-nothing")).toBe(
+test("opens a song on the Bahá’í Songs detail route", () => {
+  expect(bahaiSongsSongUrl("a-lover-feareth-nothing")).toBe(
     "https://www.bahaisongs.com/songs/a-lover-feareth-nothing"
   )
 })
 
 test("encodes a song slug as one route segment", () => {
-  expect(songbookSongUrl("song/with spaces")).toBe(
+  expect(bahaiSongsSongUrl("song/with spaces")).toBe(
     "https://www.bahaisongs.com/songs/song%2Fwith%20spaces"
   )
 })

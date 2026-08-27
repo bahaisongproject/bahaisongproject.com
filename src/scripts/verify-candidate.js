@@ -198,9 +198,9 @@ function verifyCandidateBuild(songs) {
     )
     ;[
       `<link data-react-helmet="true" rel="canonical" href="https://www.bahaisongproject.com/${representative.slug}"`,
-      `https://songbook.bahaisongs.com/songs/${representative.slug}`,
+      `https://www.bahaisongs.com/songs/${representative.slug}`,
       `https://www.bahaisongproject.com/${representative.slug}.pdf`,
-      "Open in Songbook",
+      "Open in Bahá’í Songs",
       "Download PDF",
       representative.title,
       representative.languageNames[0],

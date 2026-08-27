@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import ContentEmbedder from "../components/embedding/ContentEmbedder"
 import Results from "../components/Results"
 import { describe_song } from "../utils/description"
-import { songbookSongUrl } from "../utils/songbook"
+import { bahaiSongsSongUrl } from "../utils/bahai-songs"
 
 class SongTemplate extends Component {
   render() {
@@ -85,12 +85,12 @@ class SongTemplate extends Component {
               <div>
                 <div className="flex flex-col xs:flex-row xs:items-center gap-3">
                   <OutboundLink
-                    href={songbookSongUrl(song.slug)}
+                    href={bahaiSongsSongUrl(song.slug)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex space-x-1 items-center font-medium px-4 py-2 text-sm text-left text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
                   >
-                    <span>Open in Songbook</span>
+                    <span>Open in Bahá’í Songs</span>
                     <ExternalLinkIcon className="w-4 h-4 text-primary-100" />
                   </OutboundLink>
                   <OutboundLink
