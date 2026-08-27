@@ -71,7 +71,7 @@ function IndexPage({ data, location }) {
                 </p>
               </div>
               <a
-                href="https://songbook.bahaisongs.com"
+                href="https://www.bahaisongs.com"
                 className="inline-flex mt-3 sm:mx-auto lg:mx-0 items-center justify-center px-3 py-1.5 border border-primary-200 text-sm font-medium rounded-md text-primary-700 bg-white hover:bg-primary-50 focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75"
               >
                 Open Songbook
